@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Money Sutraa — Personalised, Compliance-First Investing (ARN-336976)</title>
+  <title>Moneysutraa — Personalised, Compliance-First Investing (ARN-336976)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Simple, personalised investment guidance aligned to your goals, risk profile, and time horizon. ARN-336976." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#F9F5F0; --ink:#141414; --muted:#5a5a5a; --line:#E8E2D8;
+      /* Warmer, cleaner background */
+      --bg:#FAF9F6; --ink:#141414; --muted:#5a5a5a; --line:#E8E2D8;
       --gold:#C7A052; --gold-2:#E5D4A2; --red:#9A1F1F;
       --shadow:0 14px 40px rgba(0,0,0,.08)
     }
@@ -18,7 +19,7 @@
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
     /* Header */
-    .header{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(249,245,240,.8);border-bottom:1px solid var(--line);z-index:50}
+    .header{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(250,249,246,.85);border-bottom:1px solid var(--line);z-index:50}
     .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
     .brand{display:flex;align-items:center;gap:14px}
     .brand img{height:42px;width:auto}
@@ -34,7 +35,11 @@
     .btn.primary:hover{filter:brightness(.95)}
 
     /* Hero */
-    .hero{background:radial-gradient(1200px 500px at 70% -10%, #fff 0%, var(--bg) 60%);padding:64px 0 36px;border-bottom:1px solid var(--line)}
+    .hero{
+      background:
+        radial-gradient(1200px 500px at 70% -10%, #ffffff 0%, var(--bg) 60%);
+      padding:64px 0 36px;border-bottom:1px solid var(--line)
+    }
     .hero h2{font-size:38px;line-height:1.15;margin:10px 0 10px}
     @media(max-width:720px){.hero h2{font-size:30px}}
     .hero p{font-size:16px;color:var(--muted);max-width:780px}
@@ -55,9 +60,9 @@
   <header class="header">
     <div class="container nav">
       <div class="brand">
-        <img src="logo.png" alt="Money Sutraa logo">
+        <img src="logo.png" alt="Moneysutraa logo">
         <div class="brand-title">
-          <h1>Money Sutraa</h1>
+          <h1>Moneysutraa</h1><!-- no space -->
           <div class="tagline">Your Guide to Simplified Finance</div>
         </div>
       </div>
@@ -78,13 +83,13 @@
   <!-- Hero -->
   <div class="hero">
     <div class="container">
-      <h2>Personalised, compliance-first guidance to help you <span style="color:var(--red)">invest with confidence</span>.</h2>
+      <h2>Personalised, <span style="white-space:nowrap">Compliance-first</span> guidance to help you <span style="color:var(--red)">invest with confidence</span>.</h2>
       <p>Simple frameworks. Transparent process. <strong>A 360° research-driven approach to evaluate individual funds and match them to your goals and risk profile.</strong></p>
 
       <div class="badges">
         <span class="pill">SEBI/AMFI aligned</span>
         <span class="pill">Transparent documentation</span>
-        <span class="pill">English/Hinglish support</span>
+        <span class="pill">English/Hinglish/Hindi support</span>
       </div>
 
       <div class="cta">
@@ -113,10 +118,10 @@
 
   <footer>
     <div class="container foot">
-      © <span id="y"></span> Money Sutraa • ARN-336976
+      © 2025 MoneySutraa Fin Services LLP • ARN-336976
     </div>
   </footer>
 
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <script>document.getElementById('y')?.textContent=new Date().getFullYear()</script>
 </body>
 </html>
