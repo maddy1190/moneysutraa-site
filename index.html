@@ -80,23 +80,19 @@
   </header>
 
   <!-- Hero -->
-  <div class="hero">
-    <div class="container">
-      <h2>Personalised, <span style="white-space:nowrap">Compliance-first</span> guidance to help you <span style="color:var(--red)">invest with confidence</span>.</h2>
-      <p>Simple frameworks. Transparent process. <strong>A 360° research-driven approach to evaluate individual funds and match them to your goals and risk profile.</strong></p>
+/* Hero with image + simple warm overlay (and visible height) */
+.hero{
+  background-image:
+    linear-gradient(to bottom right, rgba(250,249,246,.88), rgba(250,249,246,.72)),
+    url('./hero.jpg?v=1');        /* cache-buster */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 420px;              /* ensures you can see it */
+  padding:64px 0 36px;
+  border-bottom:1px solid var(--line);
+}
 
-      <div class="badges">
-        <span class="pill">SEBI/AMFI aligned</span>
-        <span class="pill">Transparent documentation</span>
-        <span class="pill">English/Hinglish/Hindi support</span>
-      </div>
-
-      <div class="cta">
-        <a class="btn primary" href="https://wa.me/91xxxxxxxxxx" target="_blank" rel="noopener">Chat on WhatsApp</a>
-        <a class="btn" href="mailto:ravimandi117@gmail.com">Book a personal 45-min discussion</a>
-      </div>
-    </div>
-  </div>
 
   <!-- Placeholder sections (we'll fill next) -->
   <section id="services" class="container">
