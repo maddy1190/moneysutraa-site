@@ -22,30 +22,29 @@
     .nav{display:grid; grid-template-columns:auto minmax(320px,1fr) auto auto; align-items:center; column-gap:24px; height:86px}
     .logo{height:100%; max-height:86px; width:auto; display:block; object-fit:contain}
 
-    /* Brand centered in the middle column */
+    /* Brand centered */
     .brand-title{display:flex; flex-direction:column; align-items:center; justify-self:center; line-height:1.05; text-align:center}
     .brand-title h1{margin:0; font-size:20px; font-weight:700; letter-spacing:.2px}
     .brand-title h1 .money{color:var(--gold)}
     .brand-title h1 .sutraa{color:var(--red)}
     .tagline{margin-top:2px; font-size:12px; color:#141414}
 
-    /* Nav links (right of brand) with animation */
+    /* Nav links + animation */
     .links{display:none; gap:18px}
     @media(min-width:900px){.links{display:flex}}
     .links a{
-      white-space:nowrap;
-      display:inline-block;
+      white-space:nowrap; display:inline-block;
       transition:transform .14s ease, filter .14s ease;
       will-change:transform; transform-origin:center;
     }
-    .links a:hover, .links a:focus-visible{ transform:scale(1.12) }
-    .links a:active{ transform:scale(1.14) }
-    @media (prefers-reduced-motion: reduce){
-      .links a{ transition:none }
-      .links a:hover,.links a:focus-visible,.links a:active{ transform:none }
+    .links a:hover,.links a:focus-visible{transform:scale(1.12)}
+    .links a:active{transform:scale(1.14)}
+    @media(prefers-reduced-motion:reduce){
+      .links a{transition:none}
+      .links a:hover,.links a:focus-visible,.links a:active{transform:none}
     }
 
-    /* Actions (far right) */
+    /* Actions */
     .actions{display:flex; gap:10px; justify-self:end}
     .btn{padding:10px 14px; border-radius:10px; border:1px solid var(--line); background:#fff; transition:filter .15s ease, box-shadow .15s ease}
     .btn.primary{background:var(--red); color:#fff; border:0}
@@ -107,16 +106,13 @@
   <!-- Header -->
   <header class="header">
     <div class="container nav">
-      <!-- Col 1: Logo -->
       <img src="logo.png" alt="Moneysutraa logo" class="logo">
 
-      <!-- Col 2: Brand (centered) -->
       <div class="brand-title">
         <h1><span class="money">Money</span><span class="sutraa">Sutraa</span></h1>
         <div class="tagline">“Your Guide to Simplified Finance”</div>
       </div>
 
-      <!-- Col 3: Nav links -->
       <nav class="links">
         <a href="#services">Services</a>
         <a href="#research">Research</a>
@@ -124,7 +120,6 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <!-- Col 4: Actions (as before) -->
       <div class="actions">
         <a class="btn" href="mailto:ravimandi117@gmail.com">Email</a>
         <a class="btn primary" href="https://wa.me/91xxxxxxxxxx" target="_blank" rel="noopener">WhatsApp</a>
@@ -190,7 +185,6 @@
               allowfullscreen></iframe>
           </div>
 
-          <!-- Official YouTube Subscribe button -->
           <div style="margin-top:12px;">
             <div class="g-ytsubscribe"
                  data-channel="@money.sutraa"
@@ -204,15 +198,18 @@
           </div>
         </div>
 
-        <!-- Instagram: embedded reel -->
+        <!-- Instagram: embedded reel (official markup) -->
         <div class="embed-card">
           <h4>On Instagram</h4>
 
           <div class="embed-wrap" style="padding-top:0; height:auto;">
-            <blockquote class="instagram-media"
-              data-instgrm-permalink="https://www.instagram.com/reel/DQUL5U9kg9B/"
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/reel/DQUL5U9kg9B/?utm_source=ig_embed&utm_campaign=loading"
               data-instgrm-version="14"
-              style="margin:0 auto; max-width:540px; width:100%; background:#fff; border:0; border-radius:12px;">
+              data-instgrm-captioned
+              style="background:#fff; border:0; border-radius:12px; margin:0 auto; max-width:540px; width:100%;">
+              <a href="https://www.instagram.com/reel/DQUL5U9kg9B/?utm_source=ig_embed&utm_campaign=loading"></a>
             </blockquote>
           </div>
 
@@ -225,21 +222,21 @@
     </div>
   </section>
 
-  <!-- Research (placeholder) -->
+  <!-- Research placeholder -->
   <section id="research">
     <div class="container">
       <div class="placeholder">Research credibility — short blurb + micro-highlights.</div>
     </div>
   </section>
 
-  <!-- About Us (placeholder) -->
+  <!-- About Us placeholder -->
   <section id="about">
     <div class="container">
       <div class="placeholder">About Us — brief story, values, and who we help.</div>
     </div>
   </section>
 
-  <!-- Contact (placeholder) -->
+  <!-- Contact placeholder -->
   <section id="contact">
     <div class="container">
       <div class="placeholder">Contact block — email, WhatsApp, location.</div>
@@ -252,8 +249,18 @@
     </div>
   </footer>
 
-  <!-- Official widget scripts (keep at end for speed) -->
-  <script async src="https://www.instagram.com/embed.js"></script>
+  <!-- Widgets: Instagram first, then hydrate; YouTube subscribe -->
+  <script src="https://www.instagram.com/embed.js" defer></script>
+  <script>
+    // Hydrate IG embeds after the page is ready (helps on GitHub Pages)
+    window.addEventListener('load', function () {
+      try {
+        if (window.instgrm && instgrm.Embeds && typeof instgrm.Embeds.process === 'function') {
+          instgrm.Embeds.process();
+        }
+      } catch(e) { /* no-op */ }
+    });
+  </script>
   <script async src="https://apis.google.com/js/platform.js"></script>
 </body>
 </html>
