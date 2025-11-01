@@ -28,10 +28,10 @@
       display:grid;
       grid-template-columns: auto minmax(320px,1fr) auto auto; /* logo | brand | links | actions */
       align-items:center;
-      column-gap:24px;                 /* give brand space away from logo */
+      column-gap:24px;
       height:86px;
     }
-    /* LOGO fills header height without overflow */
+    /* LOGO fills header height */
     .logo{
       height:100%;
       max-height:86px;
@@ -39,20 +39,16 @@
       display:block;
       object-fit:contain;
     }
-    /* BRAND in middle column, centered horizontally */
+    /* BRAND in middle column, centered */
     .brand-title{
       display:flex; flex-direction:column;
-      align-items:center;              /* center the text block itself */
-      justify-self:center;             /* center within the middle grid column */
-      line-height:1.05;
-      text-align:center;
+      align-items:center; justify-self:center;
+      line-height:1.05; text-align:center;
     }
-    .brand-title h1{
-      margin:0; font-size:20px; font-weight:700; letter-spacing:.2px;
-    }
+    .brand-title h1{ margin:0; font-size:20px; font-weight:700; letter-spacing:.2px; }
     .brand-title h1 .money{color:var(--gold)}
     .brand-title h1 .sutraa{color:var(--red)}
-    .tagline{margin-top:2px; font-size:12px; color:#141414}
+    .tagline{ margin-top:2px; font-size:12px; color:#141414 }
 
     /* NAV + Actions */
     .links{display:none; gap:18px}
@@ -66,14 +62,14 @@
     .btn:focus{outline:0; box-shadow:0 0 0 3px rgba(199,160,82,0.25)}
     .btn.primary:hover{filter:brightness(.95)}
 
-    /* Mobile tweaks */
+    /* Mobile */
     @media(max-width:640px){
       .nav{grid-template-columns:auto 1fr auto; height:72px}
       .logo{max-height:72px}
       .links{display:none}
     }
 
-    /* HERO with photo + overlays */
+    /* HERO */
     .hero{
       position:relative;
       background: url('./hero.jpg?v=2') center/cover no-repeat;
@@ -140,7 +136,7 @@
       <!-- Col 2: Brand (centered between logo and nav) -->
       <div class="brand-title">
         <h1><span class="money">Money</span><span class="sutraa">Sutraa</span></h1>
-        <div class="tagline">Your Guide to Simplified Finance</div>
+        <div class="tagline">“Your Guide to Simplified Finance”</div>
       </div>
 
       <!-- Col 3: Nav -->
