@@ -35,17 +35,16 @@
     .btn.primary:hover{filter:brightness(.95)}
 
     /* Hero */
-    .hero{
-      background:
-        radial-gradient(1200px 500px at 70% -10%, #ffffff 0%, var(--bg) 60%);
-      padding:64px 0 36px;border-bottom:1px solid var(--line)
-    }
-    .hero h2{font-size:38px;line-height:1.15;margin:10px 0 10px}
-    @media(max-width:720px){.hero h2{font-size:30px}}
-    .hero p{font-size:16px;color:var(--muted);max-width:780px}
-    .badges{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
-    .pill{font-size:12px;padding:6px 10px;border-radius:999px;background:#fff1cc;border:1px solid #f1da98;color:#7a5a00}
-    .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    /* Hero with image + warm overlay */
+.hero{
+  background:
+    linear-gradient( to bottom right, rgba(250,249,246,.92), rgba(250,249,246,.78) ),
+    radial-gradient(1200px 500px at 70% -10%, rgba(255,255,255,.85) 0%, rgba(250,249,246,.6) 60% ),
+    linear-gradient(0deg, rgba(199,160,82,.20), rgba(199,160,82,.20)),
+    url('hero.jpg') center/cover no-repeat;
+  padding:64px 0 36px;
+  border-bottom:1px solid var(--line);
+}
 
     /* Placeholder main sections (we'll design next) */
     section{padding:36px 0}
