@@ -38,13 +38,22 @@
       transition:transform .12s ease, filter .12s ease;
       will-change:transform;
     }
-    .links a:hover,
-    .links a:focus-visible{ transform:scale(1.06) }
-    .links a:active{ transform:scale(1.08) }
-    @media (prefers-reduced-motion: reduce){
-      .links a{ transition:none }
-      .links a:hover,.links a:focus-visible,.links a:active{ transform:none }
-    }
+    /* Nav link hover/tap animation — stronger */
+.links a{
+  white-space:nowrap;
+  display:inline-block;
+  transition:transform .14s ease, filter .14s ease;
+  will-change:transform;
+  transform-origin:center;
+}
+.links a:hover,
+.links a:focus-visible{ transform:scale(1.12) }  /* was 1.06 */
+.links a:active{ transform:scale(1.14) }         /* was 1.08 */
+@media (prefers-reduced-motion: reduce){
+  .links a{ transition:none }
+  .links a:hover,.links a:focus-visible,.links a:active{ transform:none }
+}
+
 
     /* Actions (far right) */
     .actions{display:flex; gap:10px; justify-self:end}
