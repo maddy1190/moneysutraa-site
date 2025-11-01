@@ -17,36 +17,54 @@
     a{text-decoration:none;color:inherit}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
-    /* Header (logo bigger + tighter brand/tagline spacing) */
-    .header{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(250,249,246,.85);border-bottom:1px solid var(--line);z-index:50}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:78px}
-    .brand{display:flex;align-items:center;gap:12px}
+    /* Header — taller, logo fills height, brand centered & colored */
+    .header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:blur(6px);
+      background:rgba(250,249,246,.85);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      height:86px;              /* taller header */
+      padding:0;                /* no vertical padding so logo touches bottom */
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      height:100%;              /* let inner items center against full header height */
+    }
     .brand img{
-      height:64px;        /* bigger logo */
-      width:auto;
-      display:block;
+      height:100%;              /* logo touches top & bottom of header */
+      max-height:86px;          /* equals .nav height */
+      width:auto; display:block; object-fit:contain;
     }
     @media(max-width:640px){
-      .brand img{height:48px;} /* comfortable on small screens */
-      .nav{height:72px;}
+      .nav{height:72px}
+      .brand img{max-height:72px}
     }
-    .brand-title{display:flex;flex-direction:column;line-height:1.05;} /* tighter stack */
+    .brand-title{
+      display:flex; flex-direction:column; justify-content:center;
+      height:100%; line-height:1.05;
+    }
     .brand-title h1{
-      font-size:18px;
-      letter-spacing:.2px;
-      margin:0;          /* remove extra gap */
+      margin:0; font-size:20px; letter-spacing:.2px; font-weight:700;
     }
+    .brand-title h1 .money{color:var(--gold)}
+    .brand-title h1 .sutraa{color:var(--red)}
     .tagline{
-      font-size:12px;
-      color:#777;
-      margin-top:0;      /* closer to brand */
+      margin-top:2px;           /* tight but readable */
+      font-size:12px; color:#141414; /* black tagline */
     }
-    .links{display:none;gap:18px}
+
+    .links{display:none; gap:18px}
     @media(min-width:900px){.links{display:flex}}
-    .actions{display:flex;gap:10px}
-    .btn{padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;transition:filter .15s ease, box-shadow .15s ease}
-    .btn.primary{background:var(--red);color:#fff;border:0}
-    .btn:focus{outline:0;box-shadow:0 0 0 3px rgba(199,160,82,0.25)}
+    .actions{display:flex; gap:10px}
+    .btn{
+      padding:10px 14px; border-radius:10px; border:1px solid var(--line);
+      background:#fff; transition:filter .15s ease, box-shadow .15s ease
+    }
+    .btn.primary{background:var(--red); color:#fff; border:0}
+    .btn:focus{outline:0; box-shadow:0 0 0 3px rgba(199,160,82,0.25)}
     .btn.primary:hover{filter:brightness(.95)}
 
     /* Hero with photo + premium overlays */
@@ -58,18 +76,16 @@
       min-height:420px;
     }
     .hero::before{
-      content:"";
-      position:absolute; inset:0;
+      content:""; position:absolute; inset:0;
       background: linear-gradient(90deg,
-                  rgba(250,249,246,0.96) 0%,
-                  rgba(250,249,246,0.90) 35%,
-                  rgba(250,249,246,0.70) 55%,
-                  rgba(250,249,246,0.30) 75%,
-                  rgba(250,249,246,0.10) 100%);
+        rgba(250,249,246,0.96) 0%,
+        rgba(250,249,246,0.90) 35%,
+        rgba(250,249,246,0.70) 55%,
+        rgba(250,249,246,0.30) 75%,
+        rgba(250,249,246,0.10) 100%);
     }
     .hero::after{
-      content:"";
-      position:absolute; inset:0;
+      content:""; position:absolute; inset:0;
       background:
         radial-gradient(1200px 500px at 70% -10%, rgba(255,255,255,.35) 0%, rgba(250,249,246,.0) 60%),
         linear-gradient(0deg, rgba(199,160,82,.10), rgba(199,160,82,.10));
@@ -115,7 +131,9 @@
       <div class="brand">
         <img src="logo.png" alt="Moneysutraa logo">
         <div class="brand-title">
-          <h1>Moneysutraa</h1>
+          <h1>
+            <span class="money">Money</span><span class="sutraa">Sutraa</span>
+          </h1>
           <div class="tagline">Your Guide to Simplified Finance</div>
         </div>
       </div>
