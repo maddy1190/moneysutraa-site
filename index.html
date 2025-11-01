@@ -32,6 +32,19 @@
     /* Nav links (right of brand) */
     .links{display:none; gap:18px}
     @media(min-width:900px){.links{display:flex}}
+    .links a{
+      white-space:nowrap;               /* keep About Us on one line */
+      display:inline-block;             /* needed for transform */
+      transition:transform .12s ease, filter .12s ease;
+      will-change:transform;
+    }
+    .links a:hover,
+    .links a:focus-visible{ transform:scale(1.06) }
+    .links a:active{ transform:scale(1.08) }
+    @media (prefers-reduced-motion: reduce){
+      .links a{ transition:none }
+      .links a:hover,.links a:focus-visible,.links a:active{ transform:none }
+    }
 
     /* Actions (far right) */
     .actions{display:flex; gap:10px; justify-self:end}
@@ -62,7 +75,7 @@
     .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
 
     /* Sections */
-    section{padding:36px 0}
+    section{padding:36px 0; scroll-margin-top:90px}
     .section-title{font-size:24px; margin:0 0 14px}
 
     /* Cards */
