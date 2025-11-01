@@ -91,7 +91,6 @@
     .embed-card{
       background:#fff; border:1px solid var(--line); border-radius:18px;
       box-shadow:var(--shadow); padding:16px;
-      outline:2px dashed #eadba9; /* TEMP highlight so you can see it */
     }
     .embed-card h4{ margin:0 0 10px; font-size:18px }
     .embed-wrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; background:#f4f1ea }
@@ -108,13 +107,16 @@
   <!-- Header -->
   <header class="header">
     <div class="container nav">
+      <!-- Col 1: Logo -->
       <img src="logo.png" alt="Moneysutraa logo" class="logo">
 
+      <!-- Col 2: Brand (centered) -->
       <div class="brand-title">
         <h1><span class="money">Money</span><span class="sutraa">Sutraa</span></h1>
         <div class="tagline">“Your Guide to Simplified Finance”</div>
       </div>
 
+      <!-- Col 3: Nav links -->
       <nav class="links">
         <a href="#services">Services</a>
         <a href="#research">Research</a>
@@ -122,6 +124,7 @@
         <a href="#contact">Contact</a>
       </nav>
 
+      <!-- Col 4: Actions (as before) -->
       <div class="actions">
         <a class="btn" href="mailto:ravimandi117@gmail.com">Email</a>
         <a class="btn primary" href="https://wa.me/91xxxxxxxxxx" target="_blank" rel="noopener">WhatsApp</a>
@@ -169,7 +172,7 @@
     </div>
   </section>
 
-  <!-- Social (moved up for visibility) -->
+  <!-- Social -->
   <section id="social">
     <div class="container">
       <h3 class="section-title">Social Highlights</h3>
@@ -179,11 +182,9 @@
         <div class="embed-card">
           <h4>Watch on YouTube</h4>
 
-          <!-- Replace YT_VIDEO_ID with any video ID from your channel
-               Example link: https://www.youtube.com/watch?v=YT_VIDEO_ID -->
           <div class="embed-wrap">
             <iframe
-              src="https://www.youtube-nocookie.com/embed/YT_VIDEO_ID?rel=0"
+              src="https://www.youtube-nocookie.com/embed/ps-rYISv1as?start=108&rel=0"
               title="MoneySutraa YouTube sample"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen></iframe>
@@ -203,28 +204,16 @@
           </div>
         </div>
 
-        <!-- Instagram: profile-style card + optional embedded post -->
+        <!-- Instagram: embedded reel -->
         <div class="embed-card">
           <h4>On Instagram</h4>
 
-          <!-- Optional: to embed a specific post/reel, replace POST_URL below with your public IG post URL -->
-          <!--
           <div class="embed-wrap" style="padding-top:0; height:auto;">
             <blockquote class="instagram-media"
-              data-instgrm-permalink="POST_URL"
+              data-instgrm-permalink="https://www.instagram.com/reel/DQUL5U9kg9B/"
               data-instgrm-version="14"
               style="margin:0 auto; max-width:540px; width:100%; background:#fff; border:0; border-radius:12px;">
             </blockquote>
-          </div>
-          -->
-
-          <!-- Fallback “profile preview” if no POST_URL set -->
-          <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
-            <div style="width:44px; height:44px; border-radius:50%; background:#f0e9d9;"></div>
-            <div>
-              <div style="font-weight:600">@moneysutraa</div>
-              <div style="color:var(--muted); font-size:14px;">Reels • Carousels • Quick tips</div>
-            </div>
           </div>
 
           <div class="social-actions">
@@ -264,7 +253,7 @@
   </footer>
 
   <!-- Official widget scripts (keep at end for speed) -->
-  <script async src="//www.instagram.com/embed.js"></script>
+  <script async src="https://www.instagram.com/embed.js"></script>
   <script async src="https://apis.google.com/js/platform.js"></script>
 </body>
 </html>
