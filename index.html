@@ -17,7 +17,7 @@
     a{text-decoration:none;color:inherit}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
-    /* Header — taller, logo fills height, brand centered & colored */
+    /* HEADER — grid layout so brand is centered between logo and nav */
     .header{
       position:sticky; top:0; z-index:50;
       backdrop-filter:blur(6px);
@@ -25,37 +25,43 @@
       border-bottom:1px solid var(--line);
     }
     .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      height:86px;              /* taller header */
-      padding:0;                /* no vertical padding so logo touches bottom */
+      display:grid;
+      grid-template-columns: auto 1fr auto auto; /* logo | brand (flex) | links | actions */
+      align-items:center;
+      column-gap:16px;
+      height:86px;
     }
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      height:100%;              /* let inner items center against full header height */
+    /* LOGO fills header height */
+    .logo{
+      height:100%;
+      max-height:86px;
+      display:block;
+      width:auto;
+      object-fit:contain;
     }
-    .brand img{
-      height:100%;              /* logo touches top & bottom of header */
-      max-height:86px;          /* equals .nav height */
-      width:auto; display:block; object-fit:contain;
-    }
-    @media(max-width:640px){
-      .nav{height:72px}
-      .brand img{max-height:72px}
-    }
+    /* BRAND block sits in column 2 and is centered horizontally */
     .brand-title{
-      display:flex; flex-direction:column; justify-content:center;
-      height:100%; line-height:1.05;
+      display:flex;
+      flex-direction:column;
+      align-items:center;     /* center text block itself */
+      justify-self:center;    /* center within the wide middle column */
+      line-height:1.05;
     }
     .brand-title h1{
-      margin:0; font-size:20px; letter-spacing:.2px; font-weight:700;
+      margin:0;
+      font-size:20px;
+      font-weight:700;
+      letter-spacing:.2px;
     }
     .brand-title h1 .money{color:var(--gold)}
     .brand-title h1 .sutraa{color:var(--red)}
     .tagline{
-      margin-top:2px;           /* tight but readable */
-      font-size:12px; color:#141414; /* black tagline */
+      margin-top:2px;
+      font-size:12px;
+      color:#141414; /* black tagline */
     }
 
+    /* NAV links + actions */
     .links{display:none; gap:18px}
     @media(min-width:900px){.links{display:flex}}
     .actions{display:flex; gap:10px}
@@ -67,7 +73,14 @@
     .btn:focus{outline:0; box-shadow:0 0 0 3px rgba(199,160,82,0.25)}
     .btn.primary:hover{filter:brightness(.95)}
 
-    /* Hero with photo + premium overlays */
+    /* Mobile tweaks */
+    @media(max-width:640px){
+      .nav{grid-template-columns:auto 1fr auto; height:72px}
+      .logo{max-height:72px}
+      .links{display:none}                 /* hide nav links on small screens */
+    }
+
+    /* HERO with photo + premium overlays */
     .hero{
       position:relative;
       background: url('./hero.jpg?v=2') center/cover no-repeat;
@@ -128,21 +141,24 @@
   <!-- Header -->
   <header class="header">
     <div class="container nav">
-      <div class="brand">
-        <img src="logo.png" alt="Moneysutraa logo">
-        <div class="brand-title">
-          <h1>
-            <span class="money">Money</span><span class="sutraa">Sutraa</span>
-          </h1>
-          <div class="tagline">Your Guide to Simplified Finance</div>
-        </div>
+      <!-- Col 1: Logo -->
+      <img src="logo.png" alt="Moneysutraa logo" class="logo">
+
+      <!-- Col 2: Brand (centered between logo and nav) -->
+      <div class="brand-title">
+        <h1><span class="money">Money</span><span class="sutraa">Sutraa</span></h1>
+        <div class="tagline">Your Guide to Simplified Finance</div>
       </div>
+
+      <!-- Col 3: Nav -->
       <nav class="links">
         <a href="#services">Services</a>
         <a href="#process">Process</a>
         <a href="#research">Research</a>
         <a href="#contact">Contact</a>
       </nav>
+
+      <!-- Col 4: Actions -->
       <div class="actions">
         <a class="btn" href="mailto:ravimandi117@gmail.com">Email</a>
         <a class="btn primary" href="https://wa.me/91xxxxxxxxxx" target="_blank" rel="noopener">WhatsApp</a>
