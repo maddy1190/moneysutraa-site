@@ -60,8 +60,12 @@
       .links{display:none}
     }
 
-    /* HERO */
-    .hero{position:relative; background:url('./hero.jpg?v=2') center/cover no-repeat; padding:84px 0 48px; border-bottom:1px solid var(--line); min-height:420px}
+    /* HERO (cache-busted) */
+    .hero{
+      position:relative;
+      background:url('./hero.jpg?v=3') center/cover no-repeat;
+      padding:84px 0 48px; border-bottom:1px solid var(--line); min-height:420px
+    }
     .hero::before{content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(250,249,246,.96) 0%, rgba(250,249,246,.90) 35%, rgba(250,249,246,.70) 55%, rgba(250,249,246,.30) 75%, rgba(250,249,246,.10) 100%)}
     .hero::after{content:""; position:absolute; inset:0; background:radial-gradient(1200px 500px at 70% -10%, rgba(255,255,255,.35) 0%, rgba(250,249,246,0) 60%), linear-gradient(0deg, rgba(199,160,82,.10), rgba(199,160,82,.10)); pointer-events:none}
     .hero>.container{position:relative; z-index:1}
@@ -76,13 +80,20 @@
     section{padding:36px 0; scroll-margin-top:90px}
     .section-title{font-size:24px; margin:0 0 14px}
 
-    /* Cards */
+    /* Cards (Services) — yellow boxes */
     .cards{display:grid; gap:16px; grid-template-columns:1fr}
     @media(min-width:880px){.cards{grid-template-columns:repeat(3,1fr)}}
-    .card{background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); padding:20px; transition:transform .15s ease, box-shadow .15s ease}
+    .card{
+      background:#FFF6D6;                 /* soft yellow */
+      border:1px solid var(--gold-2);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      padding:20px;
+      transition:transform .15s ease, box-shadow .15s ease
+    }
     .card:hover{transform:translateY(-2px); box-shadow:0 18px 46px rgba(0,0,0,.10)}
     .card h4{margin:0 0 8px; font-size:18px}
-    .card p{margin:6px 0 0; color:var(--muted)}
+    .card p{margin:6px 0 0; color:#6a5a2a}
 
     /* Social embeds */
     .social-grid{ display:grid; gap:16px; grid-template-columns:1fr }
@@ -101,7 +112,7 @@
     .embed-wrap img.embed-fit{
       position:absolute; inset:0; width:100%; height:100%;
       object-fit:cover;           /* fill the frame */
-      object-position:center 20%; /* nudge up a bit to crop more bottom */
+      object-position:center 20%; /* crop slightly more at bottom */
       display:block;
     }
 
@@ -133,7 +144,8 @@
 
       <div class="actions">
         <a class="btn" href="mailto:ravimandi117@gmail.com">Email</a>
-        <a class="btn primary" href="https://wa.me/91xxxxxxxxxx" target="_blank" rel="noopener">WhatsApp</a>
+        <!-- Header WhatsApp in GREEN -->
+        <a class="btn green" href="https://wa.me/91xxxxxxxxxx" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
   </header>
@@ -151,7 +163,8 @@
       </div>
 
       <div class="cta">
-        <a class="btn primary" href="https://wa.me/91xxxxxxxxxx" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <!-- Chat on WhatsApp in GREEN -->
+        <a class="btn green" href="https://wa.me/91xxxxxxxxxx" target="_blank" rel="noopener">Chat on WhatsApp</a>
         <a class="btn green" href="mailto:ravimandi117@gmail.com">Book a personal 45-min discussion</a>
       </div>
     </div>
@@ -184,7 +197,7 @@
       <h3 class="section-title">Social Highlights</h3>
       <div class="social-grid">
 
-        <!-- YouTube: inline video -->
+        <!-- YouTube -->
         <div class="embed-card">
           <h4>Watch on YouTube</h4>
           <div class="embed-wrap">
@@ -195,11 +208,12 @@
               allowfullscreen></iframe>
           </div>
           <div class="social-actions">
-            <a class="btn green" href="https://www.youtube.com/@money.sutraa" target="_blank" rel="noopener">Visit YouTube</a>
+            <!-- Visit buttons in RED -->
+            <a class="btn primary" href="https://www.youtube.com/@money.sutraa" target="_blank" rel="noopener">Visit YouTube</a>
           </div>
         </div>
 
-        <!-- Instagram: unified 16:9 frame, image cropped from bottom -->
+        <!-- Instagram -->
         <div class="embed-card">
           <h4>On Instagram</h4>
           <div class="embed-wrap">
@@ -209,12 +223,13 @@
                 src="./ig-preview.jpg?v=3"
                 alt="Follow @moneysutraa on Instagram"
                 loading="lazy"
-                onerror="this.onerror=null; this.src='./hero.jpg';"
+                onerror="this.onerror=null; this.src='./hero.jpg?v=3';"
               />
             </a>
           </div>
           <div class="social-actions">
-            <a class="btn green" href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener">Visit Instagram</a>
+            <!-- Visit buttons in RED -->
+            <a class="btn primary" href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener">Visit Instagram</a>
           </div>
         </div>
 
