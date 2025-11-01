@@ -150,7 +150,7 @@
   <section id="services">
     <div class="container">
       <h3 class="section-title">Our Services</h3>
-      <div class="cards">
+    <div class="cards">
         <article class="card">
           <h4>Goal-based Planning</h4>
           <p>Translate life goals into practical SIPs & lump sums with horizon-wise glide paths.</p>
@@ -173,10 +173,9 @@
       <h3 class="section-title">Social Highlights</h3>
       <div class="social-grid">
 
-        <!-- YouTube: inline video + official Subscribe widget -->
+        <!-- YouTube: inline video -->
         <div class="embed-card">
           <h4>Watch on YouTube</h4>
-
           <div class="embed-wrap">
             <iframe
               src="https://www.youtube-nocookie.com/embed/ps-rYISv1as?start=108&rel=0"
@@ -184,34 +183,21 @@
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen></iframe>
           </div>
-
-          <!-- Subscribe + green Visit button -->
-          <div style="margin-top:12px;">
-            <div class="g-ytsubscribe"
-                 data-channel="@money.sutraa"
-                 data-layout="default"
-                 data-theme="default"
-                 data-count="default"></div>
-          </div>
           <div class="social-actions">
             <a class="btn green" href="https://www.youtube.com/@money.sutraa" target="_blank" rel="noopener">Visit YouTube</a>
           </div>
         </div>
 
-        <!-- Instagram: ALWAYS-RELIABLE thumbnail preview + green Visit -->
+        <!-- Instagram: local thumbnail preview (always works) -->
         <div class="embed-card">
           <h4>On Instagram</h4>
-
           <div class="embed-wrap" style="padding-top:0; height:auto; background:#fff; display:flex; align-items:center; justify-content:center;">
-            <a href="https://www.instagram.com/reel/DQUL5U9kg9B/" target="_blank" rel="noopener" style="display:block; width:100%;">
-              <!-- This uses Instagram's media thumbnail endpoint.
-                   If it ever stops working, upload a local image (e.g., /assets/ig-reel.jpg) and swap the src. -->
-              <img src="https://www.instagram.com/p/DQUL5U9kg9B/media/?size=l"
-                   alt="Follow @moneysutraa on Instagram"
+            <a href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener" style="display:block; width:100%;">
+              <!-- Upload ig-preview.jpg to your repo root -->
+              <img src="./ig-preview.jpg" alt="Follow @moneysutraa on Instagram"
                    style="width:100%; display:block; border-radius:12px;">
             </a>
           </div>
-
           <div class="social-actions">
             <a class="btn green" href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener">Visit Instagram</a>
           </div>
@@ -248,7 +234,6 @@
     </div>
   </footer>
 
-  <!-- Only YouTube subscribe widget needed now -->
-  <script async src="https://apis.google.com/js/platform.js"></script>
+  <!-- No IG/YouTube widget scripts needed anymore -->
 </body>
 </html>
