@@ -29,31 +29,21 @@
     .brand-title h1 .sutraa{color:var(--red)}
     .tagline{margin-top:2px; font-size:12px; color:#141414}
 
-    /* Nav links (right of brand) */
+    /* Nav links (right of brand) with animation */
     .links{display:none; gap:18px}
     @media(min-width:900px){.links{display:flex}}
     .links a{
       white-space:nowrap;               /* keep About Us on one line */
       display:inline-block;             /* needed for transform */
-      transition:transform .12s ease, filter .12s ease;
-      will-change:transform;
+      transition:transform .14s ease, filter .14s ease;
+      will-change:transform; transform-origin:center;
     }
-    /* Nav link hover/tap animation — stronger */
-.links a{
-  white-space:nowrap;
-  display:inline-block;
-  transition:transform .14s ease, filter .14s ease;
-  will-change:transform;
-  transform-origin:center;
-}
-.links a:hover,
-.links a:focus-visible{ transform:scale(1.12) }  /* was 1.06 */
-.links a:active{ transform:scale(1.14) }         /* was 1.08 */
-@media (prefers-reduced-motion: reduce){
-  .links a{ transition:none }
-  .links a:hover,.links a:focus-visible,.links a:active{ transform:none }
-}
-
+    .links a:hover, .links a:focus-visible{ transform:scale(1.12) }
+    .links a:active{ transform:scale(1.14) }
+    @media (prefers-reduced-motion: reduce){
+      .links a{ transition:none }
+      .links a:hover,.links a:focus-visible,.links a:active{ transform:none }
+    }
 
     /* Actions (far right) */
     .actions{display:flex; gap:10px; justify-self:end}
@@ -95,8 +85,17 @@
     .card h4{margin:0 0 8px; font-size:18px}
     .card p{margin:6px 0 0; color:var(--muted)}
 
-    /* Placeholder blocks */
-    .placeholder{border:1px dashed var(--line); border-radius:18px; padding:18px; color:#777}
+    /* Social embeds */
+    .social-grid{ display:grid; gap:16px; grid-template-columns:1fr }
+    @media(min-width:880px){ .social-grid{ grid-template-columns:1fr 1fr } }
+    .embed-card{
+      background:#fff; border:1px solid var(--line); border-radius:18px;
+      box-shadow:var(--shadow); padding:16px;
+    }
+    .embed-card h4{ margin:0 0 10px; font-size:18px }
+    .embed-wrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; background:#f4f1ea }
+    .embed-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
+    .social-actions{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap }
 
     /* Footer */
     footer{border-top:1px solid var(--line); margin-top:36px}
@@ -194,11 +193,81 @@
     </div>
   </section>
 
+  <!-- Social -->
+  <section id="social">
+    <div class="container">
+      <h3 class="section-title">Social Highlights</h3>
+      <div class="social-grid">
+
+        <!-- YouTube: inline video + official Subscribe widget -->
+        <div class="embed-card">
+          <h4>Watch on YouTube</h4>
+
+          <!-- Replace YT_VIDEO_ID below with any video ID from your channel.
+               Example link: https://www.youtube.com/watch?v=YT_VIDEO_ID -->
+          <div class="embed-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/YT_VIDEO_ID?rel=0"
+              title="MoneySutraa YouTube sample"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+
+          <!-- Official YouTube Subscribe button -->
+          <div style="margin-top:12px;">
+            <div class="g-ytsubscribe"
+                 data-channel="@money.sutraa"
+                 data-layout="default"
+                 data-theme="default"
+                 data-count="default"></div>
+          </div>
+
+          <div class="social-actions">
+            <a class="btn" href="https://www.youtube.com/@money.sutraa" target="_blank" rel="noopener">Visit YouTube</a>
+          </div>
+        </div>
+
+        <!-- Instagram: profile-style card + optional embedded post -->
+        <div class="embed-card">
+          <h4>On Instagram</h4>
+
+          <!-- Optional: to embed a specific post/reel, replace POST_URL below with your public IG post URL -->
+          <!--
+          <div class="embed-wrap" style="padding-top:0; height:auto;">
+            <blockquote class="instagram-media"
+              data-instgrm-permalink="POST_URL"
+              data-instgrm-version="14"
+              style="margin:0 auto; max-width:540px; width:100%; background:#fff; border:0; border-radius:12px;">
+            </blockquote>
+          </div>
+          -->
+
+          <!-- Fallback “profile preview” look if no POST_URL set -->
+          <div style="display:flex; align-items:center; gap:12px; margin-top:12px;">
+            <div style="width:44px; height:44px; border-radius:50%; background:#f0e9d9;"></div>
+            <div>
+              <div style="font-weight:600">@moneysutraa</div>
+              <div style="color:var(--muted); font-size:14px;">Reels • Carousels • Quick tips</div>
+            </div>
+          </div>
+
+          <div class="social-actions">
+            <a class="btn" href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener">Visit Instagram</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="container foot">
       © 2025 MoneySutraa Fin Services LLP • ARN-336976
     </div>
   </footer>
 
+  <!-- Official widget scripts (keep at end for speed) -->
+  <script async src="//www.instagram.com/embed.js"></script>
+  <script async src="https://apis.google.com/js/platform.js"></script>
 </body>
 </html>
