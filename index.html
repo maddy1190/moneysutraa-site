@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      /* Warmer, cleaner background */
       --bg:#FAF9F6; --ink:#141414; --muted:#5a5a5a; --line:#E8E2D8;
       --gold:#C7A052; --gold-2:#E5D4A2; --red:#9A1F1F;
       --shadow:0 14px 40px rgba(0,0,0,.08)
@@ -29,26 +28,64 @@
     .links{display:none;gap:18px}
     @media(min-width:900px){.links{display:flex}}
     .actions{display:flex;gap:10px}
-    .btn{padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#fff}
+    .btn{padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;transition:filter .15s ease, box-shadow .15s ease}
     .btn.primary{background:var(--red);color:#fff;border:0}
     .btn:focus{outline:0;box-shadow:0 0 0 3px rgba(199,160,82,0.25)}
     .btn.primary:hover{filter:brightness(.95)}
 
-    /* Hero */
-    /* Hero with image + warm overlay */
-.hero{
-  background:
-    linear-gradient( to bottom right, rgba(250,249,246,.92), rgba(250,249,246,.78) ),
-    radial-gradient(1200px 500px at 70% -10%, rgba(255,255,255,.85) 0%, rgba(250,249,246,.6) 60% ),
-    linear-gradient(0deg, rgba(199,160,82,.20), rgba(199,160,82,.20)),
-    url('hero.jpg') center/cover no-repeat;
-  padding:64px 0 36px;
-  border-bottom:1px solid var(--line);
-}
+    /* Hero with photo + premium overlays */
+    .hero{
+      position:relative;
+      background: url('./hero.jpg?v=2') center/cover no-repeat;
+      padding:84px 0 48px;
+      border-bottom:1px solid var(--line);
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(90deg,
+                  rgba(250,249,246,0.96) 0%,
+                  rgba(250,249,246,0.90) 35%,
+                  rgba(250,249,246,0.70) 55%,
+                  rgba(250,249,246,0.30) 75%,
+                  rgba(250,249,246,0.10) 100%);
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(1200px 500px at 70% -10%, rgba(255,255,255,.35) 0%, rgba(250,249,246,.0) 60%),
+        linear-gradient(0deg, rgba(199,160,82,.10), rgba(199,160,82,.10));
+      pointer-events:none;
+    }
+    .hero > .container{ position:relative; z-index:1; }
+    .hero h2{ font-size:40px; line-height:1.15; margin:8px 0 12px; }
+    @media(max-width:720px){ .hero{padding:64px 0 36px} .hero h2{font-size:30px} }
+    .hero p{font-size:16px;color:var(--muted);max-width:780px}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+    .pill{font-size:12px;padding:6px 10px;border-radius:999px;background:#fff1cc;border:1px solid #f1da98;color:#7a5a00}
+    .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 
-    /* Placeholder main sections (we'll design next) */
+    /* Sections */
     section{padding:36px 0}
+    .section-title{ font-size:24px; margin:0 0 14px }
+
+    /* Cards */
+    .cards{ display:grid; gap:16px; grid-template-columns:1fr }
+    @media(min-width:880px){ .cards{ grid-template-columns:repeat(3,1fr) } }
+    .card{
+      background:#fff; border:1px solid var(--line); border-radius:18px;
+      box-shadow:var(--shadow); padding:20px;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .card:hover{ transform:translateY(-2px); box-shadow:0 18px 46px rgba(0,0,0,.10) }
+    .card h4{ margin:0 0 8px; font-size:18px }
+    .card p{ margin:6px 0 0; color:var(--muted) }
+
+    /* Placeholders for sections we’ll style next */
     .placeholder{border:1px dashed var(--line);border-radius:18px;padding:18px;color:#777}
+
+    /* Footer */
     footer{border-top:1px solid var(--line);margin-top:36px}
     .foot{padding:20px 0;color:#6d6d6d;font-size:13px}
   </style>
@@ -61,7 +98,7 @@
       <div class="brand">
         <img src="logo.png" alt="Moneysutraa logo">
         <div class="brand-title">
-          <h1>Moneysutraa</h1><!-- no space -->
+          <h1>Moneysutraa</h1>
           <div class="tagline">Your Guide to Simplified Finance</div>
         </div>
       </div>
@@ -80,35 +117,64 @@
   </header>
 
   <!-- Hero -->
-/* Hero with image + simple warm overlay (and visible height) */
-.hero{
-  background-image:
-    linear-gradient(to bottom right, rgba(250,249,246,.88), rgba(250,249,246,.72)),
-    url('./hero.jpg?v=1');        /* cache-buster */
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 420px;              /* ensures you can see it */
-  padding:64px 0 36px;
-  border-bottom:1px solid var(--line);
-}
+  <section class="hero">
+    <div class="container">
+      <h2>Personalised, <span style="white-space:nowrap">Compliance-first</span> guidance to help you <span style="color:var(--red)">invest with confidence</span>.</h2>
+      <p><strong>Simple frameworks. Transparent process. A 360° research-driven approach to evaluate individual funds and match them to your goals and risk profile.</strong></p>
 
+      <div class="badges">
+        <span class="pill">SEBI/AMFI aligned</span>
+        <span class="pill">Transparent documentation</span>
+        <span class="pill">English/Hinglish/Hindi support</span>
+      </div>
 
-  <!-- Placeholder sections (we'll fill next) -->
-  <section id="services" class="container">
-    <div class="placeholder">Services section — we’ll add premium cards here next.</div>
+      <div class="cta">
+        <a class="btn primary" href="https://wa.me/91xxxxxxxxxx" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <a class="btn" href="mailto:ravimandi117@gmail.com">Book a personal 45-min discussion</a>
+      </div>
+    </div>
   </section>
 
-  <section id="process" class="container">
-    <div class="placeholder">Process steps — 1) Connect 2) Profile & Plan 3) Implement 4) Review.</div>
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <h3 class="section-title">Our Services</h3>
+      <div class="cards">
+        <article class="card">
+          <h4>Goal-based Planning</h4>
+          <p>Translate life goals into practical SIPs & lump sums with horizon-wise glide paths.</p>
+        </article>
+        <article class="card">
+          <h4>Portfolio Review</h4>
+          <p>Check risk, overlap & category drift; streamline holdings & costs; align to benchmarks.</p>
+        </article>
+        <article class="card">
+          <h4>Ongoing Rebalancing</h4>
+          <p>Rules-based reviews with clear, actionable notes—discipline over guesswork.</p>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <section id="research" class="container">
-    <div class="placeholder">Research credibility — short blurb + micro-highlights.</div>
+  <!-- Process (placeholder for next step) -->
+  <section id="process">
+    <div class="container">
+      <div class="placeholder">Process steps — 1) Connect 2) Profile & Plan 3) Implement 4) Review.</div>
+    </div>
   </section>
 
-  <section id="contact" class="container">
-    <div class="placeholder">Contact block — email, WhatsApp, location.</div>
+  <!-- Research (placeholder for next step) -->
+  <section id="research">
+    <div class="container">
+      <div class="placeholder">Research credibility — short blurb + micro-highlights.</div>
+    </div>
+  </section>
+
+  <!-- Contact (placeholder for next step) -->
+  <section id="contact">
+    <div class="container">
+      <div class="placeholder">Contact block — email, WhatsApp, location.</div>
+    </div>
   </section>
 
   <footer>
@@ -117,6 +183,5 @@
     </div>
   </footer>
 
-  <script>document.getElementById('y')?.textContent=new Date().getFullYear()</script>
 </body>
 </html>
