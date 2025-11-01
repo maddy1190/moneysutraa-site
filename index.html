@@ -185,6 +185,7 @@
               allowfullscreen></iframe>
           </div>
 
+          <!-- Subscribe + green Visit button -->
           <div style="margin-top:12px;">
             <div class="g-ytsubscribe"
                  data-channel="@money.sutraa"
@@ -192,29 +193,27 @@
                  data-theme="default"
                  data-count="default"></div>
           </div>
-
           <div class="social-actions">
-            <a class="btn" href="https://www.youtube.com/@money.sutraa" target="_blank" rel="noopener">Visit YouTube</a>
+            <a class="btn green" href="https://www.youtube.com/@money.sutraa" target="_blank" rel="noopener">Visit YouTube</a>
           </div>
         </div>
 
-        <!-- Instagram: embedded reel (official markup) -->
+        <!-- Instagram: ALWAYS-RELIABLE thumbnail preview + green Visit -->
         <div class="embed-card">
           <h4>On Instagram</h4>
 
-          <div class="embed-wrap" style="padding-top:0; height:auto;">
-            <blockquote
-              class="instagram-media"
-              data-instgrm-permalink="https://www.instagram.com/reel/DQUL5U9kg9B/?utm_source=ig_embed&utm_campaign=loading"
-              data-instgrm-version="14"
-              data-instgrm-captioned
-              style="background:#fff; border:0; border-radius:12px; margin:0 auto; max-width:540px; width:100%;">
-              <a href="https://www.instagram.com/reel/DQUL5U9kg9B/?utm_source=ig_embed&utm_campaign=loading"></a>
-            </blockquote>
+          <div class="embed-wrap" style="padding-top:0; height:auto; background:#fff; display:flex; align-items:center; justify-content:center;">
+            <a href="https://www.instagram.com/reel/DQUL5U9kg9B/" target="_blank" rel="noopener" style="display:block; width:100%;">
+              <!-- This uses Instagram's media thumbnail endpoint.
+                   If it ever stops working, upload a local image (e.g., /assets/ig-reel.jpg) and swap the src. -->
+              <img src="https://www.instagram.com/p/DQUL5U9kg9B/media/?size=l"
+                   alt="Follow @moneysutraa on Instagram"
+                   style="width:100%; display:block; border-radius:12px;">
+            </a>
           </div>
 
           <div class="social-actions">
-            <a class="btn" href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener">Visit Instagram</a>
+            <a class="btn green" href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener">Visit Instagram</a>
           </div>
         </div>
 
@@ -222,21 +221,21 @@
     </div>
   </section>
 
-  <!-- Research placeholder -->
+  <!-- Research (placeholder) -->
   <section id="research">
     <div class="container">
       <div class="placeholder">Research credibility — short blurb + micro-highlights.</div>
     </div>
   </section>
 
-  <!-- About Us placeholder -->
+  <!-- About Us (placeholder) -->
   <section id="about">
     <div class="container">
       <div class="placeholder">About Us — brief story, values, and who we help.</div>
     </div>
   </section>
 
-  <!-- Contact placeholder -->
+  <!-- Contact (placeholder) -->
   <section id="contact">
     <div class="container">
       <div class="placeholder">Contact block — email, WhatsApp, location.</div>
@@ -249,18 +248,7 @@
     </div>
   </footer>
 
-  <!-- Widgets: Instagram first, then hydrate; YouTube subscribe -->
-  <script src="https://www.instagram.com/embed.js" defer></script>
-  <script>
-    // Hydrate IG embeds after the page is ready (helps on GitHub Pages)
-    window.addEventListener('load', function () {
-      try {
-        if (window.instgrm && instgrm.Embeds && typeof instgrm.Embeds.process === 'function') {
-          instgrm.Embeds.process();
-        }
-      } catch(e) { /* no-op */ }
-    });
-  </script>
+  <!-- Only YouTube subscribe widget needed now -->
   <script async src="https://apis.google.com/js/platform.js"></script>
 </body>
 </html>
