@@ -17,27 +17,37 @@
     a{text-decoration:none;color:inherit}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
-    /* Header */
-.header{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(250,249,246,.85);border-bottom:1px solid var(--line);z-index:50}
-.nav{display:flex;align-items:center;justify-content:space-between;height:72px} /* was 68px */
-.brand{display:flex;align-items:center;gap:12px} /* a touch tighter */
-.brand img{
-  height:56px;            /* was 42px */
-  width:auto;
-  display:block;
-}
-.brand-title{display:flex;flex-direction:column;line-height:1.15} /* tighter block */
-.brand-title h1{
-  font-size:18px;
-  letter-spacing:.2px;
-  margin:0 0 0;           /* remove bottom gap */
-}
-.tagline{
-  font-size:12px;
-  color:#777;
-  margin-top:0;           /* was 2px */
-}
-
+    /* Header (logo bigger + tighter brand/tagline spacing) */
+    .header{position:sticky;top:0;backdrop-filter:blur(6px);background:rgba(250,249,246,.85);border-bottom:1px solid var(--line);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{
+      height:64px;        /* bigger logo */
+      width:auto;
+      display:block;
+    }
+    @media(max-width:640px){
+      .brand img{height:48px;} /* comfortable on small screens */
+      .nav{height:72px;}
+    }
+    .brand-title{display:flex;flex-direction:column;line-height:1.05;} /* tighter stack */
+    .brand-title h1{
+      font-size:18px;
+      letter-spacing:.2px;
+      margin:0;          /* remove extra gap */
+    }
+    .tagline{
+      font-size:12px;
+      color:#777;
+      margin-top:0;      /* closer to brand */
+    }
+    .links{display:none;gap:18px}
+    @media(min-width:900px){.links{display:flex}}
+    .actions{display:flex;gap:10px}
+    .btn{padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;transition:filter .15s ease, box-shadow .15s ease}
+    .btn.primary{background:var(--red);color:#fff;border:0}
+    .btn:focus{outline:0;box-shadow:0 0 0 3px rgba(199,160,82,0.25)}
+    .btn.primary:hover{filter:brightness(.95)}
 
     /* Hero with photo + premium overlays */
     .hero{
