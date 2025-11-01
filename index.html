@@ -52,43 +52,46 @@
       .links{display:none}
     }
 
-    /* HERO — closer to top + darker overlays for clarity */
+    /* HERO — Option A: white text + darker left overlay for contrast */
     .hero{
       position:relative;
-      background:url('./hero.jpg?v=5') center/cover no-repeat; /* cache-busted */
-      padding:36px 0 40px;                      /* << tighter top */
+      background:url('./hero.jpg?v=6') center/cover no-repeat; /* cache-busted */
+      padding:36px 0 40px;                     /* closer to top */
       border-bottom:1px solid var(--line);
       min-height:420px;
     }
-    /* Darker, clearer overlay mix */
+    /* darker on left → fades out to the right */
     .hero::before{
       content:""; position:absolute; inset:0;
-      background:
-        linear-gradient(                   /* left-to-right wash */
-          90deg,
-          rgba(250,249,246,.90) 0%,
-          rgba(250,249,246,.82) 28%,
-          rgba(20,20,20,.48)   55%,       /* darker mid for contrast */
-          rgba(20,20,20,.36)   75%,
-          rgba(20,20,20,.22)   100%
-        );
+      background:linear-gradient(
+        90deg,
+        rgba(0,0,0,.62) 0%,
+        rgba(0,0,0,.50) 34%,
+        rgba(0,0,0,.30) 60%,
+        rgba(0,0,0,.14) 80%,
+        rgba(0,0,0,.06) 100%
+      );
     }
+    /* subtle vignette + light overall tone */
     .hero::after{
       content:""; position:absolute; inset:0;
       background:
-        radial-gradient(1100px 520px at 68% -12%, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 60%), /* subtle vignette */
-        linear-gradient(0deg, rgba(0,0,0,.10), rgba(0,0,0,.10));                            /* overall darken */
+        radial-gradient(1100px 520px at 68% -12%, rgba(0,0,0,.14) 0%, rgba(0,0,0,0) 60%),
+        linear-gradient(0deg, rgba(0,0,0,.06), rgba(0,0,0,.06));
       pointer-events:none;
     }
     .hero>.container{position:relative; z-index:1}
-    .hero h2{font-size:40px; line-height:1.12; margin:0 0 10px}  /* << zero top margin */
+    .hero h2{font-size:40px; line-height:1.12; margin:0 0 10px; color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.35)}
     @media(max-width:720px){
       .hero{padding:30px 0 32px}
       .hero h2{font-size:30px}
     }
-    .hero p{font-size:16px; color:#2a2a2a; max-width:780px; font-weight:500} /* slightly darker & bolder for legibility */
+    .hero p{font-size:16px; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.35); max-width:780px; font-weight:500}
     .badges{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0}
-    .pill{font-size:12px; padding:6px 10px; border-radius:999px; background:#fff1cc; border:1px solid #f1da98; color:#7a5a00}
+    .pill{
+      font-size:12px; padding:6px 10px; border-radius:999px;
+      background:rgba(255,255,255,.92); border:1px solid #e9e9e9; color:#444;
+    }
     .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
 
     /* Sections */
@@ -147,7 +150,7 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <h2>Personalised, <span style="white-space:nowrap">Compliance-first</span> guidance to help you <span style="color:var(--red)">invest with confidence</span>.</h2>
+      <h2>Personalised, <span style="white-space:nowrap">Compliance-first</span> guidance to help you <span style="color:#FFD6D6">invest with confidence</span>.</h2>
       <p><strong>Simple frameworks. Transparent process. A 360° research-driven approach to evaluate individual funds and match them to your goals and risk profile.</strong></p>
 
       <div class="badges">
@@ -215,7 +218,7 @@
                 src="./ig-preview.jpg?v=3"
                 alt="Follow @moneysutraa on Instagram"
                 loading="lazy"
-                onerror="this.onerror=null; this.src='./hero.jpg?v=5';"
+                onerror="this.onerror=null; this.src='./hero.jpg?v=6';"
               />
             </a>
           </div>
