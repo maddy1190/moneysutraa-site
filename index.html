@@ -58,6 +58,13 @@
     .btn.gold:hover{ filter:brightness(.95); }
     .btn.gold:focus{ box-shadow:0 0 0 3px rgba(199,160,82,.32); }
 
+    /* override additions for button layout */
+.btn{ display:inline-flex; align-items:center; white-space:nowrap; }
+.cards .card p{ margin-bottom:6px; }
+.cards .card .social-actions{ margin-top:12px; flex-wrap:wrap; gap:10px; }
+.social-actions .btn{ flex:0 0 auto; }
+
+
     @media(max-width:640px){
       .nav{grid-template-columns:auto 1fr auto; height:72px}
       .logo{max-height:72px}
