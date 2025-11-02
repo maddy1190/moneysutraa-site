@@ -46,7 +46,7 @@
     .btn.green:focus{box-shadow:0 0 0 3px rgba(26,127,55,.25)}
     .btn.youtube:focus{box-shadow:0 0 0 3px rgba(255,0,0,.25)}
 
-    /* Premium gold pill for research trilogy */
+    /* Premium gold pill (research trilogy) */
     .btn.gold{
       background: var(--gold);
       color:#fff;
@@ -110,10 +110,14 @@
     .embed-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
     .embed-wrap img.embed-fit{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
 
-    /* About — team photo block */
+    /* About — team photo block (adjusted crop) */
     .team-photo{ background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); overflow:hidden }
-    .team-photo .media{ position:relative; width:100%; padding-top:48%; } /* ~2:1 banner */
-    .team-photo .media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
+    .team-photo .media{ position:relative; width:100%; padding-top:42%; } /* was 48%: show more height */
+    .team-photo .media img{
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:cover;
+      object-position:center 22%; /* lift crop to reveal faces; try 18% if still high */
+    }
     .team-caption{ padding:14px 16px; }
     .team-caption .names{ font-weight:700; }
     .team-caption .quals{ color:var(--muted); margin-top:4px; }
@@ -349,7 +353,7 @@
     <div class="container">
       <h3 class="section-title">About Us</h3>
 
-      <!-- Mission (your text preserved) -->
+      <!-- Mission (your text) -->
       <article class="embed-card" style="margin-bottom:16px;">
         <h4 style="margin:0 0 8px;">Who we are</h4>
         <p style="margin:0 0 10px; color:var(--muted)">
@@ -364,7 +368,7 @@
         </div>
       </article>
 
-      <!-- Who we help (your text preserved) -->
+      <!-- Who we help (your text) -->
       <h4 style="margin:10px 0;">Who we help</h4>
       <div class="cards" style="margin-bottom:16px;">
         <article class="card">
@@ -381,50 +385,20 @@
         </article>
       </div>
 
-      <!-- Team photo (single image + names/quals) -->
+      <!-- Team photo (just above "The team") -->
       <article class="team-photo" style="margin-bottom:16px;">
         <div class="media">
-          <img src="./team.jpg" alt="MoneySutraa Co-Founders — Ravi Mandi and Adtya L.">
+          <img src="./team.jpg?v=2" alt="MoneySutraa Co-Founders — Ravi Mandi and Adtya L.">
         </div>
-       <div class="team-caption">
-  <div class="names">Ravi Mandi — Co-Founder</div>
-  <div class="quals">B.Tech, NIT-Jamshedpur (2008 batch)</div>
-
-  <div class="names" style="margin-top:6px;">Adtya L. — Co-Founder</div>
-  <div class="quals">CA, MBA</div>
-</div>
-
-      </article>
-
-      <!-- How we work (your text preserved) -->
-      <article class="embed-card" style="margin-bottom:16px;">
-        <h4 style="margin:0 0 8px;">How we work (simple & rules-based)</h4>
-        <div style="display:grid; gap:10px;">
-          <div><span class="pill" style="margin-right:8px;">1</span><strong>Profile & Goals.</strong> We capture risk comfort, horizons, cash-flows and non-negotiables.</div>
-          <div><span class="pill" style="margin-right:8px;">2</span><strong>Plan & Portfolio Map.</strong> Clean categories, the right benchmarks, SIP/lump-sum mix, and glide paths.</div>
-          <div><span class="pill" style="margin-right:8px;">3</span><strong>Implement.</strong> Simple execution, documented rationale, and tax-aware choices.</div>
-          <div><span class="pill" style="margin-right:8px;">4</span><strong>Ongoing Rebalancing.</strong> Rules > Gut; periodic check-ins with clear, actionable notes.</div>
+        <div class="team-caption">
+          <div class="names">Ravi Mandi — Co-Founder</div>
+          <div class="quals">B.Tech, NIT-Jamshedpur (2008 batch)</div>
+          <div class="names" style="margin-top:6px;">Adtya L. — Co-Founder</div>
+          <div class="quals">CA, MBA</div>
         </div>
       </article>
 
-      <!-- Principles (your text preserved) -->
-      <h4 style="margin:10px 0;">Our principles</h4>
-      <div class="cards" style="margin-bottom:16px;">
-        <article class="card">
-          <h4>Compliance-first</h4>
-          <p>Documentation, transparency and category hygiene—no shortcuts, no pitchy narratives.</p>
-        </article>
-        <article class="card">
-          <h4>Regime-aware Research</h4>
-          <p>We study pre/post regimes, drawdowns and forward windows—insights that survive more than one cycle.</p>
-        </article>
-        <article class="card">
-          <h4>Clarity over Jargon</h4>
-          <p>Hinglish/Hindi friendly. Every decision is written in plain words you can explain to your family.</p>
-        </article>
-      </div>
-
-      <!-- Team text snapshot (your text preserved) -->
+      <!-- The team (text bios) -->
       <article class="embed-card" style="margin-bottom:16px;">
         <h4 style="margin:0 0 8px;">The team</h4>
         <div style="display:grid; gap:12px;">
@@ -433,7 +407,7 @@
             <span style="color:var(--muted)"> Methodical, data-led, benchmark-aware—he makes the “why” and “what next” of every investment unambiguous.</span>
           </div>
           <div>
-            <strong>Ravi Mandi — Co-Founder.</strong>
+            <strong>Ravi — Co-Founder.</strong>
             <span style="color:var(--muted)"> First contact, Managing Resources, Social Presence of the Brand. Makes sure the plan fits real life.</span>
           </div>
         </div>
