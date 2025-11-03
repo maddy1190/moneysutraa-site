@@ -154,10 +154,10 @@
     /* Footer */
     /* Contact form styles */
     .contact-grid{display:grid; gap:16px; grid-template-columns:1fr}
-    @media(min-width:880px){.contact-grid{grid-template-columns:1fr 1fr}}
+    /* single column layout at all sizes */
     .form-card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:18px}
     .form-row{display:grid;gap:10px;grid-template-columns:1fr}
-    @media(min-width:640px){.form-row.two{grid-template-columns:1fr 1fr}}
+    /* stacked fields at all sizes */ .form-row.two{grid-template-columns:1fr}
     label{font-size:14px;color:#5d5d5d;display:block;margin:6px 0 4px}
     input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff;color:#141414}
     textarea{min-height:120px;resize:vertical}
@@ -471,8 +471,8 @@
           </div>
           <div class="form-row two">
             <div>
-              <label for="phone">Phone (optional)</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 …" />
+              <label for="phone">Phone *</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+91" required />
             </div>
             <div>
               <label for="lang">Preferred language</label>
@@ -492,7 +492,7 @@
           <div class="form-row">
             <div>
               <label for="message">Your message *</label>
-              <textarea id="message" name="message" required placeholder="Tell us about your goals, timeline and comfort with risk…"></textarea>
+              <textarea id="message" name="message" required placeholder="tell us about your goals"></textarea>
             </div>
           </div>
           <p style="display:none">
@@ -500,7 +500,7 @@
           </p>
           <div class="consent">
             <input id="consent" name="consent" type="checkbox" required style="margin-top:3px" />
-            <label for="consent">I consent to Money Sutraa contacting me about my enquiry. We do not share your details with third parties. ARN‑336976.</label>
+            <label for="consent">I consent to Money Sutraa contacting me about my enquiry. We do not share your details with third parties.</label>
           </div>
           <div class="social-actions" style="margin-top:12px">
             <button class="btn green" type="submit">Send message</button>
@@ -512,7 +512,7 @@
         <!-- Contact info card -->
         <div class="form-card">
           <h4 style="margin:0 0 10px">Reach us</h4>
-          <p style="margin:0 0 10px; color:#6d6d6d">MoneySutraa Fin Services LLP<br>ARN‑336976</p>
+          <p style="margin:0 0 10px; color:#6d6d6d">MoneySutraa Fin Services LLP</p>
           <p style="margin:0 0 8px"><strong>Email:</strong> <a href="mailto:ravimandi117@gmail.com">ravimandi117@gmail.com</a></p>
           <p style="margin:0 0 8px"><strong>WhatsApp:</strong> <a href="https://wa.me/917400153953" target="_blank" rel="noopener">+91 74001 53953</a></p>
           <p style="margin:0 0 12px; color:#6d6d6d">We reply within one business day.</p>
