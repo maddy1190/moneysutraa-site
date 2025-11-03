@@ -152,6 +152,18 @@
     }
 
     /* Footer */
+    /* Contact form styles */
+    .contact-grid{display:grid; gap:16px; grid-template-columns:1fr}
+    @media(min-width:880px){.contact-grid{grid-template-columns:1fr 1fr}}
+    .form-card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:18px}
+    .form-row{display:grid;gap:10px;grid-template-columns:1fr}
+    @media(min-width:640px){.form-row.two{grid-template-columns:1fr 1fr}}
+    label{font-size:14px;color:#5d5d5d;display:block;margin:6px 0 4px}
+    input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff;color:#141414}
+    textarea{min-height:120px;resize:vertical}
+    .consent{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#6d6d6d;margin-top:8px}
+
+    /* Footer */
     footer{border-top:1px solid var(--line); margin-top:36px}
     .foot{padding:20px 0; color:#6d6d6d; font-size:13px}
   </style>
@@ -172,7 +184,7 @@
         <a href="#services">Services</a>
         <a href="#research">Research</a>
         <a href="#about">About&nbsp;Us</a>
-        <a href="#contact">Contact</a>
+        <a href="#contact">Contact&nbsp;Us</a>
       </nav>
 
       <div class="actions">
@@ -421,7 +433,7 @@
           <div class="title">The team</div>
           <div class="member ravi" aria-label="Ravi Mandi — Co-Founder">
             <strong>Ravi Mandi — Co-Founder</strong>
-            <span>B.Tech, NIT-Jamshedpur </span>
+            <span>B.Tech, NIT-Jamshedpur (2008 batch)</span>
           </div>
           <div class="member aditya" aria-label="Adtya L. — Co-Founder">
             <strong>Adtya L. — Co-Founder</strong>
@@ -442,7 +454,73 @@
   <!-- Contact -->
   <section id="contact">
     <div class="container">
-      <div class="placeholder">Contact block — email, WhatsApp, location.</div>
+      <h3 class="section-title">Contact Us</h3>
+      <div class="contact-grid">
+        <!-- Form (Netlify-ready; works on Netlify without JS). Replace action with Formspree if needed. -->
+        <form class="form-card" name="moneysutraa-contact" method="POST" data-netlify="true" netlify-honeypot="_gotcha">
+          <input type="hidden" name="form-name" value="moneysutraa-contact">
+          <div class="form-row two">
+            <div>
+              <label for="name">Full name *</label>
+              <input id="name" name="name" required autocomplete="name" placeholder="Your name" />
+            </div>
+            <div>
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
+            </div>
+          </div>
+          <div class="form-row two">
+            <div>
+              <label for="phone">Phone (optional)</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 …" />
+            </div>
+            <div>
+              <label for="lang">Preferred language</label>
+              <select id="lang" name="language">
+                <option>English</option>
+                <option>Hinglish</option>
+                <option>Hindi</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" placeholder="e.g., Goal planning / Portfolio review" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="message">Your message *</label>
+              <textarea id="message" name="message" required placeholder="Tell us about your goals, timeline and comfort with risk…"></textarea>
+            </div>
+          </div>
+          <p style="display:none">
+            <label>Don’t fill this out if you’re human: <input name="_gotcha" /></label>
+          </p>
+          <div class="consent">
+            <input id="consent" name="consent" type="checkbox" required style="margin-top:3px" />
+            <label for="consent">I consent to Money Sutraa contacting me about my enquiry. We do not share your details with third parties. ARN‑336976.</label>
+          </div>
+          <div class="social-actions" style="margin-top:12px">
+            <button class="btn green" type="submit">Send message</button>
+            <a class="btn" href="mailto:ravimandi117@gmail.com">Email instead</a>
+            <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          </div>
+        </form>
+
+        <!-- Contact info card -->
+        <div class="form-card">
+          <h4 style="margin:0 0 10px">Reach us</h4>
+          <p style="margin:0 0 10px; color:#6d6d6d">MoneySutraa Fin Services LLP<br>ARN‑336976</p>
+          <p style="margin:0 0 8px"><strong>Email:</strong> <a href="mailto:ravimandi117@gmail.com">ravimandi117@gmail.com</a></p>
+          <p style="margin:0 0 8px"><strong>WhatsApp:</strong> <a href="https://wa.me/917400153953" target="_blank" rel="noopener">+91 74001 53953</a></p>
+          <p style="margin:0 0 12px; color:#6d6d6d">We reply within one business day.</p>
+          <div class="ribbon" style="border-radius:12px">
+            <b>Compliance note:</b> Mutual Fund investments are subject to market risks. This website is educational and not investment advice.
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
