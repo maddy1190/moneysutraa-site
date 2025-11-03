@@ -37,7 +37,7 @@
     @media(prefers-reduced-motion:reduce){.links a{transition:none}.links a:hover,.links a:focus-visible,.links a:active{transform:none}}
 
     .actions{display:flex; gap:10px; justify-self:end}
-    .btn{padding:10px 14px; border-radius:10px; border:1px solid var(--line); background:#fff; transition:filter .15s ease, box-shadow .15s ease}
+    .btn{padding:10px 14px; border-radius:10px; border:1px solid var(--line); background:#fff; transition:filter .15s ease, box-shadow .15s ease; display:inline-flex; align-items:center; white-space:nowrap}
     .btn.primary{background:var(--red); color:#fff; border:0}
     .btn.green{background:var(--green); color:#fff; border:0}
     .btn.youtube{background:var(--ytred); color:#fff; border:0}
@@ -58,12 +58,10 @@
     .btn.gold:hover{ filter:brightness(.95); }
     .btn.gold:focus{ box-shadow:0 0 0 3px rgba(199,160,82,.32); }
 
-    /* override additions for button layout */
-.btn{ display:inline-flex; align-items:center; white-space:nowrap; }
-.cards .card p{ margin-bottom:6px; }
-.cards .card .social-actions{ margin-top:12px; flex-wrap:wrap; gap:10px; }
-.social-actions .btn{ flex:0 0 auto; }
-
+    /* tighten buttons in cards */
+    .cards .card p{ margin-bottom:6px; }
+    .cards .card .social-actions{ margin-top:12px; flex-wrap:wrap; gap:10px; }
+    .social-actions .btn{ flex:0 0 auto; }
 
     @media(max-width:640px){
       .nav{grid-template-columns:auto 1fr auto; height:72px}
@@ -117,17 +115,41 @@
     .embed-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
     .embed-wrap img.embed-fit{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
 
-    /* About — team photo block (adjusted crop) */
-    .team-photo{ background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); overflow:hidden }
-    .team-photo .media{ position:relative; width:100%; padding-top:42%; } /* was 48%: show more height */
-    .team-photo .media img{
-      position:absolute; inset:0; width:100%; height:100%;
-      object-fit:cover;
-      object-position:center 22%; /* lift crop to reveal faces; try 18% if still high */
+    /* About — TEAM overlay block */
+    .team-hero{
+      position:relative;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      margin-bottom:16px;
+      border:1px solid var(--line);
+      background:#fff;
     }
-    .team-caption{ padding:14px 16px; }
-    .team-caption .names{ font-weight:700; }
-    .team-caption .quals{ color:var(--muted); margin-top:4px; }
+    .team-hero img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+      object-position:center 22%; /* lift faces into view; tweak if needed */
+      display:block;
+    }
+    @media(max-width:700px){
+      .team-hero img{ height:360px; object-position:center 25%; }
+    }
+    .team-overlay{
+      position:absolute; left:0; right:0; bottom:0;
+      padding:14px 16px;
+      color:#fff;
+      background:linear-gradient(180deg,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,.55) 60%,
+        rgba(0,0,0,.78) 100%
+      );
+    }
+    .team-overlay h4{ margin:0 0 6px; font-size:18px; }
+    .team-grid{ display:grid; gap:8px; grid-template-columns:1fr 1fr; }
+    @media(max-width:700px){ .team-grid{ grid-template-columns:1fr; } }
+    .team-grid .member strong{ display:block; }
+    .team-grid .member span{ opacity:.9; font-size:14px; }
 
     /* Footer */
     footer{border-top:1px solid var(--line); margin-top:36px}
@@ -360,12 +382,12 @@
     <div class="container">
       <h3 class="section-title">About Us</h3>
 
-      <!-- Mission (your text) -->
+      <!-- Mission -->
       <article class="embed-card" style="margin-bottom:16px;">
         <h4 style="margin:0 0 8px;">Who we are</h4>
         <p style="margin:0 0 10px; color:var(--muted)">
           Moneysutraa is a compliance-first, research-driven investment advisory. We combine
-          clear frameworks with practical execution-so you always know what to buy, how much, and when to de-risk.
+          clear frameworks with practical execution—so you always know what to buy, how much, and when to de-risk.
         </p>
         <div class="badges" style="margin-top:10px;">
           <span class="pill">ARN-336976</span>
@@ -375,12 +397,12 @@
         </div>
       </article>
 
-      <!-- Who we help (your text) -->
+      <!-- Who we help -->
       <h4 style="margin:10px 0;">Who we help</h4>
       <div class="cards" style="margin-bottom:16px;">
         <article class="card">
           <h4>First-time Investors</h4>
-          <p>Start simple and strong. We set up a clear starter plan with a few good funds, the right targets, and SIPs/lumpsums you can stick to-so getting started feels easy, and staying invested feels natural.</p>
+          <p>Start simple and strong. We set up a clear starter plan with a few good funds, the right targets, and SIPs/lumpsums you can stick to—so getting started feels easy, and staying invested feels natural.</p>
         </article>
         <article class="card">
           <h4>Busy Professionals</h4>
@@ -392,33 +414,23 @@
         </article>
       </div>
 
-      <!-- Team photo (just above "The team") -->
-      <article class="team-photo" style="margin-bottom:16px;">
-        <div class="media">
-          <img src="./team.jpg?v=2" alt="MoneySutraa Co-Founders — Ravi Mandi and Adtya L.">
-        </div>
-        <div class="team-caption">
-          <div class="names">Ravi Mandi — Co-Founder</div>
-          <div class="quals">B.Tech, NIT-Jamshedpur (2008 batch)</div>
-          <div class="names" style="margin-top:6px;">Adtya L. — Co-Founder</div>
-          <div class="quals">CA, MBA</div>
-        </div>
-      </article>
-
-      <!-- The team (text bios) -->
-      <article class="embed-card" style="margin-bottom:16px;">
-        <h4 style="margin:0 0 8px;">The team</h4>
-        <div style="display:grid; gap:12px;">
-          <div>
-            <strong>Adtya L. — Co-Founder.</strong>
-            <span style="color:var(--muted)"> Methodical, data-led, benchmark-aware—he makes the “why” and “what next” of every investment unambiguous.</span>
-          </div>
-          <div>
-            <strong>Ravi Mandi — Co-Founder.</strong>
-            <span style="color:var(--muted)"> First contact, Managing Resources, Social Presence of the Brand. Makes sure the plan fits real life.</span>
+      <!-- Team photo with overlayed details (single block) -->
+      <div class="team-hero">
+        <img src="./team.jpg?v=2" alt="MoneySutraa Co-Founders — Ravi Mandi and Adtya L.">
+        <div class="team-overlay">
+          <h4>The team</h4>
+          <div class="team-grid">
+            <div class="member">
+              <strong>Ravi Mandi — Co-Founder</strong>
+              <span>B.Tech, NIT-Jamshedpur (2008 batch)</span>
+            </div>
+            <div class="member">
+              <strong>Adtya L. — Co-Founder</strong>
+              <span>CA, MBA</span>
+            </div>
           </div>
         </div>
-      </article>
+      </div>
 
       <!-- CTA -->
       <div class="social-actions">
