@@ -9,6 +9,7 @@
   <link rel="canonical" href="https://moneysutraa.com/">
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -54,14 +55,13 @@
 
     @media(max-width:640px){
       .container{padding:0 12px}
-      .nav{grid-template-columns:auto 1fr auto auto; height:64px; column-gap:8px}
+      .nav{grid-template-columns:auto 1fr auto; height:64px; column-gap:8px}
       .logo{max-height:44px}
       .brand-title h1{font-size:18px}
       .tagline{display:block; font-size:11px; margin-top:0}
       .links{display:none}           /* hide desktop links on phones */
-      .hamburger{display:block; order:3}
-      .actions{gap:8px}
-      .actions .btn{padding:8px 10px; min-height:38px; font-size:14px; border-radius:10px}
+      .hamburger{display:block; justify-self:end}
+      .actions{display:none}         /* hide header Email/WhatsApp on phones */
     }
 
     /* MOBILE MENU PANEL */
@@ -97,7 +97,6 @@
     .badges{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0}
     .pill{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.92); border:1px solid #e9e9e9; color:#444}
     .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
-
     @media(max-width:720px){
       .hero{padding:28px 0 32px; min-height:360px;}
       .hero h2{font-size:28px}
@@ -124,7 +123,7 @@
     .embed-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
     .embed-wrap img.embed-fit{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
 
-    /* Team */
+    /* Team — keep names exactly like laptop (Ravi left bottom, Aditya right bottom) even on mobile */
     .team-hero{ position:relative; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:16px; border:1px solid var(--line); background:#fff; }
     .team-hero img{ width:100%; height:420px; object-fit:cover; object-position:center 22%; display:block; }
     @media(max-width:700px){ .team-hero img{ height:320px; object-position:center 25%; } }
@@ -135,7 +134,7 @@
     .team-overlay .member span{ opacity:.95; font-size:13px; }
     .team-overlay .member.ravi{ left:12px; text-align:left; }
     .team-overlay .member.aditya{ right:12px; text-align:right; }
-    @media(max-width:700px){ .team-overlay .member{ left:12px; right:12px; max-width:none } .team-overlay .member.aditya{ right:12px; text-align:left; bottom:52px } }
+    /* no mobile override so positions remain identical */
 
     /* Contact */
     .contact-grid{display:grid; gap:16px; grid-template-columns:1fr; max-width:760px; margin:0 auto}
@@ -183,6 +182,7 @@
         <a href="#contact">Contact&nbsp;Us</a>
       </nav>
 
+      <!-- desktop actions -->
       <div class="actions">
         <a class="btn gold" href="mailto:wecare@moneysutraa.com" rel="noopener">Email</a>
         <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">WhatsApp</a>
@@ -271,21 +271,21 @@
     <div class="container">
       <h3 class="section-title">Research</h3>
 
-      <div class="cards" style="margin-bottom:16px;">
-        <article class="card"><h4>Category & Benchmark Hygiene</h4><p>Clean categories, correct benchmarks, apples-to-apples comparisons. We avoid mixed styles and hidden overlaps before any conclusion.</p></article>
-        <article class="card"><h4>Regime-Aware Analysis</h4><p>Markets change. We look at pre-/post-2021 behavior, drawdowns, and forward windows so takeaways don’t rely on any single cycle.</p></article>
-        <article class="card"><h4>Rules, Not Gut Calls</h4><p>Clear, testable rules for entries, rebalancing and de-risking. Results are framed as actions a real investor can follow.</p></article>
-      </div>
+    <div class="cards" style="margin-bottom:16px;">
+      <article class="card"><h4>Category & Benchmark Hygiene</h4><p>Clean categories, correct benchmarks, apples-to-apples comparisons. We avoid mixed styles and hidden overlaps before any conclusion.</p></article>
+      <article class="card"><h4>Regime-Aware Analysis</h4><p>Markets change. We look at pre-/post-2021 behavior, drawdowns, and forward windows so takeaways don’t rely on any single cycle.</p></article>
+      <article class="card"><h4>Rules, Not Gut Calls</h4><p>Clear, testable rules for entries, rebalancing and de-risking. Results are framed as actions a real investor can follow.</p></article>
+    </div>
 
-      <article class="embed-card" style="margin-bottom:16px;">
-        <h4 style="margin:0 0 6px;">Featured Insight — <span style="color:var(--gold)">Gold vs Nifty</span></h4>
-        <p style="margin:0 0 10px; color:var(--muted)">A concise, 3-part series comparing gold and Indian equities across regimes, drawdowns, and practical allocation rules.</p>
-        <div class="cta">
-          <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-1-i-introduction-activity-7295416645135560704-1Zew" target="_blank" rel="noopener noreferrer">Part 1</a>
-          <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-2-solution-conclusion-activity-7295417501599883264-3rU1" target="_blank" rel="noopener noreferrer">Part 2</a>
-          <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-3-what-about-gold-activity-7295417628745981952-JBYX" target="_blank" rel="noopener noreferrer">Part 3</a>
-        </div>
-      </article>
+    <article class="embed-card" style="margin-bottom:16px;">
+      <h4 style="margin:0 0 6px;">Featured Insight — <span style="color:var(--gold)">Gold vs Nifty</span></h4>
+      <p style="margin:0 0 10px; color:var(--muted)">A concise, 3-part series comparing gold and Indian equities across regimes, drawdowns, and practical allocation rules.</p>
+      <div class="cta">
+        <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-1-i-introduction-activity-7295416645135560704-1Zew" target="_blank" rel="noopener noreferrer">Part 1</a>
+        <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-2-solution-conclusion-activity-7295417501599883264-3rU1" target="_blank" rel="noopener noreferrer">Part 2</a>
+        <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-3-what-about-gold-activity-7295417628745981952-JBYX" target="_blank" rel="noopener noreferrer">Part 3</a>
+      </div>
+    </article>
     </div>
   </section>
 
@@ -325,7 +325,6 @@
 
       <div class="cta">
         <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-        <a class="btn" href="mailto:wecare@moneysutraa.com" rel="noopener">Email us</a>
         <a class="btn" href="#services">See our services</a>
       </div>
     </div>
@@ -357,8 +356,7 @@
           </div>
           <div class="cta" style="margin-top:12px">
             <button class="btn green" type="submit">Send message</button>
-            <a class="btn" href="mailto:wecare@moneysutraa.com" rel="noopener">Email instead</a>
-            <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+            <!-- removed Email instead / Chat on WhatsApp buttons beneath the form -->
           </div>
         </form>
 
@@ -369,7 +367,7 @@
           <p style="margin:0 0 8px"><strong>WhatsApp:</strong> <a href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">+91 74001 53953</a></p>
           <p style="margin:0 0 12px; color:#6d6d6d">We reply within one business day.</p>
           <div class="ribbon" style="border-radius:12px">
-            <b>Compliance note:</b> Mutual Fund investments are subject to market risks. This website is educational and not investment advice.
+            <b>Compliance note:</b> Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing.
           </div>
         </div>
       </div>
@@ -380,7 +378,7 @@
     <div class="container foot">© 2025 MoneySutraa Fin Services LLP • ARN-336976</div>
   </footer>
 
-  <!-- Sticky mobile CTA -->
+  <!-- Sticky mobile CTA (kept) -->
   <div class="sticky-cta" aria-hidden="false">
     <div class="wrap">
       <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">WhatsApp</a>
@@ -397,7 +395,6 @@
       const open = mobileMenu.classList.toggle('open');
       menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
-    // close menu on esc
     window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
   </script>
 </body>
