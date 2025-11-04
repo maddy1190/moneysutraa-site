@@ -3,15 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <title>Moneysutraa — Personalised, Compliance-First Investing (ARN-336976)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="description" content="Simple, personalised investment guidance aligned to your goals, risk profile, and time horizon. ARN-336976." />
   <meta name="theme-color" content="#FAF9F6">
   <meta name="robots" content="index,follow" />
-
-  <!-- Canonical (update if deployed on a different URL) -->
   <link rel="canonical" href="https://moneysutraa.com/">
-
-  <!-- Favicons (replace with your actual files when ready) -->
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -22,24 +18,18 @@
   <meta property="og:image" content="https://moneysutraa.com/og-cover.jpg">
   <meta property="og:url" content="https://moneysutraa.com/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Moneysutraa — Personalised, Compliance-First Investing">
-  <meta name="twitter:description" content="Simple frameworks. Transparent process. Research-driven guidance aligned to your goals and risk profile.">
-  <meta name="twitter:image" content="https://moneysutraa.com/og-cover.jpg">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Preload hero image for faster LCP (ensure the file exists) -->
   <link rel="preload" as="image" href="./hero.jpg?v=6" imagesrcset="./hero.jpg?v=6 1100w" />
 
   <style>
     :root{
       --bg:#FAF9F6; --ink:#141414; --muted:#5a5a5a; --line:#E8E2D8;
       --gold:#C7A052; --gold-2:#E5D4A2; --red:#9A1F1F; --green:#1A7F37;
-      --ytred:#FF0000;
-      --shadow:0 14px 40px rgba(0,0,0,.08)
+      --ytred:#FF0000; --shadow:0 14px 40px rgba(0,0,0,.08)
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
@@ -47,68 +37,48 @@
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
     /* HEADER */
-    .header{position:sticky; top:0; z-index:50; backdrop-filter:blur(6px); background:rgba(250,249,246,.85); border-bottom:1px solid var(--line)}
-    .nav{display:grid; grid-template-columns:auto minmax(320px,1fr) auto auto; align-items:center; column-gap:24px; height:86px}
+    .header{position:sticky; top:0; z-index:50; backdrop-filter:blur(6px); background:rgba(250,249,246,.9); border-bottom:1px solid var(--line)}
+    .nav{display:grid; grid-template-columns:auto minmax(220px,1fr) auto auto; align-items:center; column-gap:16px; height:86px}
     .logo{height:100%; max-height:86px; width:auto; display:block; object-fit:contain}
-
     .brand-title{display:flex; flex-direction:column; align-items:center; justify-self:center; line-height:1.05; text-align:center}
     .brand-title h1{margin:0; font-size:20px; font-weight:700; letter-spacing:.2px}
-    .brand-title h1 .money{color:var(--gold)}
-    .brand-title h1 .sutraa{color:var(--red)}
+    .brand-title .money{color:var(--gold)} .brand-title .sutraa{color:var(--red)}
     .brand-inline{white-space:nowrap;font-weight:700}
-    .brand-inline .money{color:var(--gold)}
-    .brand-inline .sutraa{color:var(--red)}
+    .brand-inline .money{color:var(--gold)} .brand-inline .sutraa{color:var(--red)}
     .tagline{margin-top:2px; font-size:12px; color:#141414}
-
     .links{display:none; gap:18px}
     @media(min-width:900px){.links{display:flex}}
-    .links a{white-space:nowrap; display:inline-block; transition:transform .14s ease; transform-origin:center}
+    .links a{white-space:nowrap; display:inline-block; transition:transform .14s ease}
     .links a:hover,.links a:focus-visible{transform:scale(1.12)}
-    .links a:active{transform:scale(1.14)}
-    @media(prefers-reduced-motion:reduce){.links a{transition:none}.links a:hover,.links a:focus-visible,.links a:active{transform:none}}
-
     .actions{display:flex; gap:10px; justify-self:end}
-    .btn{padding:10px 14px; border-radius:10px; border:1px solid var(--line); background:#fff; transition:filter .15s ease, box-shadow .15s ease; display:inline-flex; align-items:center; white-space:nowrap}
+    .btn{padding:12px 16px; border-radius:12px; border:1px solid var(--line); background:#fff; transition:filter .15s ease, box-shadow .15s ease; display:inline-flex; align-items:center; justify-content:center; white-space:nowrap; min-height:44px}
     .btn.primary{background:var(--red); color:#fff; border:0}
     .btn.green{background:var(--green); color:#fff; border:0}
     .btn.youtube{background:var(--ytred); color:#fff; border:0}
     .btn:hover{filter:brightness(.95)}
     .btn:focus{outline:0; box-shadow:0 0 0 3px rgba(199,160,82,.25)}
-    .btn.green:focus{box-shadow:0 0 0 3px rgba(26,127,55,.25)}
-    .btn.youtube:focus{box-shadow:0 0 0 3px rgba(255,0,0,.25)}
+    .btn.gold{background:var(--gold);color:#fff;border:0;border-radius:999px;padding:10px 16px;box-shadow:0 6px 18px rgba(199,160,82,.22)}
 
-    .btn.gold{
-      background: var(--gold);
-      color:#fff;
-      border:0;
-      border-radius:999px;
-      padding:10px 16px;
-      box-shadow:0 6px 18px rgba(199,160,82,.22);
-    }
-    .btn.gold:hover{ filter:brightness(.95); }
-    .btn.gold:focus{ box-shadow:0 0 0 3px rgba(199,160,82,.32); }
-
-    .cards .card p{ margin-bottom:6px; }
-    .cards .card .social-actions{ margin-top:12px; flex-wrap:wrap; gap:10px; }
-    .social-actions .btn{ flex:0 0 auto; }
-
+    /* MOBILE HEADER TWEAKS */
     @media(max-width:640px){
-      .nav{grid-template-columns:auto 1fr auto; height:72px}
-      .logo{max-height:72px}
-      .links{display:none}
+      .nav{grid-template-columns:auto 1fr auto; height:64px}
+      .logo{max-height:56px}
+      .brand-title h1{font-size:18px}
+      .tagline{font-size:11px}
+      .actions .btn{padding:10px 12px}
     }
 
     /* HERO */
     .hero{
       position:relative;
       background:url('./hero.jpg?v=6') center/cover no-repeat;
-      padding:36px 0 40px;
+      padding:40px 0 44px;
       border-bottom:1px solid var(--line);
       min-height:420px;
     }
     .hero::before{
       content:""; position:absolute; inset:0;
-      background:linear-gradient(90deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.50) 34%, rgba(0,0,0,.30) 60%, rgba(0,0,0,.14) 80%, rgba(0,0,0,.06) 100%);
+      background:linear-gradient(90deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.52) 34%, rgba(0,0,0,.30) 60%, rgba(0,0,0,.14) 80%, rgba(0,0,0,.06) 100%);
     }
     .hero::after{
       content:""; position:absolute; inset:0;
@@ -116,24 +86,36 @@
       pointer-events:none;
     }
     .hero>.container{position:relative; z-index:1}
-    .hero h2{font-size:40px; line-height:1.12; margin:0 0 10px; color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.35)}
-    @media(max-width:720px){.hero{padding:30px 0 32px} .hero h2{font-size:30px}}
+    .hero h2{font-size:40px; line-height:1.15; margin:0 0 12px; color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.35)}
     .hero p{font-size:16px; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.35); max-width:780px; font-weight:500}
     .badges{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0}
     .pill{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.92); border:1px solid #e9e9e9; color:#444}
     .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
 
+    /* MOBILE HERO TWEAKS */
+    @media(max-width:720px){
+      .hero{padding:28px 0 32px; min-height:360px;}
+      .hero h2{font-size:28px}
+      .hero p{font-size:15px}
+      .cta .btn{flex:1 1 100%} /* full-width buttons */
+    }
+
     /* Sections */
-    section{padding:36px 0; scroll-margin-top:90px}
-    .section-title{font-size:24px; margin:0 0 14px}
+    section{padding:40px 0; scroll-margin-top:90px}
+    .section-title{font-size:24px; margin:0 0 16px}
+    @media(max-width:720px){
+      section{padding:28px 0}
+      .section-title{font-size:20px; margin-bottom:12px}
+    }
 
     /* Cards */
     .cards{display:grid; gap:16px; grid-template-columns:1fr}
     @media(min-width:880px){.cards{grid-template-columns:repeat(3,1fr)}}
-    .card{background:#FFF6D6; border:1px solid var(--gold-2); border-radius:18px; box-shadow:var(--shadow); padding:20px; transition:transform .15s ease, box-shadow .15s ease}
+    .card{background:#FFF6D6; border:1px solid var(--gold-2); border-radius:18px; box-shadow:var(--shadow); padding:18px; transition:transform .15s ease, box-shadow .15s ease}
     .card:hover{transform:translateY(-2px); box-shadow:0 18px 46px rgba(0,0,0,.10)}
     .card h4{margin:0 0 8px; font-size:18px}
     .card p{margin:6px 0 0; color:#6a5a2a}
+    @media(max-width:720px){ .card{padding:14px} .card h4{font-size:17px} .card p{font-size:15px} }
 
     /* Social embeds */
     .social-grid{ display:grid; gap:16px; grid-template-columns:1fr }
@@ -145,38 +127,19 @@
     .embed-wrap img.embed-fit{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
 
     /* Team block */
-    .team-hero{
-      position:relative;
-      border-radius:18px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      margin-bottom:16px;
-      border:1px solid var(--line);
-      background:#fff;
-    }
-    .team-hero img{
-      width:100%;
-      height:420px;
-      object-fit:cover;
-      object-position:center 22%;
-      display:block;
-    }
-    @media(max-width:700px){
-      .team-hero img{ height:360px; object-position:center 25%; }
-    }
-    .team-overlay{
-      position:absolute; inset:0; color:#fff; pointer-events:none;
-      background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.78) 100%);
-    }
-    .team-overlay .title{position:absolute; left:16px; top:12px; font-weight:700; font-size:16px; text-shadow:0 2px 6px rgba(0,0,0,.5)}
-    .team-overlay .member{position:absolute; bottom:16px; max-width:48%; text-shadow:0 2px 8px rgba(0,0,0,.55)}
+    .team-hero{ position:relative; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:16px; border:1px solid var(--line); background:#fff; }
+    .team-hero img{ width:100%; height:420px; object-fit:cover; object-position:center 22%; display:block; }
+    @media(max-width:700px){ .team-hero img{ height:320px; object-position:center 25%; } }
+    .team-overlay{ position:absolute; inset:0; color:#fff; pointer-events:none; background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.78) 100%); }
+    .team-overlay .title{position:absolute; left:12px; top:10px; font-weight:700; font-size:15px; text-shadow:0 2px 6px rgba(0,0,0,.5)}
+    .team-overlay .member{position:absolute; bottom:14px; max-width:54%; text-shadow:0 2px 8px rgba(0,0,0,.55)}
     .team-overlay .member strong{ display:block; font-weight:800; }
-    .team-overlay .member span{ opacity:.95; font-size:14px; }
-    .team-overlay .member.ravi{ left:16px; text-align:left; }
-    .team-overlay .member.aditya{ right:16px; text-align:right; }
+    .team-overlay .member span{ opacity:.95; font-size:13px; }
+    .team-overlay .member.ravi{ left:12px; text-align:left; }
+    .team-overlay .member.aditya{ right:12px; text-align:right; }
     @media(max-width:700px){
-      .team-overlay .member{ left:16px; right:16px; max-width:none; }
-      .team-overlay .member.aditya{ right:16px; text-align:left; top:auto; bottom:52px; }
+      .team-overlay .member{ left:12px; right:12px; max-width:none; }
+      .team-overlay .member.aditya{ right:12px; text-align:left; top:auto; bottom:52px; }
     }
 
     /* Contact form */
@@ -185,15 +148,27 @@
     .form-row{display:grid;gap:10px;grid-template-columns:1fr}
     .form-row.two{grid-template-columns:1fr}
     label{font-size:14px;color:#5d5d5d;display:block;margin:6px 0 4px}
-    input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff;color:#141414}
+    input,select,textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff;color:#141414}
     textarea{min-height:120px;resize:vertical}
     .consent{display:grid;grid-template-columns:auto 1fr;align-items:start;gap:10px;margin-top:8px;font-size:13px;color:#6d6d6d}
     .consent input{margin:3px 0 0 0}
     .consent label{margin:0}
+    /* mobile: keep font-size >=16px to prevent iOS zoom */
+    @media(max-width:720px){ input,select,textarea{font-size:16px} .form-card{padding:14px} }
 
     /* Footer */
-    footer{border-top:1px solid var(--line); margin-top:36px}
+    footer{border-top:1px solid var(--line); margin-top:40px}
     .foot{padding:20px 0; color:#6d6d6d; font-size:13px}
+
+    /* Sticky mobile CTA (shows only on small screens) */
+    .sticky-cta{ position:fixed; left:0; right:0; bottom:0; z-index:60;
+      background:#ffffffcc; backdrop-filter:blur(8px); border-top:1px solid var(--line);
+      padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+      display:none;
+    }
+    .sticky-cta .wrap{ max-width:1100px; margin:0 auto; padding:0 12px; display:flex; gap:10px }
+    .sticky-cta .btn{ flex:1 1 50% }
+    @media(max-width:720px){ .sticky-cta{ display:block } body{ padding-bottom:78px } }
   </style>
 
   <!-- Schema.org -->
@@ -259,7 +234,7 @@
 
       <div class="cta">
         <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-        <a class="btn green" href="mailto:wecare@moneysutraa.com" rel="noopener">Book a personal 45-min discussion</a>
+        <a class="btn green" href="mailto:wecare@moneysutraa.com" rel="noopener">Book a 45-min discussion</a>
       </div>
     </div>
   </section>
@@ -269,37 +244,18 @@
     <div class="container">
       <h3 class="section-title">Our Services</h3>
       <div class="cards">
-
         <article class="card">
           <h4>Goal-Based Planning</h4>
-          <p>
-            Turn your dreams—home, children’s education, retirement—into a clear, actionable money plan.
-            We map each goal to practical SIPs and smart lump sums, then create horizon-wise glide paths
-            that gradually shift from growth to safety as your deadline nears. No jargon—just a step-by-step
-            route so you always know how much to invest, for how long, and when to de-risk.
-          </p>
+          <p>Turn your dreams—home, children’s education, retirement—into a clear, actionable money plan. We map each goal to practical SIPs and smart lump sums, then create horizon-wise glide paths that gradually shift from growth to safety as your deadline nears.</p>
         </article>
-
         <article class="card">
           <h4>Portfolio Review</h4>
-          <p>
-            Know exactly what you own and why. We scan your portfolio for hidden risks, fund overlap, and
-            category/style drift, then streamline excess holdings and costs. Finally, we align each investment
-            to the right benchmark with a clear rebalance plan and tax-aware fixes, so your money works harder
-            with less noise.
-          </p>
+          <p>Know exactly what you own and why. We scan your portfolio for hidden risks, fund overlap, and category/style drift, then streamline excess holdings and costs. Finally, we align each investment to the right benchmark with a clear rebalance plan and tax-aware fixes.</p>
         </article>
-
         <article class="card">
           <h4>Ongoing Rebalancing</h4>
-          <p>
-            Stay invested, not stressed. We run rules-based check-ins on your portfolio, nudging it back to
-            target weights when markets drift—no gut calls, just a disciplined playbook. You’ll get clear,
-            actionable notes (what moved, what we’re changing, why), so every tweak feels calm, timely, and
-            tax-aware.
-          </p>
+          <p>Stay invested, not stressed. We run rules-based check-ins, nudging back to target weights when markets drift—no gut calls. You’ll get clear notes (what moved, what we’re changing, why) so every tweak feels calm and timely.</p>
         </article>
-
       </div>
     </div>
   </section>
@@ -309,8 +265,6 @@
     <div class="container">
       <h3 class="section-title">Social Highlights</h3>
       <div class="social-grid">
-
-        <!-- YouTube -->
         <div class="embed-card">
           <h4>Watch on YouTube</h4>
           <div class="embed-wrap">
@@ -318,16 +272,13 @@
               src="https://www.youtube-nocookie.com/embed/ps-rYISv1as?start=108&rel=0"
               title="MoneySutraa YouTube sample"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen></iframe>
+              loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
           <div class="social-actions">
             <a class="btn youtube" href="https://www.youtube.com/@money.sutraa" target="_blank" rel="noopener noreferrer">Visit YouTube</a>
           </div>
         </div>
 
-        <!-- Instagram -->
         <div class="embed-card">
           <h4>On Instagram</h4>
           <div class="embed-wrap">
@@ -339,7 +290,6 @@
             <a class="btn youtube" href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener noreferrer">Visit Instagram</a>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -349,37 +299,24 @@
     <div class="container">
       <h3 class="section-title">Research</h3>
 
-      <!-- Methodology -->
       <div class="cards" style="margin-bottom:16px;">
         <article class="card">
           <h4>Category & Benchmark Hygiene</h4>
-          <p>
-            Clean categories, correct benchmarks, apples-to-apples comparisons.
-            We avoid mixed styles and hidden overlaps before any conclusion.
-          </p>
+          <p>Clean categories, correct benchmarks, apples-to-apples comparisons. We avoid mixed styles and hidden overlaps before any conclusion.</p>
         </article>
         <article class="card">
           <h4>Regime-Aware Analysis</h4>
-          <p>
-            Markets change. We look at pre-/post-2021 behavior, drawdowns, and forward windows
-            so takeaways don’t rely on any single cycle.
-          </p>
+          <p>Markets change. We look at pre-/post-2021 behavior, drawdowns, and forward windows so takeaways don’t rely on any single cycle.</p>
         </article>
         <article class="card">
           <h4>Rules, Not Gut Calls</h4>
-          <p>
-            Clear, testable rules for entries, rebalancing and de-risking.
-            Results are framed as actions a real investor can follow.
-          </p>
+          <p>Clear, testable rules for entries, rebalancing and de-risking. Results are framed as actions a real investor can follow.</p>
         </article>
       </div>
 
-      <!-- Featured Insight -->
       <article class="embed-card" style="margin-bottom:16px;">
         <h4 style="margin:0 0 6px;">Featured Insight — <span style="color:var(--gold)">Gold vs Nifty</span></h4>
-        <p style="margin:0 0 10px; color:var(--muted)">
-          A concise, 3-part series comparing gold and Indian equities across regimes, drawdowns, and practical allocation rules.
-        </p>
+        <p style="margin:0 0 10px; color:var(--muted)">A concise, 3-part series comparing gold and Indian equities across regimes, drawdowns, and practical allocation rules.</p>
         <div class="social-actions">
           <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-1-i-introduction-activity-7295416645135560704-1Zew" target="_blank" rel="noopener noreferrer">Part 1 — Intro</a>
           <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-2-solution-conclusion-activity-7295417501599883264-3rU1" target="_blank" rel="noopener noreferrer">Part 2 — Solution</a>
@@ -387,11 +324,10 @@
         </div>
       </article>
 
-      <!-- Recent highlights -->
       <div class="cards">
         <article class="card">
           <h4>Silver Series — Spoofing & Price Distortions</h4>
-          <p>Why "fake order" episodes matter for retail timing and risk in silver. Context for long cycles and sudden spikes.</p>
+          <p>Why “fake order” episodes matter for retail timing and risk in silver. Context for long cycles and sudden spikes.</p>
           <div class="social-actions">
             <a class="btn" href="https://www.linkedin.com/posts/moneysutraa_silver-commodities-finance-activity-7387013066716233728-KbRC" target="_blank" rel="noopener noreferrer">Read on LinkedIn</a>
             <a class="btn" href="https://www.linkedin.com/posts/moneysutraa_silver-commodities-finance-activity-7387012894888181761-njtq" target="_blank" rel="noopener noreferrer">Companion post</a>
@@ -432,12 +368,9 @@
       </div>
 
       <div style="margin-top:14px; font-size:13px; color:#6d6d6d">
-        Insights are educational and not investment advice. For personalised guidance, see
-        <a href="#services">Services</a> or <a href="#contact">Contact</a>.
-        &nbsp;|&nbsp;
-        <a href="https://www.linkedin.com/in/adtya-l-a8aa6411/" target="_blank" rel="noopener noreferrer">All posts</a>
-        &nbsp;•&nbsp;
-        <a href="https://www.linkedin.com/company/moneysutraa/" target="_blank" rel="noopener noreferrer">Follow on LinkedIn</a>
+        Insights are educational and not investment advice. For personalised guidance, see <a href="#services">Services</a> or <a href="#contact">Contact</a>.
+        &nbsp;|&nbsp;<a href="https://www.linkedin.com/in/adtya-l-a8aa6411/" target="_blank" rel="noopener noreferrer">All posts</a>
+        &nbsp;•&nbsp;<a href="https://www.linkedin.com/company/moneysutraa/" target="_blank" rel="noopener noreferrer">Follow on LinkedIn</a>
       </div>
     </div>
   </section>
@@ -447,12 +380,10 @@
     <div class="container">
       <h3 class="section-title">About Us</h3>
 
-      <!-- Mission -->
       <article class="embed-card" style="margin-bottom:16px;">
         <h4 style="margin:0 0 8px;">Who we are</h4>
         <p style="margin:0 0 10px; color:var(--muted)">
-          <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> is a compliance-first, research-driven investment advisory. We combine
-          clear frameworks with practical execution—so you always know what to buy, how much, and when to de-risk.
+          <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> is a compliance-first, research-driven investment advisory. We combine clear frameworks with practical execution—so you always know what to buy, how much, and when to de-risk.
         </p>
         <div class="badges" style="margin-top:10px;" role="list">
           <span class="pill" role="listitem">ARN-336976</span>
@@ -462,40 +393,22 @@
         </div>
       </article>
 
-      <!-- Who we help -->
       <h4 style="margin:10px 0;">Who we help</h4>
       <div class="cards" style="margin-bottom:16px;">
-        <article class="card">
-          <h4>First-time Investors</h4>
-          <p>Start simple and strong. We set up a clear starter plan with a few good funds, the right targets, and SIPs/lumpsums you can stick to—so getting started feels easy, and staying invested feels natural.</p>
-        </article>
-        <article class="card">
-          <h4>Busy Professionals</h4>
-          <p>We fit a disciplined money routine into your calendar—quick reviews, rules-based rebalancing, and clear action notes you can act on in minutes.</p>
-        </article>
-        <article class="card">
-          <h4>DIY + Second Opinion</h4>
-          <p>Already investing? We run a hygiene check for overlap, drift, and costs—then hand you a clean, benchmark-aligned roadmap you can follow with confidence.</p>
-        </article>
+        <article class="card"><h4>First-time Investors</h4><p>Start simple and strong. We set up a clear starter plan with a few good funds, the right targets, and SIPs/lumpsums you can stick to—so getting started feels easy, and staying invested feels natural.</p></article>
+        <article class="card"><h4>Busy Professionals</h4><p>We fit a disciplined money routine into your calendar—quick reviews, rules-based rebalancing, and clear action notes you can act on in minutes.</p></article>
+        <article class="card"><h4>DIY + Second Opinion</h4><p>Already investing? We run a hygiene check for overlap, drift, and costs—then hand you a clean, benchmark-aligned roadmap you can follow with confidence.</p></article>
       </div>
 
-      <!-- Team -->
       <div class="team-hero">
         <img src="./team.jpg?v=2" alt="MoneySutraa Co-Founders — Ravi Mandi and Adtya L." loading="lazy" decoding="async">
         <div class="team-overlay" aria-hidden="true">
           <div class="title">The team</div>
-          <div class="member ravi">
-            <strong>Ravi Mandi — Co-Founder</strong>
-            <span>B.Tech, NIT-Jamshedpur (2008 batch)</span>
-          </div>
-          <div class="member aditya">
-            <strong>Adtya L. — Co-Founder</strong>
-            <span>CA, MBA</span>
-          </div>
+          <div class="member ravi"><strong>Ravi Mandi — Co-Founder</strong><span>B.Tech, NIT-Jamshedpur (2008 batch)</span></div>
+          <div class="member aditya"><strong>Adtya L. — Co-Founder</strong><span>CA, MBA</span></div>
         </div>
       </div>
 
-      <!-- CTA -->
       <div class="social-actions">
         <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
         <a class="btn" href="mailto:wecare@moneysutraa.com" rel="noopener">Email us</a>
@@ -509,7 +422,6 @@
     <div class="container">
       <h3 class="section-title">Contact Us</h3>
       <div class="contact-grid">
-        <!-- Netlify form -->
         <form class="form-card" name="moneysutraa-contact" method="POST" data-netlify="true" netlify-honeypot="_gotcha">
           <input type="hidden" name="form-name" value="moneysutraa-contact">
           <div class="form-row two">
@@ -530,27 +442,17 @@
             <div>
               <label for="lang">Preferred language</label>
               <select id="lang" name="language">
-                <option>English</option>
-                <option>Hinglish</option>
-                <option>Hindi</option>
+                <option>English</option><option>Hinglish</option><option>Hindi</option>
               </select>
             </div>
           </div>
           <div class="form-row">
-            <div>
-              <label for="subject">Subject</label>
-              <input id="subject" name="subject" placeholder="e.g., Goal planning / Portfolio review" />
-            </div>
+            <div><label for="subject">Subject</label><input id="subject" name="subject" placeholder="e.g., Goal planning / Portfolio review" /></div>
           </div>
           <div class="form-row">
-            <div>
-              <label for="message">Your message *</label>
-              <textarea id="message" name="message" required placeholder="tell us about your goals"></textarea>
-            </div>
+            <div><label for="message">Your message *</label><textarea id="message" name="message" required placeholder="tell us about your goals"></textarea></div>
           </div>
-          <p style="display:none">
-            <label>Don’t fill this out if you’re human: <input name="_gotcha" /></label>
-          </p>
+          <p style="display:none"><label>Don’t fill this out if you’re human: <input name="_gotcha" /></label></p>
           <div class="consent">
             <input id="consent" name="consent" type="checkbox" required style="margin-top:3px" />
             <label for="consent">I consent to <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> contacting me about my enquiry. We do not share your details with third parties.</label>
@@ -562,7 +464,6 @@
           </div>
         </form>
 
-        <!-- Contact info -->
         <div class="form-card" aria-label="Reach us">
           <h4 style="margin:0 0 10px">Reach us</h4>
           <p style="margin:0 0 10px; color:#6d6d6d">MoneySutraa Fin Services LLP</p>
@@ -583,7 +484,15 @@
     </div>
   </footer>
 
-  <!-- Optional: Analytics placeholder (paste GA4/GTM here) -->
+  <!-- Sticky mobile CTA -->
+  <div class="sticky-cta" aria-hidden="false">
+    <div class="wrap">
+      <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="btn" href="mailto:wecare@moneysutraa.com" rel="noopener">Email</a>
+    </div>
+  </div>
+
+  <!-- Optional: Analytics -->
   <!-- <script>/* GA4 or GTM */</script> -->
 </body>
 </html>
