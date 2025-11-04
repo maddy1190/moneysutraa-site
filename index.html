@@ -26,6 +26,11 @@
     a{text-decoration:none;color:inherit}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
+    /* Brand inline color lock */
+    .brand-inline{white-space:nowrap;font-weight:700}
+    .brand-inline .money{color:var(--gold)}
+    .brand-inline .sutraa{color:var(--red)}
+
     /* HEADER */
     .header{position:sticky; top:0; z-index:80; backdrop-filter:blur(6px); background:rgba(250,249,246,.92); border-bottom:1px solid var(--line)}
     .nav{display:grid; grid-template-columns:auto minmax(260px,1fr) auto auto; align-items:center; column-gap:18px; height:86px}
@@ -61,7 +66,7 @@
       .tagline{display:block; font-size:11px; margin-top:0}
       .links{display:none}           /* hide desktop links on phones */
       .hamburger{display:block; justify-self:end}
-      .actions{display:none}         /* hide header Email/WhatsApp on phones */
+      .actions{display:none}         /* hide header Email/WhatsApp on phones (we have sticky floater) */
     }
 
     /* MOBILE MENU PANEL */
@@ -123,7 +128,7 @@
     .embed-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
     .embed-wrap img.embed-fit{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
 
-    /* Team — keep names exactly like laptop (Ravi left bottom, Aditya right bottom) even on mobile */
+    /* Team — laptop: keep L/R at bottom; mobile: show 3-line stacked text under each person */
     .team-hero{ position:relative; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:16px; border:1px solid var(--line); background:#fff; }
     .team-hero img{ width:100%; height:420px; object-fit:cover; object-position:center 22%; display:block; }
     @media(max-width:700px){ .team-hero img{ height:320px; object-position:center 25%; } }
@@ -131,10 +136,17 @@
     .team-overlay .title{position:absolute; left:12px; top:10px; font-weight:700; font-size:15px; text-shadow:0 2px 6px rgba(0,0,0,.5)}
     .team-overlay .member{position:absolute; bottom:14px; max-width:54%; text-shadow:0 2px 8px rgba(0,0,0,.55)}
     .team-overlay .member strong{ display:block; font-weight:800; }
-    .team-overlay .member span{ opacity:.95; font-size:13px; }
+    .team-overlay .member .role{ display:block; opacity:.98; font-weight:700; }
+    .team-overlay .member .qual{ display:block; opacity:.95; font-size:13px; }
     .team-overlay .member.ravi{ left:12px; text-align:left; }
     .team-overlay .member.aditya{ right:12px; text-align:right; }
-    /* no mobile override so positions remain identical */
+    /* mobile: space the 3 lines a bit tighter; keep L/R placement */
+    @media(max-width:700px){
+      .team-overlay .member{ line-height:1.25; }
+      .team-overlay .member strong{ font-size:15px }
+      .team-overlay .member .role{ font-size:13px }
+      .team-overlay .member .qual{ font-size:12.5px }
+    }
 
     /* Contact */
     .contact-grid{display:grid; gap:16px; grid-template-columns:1fr; max-width:760px; margin:0 auto}
@@ -213,16 +225,16 @@
       <h2>Personalised, <span style="white-space:nowrap">Compliance-first</span> guidance to help you <span style="color:var(--ytred)">invest with confidence</span>.</h2>
       <p><strong>Simple frameworks. Transparent process. A 360-degree research-driven approach to evaluate individual funds and match them to your goals and risk profile.</strong></p>
 
-      <div class="badges" role="list">
-        <span class="pill" role="listitem">SEBI/AMFI aligned</span>
-        <span class="pill" role="listitem">Transparent documentation</span>
-        <span class="pill" role="listitem">English/Hinglish/Hindi support</span>
-      </div>
+    <div class="badges" role="list">
+      <span class="pill" role="listitem">SEBI/AMFI aligned</span>
+      <span class="pill" role="listitem">Transparent documentation</span>
+      <span class="pill" role="listitem">English/Hinglish/Hindi support</span>
+    </div>
 
-      <div class="cta">
-        <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-        <a class="btn green" href="mailto:wecare@moneysutraa.com" rel="noopener">Book a 45-min discussion</a>
-      </div>
+    <div class="cta">
+      <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+      <a class="btn green" href="mailto:wecare@moneysutraa.com" rel="noopener">Book a 45-min discussion</a>
+    </div>
     </div>
   </section>
 
@@ -271,21 +283,21 @@
     <div class="container">
       <h3 class="section-title">Research</h3>
 
-    <div class="cards" style="margin-bottom:16px;">
-      <article class="card"><h4>Category & Benchmark Hygiene</h4><p>Clean categories, correct benchmarks, apples-to-apples comparisons. We avoid mixed styles and hidden overlaps before any conclusion.</p></article>
-      <article class="card"><h4>Regime-Aware Analysis</h4><p>Markets change. We look at pre-/post-2021 behavior, drawdowns, and forward windows so takeaways don’t rely on any single cycle.</p></article>
-      <article class="card"><h4>Rules, Not Gut Calls</h4><p>Clear, testable rules for entries, rebalancing and de-risking. Results are framed as actions a real investor can follow.</p></article>
-    </div>
-
-    <article class="embed-card" style="margin-bottom:16px;">
-      <h4 style="margin:0 0 6px;">Featured Insight — <span style="color:var(--gold)">Gold vs Nifty</span></h4>
-      <p style="margin:0 0 10px; color:var(--muted)">A concise, 3-part series comparing gold and Indian equities across regimes, drawdowns, and practical allocation rules.</p>
-      <div class="cta">
-        <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-1-i-introduction-activity-7295416645135560704-1Zew" target="_blank" rel="noopener noreferrer">Part 1</a>
-        <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-2-solution-conclusion-activity-7295417501599883264-3rU1" target="_blank" rel="noopener noreferrer">Part 2</a>
-        <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-3-what-about-gold-activity-7295417628745981952-JBYX" target="_blank" rel="noopener noreferrer">Part 3</a>
+      <div class="cards" style="margin-bottom:16px;">
+        <article class="card"><h4>Category & Benchmark Hygiene</h4><p>Clean categories, correct benchmarks, apples-to-apples comparisons. We avoid mixed styles and hidden overlaps before any conclusion.</p></article>
+        <article class="card"><h4>Regime-Aware Analysis</h4><p>Markets change. We look at pre-/post-2021 behavior, drawdowns, and forward windows so takeaways don’t rely on any single cycle.</p></article>
+        <article class="card"><h4>Rules, Not Gut Calls</h4><p>Clear, testable rules for entries, rebalancing and de-risking. Results are framed as actions a real investor can follow.</p></article>
       </div>
-    </article>
+
+      <article class="embed-card" style="margin-bottom:16px;">
+        <h4 style="margin:0 0 6px;">Featured Insight — <span style="color:var(--gold)">Gold vs Nifty</span></h4>
+        <p style="margin:0 0 10px; color:var(--muted)">A concise, 3-part series comparing gold and Indian equities across regimes, drawdowns, and practical allocation rules.</p>
+        <div class="cta">
+          <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-1-i-introduction-activity-7295416645135560704-1Zew" target="_blank" rel="noopener noreferrer">Part 1</a>
+          <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-2-solution-conclusion-activity-7295417501599883264-3rU1" target="_blank" rel="noopener noreferrer">Part 2</a>
+          <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-3-what-about-gold-activity-7295417628745981952-JBYX" target="_blank" rel="noopener noreferrer">Part 3</a>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -297,7 +309,7 @@
       <article class="embed-card" style="margin-bottom:16px;">
         <h4 style="margin:0 0 8px;">Who we are</h4>
         <p style="margin:0 0 10px; color:var(--muted)">
-          <span style="color:var(--gold); font-weight:700;">Money</span><span style="color:var(--red); font-weight:700;">Sutraa</span> is a compliance-first, research-driven investment advisory. We combine clear frameworks with practical execution—so you always know what to buy, how much, and when to de-risk.
+          <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> is a compliance-first, research-driven investment advisory. We combine clear frameworks with practical execution—so you always know what to buy, how much, and when to de-risk.
         </p>
         <div class="badges" style="margin-top:10px;">
           <span class="pill">ARN-336976</span>
@@ -318,8 +330,17 @@
         <img src="./team.jpg?v=2" alt="MoneySutraa Co-Founders — Ravi Mandi and Adtya L." loading="lazy" decoding="async">
         <div class="team-overlay" aria-hidden="true">
           <div class="title">The team</div>
-          <div class="member ravi"><strong>Ravi Mandi — Co-Founder</strong><span>B.Tech, NIT-Jamshedpur (2008 batch)</span></div>
-          <div class="member aditya"><strong>Adtya L. — Co-Founder</strong><span>CA, MBA</span></div>
+          <!-- laptop: name + (qual inline via spans); mobile: turns into 3 stacked lines -->
+          <div class="member ravi">
+            <strong>Ravi Mandi</strong>
+            <span class="role">Co-Founder</span>
+            <span class="qual">B.Tech, NIT, Jamshedpur</span>
+          </div>
+          <div class="member aditya">
+            <strong>Adtya L.</strong>
+            <span class="role">Co-Founder</span>
+            <span class="qual">CA, MBA</span>
+          </div>
         </div>
       </div>
 
@@ -352,17 +373,16 @@
           <p style="display:none"><label>Don’t fill this out if you’re human: <input name="_gotcha" /></label></p>
           <div class="consent">
             <input id="consent" name="consent" type="checkbox" required style="margin-top:3px" />
-            <label for="consent">I consent to MoneySutraa contacting me about my enquiry. We do not share your details with third parties.</label>
+            <label for="consent">I consent to <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> contacting me about my enquiry. We do not share your details with third parties.</label>
           </div>
           <div class="cta" style="margin-top:12px">
             <button class="btn green" type="submit">Send message</button>
-            <!-- removed Email instead / Chat on WhatsApp buttons beneath the form -->
           </div>
         </form>
 
         <div class="form-card" aria-label="Reach us">
           <h4 style="margin:0 0 10px">Reach us</h4>
-          <p style="margin:0 0 10px; color:#6d6d6d">MoneySutraa Fin Services LLP</p>
+          <p style="margin:0 0 10px; color:#6d6d6d"><span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> Fin Services LLP</p>
           <p style="margin:0 0 8px"><strong>Email:</strong> <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a></p>
           <p style="margin:0 0 8px"><strong>WhatsApp:</strong> <a href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">+91 74001 53953</a></p>
           <p style="margin:0 0 12px; color:#6d6d6d">We reply within one business day.</p>
@@ -375,7 +395,7 @@
   </section>
 
   <footer>
-    <div class="container foot">© 2025 MoneySutraa Fin Services LLP • ARN-336976</div>
+    <div class="container foot">© 2025 <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> Fin Services LLP • ARN-336976</div>
   </footer>
 
   <!-- Sticky mobile CTA (kept) -->
