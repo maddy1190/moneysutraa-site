@@ -10,10 +10,26 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="./hero.jpg?v=6" />
+
+  <!-- Open Graph / Twitter (optional but recommended) -->
+  <meta property="og:title" content="MoneySutraa — Personalised, Compliance-First Investing (ARN-336976)">
+  <meta property="og:description" content="Simple, personalised investment guidance aligned to your goals, risk profile, and time horizon.">
+  <meta property="og:image" content="https://moneysutraa.com/og-cover.jpg">
+  <meta property="og:url" content="https://moneysutraa.com/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Hero image: AVIF first, WebP fallback -->
+  <style>
+    .hero{ background-image:url('./hero.avif'); }
+    @supports not (background-image: url("x.avif")) {
+      .hero{ background-image:url('./hero.webp'); }
+    }
+  </style>
 
   <style>
     :root{
@@ -82,9 +98,10 @@
     .mobile-menu a:hover{ background:#FAF6E6 }
     @media(min-width:641px){ .mobile-menu{ display:none } }
 
-    /* HERO */
+    /* HERO (bg from AVIF/WebP above) */
     .hero{
-      position:relative; background:url('./hero.jpg?v=6') center/cover no-repeat;
+      position:relative;
+      background-position:center; background-size:cover; background-repeat:no-repeat;
       padding:40px 0 44px; border-bottom:1px solid var(--line); min-height:420px;
     }
     .hero::before{
@@ -128,7 +145,7 @@
     .embed-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
     .embed-wrap img.embed-fit{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
 
-    /* Team — laptop: keep L/R at bottom; mobile: show 3-line stacked text under each person */
+    /* Team — laptop: keep L/R at bottom; mobile: show 3 stacked lines */
     .team-hero{ position:relative; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:16px; border:1px solid var(--line); background:#fff; }
     .team-hero img{ width:100%; height:420px; object-fit:cover; object-position:center 22%; display:block; }
     @media(max-width:700px){ .team-hero img{ height:320px; object-position:center 25%; } }
@@ -140,7 +157,6 @@
     .team-overlay .member .qual{ display:block; opacity:.95; font-size:13px; }
     .team-overlay .member.ravi{ left:12px; text-align:left; }
     .team-overlay .member.aditya{ right:12px; text-align:right; }
-    /* mobile: space the 3 lines a bit tighter; keep L/R placement */
     @media(max-width:700px){
       .team-overlay .member{ line-height:1.25; }
       .team-overlay .member strong{ font-size:15px }
@@ -173,13 +189,43 @@
     .sticky-cta .btn{ flex:1 1 50% }
     @media(max-width:720px){ .sticky-cta{ display:block } body{ padding-bottom:78px } }
   </style>
+
+  <!-- FAQ Schema (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Are you SEBI/AMFI compliant?",
+        "acceptedAnswer":{"@type":"Answer","text":"We operate under ARN-336976 and follow SEBI/AMFI guidelines. We do not give generic advice; recommendations are personalised after profiling."}
+      },
+      {
+        "@type":"Question",
+        "name":"How do sessions work?",
+        "acceptedAnswer":{"@type":"Answer","text":"45-min call to map goals, risk and time horizons, followed by a written summary and action checklist."}
+      },
+      {
+        "@type":"Question",
+        "name":"How do you charge?",
+        "acceptedAnswer":{"@type":"Answer","text":"Transparent, scope-based pricing. No revenue from pushing specific funds."}
+      },
+      {
+        "@type":"Question",
+        "name":"What languages do you support?",
+        "acceptedAnswer":{"@type":"Answer","text":"English, Hinglish, and Hindi."}
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
   <!-- Header -->
   <header class="header">
     <div class="container nav">
-      <img src="logo.png" alt="Moneysutraa logo" class="logo" loading="eager" decoding="async">
+      <img src="logo.png" alt="Moneysutraa logo" class="logo" loading="eager" decoding="async" width="320" height="86">
 
       <div class="brand-title">
         <h1><span class="money">Money</span><span class="sutraa">Sutraa</span></h1>
@@ -225,16 +271,16 @@
       <h2>Personalised, <span style="white-space:nowrap">Compliance-first</span> guidance to help you <span style="color:var(--ytred)">invest with confidence</span>.</h2>
       <p><strong>Simple frameworks. Transparent process. A 360-degree research-driven approach to evaluate individual funds and match them to your goals and risk profile.</strong></p>
 
-    <div class="badges" role="list">
-      <span class="pill" role="listitem">SEBI/AMFI aligned</span>
-      <span class="pill" role="listitem">Transparent documentation</span>
-      <span class="pill" role="listitem">English/Hinglish/Hindi support</span>
-    </div>
+      <div class="badges" role="list">
+        <span class="pill" role="listitem">SEBI/AMFI aligned</span>
+        <span class="pill" role="listitem">Transparent documentation</span>
+        <span class="pill" role="listitem">English/Hinglish/Hindi support</span>
+      </div>
 
-    <div class="cta">
-      <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-      <a class="btn green" href="mailto:wecare@moneysutraa.com" rel="noopener">Book a 45-min discussion</a>
-    </div>
+      <div class="cta">
+        <a class="btn green" href="https://wa.me/917400153953?text=Hi%20MoneySutraa%2C%20I%20came%20via%20Home%20Hero&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+        <a class="btn green" href="mailto:wecare@moneysutraa.com" rel="noopener">Book a 45-min discussion</a>
+      </div>
     </div>
   </section>
 
@@ -254,27 +300,27 @@
   <section id="social">
     <div class="container">
       <h3 class="section-title">Social Highlights</h3>
-      <div class="social-grid">
-        <div class="embed-card">
-          <h4>Watch on YouTube</h4>
-          <div class="embed-wrap">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/ps-rYISv1as?start=108&rel=0"
-              title="MoneySutraa YouTube sample"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </div>
-        </div>
-
-        <div class="embed-card">
-          <h4>On Instagram</h4>
-          <div class="embed-wrap">
-            <a href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener noreferrer" aria-label="Visit @moneysutraa on Instagram">
-              <img class="embed-fit" src="./ig-preview.jpg?v=3" alt="Follow @moneysutraa on Instagram" loading="lazy" decoding="async" />
-            </a>
-          </div>
+    <div class="social-grid">
+      <div class="embed-card">
+        <h4>Watch on YouTube</h4>
+        <div class="embed-wrap">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/ps-rYISv1as?start=108&rel=0"
+            title="MoneySutraa YouTube sample"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
+
+      <div class="embed-card">
+        <h4>On Instagram</h4>
+        <div class="embed-wrap">
+          <a href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener noreferrer" aria-label="Visit @moneysutraa on Instagram">
+            <img class="embed-fit" src="./ig-preview.jpg?v=3" alt="Follow @moneysutraa on Instagram" loading="lazy" decoding="async" />
+          </a>
+        </div>
+      </div>
+    </div>
     </div>
   </section>
 
@@ -327,10 +373,9 @@
       </div>
 
       <div class="team-hero">
-        <img src="./team.jpg?v=2" alt="MoneySutraa Co-Founders — Ravi Mandi and Adtya L." loading="lazy" decoding="async">
+        <img src="./team.jpg?v=2" alt="MoneySutraa Co-Founders — Ravi Mandi and Adtya L." loading="lazy" decoding="async" width="1100" height="420">
         <div class="team-overlay" aria-hidden="true">
           <div class="title">The team</div>
-          <!-- laptop: name + (qual inline via spans); mobile: turns into 3 stacked lines -->
           <div class="member ravi">
             <strong>Ravi Mandi</strong>
             <span class="role">Co-Founder</span>
@@ -345,7 +390,7 @@
       </div>
 
       <div class="cta">
-        <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+        <a class="btn green" href="https://wa.me/917400153953?text=Hi%20MoneySutraa%2C%20I%20came%20via%20About%20section&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
         <a class="btn" href="#services">See our services</a>
       </div>
     </div>
@@ -394,14 +439,25 @@
     </div>
   </section>
 
+  <!-- FAQ (visible on page) -->
+  <section id="faq">
+    <div class="container">
+      <h3 class="section-title">FAQs</h3>
+      <details><summary>Are you SEBI/AMFI compliant?</summary><p>We operate under ARN-336976 and follow SEBI/AMFI guidelines. We do not give generic advice; recommendations are personalised after profiling.</p></details>
+      <details><summary>How do sessions work?</summary><p>45-min call to map goals, risk and time horizons, followed by a written summary and action checklist.</p></details>
+      <details><summary>How do you charge?</summary><p>Transparent, scope-based pricing. No revenue from pushing specific funds.</p></details>
+      <details><summary>What languages do you support?</summary><p>English, Hinglish, and Hindi.</p></details>
+    </div>
+  </section>
+
   <footer>
     <div class="container foot">© 2025 <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> Fin Services LLP • ARN-336976</div>
   </footer>
 
-  <!-- Sticky mobile CTA (kept) -->
+  <!-- Sticky mobile CTA -->
   <div class="sticky-cta" aria-hidden="false">
     <div class="wrap">
-      <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="btn green" href="https://wa.me/917400153953?text=Hi%20MoneySutraa%2C%20I%20came%20via%20Sticky%20CTA&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       <a class="btn gold" href="mailto:wecare@moneysutraa.com" rel="noopener">Email</a>
     </div>
   </div>
