@@ -57,7 +57,7 @@
     .brand-title .money{color:var(--gold)} .brand-title .sutraa{color:var(--red)}
     .tagline{margin-top:2px; font-size:12px; color:#141414}
 
-    /* desktop nav stays visible */
+    /* desktop nav */
     .links{display:flex; gap:18px}
     .links a{white-space:nowrap; display:inline-block; transition:transform .14s ease}
     .links a:hover,.links a:focus-visible{transform:scale(1.12)}
@@ -119,11 +119,17 @@
     .badges{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0}
     .pill{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.92); border:1px solid #e9e9e9; color:#444}
     .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+
+    /* Desktop hero trim */
+    @media(min-width:1024px){
+      .hero{min-height:360px; padding:28px 0 32px;}
+    }
+    /* Mobile: push BG up + darker sweep to hide stray words */
     @media(max-width:720px){
-      .hero{padding:28px 0 32px; min-height:360px;}
-      .hero h2{font-size:28px}
-      .hero p{font-size:15px}
-      .cta .btn{flex:1 1 100%}
+      .hero{padding:28px 0 32px; min-height:360px; background-position:center 12%;}
+      .hero::before{
+        background:linear-gradient(90deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.56) 34%, rgba(0,0,0,.36) 60%, rgba(0,0,0,.18) 80%, rgba(0,0,0,.08) 100%);
+      }
     }
 
     /* Sections & Cards */
@@ -137,18 +143,17 @@
     .card h4{margin:0 0 8px; font-size:18px}
     .card p{margin:6px 0 0; color:#6a5a2a}
 
-    /* Social embeds + video embed card */
-    .social-grid{ display:grid; gap:16px; grid-template-columns:1fr }
-    @media(min-width:880px){ .social-grid{ grid-template-columns:1fr 1fr } }
-    .embed-card{ background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); padding:16px; }
+    /* Social embeds */
+    .social-grid{ display:grid; gap:16px; grid-template-columns:repeat(2, minmax(0,1fr)); }
+    .embed-card{ background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); padding:16px; display:flex; flex-direction:column; }
     .embed-card h4{ margin:0 0 10px; font-size:18px }
-    .embed-wrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; background:#f4f1ea }
+    .embed-wrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; background:#f4f1ea; flex:1 1 auto; }
     .embed-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
-
-    /* >>> Mobile size fix for Social Highlights <<< */
+    .embed-wrap img.embed-fit{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block; }
     @media(max-width:720px){
-      #social .embed-card{ padding:12px; max-width:560px; margin:0 auto; }
-      #social .embed-wrap{ padding-top:52%; } /* slightly shorter than 16:9 to feel less tall */
+      #social .social-grid{ grid-template-columns:1fr; }
+      #social .embed-card{ padding:12px; max-width:640px; margin:0 auto; }
+      #social .embed-wrap{ padding-top:52%; }
     }
 
     /* Team */
@@ -195,7 +200,7 @@
     .sticky-cta .btn{ flex:1 1 50% }
     @media(max-width:720px){ .sticky-cta{ display:block } body{ padding-bottom:78px } }
 
-    /* Small list style for intro points */
+    /* Small list style */
     .tick{list-style:none; padding:0; margin:10px 0 0}
     .tick li{margin:6px 0; padding-left:26px; position:relative; color:#404040}
     .tick li::before{content:"✓"; position:absolute; left:0; top:0; font-weight:900; color:var(--green)}
@@ -267,44 +272,40 @@
         <span class="pill" role="listitem">Transparent documentation</span>
         <span class="pill" role="listitem">English/Hinglish/Hindi support</span>
       </div>
-
-      <!-- (CTAs moved to Intro section as requested) -->
+      <!-- (Hero buttons moved to Intro section as requested) -->
     </div>
   </section>
 
-  <!-- Intro Video + Human copy -->
+  <!-- Introduction (video + copy + CTAs moved here) -->
   <section id="intro" aria-label="Introductory video">
     <div class="container">
       <div class="embed-card" style="margin-bottom:12px;">
         <h4 style="margin:0 0 10px;">Start here — 90-second introduction</h4>
         <div class="embed-wrap">
           <iframe
-            src="https://www.youtube-nocookie.com/embed/xtioRV60nMU?rel=0&modestbranding=1&playsinline=1"
-            title="MoneySutraa Intro"
+            src="https://www.youtube-nocookie.com/embed/xtioRV60nMU?rel=0"
+            title="MoneySutraa Introduction"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
 
-      <div class="embed-card">
-        <h4 style="margin:0 0 6px;">If this sounds like you, you’re not alone</h4>
-        <ul class="tick" style="margin-top:8px;">
-          <li><strong>“I know I should start…”</strong> but I’m waiting for the “right time.” Tiny, early steps grow the biggest.</li>
-          <li><strong>“I’m investing… kinda.”</strong> Random picks, no clear plan—so returns feel flat and effort feels wasted.</li>
-          <li><strong>Too many funds.</strong> What actually fits <em>your</em> goals, risk and timeline—without ten overlapping schemes?</li>
-          <li><strong>Past-return trap.</strong> Last year’s winners don’t always repeat. Categories and regimes matter.</li>
-          <li><strong>Small leaks, big loss.</strong> Even a 1–2% yearly drag compounds into lakhs over a decade.</li>
+      <article class="embed-card" style="margin-bottom:6px;">
+        <h4 style="margin:0 0 8px;">Why most people feel stuck with investing</h4>
+        <ul class="tick">
+          <li>You want to start, but you’re unsure how small is “okay” — so you wait.</li>
+          <li>You’ve tried a few funds, but choices feel random and results feel flat.</li>
+          <li>You followed past winners or an influencer list — now you’re second-guessing.</li>
+          <li>There’s no simple routine to review and rebalance, so drift builds quietly.</li>
         </ul>
-        <p style="margin:12px 0 0; color:#444;">
+        <p style="margin:10px 0 0; color:#444;">
           At <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span>, we turn this maze into a simple track: clean categories, the right benchmarks, and a plan you can actually follow.
         </p>
-
-        <!-- Moved CTAs here -->
-        <div class="cta" style="margin-top:14px;">
+        <div class="cta" style="margin-top:12px">
           <a class="btn green" href="https://wa.me/917400153953?text=Hi%20MoneySutraa%2C%20I%20came%20via%20Intro%20section&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
           <a class="btn gold" href="mailto:wecare@moneysutraa.com" rel="noopener">Book a 45-min discussion</a>
         </div>
-      </div>
+      </article>
     </div>
   </section>
 
@@ -360,7 +361,7 @@
 
       <article class="embed-card" style="margin-bottom:16px;">
         <h4 style="margin:0 0 6px;">Featured Insight — <span style="color:var(--gold)">Gold vs Nifty</span></h4>
-        <p style="margin:0 0 10px; color:#6d6d6d">A concise, 3-part series comparing gold and Indian equities across regimes, drawdowns, and practical allocation rules.</p>
+        <p style="margin:0 0 10px; color:var(--muted)">A concise, 3-part series comparing gold and Indian equities across regimes, drawdowns, and practical allocation rules.</p>
         <div class="cta">
           <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-1-i-introduction-activity-7295416645135560704-1Zew" target="_blank" rel="noopener noreferrer">Part 1</a>
           <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-2-solution-conclusion-activity-7295417501599883264-3rU1" target="_blank" rel="noopener noreferrer">Part 2</a>
@@ -377,7 +378,7 @@
 
       <article class="embed-card" style="margin-bottom:16px;">
         <h4 style="margin:0 0 8px;">Who we are</h4>
-        <p style="margin:0 0 10px; color:#6d6d6d">
+        <p style="margin:0 0 10px; color:var(--muted)">
           <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> is a compliance-first, research-driven investment advisory. We combine clear frameworks with practical execution—so you always know what to buy, how much, and when to de-risk.
         </p>
         <div class="badges" style="margin-top:10px;">
