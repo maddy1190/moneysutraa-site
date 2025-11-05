@@ -10,12 +10,10 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="MoneySutraa — Personalised, Compliance-First Investing (ARN-336976)">
   <meta property="og:description" content="Simple, personalised investment guidance aligned to your goals, risk profile, and time horizon.">
   <meta property="og:image" content="https://moneysutraa.com/og-cover.jpg">
@@ -42,7 +40,6 @@
     a{text-decoration:none;color:inherit}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
-    /* Brand inline color lock */
     .brand-inline{white-space:nowrap;font-weight:700}
     .brand-inline .money{color:var(--gold)}
     .brand-inline .sutraa{color:var(--red)}
@@ -57,7 +54,6 @@
     .brand-title .money{color:var(--gold)} .brand-title .sutraa{color:var(--red)}
     .tagline{margin-top:2px; font-size:12px; color:#141414}
 
-    /* desktop nav */
     .links{display:flex; gap:18px}
     .links a{white-space:nowrap; display:inline-block; transition:transform .14s ease}
     .links a:hover,.links a:focus-visible{transform:scale(1.12)}
@@ -69,9 +65,7 @@
 
     /* MOBILE HEADER */
     .hamburger{display:none; -webkit-tap-highlight-color:transparent}
-    .hamburger button{
-      border:1px solid var(--line); background:#fff; border-radius:10px; padding:10px 12px; min-height:40px;
-    }
+    .hamburger button{ border:1px solid var(--line); background:#fff; border-radius:10px; padding:10px 12px; min-height:40px; }
     .hamburger .bar{display:block; width:20px; height:2px; background:#222; margin:3px 0}
 
     @media(max-width:640px){
@@ -82,7 +76,7 @@
       .tagline{display:block; font-size:11px; margin-top:0}
       .links{display:none}
       .hamburger{display:block; justify-self:end}
-      .actions{display:none}  /* hidden on phones (sticky CTA exists) */
+      .actions{display:none}
     }
 
     /* MOBILE MENU PANEL */
@@ -124,11 +118,18 @@
     @media(min-width:1024px){
       .hero{min-height:360px; padding:28px 0 32px;}
     }
-    /* Mobile: push BG up + darker sweep to hide stray words */
+    /* Mobile: zoom + push BG up + stronger bottom fade to kill “trading” */
     @media(max-width:720px){
-      .hero{padding:28px 0 32px; min-height:360px; background-position:center 12%;}
+      .hero{
+        padding:28px 0 32px; min-height:360px;
+        background-position:center 2%;
+        background-size:120% auto;           /* zoom-in crop */
+      }
       .hero::before{
         background:linear-gradient(90deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.56) 34%, rgba(0,0,0,.36) 60%, rgba(0,0,0,.18) 80%, rgba(0,0,0,.08) 100%);
+      }
+      .hero::after{
+        background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 70%, rgba(0,0,0,.92) 100%); /* extra bottom mask */
       }
     }
 
@@ -150,10 +151,12 @@
     .embed-wrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; background:#f4f1ea; flex:1 1 auto; }
     .embed-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
     .embed-wrap img.embed-fit{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block; }
+    /* Mobile: compact cards, perfect-fit aspect, centered */
     @media(max-width:720px){
-      #social .social-grid{ grid-template-columns:1fr; }
-      #social .embed-card{ padding:12px; max-width:640px; margin:0 auto; }
-      #social .embed-wrap{ padding-top:52%; }
+      #social .social-grid{ grid-template-columns:1fr; gap:12px; }
+      #social .embed-card{ padding:10px; border-radius:16px; max-width:640px; margin:0 auto; }
+      #social .embed-card h4{ font-size:16px; margin-bottom:8px; }
+      #social .embed-wrap{ padding-top:56%; border-radius:12px; }
     }
 
     /* Team */
@@ -200,7 +203,6 @@
     .sticky-cta .btn{ flex:1 1 50% }
     @media(max-width:720px){ .sticky-cta{ display:block } body{ padding-bottom:78px } }
 
-    /* Small list style */
     .tick{list-style:none; padding:0; margin:10px 0 0}
     .tick li{margin:6px 0; padding-left:26px; position:relative; color:#404040}
     .tick li::before{content:"✓"; position:absolute; left:0; top:0; font-weight:900; color:var(--green)}
@@ -272,11 +274,10 @@
         <span class="pill" role="listitem">Transparent documentation</span>
         <span class="pill" role="listitem">English/Hinglish/Hindi support</span>
       </div>
-      <!-- (Hero buttons moved to Intro section as requested) -->
     </div>
   </section>
 
-  <!-- Introduction (video + copy + CTAs moved here) -->
+  <!-- Introduction (video + RESTORED copy + CTAs) -->
   <section id="intro" aria-label="Introductory video">
     <div class="container">
       <div class="embed-card" style="margin-bottom:12px;">
@@ -486,7 +487,6 @@
     </div>
   </div>
 
-  <!-- tiny JS for mobile menu -->
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
