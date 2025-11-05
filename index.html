@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Open Graph / Twitter (optional but recommended) -->
+  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="MoneySutraa — Personalised, Compliance-First Investing (ARN-336976)">
   <meta property="og:description" content="Simple, personalised investment guidance aligned to your goals, risk profile, and time horizon.">
   <meta property="og:image" content="https://moneysutraa.com/og-cover.jpg">
@@ -80,9 +80,9 @@
       .logo{max-height:44px}
       .brand-title h1{font-size:18px}
       .tagline{display:block; font-size:11px; margin-top:0}
-      .links{display:none}           /* hide desktop links on phones */
+      .links{display:none}
       .hamburger{display:block; justify-self:end}
-      .actions{display:none}         /* hide header Email/WhatsApp on phones (we have sticky floater) */
+      .actions{display:none}  /* hidden on phones (sticky CTA exists) */
     }
 
     /* MOBILE MENU PANEL */
@@ -98,7 +98,7 @@
     .mobile-menu a:hover{ background:#FAF6E6 }
     @media(min-width:641px){ .mobile-menu{ display:none } }
 
-    /* HERO (bg from AVIF/WebP above) */
+    /* HERO */
     .hero{
       position:relative;
       background-position:center; background-size:cover; background-repeat:no-repeat;
@@ -137,15 +137,15 @@
     .card h4{margin:0 0 8px; font-size:18px}
     .card p{margin:6px 0 0; color:#6a5a2a}
 
-    /* Social embeds */
+    /* Social embeds + video embed card */
     .social-grid{ display:grid; gap:16px; grid-template-columns:1fr }
     @media(min-width:880px){ .social-grid{ grid-template-columns:1fr 1fr } }
     .embed-card{ background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); padding:16px; }
+    .embed-card h4{ margin:0 0 10px; font-size:18px }
     .embed-wrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; background:#f4f1ea }
     .embed-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
-    .embed-wrap img.embed-fit{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
 
-    /* Team — laptop: keep L/R at bottom; mobile: show 3 stacked lines */
+    /* Team */
     .team-hero{ position:relative; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:16px; border:1px solid var(--line); background:#fff; }
     .team-hero img{ width:100%; height:420px; object-fit:cover; object-position:center 22%; display:block; }
     @media(max-width:700px){ .team-hero img{ height:320px; object-position:center 25%; } }
@@ -188,6 +188,11 @@
     .sticky-cta .wrap{ max-width:1100px; margin:0 auto; padding:0 12px; display:flex; gap:10px }
     .sticky-cta .btn{ flex:1 1 50% }
     @media(max-width:720px){ .sticky-cta{ display:block } body{ padding-bottom:78px } }
+
+    /* Small list style for intro pain points */
+    .tick{list-style:none; padding:0; margin:10px 0 0}
+    .tick li{margin:6px 0; padding-left:26px; position:relative; color:#404040}
+    .tick li::before{content:"✓"; position:absolute; left:0; top:0; font-weight:900; color:var(--green)}
   </style>
 
   <!-- FAQ Schema (JSON-LD) -->
@@ -196,26 +201,10 @@
     "@context":"https://schema.org",
     "@type":"FAQPage",
     "mainEntity":[
-      {
-        "@type":"Question",
-        "name":"Are you SEBI/AMFI compliant?",
-        "acceptedAnswer":{"@type":"Answer","text":"We operate under ARN-336976 and follow SEBI/AMFI guidelines. We do not give generic advice; recommendations are personalised after profiling."}
-      },
-      {
-        "@type":"Question",
-        "name":"How do sessions work?",
-        "acceptedAnswer":{"@type":"Answer","text":"45-min call to map goals, risk and time horizons, followed by a written summary and action checklist."}
-      },
-      {
-        "@type":"Question",
-        "name":"How do you charge?",
-        "acceptedAnswer":{"@type":"Answer","text":"Transparent, scope-based pricing. No revenue from pushing specific funds."}
-      },
-      {
-        "@type":"Question",
-        "name":"What languages do you support?",
-        "acceptedAnswer":{"@type":"Answer","text":"English, Hinglish, and Hindi."}
-      }
+      {"@type":"Question","name":"Are you SEBI/AMFI compliant?","acceptedAnswer":{"@type":"Answer","text":"We operate under ARN-336976 and follow SEBI/AMFI guidelines. We do not give generic advice; recommendations are personalised after profiling."}},
+      {"@type":"Question","name":"How do sessions work?","acceptedAnswer":{"@type":"Answer","text":"45-min call to map goals, risk and time horizons, followed by a written summary and action checklist."}},
+      {"@type":"Question","name":"How do you charge?","acceptedAnswer":{"@type":"Answer","text":"Transparent, scope-based pricing. No revenue from pushing specific funds."}},
+      {"@type":"Question","name":"What languages do you support?","acceptedAnswer":{"@type":"Answer","text":"English, Hinglish, and Hindi."}}
     ]
   }
   </script>
@@ -232,7 +221,6 @@
         <div class="tagline">"Your Guide to Simplified Finance"</div>
       </div>
 
-      <!-- desktop nav (kept) -->
       <nav class="links" aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#research">Research</a>
@@ -240,13 +228,11 @@
         <a href="#contact">Contact&nbsp;Us</a>
       </nav>
 
-      <!-- desktop actions -->
       <div class="actions">
         <a class="btn gold" href="mailto:wecare@moneysutraa.com" rel="noopener">Email</a>
         <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       </div>
 
-      <!-- mobile hamburger -->
       <div class="hamburger">
         <button id="menuBtn" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu">
           <span class="bar"></span><span class="bar"></span><span class="bar"></span>
@@ -254,7 +240,6 @@
       </div>
     </div>
 
-    <!-- Mobile menu panel -->
     <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile menu">
       <div class="wrap">
         <a href="#services" onclick="closeMenu()">Services</a>
@@ -268,8 +253,8 @@
   <!-- Hero -->
   <section class="hero" aria-label="Intro">
     <div class="container">
-      <h2>Personalised, <span style="white-space:nowrap">Compliance-first</span> guidance to help you <span style="color:var(--ytred)">invest with confidence</span>.</h2>
-      <p><strong>Simple frameworks. Transparent process. A 360-degree research-driven approach to evaluate individual Mutual Funds and match them to your goals and risk profile.</strong></p>
+      <h2>Personalised, <span style="white-space:nowrap">Compliance-first</span> guidance to help you <span style="color:var(--ytred)">Invest in Mutual Funds with Confidence</span></h2>
+      <p><strong>Simple frameworks. Transparent process. A 360-degree research-driven approach to evaluate individual Mutual funds and match them to your goals and risk profile.</strong></p>
 
       <div class="badges" role="list">
         <span class="pill" role="listitem">SEBI/AMFI aligned</span>
@@ -281,6 +266,59 @@
         <a class="btn green" href="https://wa.me/917400153953?text=Hi%20MoneySutraa%2C%20I%20came%20via%20Home%20Hero&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
         <a class="btn green" href="mailto:wecare@moneysutraa.com" rel="noopener">Book a 45-min discussion</a>
       </div>
+    </div>
+  </section>
+
+  <!-- NEW: Intro Video -->
+  <section id="intro" aria-label="Introductory video">
+    <div class="container">
+      <div class="embed-card" style="margin-bottom:12px;">
+        <h4 style="margin:0 0 10px;">Start here — 90-second introduction</h4>
+        <div class="embed-wrap">
+          <!-- Replace VIDEO_ID_HERE with your YouTube ID (use Unlisted or Public visibility) -->
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/VIDEO_ID_HERE?rel=0"
+            title="MoneySutraa Intro"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- Pain points (from your note) -->
+      <div class="embed-card" style="margin-bottom:4px;">
+        <h4 style="margin:0 0 6px;">What most investors struggle with</h4>
+        <ul class="tick">
+          <li>Not realizing you can start **small and early**—and still grow big.</li>
+          <li>Thinking investing is only for “big” investors—it’s for everyone.</li>
+          <li>“Which funds should I invest in?” and **how to choose** them.</li>
+          <li>Assuming **past returns** guarantee future performance.</li>
+          <li>Relying on **guesswork**—losing 1–2% annually, which compounds into a big gap.</li>
+        </ul>
+      </div>
+
+      <!-- Transcript (collapsible) -->
+      <details class="embed-card">
+        <summary><strong>Read transcript</strong></summary>
+        <div style="margin-top:8px; color:#444;">
+          <p>(0:00) Money, or should I say wealth, is such an important part of a happy and secure life.</p>
+          <p>(0:06) But the years I've spent in finance, I realized one thing.</p>
+          <p>(0:09) That almost everybody is stuck at some level in terms of their finance.</p>
+          <p>(0:15) Maybe you know you should be investing, but haven't started.</p>
+          <p>(0:19) Maybe you're investing, but just guessing and the returns are flat.</p>
+          <p>(0:23) Or you've taken help of a distributor, but distributor is just a sales guy (0:27) with no knowledge of finance.</p>
+          <p>(0:29) Or in some cases, distributor has knowledge of finance, but no focus to maximize returns.</p>
+          <p>(0:35) I saw this gap and that's why with 15 plus years in finance (0:40) and knowledge of CA, MBA and investment banking, we started MoneySutraa.</p>
+          <p>(0:45) Our goal is incredibly simple.</p>
+          <p>(0:47) To make your entire financial life as clear and uncomplicated as a straight road.</p>
+          <p>(0:53) We turn the complex world of investments into a clear, actionable wealth creation path.</p>
+          <p>(1:00) We give you the focus that's often missing, maximizing your returns,</p>
+          <p>(1:05) ensuring your portfolio is regularly rebalanced to stay on target.</p>
+          <p>(1:10) If you resonate with any one of these challenges,</p>
+          <p>(1:13) whether you're a new investor or just not happy with your returns,</p>
+          <p>(1:16) all it takes is one 45-minute session.</p>
+          <p>(1:20) And schedule your session and map out your paths to wealth creation with MoneySutraa.</p>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -300,27 +338,26 @@
   <section id="social">
     <div class="container">
       <h3 class="section-title">Social Highlights</h3>
-    <div class="social-grid">
-      <div class="embed-card">
-        <h4>Watch on YouTube</h4>
-        <div class="embed-wrap">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/ps-rYISv1as?start=108&rel=0"
-            title="MoneySutraa YouTube sample"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="social-grid">
+        <div class="embed-card">
+          <h4>Watch on YouTube</h4>
+          <div class="embed-wrap">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/ps-rYISv1as?start=108&rel=0"
+              title="MoneySutraa YouTube sample"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="embed-card">
+          <h4>On Instagram</h4>
+          <div class="embed-wrap">
+            <a href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener noreferrer" aria-label="Visit @moneysutraa on Instagram">
+              <img class="embed-fit" src="./ig-preview.jpg?v=3" alt="Follow @moneysutraa on Instagram" loading="lazy" decoding="async" />
+            </a>
+          </div>
         </div>
       </div>
-
-      <div class="embed-card">
-        <h4>On Instagram</h4>
-        <div class="embed-wrap">
-          <a href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener noreferrer" aria-label="Visit @moneysutraa on Instagram">
-            <img class="embed-fit" src="./ig-preview.jpg?v=3" alt="Follow @moneysutraa on Instagram" loading="lazy" decoding="async" />
-          </a>
-        </div>
-      </div>
-    </div>
     </div>
   </section>
 
@@ -439,7 +476,7 @@
     </div>
   </section>
 
-  <!-- FAQ (visible on page) -->
+  <!-- FAQ -->
   <section id="faq">
     <div class="container">
       <h3 class="section-title">FAQs</h3>
