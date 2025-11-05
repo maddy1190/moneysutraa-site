@@ -145,6 +145,12 @@
     .embed-wrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; background:#f4f1ea }
     .embed-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
 
+    /* >>> Mobile size fix for Social Highlights <<< */
+    @media(max-width:720px){
+      #social .embed-card{ padding:12px; max-width:560px; margin:0 auto; }
+      #social .embed-wrap{ padding-top:52%; } /* slightly shorter than 16:9 to feel less tall */
+    }
+
     /* Team */
     .team-hero{ position:relative; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:16px; border:1px solid var(--line); background:#fff; }
     .team-hero img{ width:100%; height:420px; object-fit:cover; object-position:center 22%; display:block; }
@@ -189,7 +195,7 @@
     .sticky-cta .btn{ flex:1 1 50% }
     @media(max-width:720px){ .sticky-cta{ display:block } body{ padding-bottom:78px } }
 
-    /* Small list style for intro pain points */
+    /* Small list style for intro points */
     .tick{list-style:none; padding:0; margin:10px 0 0}
     .tick li{margin:6px 0; padding-left:26px; position:relative; color:#404040}
     .tick li::before{content:"✓"; position:absolute; left:0; top:0; font-weight:900; color:var(--green)}
@@ -262,10 +268,7 @@
         <span class="pill" role="listitem">English/Hinglish/Hindi support</span>
       </div>
 
-      <div class="cta">
-        <a class="btn green" href="https://wa.me/917400153953?text=Hi%20MoneySutraa%2C%20I%20came%20via%20Home%20Hero&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-        <a class="btn green" href="mailto:wecare@moneysutraa.com" rel="noopener">Book a 45-min discussion</a>
-      </div>
+      <!-- (CTAs moved to Intro section as requested) -->
     </div>
   </section>
 
@@ -295,6 +298,12 @@
         <p style="margin:12px 0 0; color:#444;">
           At <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span>, we turn this maze into a simple track: clean categories, the right benchmarks, and a plan you can actually follow.
         </p>
+
+        <!-- Moved CTAs here -->
+        <div class="cta" style="margin-top:14px;">
+          <a class="btn green" href="https://wa.me/917400153953?text=Hi%20MoneySutraa%2C%20I%20came%20via%20Intro%20section&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+          <a class="btn gold" href="mailto:wecare@moneysutraa.com" rel="noopener">Book a 45-min discussion</a>
+        </div>
       </div>
     </div>
   </section>
@@ -366,18 +375,18 @@
     <div class="container">
       <h3 class="section-title">About Us</h3>
 
-    <article class="embed-card" style="margin-bottom:16px;">
-      <h4 style="margin:0 0 8px;">Who we are</h4>
-      <p style="margin:0 0 10px; color:#6d6d6d">
-        <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> is a compliance-first, research-driven investment advisory. We combine clear frameworks with practical execution—so you always know what to buy, how much, and when to de-risk.
-      </p>
-      <div class="badges" style="margin-top:10px;">
-        <span class="pill">ARN-336976</span>
-        <span class="pill">SEBI/AMFI aligned</span>
-        <span class="pill">English / Hinglish / Hindi</span>
-        <span class="pill">Privacy-first documentation</span>
-      </div>
-    </article>
+      <article class="embed-card" style="margin-bottom:16px;">
+        <h4 style="margin:0 0 8px;">Who we are</h4>
+        <p style="margin:0 0 10px; color:#6d6d6d">
+          <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> is a compliance-first, research-driven investment advisory. We combine clear frameworks with practical execution—so you always know what to buy, how much, and when to de-risk.
+        </p>
+        <div class="badges" style="margin-top:10px;">
+          <span class="pill">ARN-336976</span>
+          <span class="pill">SEBI/AMFI aligned</span>
+          <span class="pill">English / Hinglish / Hindi</span>
+          <span class="pill">Privacy-first documentation</span>
+        </div>
+      </article>
 
       <h4 style="margin:10px 0;">Who we help</h4>
       <div class="cards" style="margin-bottom:16px;">
@@ -414,42 +423,42 @@
   <section id="contact">
     <div class="container">
       <h3 class="section-title">Contact Us</h3>
-    <div class="contact-grid">
-      <form class="form-card" name="moneysutraa-contact" method="POST" data-netlify="true" netlify-honeypot="_gotcha">
-        <input type="hidden" name="form-name" value="moneysutraa-contact">
-        <div class="form-row two">
-          <div><label for="name">Full name *</label><input id="name" name="name" required autocomplete="name" placeholder="Your name" /></div>
-          <div><label for="email">Email *</label><input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" /></div>
-        </div>
-        <div class="form-row two">
-          <div><label for="phone">Phone *</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+91" required /></div>
-          <div><label for="lang">Preferred language</label>
-            <select id="lang" name="language"><option>English</option><option>Hinglish</option><option>Hindi</option></select>
+      <div class="contact-grid">
+        <form class="form-card" name="moneysutraa-contact" method="POST" data-netlify="true" netlify-honeypot="_gotcha">
+          <input type="hidden" name="form-name" value="moneysutraa-contact">
+          <div class="form-row two">
+            <div><label for="name">Full name *</label><input id="name" name="name" required autocomplete="name" placeholder="Your name" /></div>
+            <div><label for="email">Email *</label><input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" /></div>
+          </div>
+          <div class="form-row two">
+            <div><label for="phone">Phone *</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+91" required /></div>
+            <div><label for="lang">Preferred language</label>
+              <select id="lang" name="language"><option>English</option><option>Hinglish</option><option>Hindi</option></select>
+            </div>
+          </div>
+          <div class="form-row"><div><label for="subject">Subject</label><input id="subject" name="subject" placeholder="e.g., Goal planning / Portfolio review" /></div></div>
+          <div class="form-row"><div><label for="message">Your message *</label><textarea id="message" name="message" required placeholder="tell us about your goals"></textarea></div></div>
+          <p style="display:none"><label>Don’t fill this out if you’re human: <input name="_gotcha" /></label></p>
+          <div class="consent">
+            <input id="consent" name="consent" type="checkbox" required style="margin-top:3px" />
+            <label for="consent">I consent to <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> contacting me about my enquiry. We do not share your details with third parties.</label>
+          </div>
+          <div class="cta" style="margin-top:12px">
+            <button class="btn green" type="submit">Send message</button>
+          </div>
+        </form>
+
+        <div class="form-card" aria-label="Reach us">
+          <h4 style="margin:0 0 10px">Reach us</h4>
+          <p style="margin:0 0 10px; color:#6d6d6d"><span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> Fin Services LLP</p>
+          <p style="margin:0 0 8px"><strong>Email:</strong> <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a></p>
+          <p style="margin:0 0 8px"><strong>WhatsApp:</strong> <a href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">+91 74001 53953</a></p>
+          <p style="margin:0 0 12px; color:#6d6d6d">We reply within one business day.</p>
+          <div class="ribbon" style="border-radius:12px">
+            <b>Compliance note:</b> Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing.
           </div>
         </div>
-        <div class="form-row"><div><label for="subject">Subject</label><input id="subject" name="subject" placeholder="e.g., Goal planning / Portfolio review" /></div></div>
-        <div class="form-row"><div><label for="message">Your message *</label><textarea id="message" name="message" required placeholder="tell us about your goals"></textarea></div></div>
-        <p style="display:none"><label>Don’t fill this out if you’re human: <input name="_gotcha" /></label></p>
-        <div class="consent">
-          <input id="consent" name="consent" type="checkbox" required style="margin-top:3px" />
-          <label for="consent">I consent to <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> contacting me about my enquiry. We do not share your details with third parties.</label>
-        </div>
-        <div class="cta" style="margin-top:12px">
-          <button class="btn green" type="submit">Send message</button>
-        </div>
-      </form>
-
-      <div class="form-card" aria-label="Reach us">
-        <h4 style="margin:0 0 10px">Reach us</h4>
-        <p style="margin:0 0 10px; color:#6d6d6d"><span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> Fin Services LLP</p>
-        <p style="margin:0 0 8px"><strong>Email:</strong> <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a></p>
-        <p style="margin:0 0 8px"><strong>WhatsApp:</strong> <a href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">+91 74001 53953</a></p>
-        <p style="margin:0 0 12px; color:#6d6d6d">We reply within one business day.</p>
-        <div class="ribbon" style="border-radius:12px">
-          <b>Compliance note:</b> Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing.
-        </div>
       </div>
-    </div>
     </div>
   </section>
 
