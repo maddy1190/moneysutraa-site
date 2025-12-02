@@ -211,6 +211,33 @@
     .tick{list-style:none; padding:0; margin:10px 0 0}
     .tick li{margin:8px 0; padding-left:26px; position:relative; color:#444}
     .tick li::before{content:"✓"; position:absolute; left:0; top:0; font-weight:900; color:var(--green)}
+/* ===== Workshops band (scoped) ===== */
+.workshop-band{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  padding:22px 0; /* slightly tighter than other sections */
+}
+.workshop-wrap{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:16px;
+  align-items:center;
+  background:#FFF6D6;
+  border:1px solid var(--gold-2);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:16px;
+}
+.workshop-tagline{ margin:0 0 8px; color:#6a5a2a; font-weight:600 }
+.workshop-points{ margin:8px 0 10px; padding-left:18px; color:#6a5a2a }
+.workshop-points li{ margin:4px 0 }
+.workshop-meta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px }
+.workshop-cta .btn{ min-width:180px }
+@media(max-width:880px){
+  .workshop-wrap{ grid-template-columns:1fr; align-items:start }
+  .workshop-cta .btn{ width:100% }
+}
+
   </style>
 
   <!-- FAQ Schema (JSON-LD) -->
@@ -281,6 +308,40 @@
       </div>
     </div>
   </section>
+
+  <!-- MoneySutraa Live Workshops -->
+<section id="workshops" class="workshop-band" aria-label="MoneySutraa Live Workshops">
+  <div class="container">
+    <div class="workshop-wrap">
+      <div class="workshop-copy">
+        <h3 class="section-title" style="margin:0 0 8px">MoneySutraa Live Workshops</h3>
+        <p class="workshop-tagline">
+          Turn scattered SIPs into a simple, institutional-style plan—in just 90 minutes.
+        </p>
+
+        <ul class="workshop-points">
+          <li>Audit if your portfolio is too risky or too conservative</li>
+          <li>Link goals to amounts & timelines; use SIPs + lumpsums smarter</li>
+          <li>Interactive, in <strong>Hinglish (Hindi + English)</strong></li>
+        </ul>
+
+        <div class="workshop-meta">
+          <span class="pill">Sat, Dec 6 · 7:00–8:30 PM</span>
+          <span class="pill">Live on Zoho</span>
+          <span class="pill">Limited seats</span>
+          <span class="pill">Registration required</span>
+        </div>
+      </div>
+
+      <div class="workshop-cta">
+        <a class="btn gold" href="https://aelinks.io/meta" target="_blank" rel="noopener noreferrer">
+          Reserve My Seat
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <!-- Introduction (updated with problems list) -->
   <section id="intro" aria-label="Introductory video">
