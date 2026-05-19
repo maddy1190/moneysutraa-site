@@ -3,47 +3,618 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MoneySutraa Webinar</title>
+  <title>Mid-Career Wealth Reset | MoneySutraa Webinar</title>
+  <meta name="description" content="MoneySutraa paid financial education webinar for mid-career professionals who want to understand personal finance, money management, and long-term financial clarity." />
+
+  <style>
+    :root {
+      --navy: #183153;
+      --gold: #C99A2E;
+      --cream: #F7F3EA;
+      --soft: #FFFDF8;
+      --text: #263238;
+      --muted: #607080;
+      --line: #E7DDC8;
+      --green: #1F7A5C;
+      --shadow: 0 18px 45px rgba(24, 49, 83, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(201, 154, 46, 0.22), transparent 35%),
+        linear-gradient(135deg, #102641 0%, #183153 55%, #0F223A 100%);
+      color: white;
+      padding: 28px 18px 70px;
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .brand span {
+      color: var(--gold);
+    }
+
+    .nav-note {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.78);
+      text-align: right;
+    }
+
+    .hero-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #FCECC1;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 6vw, 62px);
+      line-height: 1.05;
+      margin: 0 0 18px;
+      letter-spacing: -1.8px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.84);
+      max-width: 650px;
+      margin: 0 0 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 22px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 750;
+      transition: 0.2s ease;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #13243B;
+      box-shadow: 0 14px 30px rgba(201, 154, 46, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(201, 154, 46, 0.36);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.10);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .trust-line {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.68);
+      margin-top: 14px;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--text);
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+    }
+
+    .card-title {
+      color: var(--navy);
+      font-size: 22px;
+      font-weight: 850;
+      margin-bottom: 16px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+    }
+
+    .info-row:last-child {
+      border-bottom: 0;
+    }
+
+    .info-row strong {
+      color: var(--navy);
+    }
+
+    .price-box {
+      margin-top: 20px;
+      background: #F8F1DE;
+      border: 1px solid #E8D39A;
+      padding: 18px;
+      border-radius: 20px;
+    }
+
+    .price {
+      font-size: 34px;
+      color: var(--navy);
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .price small {
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .section {
+      padding: 70px 18px;
+    }
+
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.15;
+      color: var(--navy);
+      letter-spacing: -0.8px;
+      margin: 0 0 14px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 760px;
+      margin: 0 0 34px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .feature-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(24, 49, 83, 0.06);
+    }
+
+    .feature-card h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 20px;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .highlight {
+      background: white;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 14px;
+    }
+
+    .step {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .step strong {
+      color: var(--navy);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .policy-box {
+      background: #FFFFFF;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 26px;
+      box-shadow: 0 10px 25px rgba(24, 49, 83, 0.06);
+    }
+
+    .policy-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .policy-links a {
+      padding: 11px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      color: var(--navy);
+      background: #FFFDF8;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, #183153, #0F223A);
+      color: white;
+      text-align: center;
+      padding: 70px 18px;
+    }
+
+    .cta h2 {
+      color: white;
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      max-width: 680px;
+      margin: 0 auto 26px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 17px;
+    }
+
+    .footer {
+      background: #0B1B2E;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 28px 18px;
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: rgba(255, 255, 255, 0.82);
+      text-decoration: none;
+      margin-left: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        padding-bottom: 46px;
+      }
+
+      .nav {
+        margin-bottom: 36px;
+      }
+
+      .hero-grid,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        padding: 22px;
+      }
+
+      .info-row {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .section {
+        padding: 52px 18px;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .nav-note {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>MoneySutraa Paid Webinar</h1>
+  <main class="page">
 
-  <p>
-    MoneySutraa conducts online financial education webinars and awareness sessions
-    for individuals who want to understand personal finance basics in a simple and
-    structured way.
-  </p>
+    <section class="hero">
+      <div class="nav">
+        <div class="brand">Money<span>Sutraa</span></div>
+        <div class="nav-note">Financial education & awareness</div>
+      </div>
 
-  <h2>Webinar Registration</h2>
-  <p>
-    This is a paid online educational webinar. The final webinar date, time,
-    registration fee, and payment link will be updated before launch.
-  </p>
+      <div class="hero-grid">
+        <div>
+          <div class="badge">Live Online Workshop</div>
+          <h1>Mid-Career Wealth Reset</h1>
+          <p>
+            A structured MoneySutraa webinar for working professionals and families who want more clarity
+            around personal finance, money decisions, and long-term wealth planning.
+          </p>
 
-  <h2>Payment Status</h2>
-  <p>
-    Payment collection for this webinar will be enabled through an approved payment
-    gateway after setup is completed.
-  </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#registration">Registration Opening Soon</a>
+            <a class="btn btn-secondary" href="#details">View Details</a>
+          </div>
 
-  <h2>Important Note</h2>
-  <p>
-    MoneySutraa webinars are intended only for financial education and awareness.
-    The session does not provide personalized investment advice, legal advice,
-    tax advice, or any guarantee of returns.
-  </p>
+          <div class="trust-line">
+            Educational session only. No personalized investment advice or guaranteed returns.
+          </div>
+        </div>
 
-  <h2>Policies</h2>
-  <ul>
-    <li><a href="/terms/">Terms & Conditions</a></li>
-    <li><a href="/refund-policy/">Refund & Cancellation Policy</a></li>
-    <li><a href="/privacy-policy/">Privacy Policy</a></li>
-  </ul>
+        <div class="hero-card">
+          <div class="card-title">Webinar Details</div>
 
-  <h2>Support</h2>
-  <p>
-    For webinar registration, payment, or access-related support, please contact
-    MoneySutraa through the contact details provided on our website.
-  </p>
+          <div class="info-row">
+            <span>Format</span>
+            <strong>Live online webinar</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Audience</span>
+            <strong>Mid-career professionals</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Language</span>
+            <strong>Simple Hindi / Hinglish</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Date & Time</span>
+            <strong>To be announced</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Access</span>
+            <strong>Paid registration only</strong>
+          </div>
+
+          <div class="price-box">
+            <div class="price">₹99 / ₹199 <small>planned registration fee</small></div>
+            <p style="margin: 10px 0 0; color: var(--muted); font-size: 14px;">
+              Final payment link will be enabled after payment gateway setup.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="details">
+      <div class="section-inner">
+        <h2>Why this webinar exists</h2>
+        <p class="section-intro">
+          Many people earn regularly but still feel unsure about whether their savings, insurance,
+          investments, and financial priorities are properly aligned. This session is designed to bring
+          structure and clarity to those basics.
+        </p>
+
+        <div class="grid-3">
+          <div class="feature-card">
+            <h3>Simple money clarity</h3>
+            <p>Understand the basic structure of personal finance without complicated jargon.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Better financial habits</h3>
+            <p>Learn how to think about saving, protection, investing, and long-term goals.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Decision awareness</h3>
+            <p>Identify common money mistakes that often happen during mid-career years.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section highlight">
+      <div class="section-inner">
+        <h2>Who should consider attending?</h2>
+        <p class="section-intro">
+          This webinar is suitable for individuals and families who want to build a stronger foundation
+          before taking bigger financial decisions.
+        </p>
+
+        <div class="grid-2">
+          <div class="feature-card">
+            <h3>Working professionals</h3>
+            <p>Especially those in their 30s, 40s, or 50s who want better control over their money decisions.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Families planning goals</h3>
+            <p>For people thinking about children’s education, home goals, retirement, or financial security.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>New or confused investors</h3>
+            <p>For those who have started investing but are not sure if their approach is structured.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>People seeking discipline</h3>
+            <p>For anyone who wants a simpler way to think about money management and long-term planning.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="registration">
+      <div class="section-inner">
+        <h2>How registration will work</h2>
+        <p class="section-intro">
+          Once payment setup is active, registration will follow a simple paid flow.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div>
+              <strong>Register through the official MoneySutraa page</strong>
+              Enter your basic details and complete payment through the approved payment gateway.
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div>
+              <strong>Receive confirmation</strong>
+              After successful payment, your seat confirmation and webinar instructions will be shared.
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div>
+              <strong>Join the live webinar</strong>
+              The joining link will be shared privately with confirmed paid participants through email or WhatsApp.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section highlight">
+      <div class="section-inner">
+        <div class="policy-box">
+          <h2>Trust, policies & disclaimer</h2>
+          <p class="section-intro" style="margin-bottom: 0;">
+            MoneySutraa webinars are for financial education and awareness only. They do not constitute
+            personalized investment advice, legal advice, tax advice, or a guarantee of returns.
+            Please review our policies before registering.
+          </p>
+
+          <div class="policy-links">
+            <a href="/terms/">Terms & Conditions</a>
+            <a href="/refund-policy/">Refund & Cancellation Policy</a>
+            <a href="/privacy-policy/">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Registration will open soon</h2>
+      <p>
+        We are currently setting up the payment gateway and registration process.
+        Once enabled, the official payment button will appear here.
+      </p>
+      <a class="btn btn-primary" href="/webinar-confirmed/" onclick="return false;">Payment Link Coming Soon</a>
+      <div class="trust-line">
+        Webinar access will be shared only with confirmed paid participants.
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>© MoneySutraa. Financial education and awareness.</div>
+        <div>
+          <a href="/terms/">Terms</a>
+          <a href="/refund-policy/">Refund Policy</a>
+          <a href="/privacy-policy/">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
 </body>
 </html>
