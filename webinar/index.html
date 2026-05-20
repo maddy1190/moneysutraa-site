@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mid-Career Wealth Reset | MoneySutraa Webinar</title>
-  <meta name="description" content="MoneySutraa paid financial education webinar for mid-career professionals who want to understand personal finance, money management, and long-term financial clarity." />
+
+  <title>Mid-Career Wealth Reset | MoneySutraa Live Webinar</title>
+
+  <meta name="description" content="Join MoneySutraa’s Mid-Career Wealth Reset, a live financial education webinar for professionals and families who want clarity around savings, insurance, investments and long-term financial planning." />
 
   <style>
     :root {
       --navy: #183153;
-      --gold: #C99A2E;
+      --navy-dark: #0B1B2E;
+      --gold: #D4A72C;
       --cream: #F7F3EA;
       --soft: #FFFDF8;
-      --text: #263238;
-      --muted: #607080;
-      --line: #E7DDC8;
+      --white: #FFFFFF;
+      --text: #243142;
+      --muted: #5E6F82;
+      --line: #E6DAC4;
       --green: #1F7A5C;
       --shadow: 0 18px 45px rgba(24, 49, 83, 0.12);
     }
@@ -42,15 +46,15 @@
 
     .hero {
       background:
-        radial-gradient(circle at top right, rgba(201, 154, 46, 0.22), transparent 35%),
-        linear-gradient(135deg, #102641 0%, #183153 55%, #0F223A 100%);
+        radial-gradient(circle at top right, rgba(212, 167, 44, 0.24), transparent 34%),
+        linear-gradient(135deg, #0F223A 0%, #183153 55%, #0B1B2E 100%);
       color: white;
-      padding: 28px 18px 70px;
+      padding: 28px 18px 72px;
     }
 
     .nav {
       max-width: 1120px;
-      margin: 0 auto 56px;
+      margin: 0 auto 54px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -58,9 +62,9 @@
     }
 
     .brand {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 0.2px;
+      font-size: 23px;
+      font-weight: 850;
+      letter-spacing: -0.3px;
     }
 
     .brand span {
@@ -77,26 +81,25 @@
       max-width: 1120px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 36px;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 38px;
       align-items: center;
     }
 
     .badge {
       display: inline-flex;
-      align-items: center;
-      gap: 8px;
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.22);
       color: #FCECC1;
       padding: 8px 14px;
       border-radius: 999px;
       font-size: 14px;
+      font-weight: 700;
       margin-bottom: 18px;
     }
 
     .hero h1 {
-      font-size: clamp(34px, 6vw, 62px);
+      font-size: clamp(36px, 6vw, 64px);
       line-height: 1.05;
       margin: 0 0 18px;
       letter-spacing: -1.8px;
@@ -104,9 +107,28 @@
 
     .hero p {
       font-size: 18px;
-      color: rgba(255, 255, 255, 0.84);
-      max-width: 650px;
-      margin: 0 0 26px;
+      color: rgba(255, 255, 255, 0.86);
+      max-width: 680px;
+      margin: 0 0 20px;
+    }
+
+    .hero-points {
+      display: grid;
+      gap: 10px;
+      margin: 24px 0 28px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 15px;
+    }
+
+    .hero-point {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .tick {
+      color: var(--gold);
+      font-weight: 900;
     }
 
     .hero-actions {
@@ -114,7 +136,6 @@
       flex-wrap: wrap;
       gap: 14px;
       align-items: center;
-      margin-top: 26px;
     }
 
     .btn {
@@ -124,21 +145,22 @@
       padding: 15px 22px;
       border-radius: 14px;
       text-decoration: none;
-      font-weight: 750;
+      font-weight: 800;
       transition: 0.2s ease;
       border: 0;
       cursor: pointer;
+      font-size: 15px;
     }
 
     .btn-primary {
       background: var(--gold);
       color: #13243B;
-      box-shadow: 0 14px 30px rgba(201, 154, 46, 0.28);
+      box-shadow: 0 14px 30px rgba(212, 167, 44, 0.28);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 18px 36px rgba(201, 154, 46, 0.36);
+      box-shadow: 0 18px 36px rgba(212, 167, 44, 0.36);
     }
 
     .btn-secondary {
@@ -149,12 +171,12 @@
 
     .trust-line {
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.68);
+      color: rgba(255, 255, 255, 0.70);
       margin-top: 14px;
     }
 
     .hero-card {
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.97);
       color: var(--text);
       border-radius: 28px;
       padding: 26px;
@@ -164,7 +186,7 @@
 
     .card-title {
       color: var(--navy);
-      font-size: 22px;
+      font-size: 23px;
       font-weight: 850;
       margin-bottom: 16px;
     }
@@ -173,7 +195,7 @@
       display: flex;
       justify-content: space-between;
       gap: 18px;
-      padding: 14px 0;
+      padding: 13px 0;
       border-bottom: 1px solid var(--line);
       font-size: 15px;
     }
@@ -184,31 +206,33 @@
 
     .info-row strong {
       color: var(--navy);
+      text-align: right;
     }
 
     .price-box {
       margin-top: 20px;
-      background: #F8F1DE;
-      border: 1px solid #E8D39A;
+      background: #F9F0D8;
+      border: 1px solid #E7CC85;
       padding: 18px;
       border-radius: 20px;
     }
 
     .price {
-      font-size: 34px;
+      font-size: 36px;
       color: var(--navy);
       font-weight: 900;
       line-height: 1;
+      letter-spacing: -0.8px;
     }
 
     .price small {
       font-size: 15px;
       color: var(--muted);
-      font-weight: 600;
+      font-weight: 650;
     }
 
     .section {
-      padding: 70px 18px;
+      padding: 72px 18px;
     }
 
     .section-inner {
@@ -220,14 +244,14 @@
       font-size: clamp(28px, 4vw, 42px);
       line-height: 1.15;
       color: var(--navy);
-      letter-spacing: -0.8px;
+      letter-spacing: -0.9px;
       margin: 0 0 14px;
     }
 
     .section-intro {
       color: var(--muted);
       font-size: 17px;
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 0 34px;
     }
 
@@ -268,8 +292,41 @@
       border-bottom: 1px solid var(--line);
     }
 
+    .speaker-card {
+      background:
+        linear-gradient(135deg, rgba(24, 49, 83, 0.96), rgba(11, 27, 46, 0.96));
+      color: white;
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .speaker-card h2 {
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .speaker-card p {
+      color: rgba(255, 255, 255, 0.78);
+      margin: 0;
+    }
+
+    .speaker-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .speaker-box strong {
+      color: #FCECC1;
+    }
+
     .steps {
-      counter-reset: step;
       display: grid;
       gap: 14px;
     }
@@ -293,13 +350,37 @@
       color: white;
       display: grid;
       place-items: center;
-      font-weight: 800;
+      font-weight: 850;
     }
 
     .step strong {
       color: var(--navy);
       display: block;
       margin-bottom: 4px;
+    }
+
+    .faq {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .faq-item strong {
+      display: block;
+      color: var(--navy);
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
     }
 
     .policy-box {
@@ -324,31 +405,39 @@
       text-decoration: none;
       color: var(--navy);
       background: #FFFDF8;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 14px;
     }
 
     .cta {
-      background: linear-gradient(135deg, #183153, #0F223A);
+      background: linear-gradient(135deg, #183153, #0B1B2E);
       color: white;
       text-align: center;
-      padding: 70px 18px;
+      padding: 72px 18px;
     }
 
     .cta h2 {
       color: white;
-      margin-bottom: 14px;
+      margin: 0 0 14px;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -0.8px;
     }
 
     .cta p {
-      max-width: 680px;
+      max-width: 700px;
       margin: 0 auto 26px;
-      color: rgba(255, 255, 255, 0.78);
+      color: rgba(255, 255, 255, 0.80);
       font-size: 17px;
     }
 
+    .support-note {
+      margin-top: 20px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
     .footer {
-      background: #0B1B2E;
+      background: #071525;
       color: rgba(255, 255, 255, 0.72);
       padding: 28px 18px;
       font-size: 14px;
@@ -371,7 +460,7 @@
 
     @media (max-width: 860px) {
       .hero {
-        padding-bottom: 46px;
+        padding-bottom: 48px;
       }
 
       .nav {
@@ -380,7 +469,8 @@
 
       .hero-grid,
       .grid-2,
-      .grid-3 {
+      .grid-3,
+      .speaker-card {
         grid-template-columns: 1fr;
       }
 
@@ -393,8 +483,12 @@
         gap: 4px;
       }
 
+      .info-row strong {
+        text-align: left;
+      }
+
       .section {
-        padding: 52px 18px;
+        padding: 54px 18px;
       }
 
       .hero-actions {
@@ -407,6 +501,15 @@
 
       .nav-note {
         display: none;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+
+      .footer a {
+        margin-left: 0;
+        margin-right: 12px;
       }
     }
   </style>
@@ -424,11 +527,19 @@
       <div class="hero-grid">
         <div>
           <div class="badge">Live Online Workshop</div>
+
           <h1>Mid-Career Wealth Reset</h1>
+
           <p>
-            A structured MoneySutraa webinar for working professionals and families who want more clarity
-            around personal finance, money decisions, and long-term wealth planning.
+            A live MoneySutraa workshop for professionals in their 30s, 40s and 50s who want to organise their savings,
+            insurance, investments and long-term financial goals with more clarity.
           </p>
+
+          <div class="hero-points">
+            <div class="hero-point"><span class="tick">✓</span><span>Understand where your money decisions may be going wrong</span></div>
+            <div class="hero-point"><span class="tick">✓</span><span>Build a cleaner structure for savings, protection and investing</span></div>
+            <div class="hero-point"><span class="tick">✓</span><span>Learn the basics without complicated financial jargon</span></div>
+          </div>
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#registration">Registration Opening Soon</a>
@@ -436,7 +547,7 @@
           </div>
 
           <div class="trust-line">
-            Educational session only. No personalized investment advice or guaranteed returns.
+            Educational session only. No personalized investment advice, tax advice, legal advice or guaranteed returns.
           </div>
         </div>
 
@@ -450,12 +561,17 @@
 
           <div class="info-row">
             <span>Audience</span>
-            <strong>Mid-career professionals</strong>
+            <strong>Professionals & families</strong>
           </div>
 
           <div class="info-row">
             <span>Language</span>
-            <strong>Simple Hindi / Hinglish</strong>
+            <strong>Hindi / Hinglish</strong>
+          </div>
+
+          <div class="info-row">
+            <span>Duration</span>
+            <strong>Approx. 90 minutes</strong>
           </div>
 
           <div class="info-row">
@@ -471,7 +587,7 @@
           <div class="price-box">
             <div class="price">₹99 / ₹199 <small>planned registration fee</small></div>
             <p style="margin: 10px 0 0; color: var(--muted); font-size: 14px;">
-              Final payment link will be enabled after payment gateway setup.
+              Final payment button will be enabled after payment gateway setup.
             </p>
           </div>
         </div>
@@ -480,10 +596,10 @@
 
     <section class="section" id="details">
       <div class="section-inner">
-        <h2>Why this webinar exists</h2>
+        <h2>Why this workshop matters</h2>
         <p class="section-intro">
           Many people earn regularly but still feel unsure about whether their savings, insurance,
-          investments, and financial priorities are properly aligned. This session is designed to bring
+          investments and financial priorities are properly aligned. This session is designed to bring
           structure and clarity to those basics.
         </p>
 
@@ -495,7 +611,7 @@
 
           <div class="feature-card">
             <h3>Better financial habits</h3>
-            <p>Learn how to think about saving, protection, investing, and long-term goals.</p>
+            <p>Learn how to think about savings, protection, investing and long-term goals.</p>
           </div>
 
           <div class="feature-card">
@@ -508,30 +624,89 @@
 
     <section class="section highlight">
       <div class="section-inner">
+        <div class="speaker-card">
+          <div>
+            <h2>Who is conducting this session?</h2>
+            <p>
+              This webinar will be organised by MoneySutraa as a financial education and awareness session.
+            </p>
+          </div>
+
+          <div class="speaker-box">
+            <p><strong>Organised by:</strong> MoneySutraa</p>
+            <p><strong>Session conducted by:</strong> Speaker / expert details to be updated</p>
+            <p><strong>Support & registration:</strong> MoneySutraa team</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <h2>What you will understand</h2>
+        <p class="section-intro">
+          The session is designed to give a practical foundation, not confusing theory.
+        </p>
+
+        <div class="grid-3">
+          <div class="feature-card">
+            <h3>Emergency fund basics</h3>
+            <p>How to think about liquidity before taking bigger financial decisions.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Insurance awareness</h3>
+            <p>Why protection planning matters before wealth planning.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>SIP & investing basics</h3>
+            <p>How to understand disciplined investing and goal-based planning.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Goal planning</h3>
+            <p>How to think about education, home, retirement and family responsibilities.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Common mistakes</h3>
+            <p>Money mistakes that often become costly after the age of 35.</p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Financial structure</h3>
+            <p>A cleaner way to organise your money decisions step by step.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section highlight">
+      <div class="section-inner">
         <h2>Who should consider attending?</h2>
         <p class="section-intro">
-          This webinar is suitable for individuals and families who want to build a stronger foundation
-          before taking bigger financial decisions.
+          This webinar is suitable for individuals and families who want a stronger foundation before taking bigger financial decisions.
         </p>
 
         <div class="grid-2">
           <div class="feature-card">
             <h3>Working professionals</h3>
-            <p>Especially those in their 30s, 40s, or 50s who want better control over their money decisions.</p>
+            <p>Especially those in their 30s, 40s or 50s who want better control over money decisions.</p>
           </div>
 
           <div class="feature-card">
             <h3>Families planning goals</h3>
-            <p>For people thinking about children’s education, home goals, retirement, or financial security.</p>
+            <p>For people thinking about children’s education, home goals, retirement or financial security.</p>
           </div>
 
           <div class="feature-card">
-            <h3>New or confused investors</h3>
+            <h3>New or existing investors seeking clarity</h3>
             <p>For those who have started investing but are not sure if their approach is structured.</p>
           </div>
 
           <div class="feature-card">
-            <h3>People seeking discipline</h3>
+            <h3>People who want financial discipline</h3>
             <p>For anyone who wants a simpler way to think about money management and long-term planning.</p>
           </div>
         </div>
@@ -575,12 +750,48 @@
 
     <section class="section highlight">
       <div class="section-inner">
+        <h2>Frequently asked questions</h2>
+        <p class="section-intro">
+          Please review these details before registering.
+        </p>
+
+        <div class="faq">
+          <div class="faq-item">
+            <strong>Will I receive the joining link after payment?</strong>
+            <p>Yes. Confirmed paid participants will receive the joining instructions through email or WhatsApp.</p>
+          </div>
+
+          <div class="faq-item">
+            <strong>Is this a personalized investment advice session?</strong>
+            <p>No. This is a financial education and awareness webinar. It does not provide personalized investment, tax or legal advice.</p>
+          </div>
+
+          <div class="faq-item">
+            <strong>Will specific mutual fund schemes be recommended?</strong>
+            <p>No. The session is focused on concepts, structure and awareness. It is not a specific product recommendation session.</p>
+          </div>
+
+          <div class="faq-item">
+            <strong>What if I pay but cannot attend?</strong>
+            <p>Please check the Refund & Cancellation Policy. Access to recording or a future batch may depend on the final webinar policy.</p>
+          </div>
+
+          <div class="faq-item">
+            <strong>How will I get support for payment or access issues?</strong>
+            <p>MoneySutraa support details will be available on the registration page and confirmation communication.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
         <div class="policy-box">
           <h2>Trust, policies & disclaimer</h2>
           <p class="section-intro" style="margin-bottom: 0;">
-            MoneySutraa webinars are for financial education and awareness only. They do not constitute
-            personalized investment advice, legal advice, tax advice, or a guarantee of returns.
-            Please review our policies before registering.
+            MoneySutraa webinars are for financial education and awareness only. They do not constitute personalized
+            investment advice, tax advice, legal advice, or a guarantee of returns. No investment decision should be
+            taken only on the basis of this session.
           </p>
 
           <div class="policy-links">
@@ -598,9 +809,11 @@
         We are currently setting up the payment gateway and registration process.
         Once enabled, the official payment button will appear here.
       </p>
-      <a class="btn btn-primary" href="/webinar-confirmed/" onclick="return false;">Payment Link Coming Soon</a>
-      <div class="trust-line">
-        Webinar access will be shared only with confirmed paid participants.
+
+      <a class="btn btn-primary" href="#" onclick="return false;">Payment Link Coming Soon</a>
+
+      <div class="support-note">
+        Secure payment will be processed through an approved payment gateway. Webinar access will be shared only with confirmed paid participants.
       </div>
     </section>
 
