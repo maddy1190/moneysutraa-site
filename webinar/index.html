@@ -383,6 +383,12 @@
       color: var(--muted);
     }
 
+    .faq-item a {
+      color: var(--navy);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
     .policy-box {
       background: #FFFFFF;
       border: 1px solid var(--line);
@@ -434,6 +440,13 @@
       margin-top: 20px;
       font-size: 14px;
       color: rgba(255, 255, 255, 0.72);
+      line-height: 1.8;
+    }
+
+    .support-note a {
+      color: #FCECC1;
+      font-weight: 800;
+      text-decoration: none;
     }
 
     .footer {
@@ -456,6 +469,38 @@
       color: rgba(255, 255, 255, 0.82);
       text-decoration: none;
       margin-left: 12px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 999;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #ffffff;
+      padding: 13px 18px;
+      border-radius: 999px;
+      font-weight: 850;
+      font-size: 15px;
+      text-decoration: none;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.22);
+      transition: 0.2s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+    }
+
+    .whatsapp-dot {
+      width: 10px;
+      height: 10px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: inline-block;
     }
 
     @media (max-width: 860px) {
@@ -511,6 +556,13 @@
         margin-left: 0;
         margin-right: 12px;
       }
+
+      .whatsapp-float {
+        right: 14px;
+        bottom: 14px;
+        padding: 12px 15px;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -536,9 +588,20 @@
           </p>
 
           <div class="hero-points">
-            <div class="hero-point"><span class="tick">✓</span><span>Understand where your money decisions may be going wrong</span></div>
-            <div class="hero-point"><span class="tick">✓</span><span>Build a cleaner structure for savings, protection and investing</span></div>
-            <div class="hero-point"><span class="tick">✓</span><span>Learn the basics without complicated financial jargon</span></div>
+            <div class="hero-point">
+              <span class="tick">✓</span>
+              <span>Understand where your money decisions may be going wrong</span>
+            </div>
+
+            <div class="hero-point">
+              <span class="tick">✓</span>
+              <span>Build a cleaner structure for savings, protection and investing</span>
+            </div>
+
+            <div class="hero-point">
+              <span class="tick">✓</span>
+              <span>Learn the basics without complicated financial jargon</span>
+            </div>
           </div>
 
           <div class="hero-actions">
@@ -634,7 +697,7 @@
 
           <div class="speaker-box">
             <p><strong>Organised by:</strong> MoneySutraa</p>
-            <p><strong>Session conducted by:</strong> Speaker / expert details to be updated</p>
+            <p><strong>Session conducted by:</strong> MoneySutraa team / invited financial education expert</p>
             <p><strong>Support & registration:</strong> MoneySutraa team</p>
           </div>
         </div>
@@ -778,7 +841,12 @@
 
           <div class="faq-item">
             <strong>How will I get support for payment or access issues?</strong>
-            <p>MoneySutraa support details will be available on the registration page and confirmation communication.</p>
+            <p>
+              For payment or access support, WhatsApp us at
+              <a href="https://wa.me/919311595912">+91 93115 95912</a>
+              or email
+              <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a>.
+            </p>
           </div>
         </div>
       </div>
@@ -814,6 +882,11 @@
 
       <div class="support-note">
         Secure payment will be processed through an approved payment gateway. Webinar access will be shared only with confirmed paid participants.
+        <br />
+        For payment or access support:
+        WhatsApp <a href="https://wa.me/919311595912">+91 93115 95912</a>
+        |
+        Email <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a>
       </div>
     </section>
 
@@ -827,6 +900,17 @@
         </div>
       </div>
     </footer>
+
+    <a
+      class="whatsapp-float"
+      href="https://wa.me/919311595912?text=Hi%20MoneySutraa%2C%20I%20need%20help%20with%20the%20webinar%20registration."
+      target="_blank"
+      rel="noopener"
+      aria-label="Contact MoneySutraa on WhatsApp"
+    >
+      <span class="whatsapp-dot"></span>
+      WhatsApp Help
+    </a>
 
   </main>
 </body>
