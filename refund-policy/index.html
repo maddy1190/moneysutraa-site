@@ -3,34 +3,432 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Refund Policy | MoneySutraa</title>
+
+  <title>Refund & Cancellation Policy | MoneySutraa</title>
+  <meta name="description" content="Refund and cancellation policy for MoneySutraa paid online webinars, workshops and financial education sessions." />
+
+  <style>
+    :root {
+      --navy: #183153;
+      --navy-dark: #0B1B2E;
+      --gold: #D4A72C;
+      --cream: #F7F3EA;
+      --soft: #FFFDF8;
+      --white: #FFFFFF;
+      --text: #243142;
+      --muted: #5E6F82;
+      --line: #E6DAC4;
+      --shadow: 0 18px 45px rgba(24, 49, 83, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(212, 167, 44, 0.22), transparent 34%),
+        linear-gradient(135deg, #0F223A 0%, #183153 55%, #0B1B2E 100%);
+      color: white;
+      padding: 28px 18px 72px;
+    }
+
+    .nav {
+      max-width: 1040px;
+      margin: 0 auto 54px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 23px;
+      font-weight: 850;
+      letter-spacing: -0.3px;
+      text-decoration: none;
+    }
+
+    .brand span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+    }
+
+    .hero-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #FCECC1;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 750;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.08;
+      margin: 0 0 16px;
+      letter-spacing: -1.4px;
+    }
+
+    .hero p {
+      max-width: 740px;
+      margin: 0;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .content-wrap {
+      max-width: 1040px;
+      margin: -38px auto 0;
+      padding: 0 18px 72px;
+    }
+
+    .policy-card {
+      background: rgba(255, 255, 255, 0.98);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .policy-top {
+      padding: 28px 32px;
+      background: #FFFDF8;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .policy-top h2 {
+      margin: 0 0 6px;
+      color: var(--navy);
+      font-size: 24px;
+      letter-spacing: -0.4px;
+    }
+
+    .policy-top p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .status-pill {
+      background: #F9F0D8;
+      border: 1px solid #E7CC85;
+      color: var(--navy);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .policy-body {
+      padding: 34px 32px;
+    }
+
+    .section {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section:first-child {
+      padding-top: 0;
+    }
+
+    .section:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .section h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 21px;
+      letter-spacing: -0.3px;
+    }
+
+    .section p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .highlight-box {
+      margin-top: 20px;
+      background: #F9F0D8;
+      border: 1px solid #E7CC85;
+      border-radius: 20px;
+      padding: 20px;
+      color: var(--navy);
+    }
+
+    .support-box {
+      margin-top: 28px;
+      background: linear-gradient(135deg, #183153, #0B1B2E);
+      color: white;
+      border-radius: 24px;
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .support-box h3 {
+      margin: 0 0 8px;
+      color: white;
+      font-size: 24px;
+    }
+
+    .support-box p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .support-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 850;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #13243B;
+    }
+
+    .btn-secondary {
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    .footer {
+      background: #071525;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 28px 18px;
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: rgba(255, 255, 255, 0.82);
+      text-decoration: none;
+      margin-left: 12px;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        margin-bottom: 38px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .policy-top,
+      .support-box {
+        grid-template-columns: 1fr;
+      }
+
+      .policy-top,
+      .policy-body {
+        padding: 24px 20px;
+      }
+
+      .support-actions {
+        justify-content: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+
+      .footer a {
+        margin-left: 0;
+        margin-right: 12px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Refund & Cancellation Policy</h1>
+  <header class="hero">
+    <nav class="nav">
+      <a class="brand" href="/">Money<span>Sutraa</span></a>
 
-  <p>This Refund & Cancellation Policy applies to paid online webinars, workshops, and educational sessions conducted under MoneySutraa.</p>
+      <div class="nav-links">
+        <a href="/webinar/">Webinar</a>
+        <a href="/terms/">Terms</a>
+        <a href="/privacy-policy/">Privacy</a>
+      </div>
+    </nav>
 
-  <h2>Webinar Fee</h2>
-  <p>The webinar registration fee is charged for access to the selected online educational session.</p>
+    <div class="hero-inner">
+      <div class="badge">Policy Information</div>
+      <h1>Refund & Cancellation Policy</h1>
+      <p>
+        This page explains how refunds, duplicate payments, no-shows, and webinar cancellations are handled for paid online webinars, workshops, and financial education sessions.
+      </p>
+    </div>
+  </header>
 
-  <h2>Cancellation by Participant</h2>
-  <p>Once a seat is confirmed, the webinar fee is generally non-refundable. However, participants may contact us before the webinar for support in case of genuine payment or access-related issues.</p>
+  <main class="content-wrap">
+    <section class="policy-card">
+      <div class="policy-top">
+        <div>
+          <h2>For paid webinar registrations</h2>
+          <p>Please review this policy before completing payment for any online webinar or workshop.</p>
+        </div>
 
-  <h2>Duplicate Payment</h2>
-  <p>If a participant is charged twice for the same webinar registration, the duplicate payment will be reviewed and refunded after verification.</p>
+        <div class="status-pill">Applies to online sessions</div>
+      </div>
 
-  <h2>Technical Issue from Our Side</h2>
-  <p>If the webinar is cancelled or cannot be conducted due to a technical or operational issue from our side, participants may be offered a refund, rescheduled session, or alternate access, as applicable.</p>
+      <div class="policy-body">
+        <div class="section">
+          <h3>1. Webinar Fee</h3>
+          <p>
+            The webinar registration fee is charged for access to the selected online educational session. Registration is considered confirmed only after successful payment through the approved payment gateway.
+          </p>
+        </div>
 
-  <h2>No-Show Policy</h2>
-  <p>If a participant does not attend the webinar after successful registration, the fee will not be refunded unless specifically communicated otherwise.</p>
+        <div class="section">
+          <h3>2. Cancellation by Participant</h3>
+          <p>
+            Once a seat is confirmed, the webinar fee is generally non-refundable. However, participants may contact the support team before the webinar in case of genuine payment, duplicate payment, or access-related issues.
+          </p>
+        </div>
 
-  <h2>Refund Timeline</h2>
-  <p>Approved refunds, if any, will be processed to the original payment method within 7–10 working days, subject to payment gateway and bank timelines.</p>
+        <div class="section">
+          <h3>3. Duplicate Payment</h3>
+          <p>
+            If a participant is charged twice for the same webinar registration, the duplicate payment will be reviewed and refunded after verification of the payment details.
+          </p>
+        </div>
 
-  <h2>Contact</h2>
-  <p>For payment, refund, or webinar access support, please contact MoneySutraa through the contact details provided on our website.</p>
+        <div class="section">
+          <h3>4. Technical Issue from Our Side</h3>
+          <p>
+            If the webinar is cancelled or cannot be conducted due to a technical or operational issue from our side, participants may be offered a refund, rescheduled session, or alternate access, as applicable.
+          </p>
+        </div>
 
-  <p><strong>Note:</strong> MoneySutraa webinars are intended for financial education and awareness only. They do not constitute personalized investment advice, legal advice, tax advice, or any guarantee of returns.</p>
+        <div class="section">
+          <h3>5. No-Show Policy</h3>
+          <p>
+            If a participant does not attend the webinar after successful registration, the fee will not be refunded unless specifically communicated otherwise before the session.
+          </p>
+        </div>
+
+        <div class="section">
+          <h3>6. Refund Timeline</h3>
+          <p>
+            Approved refunds, if any, will be processed to the original payment method within 7–10 working days, subject to payment gateway and bank timelines.
+          </p>
+        </div>
+
+        <div class="section">
+          <h3>7. Support for Payment Issues</h3>
+          <p>
+            For payment, refund, or webinar access support, participants should share their registered name, phone number, email ID, and payment ID or screenshot for verification.
+          </p>
+
+          <div class="highlight-box">
+            <strong>Note:</strong> This policy applies to educational webinars and workshops. It does not cover any personalized advisory, investment management, or financial product transaction.
+          </div>
+        </div>
+
+        <div class="support-box">
+          <div>
+            <h3>Need help with payment or access?</h3>
+            <p>
+              Contact the webinar support team for duplicate payment, refund verification, or joining-link related queries.
+            </p>
+          </div>
+
+          <div class="support-actions">
+            <a
+              class="btn btn-primary"
+              href="https://wa.me/919311595912?text=Hi%2C%20I%20need%20help%20with%20webinar%20payment%20or%20refund."
+              target="_blank"
+              rel="noopener"
+            >
+              WhatsApp Support
+            </a>
+
+            <a class="btn btn-secondary" href="mailto:wecare@moneysutraa.com">
+              Email Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>© MoneySutraa. Financial education and awareness.</div>
+      <div>
+        <a href="/webinar/">Webinar</a>
+        <a href="/terms/">Terms</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
