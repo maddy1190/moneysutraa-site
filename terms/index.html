@@ -3,46 +3,498 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Terms & Conditions | MoneySutraa</title>
+  <meta name="description" content="Terms and conditions for online webinars, workshops, educational sessions and related digital services offered through the MoneySutraa website." />
+
+  <style>
+    :root {
+      --navy: #183153;
+      --navy-dark: #0B1B2E;
+      --gold: #D4A72C;
+      --cream: #F7F3EA;
+      --soft: #FFFDF8;
+      --white: #FFFFFF;
+      --text: #243142;
+      --muted: #5E6F82;
+      --line: #E6DAC4;
+      --shadow: 0 18px 45px rgba(24, 49, 83, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(212, 167, 44, 0.22), transparent 34%),
+        linear-gradient(135deg, #0F223A 0%, #183153 55%, #0B1B2E 100%);
+      color: white;
+      padding: 28px 18px 72px;
+    }
+
+    .nav {
+      max-width: 1040px;
+      margin: 0 auto 54px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 23px;
+      font-weight: 850;
+      letter-spacing: -0.3px;
+      text-decoration: none;
+    }
+
+    .brand span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+    }
+
+    .hero-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #FCECC1;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 750;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.08;
+      margin: 0 0 16px;
+      letter-spacing: -1.4px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .content-wrap {
+      max-width: 1040px;
+      margin: -38px auto 0;
+      padding: 0 18px 72px;
+    }
+
+    .policy-card {
+      background: rgba(255, 255, 255, 0.98);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .policy-top {
+      padding: 28px 32px;
+      background: #FFFDF8;
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .policy-top h2 {
+      margin: 0 0 6px;
+      color: var(--navy);
+      font-size: 24px;
+      letter-spacing: -0.4px;
+    }
+
+    .policy-top p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .status-pill {
+      background: #F9F0D8;
+      border: 1px solid #E7CC85;
+      color: var(--navy);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .policy-body {
+      padding: 34px 32px;
+    }
+
+    .section {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section:first-child {
+      padding-top: 0;
+    }
+
+    .section:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .section h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 21px;
+      letter-spacing: -0.3px;
+    }
+
+    .section p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .highlight-box {
+      margin-top: 20px;
+      background: #F9F0D8;
+      border: 1px solid #E7CC85;
+      border-radius: 20px;
+      padding: 20px;
+      color: var(--navy);
+    }
+
+    .support-box {
+      margin-top: 28px;
+      background: linear-gradient(135deg, #183153, #0B1B2E);
+      color: white;
+      border-radius: 24px;
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .support-box h3 {
+      margin: 0 0 8px;
+      color: white;
+      font-size: 24px;
+    }
+
+    .support-box p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .support-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 850;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #13243B;
+    }
+
+    .btn-secondary {
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    .footer {
+      background: #071525;
+      color: rgba(255, 255, 255, 0.72);
+      padding: 28px 18px;
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: rgba(255, 255, 255, 0.82);
+      text-decoration: none;
+      margin-left: 12px;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        margin-bottom: 38px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .policy-top,
+      .support-box {
+        grid-template-columns: 1fr;
+      }
+
+      .policy-top,
+      .policy-body {
+        padding: 24px 20px;
+      }
+
+      .support-actions {
+        justify-content: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+
+      .footer a {
+        margin-left: 0;
+        margin-right: 12px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Terms & Conditions</h1>
+  <header class="hero">
+    <nav class="nav">
+      <a class="brand" href="/">Money<span>Sutraa</span></a>
 
-  <p>These Terms & Conditions apply to MoneySutraa’s online webinars, workshops, educational sessions, and related digital services.</p>
+      <div class="nav-links">
+        <a href="/webinar/">Webinar</a>
+        <a href="/refund-policy/">Refund Policy</a>
+        <a href="/privacy-policy/">Privacy</a>
+      </div>
+    </nav>
 
-  <h2>Nature of Services</h2>
-  <p>MoneySutraa provides financial education and awareness sessions. Our webinars and workshops are intended for general educational purposes only.</p>
+    <div class="hero-inner">
+      <div class="badge">Website Terms</div>
+      <h1>Terms & Conditions</h1>
+      <p>
+        These terms apply to use of this website, online webinars, workshops, educational sessions,
+        communication, and related digital services offered through this platform.
+      </p>
+    </div>
+  </header>
 
-  <h2>No Personalized Investment Advice</h2>
-  <p>The information shared in our webinars, workshops, website, or communication channels does not constitute personalized investment advice, legal advice, tax advice, or a recommendation to buy, sell, or hold any specific financial product.</p>
+  <main class="content-wrap">
+    <section class="policy-card">
+      <div class="policy-top">
+        <div>
+          <h2>Please read before registering</h2>
+          <p>By accessing this website or registering for a paid session, you agree to the terms below.</p>
+        </div>
 
-  <h2>User Responsibility</h2>
-  <p>Participants are responsible for evaluating their own financial situation and should consult a qualified professional before making investment, tax, legal, or financial decisions.</p>
+        <div class="status-pill">Applies to website & webinars</div>
+      </div>
 
-  <h2>Webinar Registration</h2>
-  <p>Registration for paid webinars is confirmed only after successful payment. Participants must provide accurate contact details such as name, email address, and phone number to receive webinar-related communication.</p>
+      <div class="policy-body">
+        <div class="section">
+          <h3>1. Nature of Services</h3>
+          <p>
+            This website provides financial education, awareness content, webinars, workshops, and related digital communication.
+            The sessions are intended for general educational purposes only.
+          </p>
+        </div>
 
-  <h2>Access to Webinar</h2>
-  <p>Webinar access details may be shared through email, WhatsApp, or any other communication method used by MoneySutraa. The webinar joining link should not be shared publicly or forwarded to unregistered participants.</p>
+        <div class="section">
+          <h3>2. No Personalized Investment Advice</h3>
+          <p>
+            Information shared through this website, webinars, workshops, messages, documents, or other communication channels
+            does not constitute personalized investment advice, legal advice, tax advice, or a recommendation to buy, sell,
+            hold, or switch any specific financial product.
+          </p>
+        </div>
 
-  <h2>Payments</h2>
-  <p>Payments for paid webinars, workshops, or educational sessions are collected through approved payment gateway partners. The payment amount, if any, will be displayed before registration.</p>
+        <div class="section">
+          <h3>3. User Responsibility</h3>
+          <p>
+            Participants and website visitors are responsible for evaluating their own financial situation before making any
+            financial, investment, tax, or legal decision. Users should consult a qualified professional where required.
+          </p>
+        </div>
 
-  <h2>Refunds and Cancellations</h2>
-  <p>Refunds and cancellations are governed by our Refund & Cancellation Policy available on the MoneySutraa website.</p>
+        <div class="section">
+          <h3>4. Webinar Registration</h3>
+          <p>
+            Registration for paid webinars or workshops is confirmed only after successful payment through the approved payment
+            gateway. Participants must provide accurate details such as name, email address, and phone number to receive
+            confirmation and access-related communication.
+          </p>
+        </div>
 
-  <h2>Changes to Schedule</h2>
-  <p>MoneySutraa may reschedule, postpone, or cancel a webinar due to technical, operational, or unavoidable circumstances. In such cases, participants may be informed through available contact details.</p>
+        <div class="section">
+          <h3>5. Webinar Access</h3>
+          <p>
+            Webinar joining details may be shared through email, WhatsApp, SMS, or another communication channel.
+            The joining link is intended only for confirmed participants and should not be shared publicly or forwarded to
+            unregistered users.
+          </p>
+        </div>
 
-  <h2>Limitation of Liability</h2>
-  <p>MoneySutraa shall not be responsible for any financial loss, investment loss, tax consequence, or decision made by participants based on general educational information shared during webinars or through our website.</p>
+        <div class="section">
+          <h3>6. Payments</h3>
+          <p>
+            Payments for paid webinars, workshops, or educational sessions are collected through approved payment gateway partners.
+            The payable amount will be displayed before registration. Payment confirmation is subject to successful transaction
+            verification.
+          </p>
+        </div>
 
-  <h2>Intellectual Property</h2>
-  <p>All webinar materials, presentations, documents, recordings, and other educational content are the property of MoneySutraa or its respective creators. They should not be copied, distributed, or reproduced without permission.</p>
+        <div class="section">
+          <h3>7. Refunds and Cancellations</h3>
+          <p>
+            Refunds, cancellations, duplicate payments, no-show cases, and technical disruptions are governed by the Refund &
+            Cancellation Policy available on this website.
+          </p>
+        </div>
 
-  <h2>Contact</h2>
-  <p>For any questions regarding these Terms & Conditions, please contact MoneySutraa through the contact details provided on our website.</p>
+        <div class="section">
+          <h3>8. Changes to Schedule</h3>
+          <p>
+            A webinar or workshop may be rescheduled, postponed, modified, or cancelled due to technical, operational, speaker,
+            or unavoidable circumstances. In such cases, participants may be informed using the contact details provided during
+            registration.
+          </p>
+        </div>
 
-  <p><strong>Disclaimer:</strong> MoneySutraa webinars are for financial education and awareness only. They do not guarantee returns and do not replace personalized advice from a qualified professional.</p>
+        <div class="section">
+          <h3>9. Intellectual Property</h3>
+          <p>
+            Webinar materials, presentations, documents, recordings, templates, text, graphics, and other educational content
+            are the property of their respective creators or organisers. They must not be copied, recorded, distributed,
+            uploaded, sold, or reproduced without permission.
+          </p>
+        </div>
+
+        <div class="section">
+          <h3>10. Communication Consent</h3>
+          <p>
+            By submitting details or registering for a webinar, users may receive communication related to registration,
+            payment confirmation, reminders, joining links, support, and relevant educational updates through email, phone,
+            WhatsApp, SMS, or similar channels.
+          </p>
+        </div>
+
+        <div class="section">
+          <h3>11. Limitation of Liability</h3>
+          <p>
+            The website, webinar organisers, speakers, and support team shall not be responsible for any financial loss,
+            investment loss, tax consequence, or decision made by participants based on general educational information shared
+            through the website or sessions.
+          </p>
+        </div>
+
+        <div class="section">
+          <h3>12. Accuracy of Information</h3>
+          <p>
+            While reasonable care is taken to present useful and relevant information, errors or omissions may occur.
+            Information may also change over time. Users should independently verify important details before acting on them.
+          </p>
+        </div>
+
+        <div class="section">
+          <h3>13. Policy Updates</h3>
+          <p>
+            These Terms & Conditions may be updated from time to time. Continued use of the website or participation in sessions
+            after updates means the user accepts the revised terms.
+          </p>
+
+          <div class="highlight-box">
+            <strong>Important Disclaimer:</strong> All webinars and workshops are for financial education and awareness only.
+            They do not provide personalized investment advice, tax advice, legal advice, or any guarantee of returns.
+            No investment decision should be taken only on the basis of a general educational session.
+          </div>
+        </div>
+
+        <div class="support-box">
+          <div>
+            <h3>Need help with registration?</h3>
+            <p>
+              For payment, access, or webinar-related support, contact the support team using WhatsApp or email.
+            </p>
+          </div>
+
+          <div class="support-actions">
+            <a
+              class="btn btn-primary"
+              href="https://wa.me/919311595912?text=Hi%2C%20I%20need%20help%20with%20webinar%20registration."
+              target="_blank"
+              rel="noopener"
+            >
+              WhatsApp Support
+            </a>
+
+            <a class="btn btn-secondary" href="mailto:wecare@moneysutraa.com">
+              Email Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>© MoneySutraa. Financial education and awareness.</div>
+      <div>
+        <a href="/webinar/">Webinar</a>
+        <a href="/refund-policy/">Refund Policy</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
