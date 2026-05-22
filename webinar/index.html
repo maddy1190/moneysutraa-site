@@ -4,9 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Mid-Career Wealth Reset | MoneySutraa Live Webinar</title>
+  <title>Mid-Career Wealth Reset | Live Webinar</title>
 
-  <meta name="description" content="Join MoneySutraa’s Mid-Career Wealth Reset, a live financial education webinar for professionals and families who want clarity around savings, insurance, investments and long-term financial planning." />
+  <meta
+    name="description"
+    content="Join the Mid-Career Wealth Reset live webinar for professionals and families who want clarity around savings, insurance, investments and long-term financial planning."
+  />
 
   <style>
     :root {
@@ -19,12 +22,15 @@
       --text: #243142;
       --muted: #5E6F82;
       --line: #E6DAC4;
-      --green: #1F7A5C;
       --shadow: 0 18px 45px rgba(24, 49, 83, 0.12);
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -37,6 +43,11 @@
 
     a {
       color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     .page {
@@ -61,14 +72,16 @@
       gap: 16px;
     }
 
-    .brand {
-      font-size: 23px;
-      font-weight: 850;
-      letter-spacing: -0.3px;
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
     }
 
-    .brand span {
-      color: var(--gold);
+    .brand-logo img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
     }
 
     .nav-note {
@@ -293,26 +306,46 @@
     }
 
     .speaker-card {
-      background:
-        linear-gradient(135deg, rgba(24, 49, 83, 0.96), rgba(11, 27, 46, 0.96));
+      background: linear-gradient(135deg, rgba(24, 49, 83, 0.96), rgba(11, 27, 46, 0.96));
       color: white;
       border-radius: 28px;
       padding: 30px;
       box-shadow: var(--shadow);
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 26px;
+      grid-template-columns: 240px 1fr;
+      gap: 28px;
       align-items: center;
+    }
+
+    .speaker-photo-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .speaker-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.20);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .speaker-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .speaker-card h2 {
       color: white;
-      margin-bottom: 10px;
+      margin: 0 0 10px;
     }
 
     .speaker-card p {
-      color: rgba(255, 255, 255, 0.78);
-      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      margin: 0 0 18px;
     }
 
     .speaker-box {
@@ -322,8 +355,23 @@
       padding: 22px;
     }
 
-    .speaker-box strong {
+    .speaker-name {
       color: #FCECC1;
+      font-size: 26px;
+      font-weight: 850;
+      margin: 0 0 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .speaker-credentials {
+      display: grid;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 16px;
+    }
+
+    .speaker-credentials span {
+      display: block;
     }
 
     .steps {
@@ -548,6 +596,19 @@
         display: none;
       }
 
+      .brand-logo img {
+        height: 38px;
+      }
+
+      .speaker-photo {
+        width: 180px;
+        height: 180px;
+      }
+
+      .speaker-box {
+        padding: 20px;
+      }
+
       .footer-inner {
         flex-direction: column;
       }
@@ -572,7 +633,10 @@
 
     <section class="hero">
       <div class="nav">
-        <div class="brand">Money<span>Sutraa</span></div>
+        <a class="brand-logo" href="/">
+          <img src="/logo.png" alt="Logo" />
+        </a>
+
         <div class="nav-note">Financial education & awareness</div>
       </div>
 
@@ -583,7 +647,7 @@
           <h1>Mid-Career Wealth Reset</h1>
 
           <p>
-            A live MoneySutraa workshop for professionals in their 30s, 40s and 50s who want to organise their savings,
+            A live workshop for professionals in their 30s, 40s and 50s who want to organise their savings,
             insurance, investments and long-term financial goals with more clarity.
           </p>
 
@@ -605,7 +669,7 @@
           </div>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#registration">Registration Opening Soon</a>
+            <a class="btn btn-primary" href="#registration">Register for ₹99</a>
             <a class="btn btn-secondary" href="#details">View Details</a>
           </div>
 
@@ -648,7 +712,7 @@
           </div>
 
           <div class="price-box">
-            <div class="price">₹99 / ₹199 <small>planned registration fee</small></div>
+            <div class="price">₹99 <small>registration fee</small></div>
             <p style="margin: 10px 0 0; color: var(--muted); font-size: 14px;">
               Final payment button will be enabled after payment gateway setup.
             </p>
@@ -688,17 +752,26 @@
     <section class="section highlight">
       <div class="section-inner">
         <div class="speaker-card">
-          <div>
-            <h2>Who is conducting this session?</h2>
-            <p>
-              This webinar will be organised by MoneySutraa as a financial education and awareness session.
-            </p>
+          <div class="speaker-photo-wrap">
+            <div class="speaker-photo">
+              <img src="/aditya-lunawat.jpg" alt="Aditya Lunawat" />
+            </div>
           </div>
 
-          <div class="speaker-box">
-            <p><strong>Organised by:</strong> MoneySutraa</p>
-            <p><strong>Session conducted by:</strong> MoneySutraa team / invited financial education expert</p>
-            <p><strong>Support & registration:</strong> MoneySutraa team</p>
+          <div>
+            <h2>Speaker</h2>
+            <p>
+              Learn from an experienced finance professional with strong institutional and academic background.
+            </p>
+
+            <div class="speaker-box">
+              <div class="speaker-name">Aditya Lunawat</div>
+              <div class="speaker-credentials">
+                <span>Ex. Morgan Stanley</span>
+                <span>Ex. Credit Suisse</span>
+                <span>CA, MBA</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -787,7 +860,7 @@
           <div class="step">
             <div class="step-number">1</div>
             <div>
-              <strong>Register through the official MoneySutraa page</strong>
+              <strong>Register through the official webinar page</strong>
               Enter your basic details and complete payment through the approved payment gateway.
             </div>
           </div>
@@ -857,7 +930,7 @@
         <div class="policy-box">
           <h2>Trust, policies & disclaimer</h2>
           <p class="section-intro" style="margin-bottom: 0;">
-            MoneySutraa webinars are for financial education and awareness only. They do not constitute personalized
+            This webinar is for financial education and awareness only. It does not constitute personalized
             investment advice, tax advice, legal advice, or a guarantee of returns. No investment decision should be
             taken only on the basis of this session.
           </p>
@@ -872,13 +945,13 @@
     </section>
 
     <section class="cta">
-      <h2>Registration will open soon</h2>
+      <h2>Reserve your seat for ₹99</h2>
       <p>
         We are currently setting up the payment gateway and registration process.
         Once enabled, the official payment button will appear here.
       </p>
 
-      <a class="btn btn-primary" href="#" onclick="return false;">Payment Link Coming Soon</a>
+      <a class="btn btn-primary" href="#" onclick="return false;">Register for ₹99</a>
 
       <div class="support-note">
         Secure payment will be processed through an approved payment gateway. Webinar access will be shared only with confirmed paid participants.
@@ -892,7 +965,7 @@
 
     <footer class="footer">
       <div class="footer-inner">
-        <div>© MoneySutraa. Financial education and awareness.</div>
+        <div>© Webinar Information Page</div>
         <div>
           <a href="/terms/">Terms</a>
           <a href="/refund-policy/">Refund Policy</a>
@@ -906,7 +979,7 @@
       href="https://wa.me/919311595912?text=Hi%20MoneySutraa%2C%20I%20need%20help%20with%20the%20webinar%20registration."
       target="_blank"
       rel="noopener"
-      aria-label="Contact MoneySutraa on WhatsApp"
+      aria-label="Contact on WhatsApp"
     >
       <span class="whatsapp-dot"></span>
       WhatsApp Help
