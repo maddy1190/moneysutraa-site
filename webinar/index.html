@@ -27,26 +27,26 @@ body{
   padding:0 20px;
 }
 
-/* 🔥 ULTRA TIGHT SECTION SYSTEM */
+/* SECTION (TIGHT PREMIUM SYSTEM) */
 section{
-  padding:50px 0;   /* reduced further */
+  padding:50px 0;
 }
 
-/* HERO (MORE COMPACT) */
+section:nth-child(even){
+  background:#f7f8fb;
+}
+
+/* HERO (kept from step 1) */
 .hero{
   background:#0f2236;
   color:#fff;
-
-  /* 🔥 REDUCED AGAIN */
   padding:60px 0 50px;
 }
 
-/* slight upward visual alignment */
 .hero .container{
   transform:translateY(-3px);
 }
 
-/* BADGE (SLIGHTLY SMALLER FOR DENSITY) */
 .badge{
   display:inline-block;
   background:#E07B39;
@@ -58,14 +58,12 @@ section{
   margin-bottom:12px;
 }
 
-/* HEADING */
 h1{
   font-size:42px;
   line-height:1.1;
   margin-bottom:10px;
 }
 
-/* TEXT (TIGHTER) */
 .hero p{
   color:rgba(255,255,255,0.85);
   max-width:600px;
@@ -74,14 +72,12 @@ h1{
   margin-bottom:8px;
 }
 
-/* EMPHASIS */
 .hero p strong{
   display:block;
   margin-top:6px;
   color:#fff;
 }
 
-/* CTA (SLIGHTLY TIGHTER) */
 .cta-btn{
   display:inline-block;
   background:#E07B39;
@@ -92,12 +88,48 @@ h1{
   font-weight:700;
   text-decoration:none;
   margin-top:12px;
-  box-shadow:0 8px 18px rgba(224,123,57,0.2);
-  transition:0.2s ease;
 }
 
-.cta-btn:hover{
-  transform:translateY(-2px);
+/* =========================
+   STEP 2 FIX STARTS HERE
+========================= */
+
+/* SECTION TITLE */
+h2{
+  font-size:30px;
+  margin-bottom:18px;
+}
+
+/* 🔥 NEW STRUCTURED GRID (IMPORTANT FIX) */
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+/* CARD BASE */
+.card{
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:14px;
+  padding:16px;
+  font-size:14px;
+  line-height:1.4;
+  box-shadow:0 6px 18px rgba(0,0,0,0.04);
+}
+
+/* 🔥 NEW PSYCHOLOGY GROUP STYLING */
+.group-title{
+  font-size:12px;
+  font-weight:700;
+  color:#E07B39;
+  margin-bottom:8px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
+
+.group{
+  margin-bottom:16px;
 }
 
 /* MOBILE */
@@ -107,16 +139,12 @@ h1{
     padding:40px 0;
   }
 
-  .hero{
-    padding:50px 0 45px;
-  }
-
   h1{
     font-size:30px;
   }
 
-  .hero p{
-    max-width:100%;
+  .grid-2{
+    grid-template-columns:1fr;
   }
 }
 
@@ -138,13 +166,47 @@ A practical, no-jargon webinar for professionals who want clarity in investing,
 better financial decisions, and long-term wealth structure.
 </p>
 
-<p>
-<strong>This is not motivation. This is financial clarity.</strong>
-</p>
+<p><strong>This is not motivation. This is financial clarity.</strong></p>
 
 <a class="cta-btn" href="https://rzp.io/rzp/fNBuPeqL">
 Reserve My Spot ₹99
 </a>
+
+</div>
+</section>
+
+<!-- STEP 2 SECTION -->
+<section>
+<div class="container">
+
+<h2>Is this for you?</h2>
+
+<!-- GROUP 1 -->
+<div class="group">
+<div class="group-title">You feel stuck or confused</div>
+<div class="grid-2">
+  <div class="card">You invest without a clear system</div>
+  <div class="card">You’ve made financial mistakes before</div>
+</div>
+</div>
+
+<!-- GROUP 2 -->
+<div class="group">
+<div class="group-title">You want clarity</div>
+<div class="grid-2">
+  <div class="card">You feel unsure about long-term planning</div>
+  <div class="card">You want clarity, not random tips</div>
+</div>
+</div>
+
+<!-- GROUP 3 -->
+<div class="group">
+<div class="group-title">You want structure</div>
+<div class="grid-2">
+  <div class="card">You earn well but feel financially stuck</div>
+  <div class="card">You want structured investing knowledge</div>
+</div>
+</div>
 
 </div>
 </section>
