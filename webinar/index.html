@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Webinar Page</title>
+<title>Mid-Career Wealth Reset | MoneySutraa</title>
 
 <style>
 
+/* RESET */
 *{
   margin:0;
   padding:0;
@@ -19,27 +20,81 @@ body{
   color:#0f172a;
 }
 
-/* container */
+/* CONTAINER */
 .container{
   max-width:980px;
   margin:auto;
   padding:0 20px;
 }
 
-/* section spacing (balanced premium density) */
+/* SECTION SYSTEM (tight premium) */
 section{
   padding:55px 0;
 }
 
-/* HERO minimal (assumed already handled earlier) */
+section:nth-child(even){
+  background:#f7f8fb;
+}
+
+/* =========================
+   HERO
+========================= */
+
 .hero{
   background:#0f2236;
   color:#fff;
   padding:60px 0 50px;
 }
 
+.hero .container{
+  transform:translateY(-3px);
+}
+
+.badge{
+  display:inline-block;
+  background:#E07B39;
+  color:#fff;
+  padding:7px 12px;
+  border-radius:999px;
+  font-size:11.5px;
+  font-weight:600;
+  margin-bottom:12px;
+}
+
+h1{
+  font-size:42px;
+  line-height:1.1;
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:rgba(255,255,255,0.85);
+  max-width:600px;
+  font-size:15px;
+  line-height:1.6;
+  margin-bottom:8px;
+}
+
+.hero p strong{
+  display:block;
+  margin-top:6px;
+  color:#fff;
+}
+
+.cta-btn{
+  display:inline-block;
+  background:#E07B39;
+  color:#fff;
+  padding:12px 20px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:700;
+  text-decoration:none;
+  margin-top:12px;
+}
+
 /* =========================
-   STEP 2 IMAGE-1 LEVEL
+   STEP 2 (IMAGE-1 LEVEL)
 ========================= */
 
 h2{
@@ -47,12 +102,12 @@ h2{
   margin-bottom:22px;
 }
 
-/* GROUP WRAPPER */
+/* GROUP */
 .group{
   margin-bottom:26px;
 }
 
-/* 🔥 PREMIUM GROUP HEADER (NEW) */
+/* GROUP TITLE */
 .group-title{
   display:flex;
   align-items:center;
@@ -64,11 +119,9 @@ h2{
   text-transform:uppercase;
 
   color:#E07B39;
-
   margin-bottom:14px;
 }
 
-/* left accent line */
 .group-title::before{
   content:"";
   width:4px;
@@ -84,10 +137,7 @@ h2{
   gap:12px;
 }
 
-/* =========================
-   🔥 PREMIUM PILL (IMAGE-1 STYLE)
-========================= */
-
+/* PREMIUM PILLS */
 .card{
   display:inline-flex;
   align-items:center;
@@ -99,9 +149,8 @@ h2{
   font-size:13px;
   font-weight:500;
 
-  color:#ffffff;
+  color:#fff;
 
-  /* soft navy gradient (premium feel) */
   background:linear-gradient(135deg,#102a43,#0b1f33);
 
   border:1px solid rgba(255,255,255,0.08);
@@ -111,7 +160,6 @@ h2{
   white-space:nowrap;
 }
 
-/* 🔥 CHECK ICON */
 .card::before{
   content:"✓";
   font-size:12px;
@@ -119,17 +167,18 @@ h2{
   font-weight:900;
 }
 
-/* hover micro-interaction */
+/* hover */
 .card:hover{
   transform:translateY(-1px);
   transition:0.2s ease;
 }
 
-/* =========================
-   MOBILE
-========================= */
-
+/* MOBILE */
 @media(max-width:768px){
+
+  h1{
+    font-size:30px;
+  }
 
   h2{
     font-size:26px;
@@ -137,11 +186,6 @@ h2{
 
   .card{
     font-size:12.5px;
-    padding:8px 12px;
-  }
-
-  .row{
-    gap:10px;
   }
 }
 
@@ -150,6 +194,29 @@ h2{
 
 <body>
 
+<!-- HERO (RESTORED) -->
+<section class="hero">
+<div class="container">
+
+<div class="badge">Mid-Career Wealth Reset | Live Webinar</div>
+
+<h1>You earn well. But your money isn't working as hard as you are.</h1>
+
+<p>
+A practical, no-jargon webinar for professionals who want clarity in investing,
+better financial decisions, and long-term wealth structure.
+</p>
+
+<p><strong>This is not motivation. This is financial clarity.</strong></p>
+
+<a class="cta-btn" href="https://rzp.io/rzp/fNBuPeqL">
+Reserve My Spot ₹99
+</a>
+
+</div>
+</section>
+
+<!-- STEP 2 -->
 <section>
 <div class="container">
 
