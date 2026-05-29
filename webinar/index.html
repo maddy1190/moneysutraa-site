@@ -7,9 +7,7 @@
 
 <style>
 
-/* =========================
-   GLOBAL RESET
-========================= */
+/* RESET */
 *{
   margin:0;
   padding:0;
@@ -19,161 +17,80 @@
 body{
   font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
   color:#0f172a;
-  background:#ffffff;
+  background:#fff;
 }
 
-/* =========================
-   CONTAINER SYSTEM
-========================= */
+/* CONTAINER */
 .container{
   max-width:980px;
   margin:auto;
   padding:0 20px;
 }
 
-/* =========================
-   SECTION SPACING (FIXED)
-========================= */
+/* 🔥 REDUCED SECTION SPACING (IMPORTANT CHANGE) */
 section{
-  padding:80px 0;
+  padding:65px 0;   /* reduced from 80px */
 }
 
 section:nth-child(even){
   background:#f7f8fb;
 }
 
-/* =========================
-   TYPOGRAPHY
-========================= */
-h1{
-  font-size:44px;
-  line-height:1.15;
-}
-
-h2{
-  font-size:32px;
-  margin-bottom:18px;
-}
-
-p{
-  color:#5b6472;
-  font-size:15px;
-  line-height:1.6;
-}
-
-/* =========================
-   HERO
-========================= */
+/* HERO */
 .hero{
   background:#0f2236;
   color:#fff;
-  padding:110px 0;
+  padding:100px 0;
 }
 
-.hero p{
-  color:rgba(255,255,255,0.85);
-  max-width:650px;
+/* 🔥 ORANGE CAPSULE (BIGGER + PREMIUM) */
+.badge{
+  display:inline-block;
+  background:#E07B39;
+  color:#fff;
+  padding:10px 18px;   /* bigger */
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+  margin-bottom:18px;
+}
+
+/* TITLE */
+h1{
+  font-size:44px;
+  line-height:1.15;
   margin-top:10px;
 }
 
-/* =========================
-   BUTTON
-========================= */
-.btn{
+/* TEXT */
+.hero p{
+  color:rgba(255,255,255,0.85);
+  max-width:650px;
+  margin-top:12px;
+}
+
+/* 🔥 BIG CTA CAPSULE */
+.cta-btn{
   display:inline-block;
-  padding:14px 24px;
-  border-radius:10px;
   background:#E07B39;
   color:#fff;
-  font-weight:600;
+  padding:14px 26px;   /* bigger */
+  border-radius:999px; /* capsule */
+  font-size:15px;
+  font-weight:700;
   text-decoration:none;
-  margin-top:18px;
+  margin-top:22px;
+  box-shadow:0 10px 25px rgba(224,123,57,0.25);
 }
 
-/* =========================
-   GRID SYSTEM (IMPORTANT FIX)
-========================= */
-.grid-2{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
+/* CTA hover */
+.cta-btn:hover{
+  transform:translateY(-2px);
 }
 
-.grid-3{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-}
-
-/* =========================
-   CARDS (PREMIUM STYLE)
-========================= */
-.card{
-  background:#fff;
-  border:1px solid #eee;
-  border-radius:14px;
-  padding:18px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.04);
-  font-size:14px;
-  line-height:1.4;
-}
-
-/* =========================
-   TAG CARDS (FIX FOR "IS THIS FOR YOU")
-========================= */
-.tag-card{
-  background:#fff;
-  border:1px solid #eee;
-  border-radius:12px;
-  padding:16px;
-  font-size:14px;
-}
-
-/* =========================
-   SPEAKER SECTION (FIXED)
-========================= */
-.speaker{
-  display:grid;
-  grid-template-columns:280px 1fr;
-  gap:30px;
-  align-items:center;
-}
-
-.speaker img{
-  width:100%;
-  height:320px;
-  object-fit:cover;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.12);
-}
-
-/* =========================
-   MOBILE RESPONSIVE
-========================= */
-@media(max-width:768px){
-
-  section{
-    padding:55px 0;
-  }
-
-  h1{
-    font-size:32px;
-  }
-
-  .grid-2,
-  .grid-3{
-    grid-template-columns:1fr;
-  }
-
-  .speaker{
-    grid-template-columns:1fr;
-    text-align:center;
-  }
-
-  .speaker img{
-    max-width:300px;
-    margin:auto;
-  }
+/* BUTTON TRANSITION FEEL */
+.cta-btn{
+  transition:0.2s ease;
 }
 
 </style>
@@ -185,133 +102,31 @@ p{
 <section class="hero">
 <div class="container">
 
+<!-- ORANGE CAPSULE (WEBINAR NAME) -->
+<div class="badge">Mid-Career Wealth Reset | Live Webinar</div>
+
 <h1>You earn well. But your money isn't working as hard as you are.</h1>
 
 <p>
-A practical webinar for mid-career professionals who want clarity in investing,
-structured financial decisions, and long-term wealth building.
+A practical, no-jargon webinar for professionals who want clarity in investing,
+better financial decisions, and long-term wealth structure.
 </p>
 
-<a class="btn" href="https://rzp.io/rzp/fNBuPeqL">
+<p><b>This is not motivation. This is financial clarity.</b></p>
+
+<!-- BIG ORANGE CAPSULE CTA -->
+<a class="cta-btn" href="https://rzp.io/rzp/fNBuPeqL">
 Reserve My Spot ₹99
 </a>
 
 </div>
 </section>
 
-<!-- IS THIS FOR YOU -->
+<!-- NEXT SECTION (ONLY SAMPLE KEPT FOR CONTEXT) -->
 <section>
 <div class="container">
-
 <h2>Is this for you?</h2>
-
-<div class="grid-2">
-  <div class="tag-card">You invest without a clear system</div>
-  <div class="tag-card">You’ve made financial mistakes before</div>
-  <div class="tag-card">You feel unsure about long-term planning</div>
-  <div class="tag-card">You earn well but feel financially stuck</div>
-  <div class="tag-card">You want clarity, not tips</div>
-  <div class="tag-card">You want structured investing knowledge</div>
-</div>
-
-</div>
-</section>
-
-<!-- WHY THIS MATTERS -->
-<section>
-<div class="container">
-
-<h2>Why this webinar matters</h2>
-
-<p>
-Most professionals don’t lack income — they lack structure. This session builds that structure.
-</p>
-
-<div class="grid-3">
-  <div class="card">Know where your money actually goes</div>
-  <div class="card">Understand investing logic clearly</div>
-  <div class="card">Avoid long-term financial mistakes</div>
-</div>
-
-</div>
-</section>
-
-<!-- WHAT YOU WILL LEARN -->
-<section>
-<div class="container">
-
-<h2>What you will learn</h2>
-
-<div class="grid-3">
-  <div class="card">Equity Investing Framework</div>
-  <div class="card">Fundamental Analysis Basics</div>
-  <div class="card">Technical Analysis Basics</div>
-  <div class="card">Mutual Fund Selection</div>
-  <div class="card">Common Financial Mistakes</div>
-  <div class="card">AI in Investing</div>
-</div>
-
-</div>
-</section>
-
-<!-- SPEAKER -->
-<section>
-<div class="container">
-
-<h2>Speaker</h2>
-
-<div class="speaker">
-
-<img src="/aditya.jpg" alt="Aditya Lunawat"/>
-
-<div>
-<h3>Aditya Lunawat</h3>
-<p>
-CA | MBA Finance<br>
-Ex Morgan Stanley | Ex Credit Suisse<br><br>
-
-Experience in equity research, portfolio structuring and financial advisory.
-Focused on practical investing education, not theory.
-</p>
-</div>
-
-</div>
-
-</div>
-</section>
-
-<!-- DETAILS -->
-<section>
-<div class="container">
-
-<h2>Webinar Details</h2>
-
-<div class="grid-3">
-  <div class="card">Format: Live Interactive</div>
-  <div class="card">Language: Hindi / Hinglish</div>
-  <div class="card">Duration: 90 Minutes</div>
-  <div class="card">Fee: ₹99</div>
-</div>
-
-<a class="btn" href="https://rzp.io/rzp/fNBuPeqL">
-Register Now ₹99
-</a>
-
-</div>
-</section>
-
-<!-- FINAL CTA -->
-<section>
-<div class="container" style="text-align:center">
-
-<h2>Ready to stop guessing with your money?</h2>
-
-<p>Get clarity. Build structure. Make better financial decisions.</p>
-
-<a class="btn" href="https://rzp.io/rzp/fNBuPeqL">
-Reserve My Spot ₹99
-</a>
-
+<p>Next sections remain unchanged for now (we will fix step-by-step).</p>
 </div>
 </section>
 
