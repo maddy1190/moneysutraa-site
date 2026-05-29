@@ -27,72 +27,97 @@ body{
   padding:0 20px;
 }
 
-/* SECTION SPACING (kept tight as per previous fix) */
+/* 🔥 TIGHT SECTION SYSTEM (KEY FIX) */
 section{
-  padding:65px 0;
+  padding:60px 0;   /* reduced from 80px */
 }
 
-/* HERO */
+/* HERO (COMPACT + PREMIUM) */
 .hero{
   background:#0f2236;
   color:#fff;
-  padding:100px 0;
+
+  /* 🔥 TOP SPACE REDUCED SIGNIFICANTLY */
+  padding:70px 0 60px;
 }
 
-/* ORANGE CAPSULE */
+/* OPTIONAL: subtle upward alignment (premium feel trick) */
+.hero .container{
+  transform:translateY(-4px);
+}
+
+/* BADGE (SMALL + CLEAN) */
 .badge{
   display:inline-block;
   background:#E07B39;
   color:#fff;
-  padding:10px 18px;
+  padding:8px 14px;   /* slightly tighter */
   border-radius:999px;
-  font-size:13px;
+  font-size:12px;
   font-weight:600;
-  margin-bottom:18px;
+  margin-bottom:14px;
 }
 
 /* HEADING */
 h1{
   font-size:44px;
-  line-height:1.15;
-  margin-bottom:14px;
-}
-
-/* 🔥 FIXED PARAGRAPH (MAIN FIX) */
-.hero p{
-  color:rgba(255,255,255,0.85);
-
-  /* IMPORTANT FIX */
-  max-width:620px;        /* prevents stretching */
-  font-size:16px;
-  line-height:1.7;        /* breathing space */
+  line-height:1.12;
   margin-bottom:12px;
 }
 
-/* EXTRA EMPHASIS LINE */
+/* 🔥 PARAGRAPH (TIGHTER + CONTROLLED WIDTH) */
+.hero p{
+  color:rgba(255,255,255,0.85);
+  max-width:600px;
+  font-size:15.5px;
+  line-height:1.65;
+  margin-bottom:10px;
+}
+
+/* STRONG LINE */
 .hero p strong{
   display:block;
-  margin-top:8px;
+  margin-top:6px;
   color:#ffffff;
 }
 
-/* CTA */
+/* 🔥 CTA (SLIGHTLY MORE COMPACT) */
 .cta-btn{
   display:inline-block;
   background:#E07B39;
   color:#fff;
-  padding:14px 26px;
+  padding:13px 22px;
   border-radius:999px;
-  font-size:15px;
+  font-size:14.5px;
   font-weight:700;
   text-decoration:none;
-  margin-top:18px;
-  box-shadow:0 10px 25px rgba(224,123,57,0.25);
+  margin-top:14px;
+  box-shadow:0 8px 20px rgba(224,123,57,0.22);
   transition:0.2s ease;
 }
 
 .cta-btn:hover{
   transform:translateY(-2px);
+}
+
+/* MOBILE TIGHTENING */
+@media(max-width:768px){
+
+  section{
+    padding:45px 0;
+  }
+
+  .hero{
+    padding:60px 0 50px;
+  }
+
+  h1{
+    font-size:32px;
+  }
+
+  .hero p{
+    max-width:100%;
+  }
 }
 
 </style>
