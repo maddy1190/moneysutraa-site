@@ -16,7 +16,7 @@
 
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
-  background:#ffffff;
+  background:#fff;
   color:#0f172a;
 }
 
@@ -125,7 +125,7 @@ h2{
   white-space:nowrap;
 }
 
-/* ================= WHY THIS WEBINAR MATTERS (FIXED) ================= */
+/* ================= WHY THIS MATTERS ================= */
 .subtext{
   font-size:14.5px;
   color:#475569;
@@ -140,7 +140,6 @@ h2{
   gap:14px;
 }
 
-/* DARK CARDS ONLY (corrected system) */
 .card-dark{
   background:#0f2236;
   border:1px solid rgba(255,255,255,0.08);
@@ -159,6 +158,55 @@ h2{
   font-size:13px;
   line-height:1.5;
   color:rgba(255,255,255,0.75);
+}
+
+/* ================= SPEAKER SECTION (NEW PREMIUM VERSION) ================= */
+
+.speaker{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:28px;
+  align-items:center;
+}
+
+.speaker-img{
+  background:#0f2236;
+  padding:10px;
+  border-radius:16px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.15);
+}
+
+.speaker-img img{
+  width:100%;
+  height:340px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.speaker-content h3{
+  font-size:24px;
+  margin-bottom:6px;
+  letter-spacing:-0.3px;
+}
+
+.role{
+  font-size:13px;
+  color:#E07B39;
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.desc{
+  font-size:14px;
+  color:#475569;
+  line-height:1.6;
+  margin-bottom:14px;
+}
+
+.points div{
+  font-size:13px;
+  color:#334155;
+  margin-bottom:6px;
 }
 
 /* ================= MOBILE ================= */
@@ -182,6 +230,14 @@ h2{
 
   .grid3{
     grid-template-columns:1fr;
+  }
+
+  .speaker{
+    grid-template-columns:1fr;
+  }
+
+  .speaker-img img{
+    height:300px;
   }
 }
 
@@ -243,7 +299,7 @@ Reserve My Spot ₹99
 </div>
 </section>
 
-<!-- ================= WHY THIS WEBINAR MATTERS ================= -->
+<!-- ================= WHY THIS MATTERS ================= -->
 <section>
 <div class="container">
 
@@ -268,6 +324,44 @@ Most professionals don’t lack income — they lack structure. This session bui
   <div class="card-dark">
     <h3>Avoid long-term financial mistakes</h3>
     <p>Small errors today compound into major wealth gaps over time.</p>
+  </div>
+
+</div>
+
+</div>
+</section>
+
+<!-- ================= SPEAKER ================= -->
+<section>
+<div class="container">
+
+<h2>Speaker</h2>
+
+<div class="speaker">
+
+  <div class="speaker-img">
+    <img src="/aditya.jpg" alt="Aditya Lunawat">
+  </div>
+
+  <div class="speaker-content">
+
+    <h3>Aditya Lunawat</h3>
+
+    <p class="role">
+      CA | MBA Finance | Ex Morgan Stanley | Ex Credit Suisse
+    </p>
+
+    <p class="desc">
+      A finance professional with experience in equity research, portfolio structuring,
+      and institutional investment frameworks.
+    </p>
+
+    <div class="points">
+      <div>• Institutional equity research experience</div>
+      <div>• Portfolio structuring across market cycles</div>
+      <div>• Focus on practical investing education</div>
+    </div>
+
   </div>
 
 </div>
