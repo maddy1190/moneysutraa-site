@@ -1,420 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Webinar Seat Confirmed | MoneySutraa</title>
-
-  <style>
-    :root {
-      --navy: #183153;
-      --navy-dark: #0B1B2E;
-      --gold: #D4A72C;
-      --cream: #F7F3EA;
-      --soft: #FFFDF8;
-      --white: #FFFFFF;
-      --text: #243142;
-      --muted: #5E6F82;
-      --line: #E6DAC4;
-      --green: #1F7A5C;
-      --shadow: 0 18px 45px rgba(24, 49, 83, 0.12);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--text);
-      background: var(--cream);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .page {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at top right, rgba(212, 167, 44, 0.18), transparent 32%),
-        linear-gradient(135deg, #0F223A 0%, #183153 54%, #0B1B2E 100%);
-      padding: 28px 18px;
-    }
-
-    .nav {
-      max-width: 960px;
-      margin: 0 auto 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-      gap: 16px;
-    }
-
-    .brand {
-      font-size: 23px;
-      font-weight: 850;
-      letter-spacing: -0.3px;
-    }
-
-    .brand span {
-      color: var(--gold);
-    }
-
-    .nav-note {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.76);
-      text-align: right;
-    }
-
-    .wrap {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .confirmation-card {
-      background: rgba(255, 255, 255, 0.98);
-      border: 1px solid rgba(255, 255, 255, 0.74);
-      border-radius: 32px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .top {
-      padding: 38px 32px 26px;
-      text-align: center;
-      background:
-        radial-gradient(circle at top, rgba(212, 167, 44, 0.20), transparent 40%),
-        #FFFDF8;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .success-icon {
-      width: 70px;
-      height: 70px;
-      margin: 0 auto 18px;
-      border-radius: 50%;
-      background: rgba(31, 122, 92, 0.12);
-      color: var(--green);
-      display: grid;
-      place-items: center;
-      font-size: 34px;
-      font-weight: 900;
-      border: 1px solid rgba(31, 122, 92, 0.22);
-    }
-
-    h1 {
-      color: var(--navy);
-      font-size: clamp(30px, 5vw, 46px);
-      line-height: 1.1;
-      margin: 0 0 14px;
-      letter-spacing: -1px;
-    }
-
-    .subtitle {
-      max-width: 680px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .content {
-      padding: 32px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-bottom: 28px;
-    }
-
-    .box {
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 22px;
-    }
-
-    .box h2 {
-      color: var(--navy);
-      font-size: 21px;
-      margin: 0 0 12px;
-      letter-spacing: -0.3px;
-    }
-
-    .box p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .steps {
-      display: grid;
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .step {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      background: #FFFFFF;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 16px;
-    }
-
-    .step-number {
-      width: 32px;
-      height: 32px;
-      flex: 0 0 32px;
-      border-radius: 50%;
-      background: var(--navy);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-weight: 850;
-    }
-
-    .step strong {
-      display: block;
-      color: var(--navy);
-      margin-bottom: 3px;
-    }
-
-    .step span {
-      color: var(--muted);
-    }
-
-    .support-card {
-      background: linear-gradient(135deg, #183153, #0B1B2E);
-      color: white;
-      border-radius: 26px;
-      padding: 26px;
-      margin-top: 26px;
-      text-align: center;
-    }
-
-    .support-card h2 {
-      margin: 0 0 8px;
-      font-size: 25px;
-      letter-spacing: -0.4px;
-    }
-
-    .support-card p {
-      margin: 0 auto 20px;
-      max-width: 650px;
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    .actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 850;
-      transition: 0.2s ease;
-      font-size: 15px;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: #13243B;
-      box-shadow: 0 14px 30px rgba(212, 167, 44, 0.24);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.10);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-    }
-
-    .note {
-      margin-top: 24px;
-      padding: 18px;
-      border-radius: 18px;
-      background: #F9F0D8;
-      border: 1px solid #E7CC85;
-      color: var(--navy);
-      font-size: 14px;
-    }
-
-    .policy-links {
-      margin-top: 22px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 14px;
-    }
-
-    .policy-links a {
-      color: var(--navy);
-      text-decoration: none;
-      font-weight: 800;
-    }
-
-    .footer {
-      max-width: 960px;
-      margin: 24px auto 0;
-      color: rgba(255, 255, 255, 0.68);
-      font-size: 13px;
-      text-align: center;
-    }
-
-    @media (max-width: 760px) {
-      .page {
-        padding: 24px 14px;
-      }
-
-      .nav {
-        margin-bottom: 32px;
-      }
-
-      .nav-note {
-        display: none;
-      }
-
-      .top,
-      .content {
-        padding: 28px 20px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .actions {
-        align-items: stretch;
-      }
-
-      .btn {
-        width: 100%;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Confirmed | Mid-Career Wealth Reset</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,Arial,sans-serif;background:#f8fafc;color:#101828;line-height:1.6}
+.page{
+min-height:100vh;
+padding:40px 20px;
+background:
+radial-gradient(circle at top right,rgba(224,123,57,.18),transparent 35%),
+linear-gradient(135deg,#081B33,#10284A);
+}
+.container{max-width:920px;margin:0 auto}
+.card{
+background:#fff;
+border-radius:30px;
+overflow:hidden;
+box-shadow:0 20px 50px rgba(0,0,0,.12);
+}
+.hero{
+padding:50px 30px;
+text-align:center;
+border-bottom:1px solid #eef2f7;
+}
+.success{
+width:80px;height:80px;margin:0 auto 20px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+background:#ecfdf3;color:#16a34a;font-size:38px;font-weight:700;
+}
+.hero h1{font-size:42px;color:#081B33;margin-bottom:10px}
+.hero h2{font-size:28px;color:#E07B39;margin-bottom:10px}
+.hero p{color:#475569}
+.date-pill{
+display:inline-block;margin-top:18px;
+padding:12px 18px;border-radius:999px;
+background:#FFF4E5;color:#7A4B00;font-weight:700;
+}
+.content{padding:30px}
+.community{
+background:#F7FFF9;border:2px solid #C7F0D4;
+border-radius:24px;padding:28px;text-align:center;margin-bottom:24px;
+}
+.community h3{font-size:28px;color:#081B33;margin-bottom:10px}
+.community ul{list-style:none;margin:18px 0}
+.community li{margin:8px 0}
+.community-btn{
+display:inline-block;background:#25D366;color:#fff;
+padding:16px 26px;border-radius:14px;text-decoration:none;font-weight:800;
+}
+.community-btn:hover{opacity:.92}
+.boxes{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px}
+.box{
+background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:22px;
+}
+.box h4{color:#081B33;margin-bottom:8px}
+.support{
+background:#081B33;color:#fff;border-radius:24px;padding:30px;text-align:center;
+}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+.btn{
+padding:14px 20px;border-radius:14px;text-decoration:none;font-weight:700;
+}
+.btn-primary{background:#E07B39;color:#fff}
+.btn-secondary{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.15);
+color:#fff;
+}
+.note{
+margin-top:24px;padding:18px;border-radius:18px;
+background:#FFF7E8;border:1px solid #FFD89B;
+}
+.footer-links{
+margin-top:24px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;
+}
+.footer-links a{
+text-decoration:none;color:#475569;font-weight:600;
+}
+.footer{
+text-align:center;color:#cbd5e1;margin-top:22px;
+}
+@media(max-width:768px){
+.hero h1{font-size:32px}
+.hero h2{font-size:22px}
+.boxes{grid-template-columns:1fr}
+.actions{flex-direction:column}
+.btn{width:100%;text-align:center}
+}
+</style>
 </head>
-
 <body>
-  <main class="page">
-    <div class="nav">
-      <div class="brand">Money<span>Sutraa</span></div>
-      <div class="nav-note">Financial education & awareness</div>
-    </div>
+<div class="page">
+<div class="container">
+<div class="card">
 
-    <div class="wrap">
-      <section class="confirmation-card">
-        <div class="top">
-          <div class="success-icon">✓</div>
-          <h1>Your Webinar Seat is Confirmed</h1>
-          <p class="subtitle">
-            Thank you for registering for MoneySutraa’s Mid-Career Wealth Reset webinar.
-            Your payment has been received and your seat is reserved.
-          </p>
-        </div>
+<div class="hero">
+<div class="success">✓</div>
+<h1>Thank You for Registering</h1>
+<h2>Mid-Career Wealth Reset</h2>
+<p>Your Registration is Confirmed</p>
+<div class="date-pill">📅 Date: 14 June</div>
+</div>
 
-        <div class="content">
-          <div class="grid">
-            <div class="box">
-              <h2>Webinar Details</h2>
-              <p>
-                Webinar: Mid-Career Wealth Reset<br />
-                Mode: Live online webinar<br />
-                Date & Time: Will be shared in confirmation communication
-              </p>
-            </div>
+<div class="content">
 
-            <div class="box">
-              <h2>Access Details</h2>
-              <p>
-                The webinar joining link will be shared privately with confirmed participants
-                through WhatsApp or email. Please do not share the link publicly.
-              </p>
-            </div>
-          </div>
+<div class="community">
+<h3>🎉 Important Next Step</h3>
+<p><strong>Join the Official WhatsApp Community</strong></p>
+<p>All webinar updates will be shared there.</p>
+<ul>
+<li>✅ Webinar Joining Link</li>
+<li>✅ Reminder Notifications</li>
+<li>✅ Important Announcements</li>
+<li>✅ Session Resources</li>
+</ul>
+<a class="community-btn" href="https://chat.whatsapp.com/CFpp39DU9ThH9KRcI91nCJ" target="_blank">
+Join WhatsApp Community
+</a>
+</div>
 
-          <div class="box">
-            <h2>What happens next?</h2>
+<div class="boxes">
+<div class="box">
+<h4>Webinar Details</h4>
+<p>
+Webinar: Mid-Career Wealth Reset<br>
+Date: 14 June<br>
+Mode: Live Online Webinar
+</p>
+</div>
 
-            <div class="steps">
-              <div class="step">
-                <div class="step-number">1</div>
-                <div>
-                  <strong>Save the webinar date</strong>
-                  <span>Keep the date and time noted once you receive the final confirmation message.</span>
-                </div>
-              </div>
+<div class="box">
+<h4>Joining Link</h4>
+<p>
+Joining Link will be Shared in WhatsApp Community.<br>
+Please join the community to receive all webinar updates.
+</p>
+</div>
+</div>
 
-              <div class="step">
-                <div class="step-number">2</div>
-                <div>
-                  <strong>Watch for WhatsApp/email updates</strong>
-                  <span>Joining instructions and important reminders will be sent before the session.</span>
-                </div>
-              </div>
+<div class="box">
+<h4>What Happens Next?</h4>
+<p>
+1. Join the WhatsApp Community.<br>
+2. Watch for webinar updates and reminders.<br>
+3. Join the webinar 5 minutes before the scheduled time.
+</p>
+</div>
 
-              <div class="step">
-                <div class="step-number">3</div>
-                <div>
-                  <strong>Join 5 minutes early</strong>
-                  <span>Use the webinar link on time so you do not miss the opening instructions.</span>
-                </div>
-              </div>
-            </div>
-          </div>
+<br>
 
-          <div class="support-card">
-            <h2>Need help with your registration?</h2>
-            <p>
-              For payment confirmation, access issues, or webinar-related support, contact the MoneySutraa team.
-            </p>
+<div class="support">
+<h3>Need Help?</h3>
+<p>For registration or access-related support, contact the Webinar Support Team.</p>
 
-            <div class="actions">
-              <a
-                class="btn btn-primary"
-                href="https://wa.me/919311595912?text=Hi%20MoneySutraa%2C%20I%20have%20registered%20for%20the%20webinar%20and%20need%20support."
-                target="_blank"
-                rel="noopener"
-              >
-                WhatsApp Support
-              </a>
+<div class="actions">
+<a class="btn btn-primary"
+href="https://wa.me/919311595912?text=Hi%2C%20I%20have%20registered%20for%20the%20webinar%20and%20need%20help."
+target="_blank">
+WhatsApp Support
+</a>
 
-              <a class="btn btn-secondary" href="mailto:wecare@moneysutraa.com">
-                Email Support
-              </a>
-            </div>
-          </div>
+<a class="btn btn-secondary" href="mailto:wecare@moneysutraa.com">
+Email Support
+</a>
+</div>
+</div>
 
-          <div class="note">
-            <strong>Important:</strong> MoneySutraa webinars are for financial education and awareness only.
-            They do not constitute personalized investment advice, tax advice, legal advice, or any guarantee of returns.
-          </div>
+<div class="note">
+<strong>Important:</strong>
+This webinar is intended for educational purposes only and should not be considered personalized investment, tax, legal, or financial advice.
+</div>
 
-          <div class="policy-links">
-            <a href="/terms/">Terms & Conditions</a>
-            <a href="/refund-policy/">Refund & Cancellation Policy</a>
-            <a href="/privacy-policy/">Privacy Policy</a>
-          </div>
-        </div>
-      </section>
-    </div>
+<div class="footer-links">
+<a href="/terms/">Terms & Conditions</a>
+<a href="/refund-policy/">Refund Policy</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+</div>
 
-    <div class="footer">
-      © MoneySutraa. Financial education and awareness.
-    </div>
-  </main>
+</div>
+</div>
+
+<div class="footer">
+Thank you for registering. We look forward to seeing you in the webinar.
+</div>
+
+</div>
+</div>
 </body>
 </html>
