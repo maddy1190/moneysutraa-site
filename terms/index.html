@@ -1,500 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Terms & Conditions | MoneySutraa</title>
-  <meta name="description" content="Terms and conditions for online webinars, workshops, educational sessions and related digital services offered through the MoneySutraa website." />
-
-  <style>
-    :root {
-      --navy: #183153;
-      --navy-dark: #0B1B2E;
-      --gold: #D4A72C;
-      --cream: #F7F3EA;
-      --soft: #FFFDF8;
-      --white: #FFFFFF;
-      --text: #243142;
-      --muted: #5E6F82;
-      --line: #E6DAC4;
-      --shadow: 0 18px 45px rgba(24, 49, 83, 0.12);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--text);
-      background: var(--cream);
-      line-height: 1.65;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .hero {
-      background:
-        radial-gradient(circle at top right, rgba(212, 167, 44, 0.22), transparent 34%),
-        linear-gradient(135deg, #0F223A 0%, #183153 55%, #0B1B2E 100%);
-      color: white;
-      padding: 28px 18px 72px;
-    }
-
-    .nav {
-      max-width: 1040px;
-      margin: 0 auto 54px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .brand {
-      font-size: 23px;
-      font-weight: 850;
-      letter-spacing: -0.3px;
-      text-decoration: none;
-    }
-
-    .brand span {
-      color: var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    .nav-links a {
-      text-decoration: none;
-    }
-
-    .hero-inner {
-      max-width: 1040px;
-      margin: 0 auto;
-    }
-
-    .badge {
-      display: inline-flex;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      color: #FCECC1;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 750;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(34px, 5vw, 56px);
-      line-height: 1.08;
-      margin: 0 0 16px;
-      letter-spacing: -1.4px;
-    }
-
-    .hero p {
-      max-width: 760px;
-      margin: 0;
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.82);
-    }
-
-    .content-wrap {
-      max-width: 1040px;
-      margin: -38px auto 0;
-      padding: 0 18px 72px;
-    }
-
-    .policy-card {
-      background: rgba(255, 255, 255, 0.98);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .policy-top {
-      padding: 28px 32px;
-      background: #FFFDF8;
-      border-bottom: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 18px;
-      align-items: center;
-    }
-
-    .policy-top h2 {
-      margin: 0 0 6px;
-      color: var(--navy);
-      font-size: 24px;
-      letter-spacing: -0.4px;
-    }
-
-    .policy-top p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .status-pill {
-      background: #F9F0D8;
-      border: 1px solid #E7CC85;
-      color: var(--navy);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 850;
-      white-space: nowrap;
-    }
-
-    .policy-body {
-      padding: 34px 32px;
-    }
-
-    .section {
-      padding: 24px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section:first-child {
-      padding-top: 0;
-    }
-
-    .section:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .section h3 {
-      margin: 0 0 8px;
-      color: var(--navy);
-      font-size: 21px;
-      letter-spacing: -0.3px;
-    }
-
-    .section p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    .highlight-box {
-      margin-top: 20px;
-      background: #F9F0D8;
-      border: 1px solid #E7CC85;
-      border-radius: 20px;
-      padding: 20px;
-      color: var(--navy);
-    }
-
-    .support-box {
-      margin-top: 28px;
-      background: linear-gradient(135deg, #183153, #0B1B2E);
-      color: white;
-      border-radius: 24px;
-      padding: 26px;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 22px;
-      align-items: center;
-    }
-
-    .support-box h3 {
-      margin: 0 0 8px;
-      color: white;
-      font-size: 24px;
-    }
-
-    .support-box p {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    .support-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 18px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 850;
-      font-size: 14px;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: #13243B;
-    }
-
-    .btn-secondary {
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.24);
-      background: rgba(255, 255, 255, 0.10);
-    }
-
-    .footer {
-      background: #071525;
-      color: rgba(255, 255, 255, 0.72);
-      padding: 28px 18px;
-      font-size: 14px;
-    }
-
-    .footer-inner {
-      max-width: 1040px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .footer a {
-      color: rgba(255, 255, 255, 0.82);
-      text-decoration: none;
-      margin-left: 12px;
-    }
-
-    @media (max-width: 760px) {
-      .nav {
-        margin-bottom: 38px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .policy-top,
-      .support-box {
-        grid-template-columns: 1fr;
-      }
-
-      .policy-top,
-      .policy-body {
-        padding: 24px 20px;
-      }
-
-      .support-actions {
-        justify-content: stretch;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-      }
-
-      .footer a {
-        margin-left: 0;
-        margin-right: 12px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms & Conditions</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f8fafc;color:#101828;line-height:1.7}
+.hero{background:linear-gradient(135deg,#081B33,#10284A);color:#fff;padding:70px 20px}
+.container{max-width:1100px;margin:0 auto}
+.badge{display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);margin-bottom:16px}
+.hero h1{font-size:56px;margin-bottom:12px}
+.hero p{max-width:760px;color:#dbe4f0}
+.content{max-width:1100px;margin:-40px auto 60px;padding:0 20px}
+.card{background:#fff;border-radius:28px;box-shadow:0 20px 50px rgba(0,0,0,.08);overflow:hidden}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:30px}
+.sbox{background:#f8fafc;border:1px solid #e5e7eb;border-radius:20px;padding:20px}
+.sbox h3{margin-bottom:8px;color:#081B33}
+.body{padding:30px}
+.section{padding:22px 0;border-bottom:1px solid #e5e7eb}
+.section:last-child{border-bottom:none}
+.section h2{color:#081B33;margin-bottom:8px}
+.notice{margin-top:25px;background:#FFF4E5;border:1px solid #FFD39A;border-radius:20px;padding:20px}
+.support{margin-top:30px;background:#081B33;color:#fff;border-radius:24px;padding:30px;text-align:center}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.btn{padding:14px 20px;border-radius:14px;text-decoration:none;font-weight:700}
+.primary{background:#E07B39;color:#fff}
+.secondary{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff}
+.footer-links{margin-top:24px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.footer-links a{text-decoration:none;color:#475569;font-weight:600}
+@media(max-width:768px){.hero h1{font-size:38px}.summary{grid-template-columns:1fr}}
+</style>
 </head>
-
 <body>
-  <header class="hero">
-    <nav class="nav">
-      <a class="brand" href="/">Money<span>Sutraa</span></a>
+<section class="hero">
+<div class="container">
+<div class="badge">Website Terms</div>
+<h1>Terms & Conditions</h1>
+<p>Please read these terms before registering for the webinar or using this website. By registering, you agree to the terms outlined below.</p>
+</div>
+</section>
 
-      <div class="nav-links">
-        <a href="/webinar/">Webinar</a>
-        <a href="/refund-policy/">Refund Policy</a>
-        <a href="/privacy-policy/">Privacy</a>
-      </div>
-    </nav>
+<div class="content">
+<div class="card">
 
-    <div class="hero-inner">
-      <div class="badge">Website Terms</div>
-      <h1>Terms & Conditions</h1>
-      <p>
-        These terms apply to use of this website, online webinars, workshops, educational sessions,
-        communication, and related digital services offered through this platform.
-      </p>
-    </div>
-  </header>
+<div class="summary">
+<div class="sbox"><h3>Educational Purpose</h3><p>General financial education only.</p></div>
+<div class="sbox"><h3>No Investment Advice</h3><p>Not personalized financial advice.</p></div>
+<div class="sbox"><h3>Webinar Access</h3><p>For registered participants only.</p></div>
+<div class="sbox"><h3>Support</h3><p>WhatsApp & Email assistance available.</p></div>
+</div>
 
-  <main class="content-wrap">
-    <section class="policy-card">
-      <div class="policy-top">
-        <div>
-          <h2>Please read before registering</h2>
-          <p>By accessing this website or registering for a paid session, you agree to the terms below.</p>
-        </div>
+<div class="body">
 
-        <div class="status-pill">Applies to website & webinars</div>
-      </div>
+<div class="section"><h2>1. Nature of Services</h2><p>This website provides financial education, webinars, workshops and related educational communication intended for general learning purposes.</p></div>
 
-      <div class="policy-body">
-        <div class="section">
-          <h3>1. Nature of Services</h3>
-          <p>
-            This website provides financial education, awareness content, webinars, workshops, and related digital communication.
-            The sessions are intended for general educational purposes only.
-          </p>
-        </div>
+<div class="section"><h2>2. No Personalized Investment Advice</h2><p>Information shared through the website, webinars or communications does not constitute personalized investment, legal, tax or financial advice.</p></div>
 
-        <div class="section">
-          <h3>2. No Personalized Investment Advice</h3>
-          <p>
-            Information shared through this website, webinars, workshops, messages, documents, or other communication channels
-            does not constitute personalized investment advice, legal advice, tax advice, or a recommendation to buy, sell,
-            hold, or switch any specific financial product.
-          </p>
-        </div>
+<div class="section"><h2>3. User Responsibility</h2><p>Participants are responsible for evaluating their own financial situation and should consult qualified professionals where appropriate.</p></div>
 
-        <div class="section">
-          <h3>3. User Responsibility</h3>
-          <p>
-            Participants and website visitors are responsible for evaluating their own financial situation before making any
-            financial, investment, tax, or legal decision. Users should consult a qualified professional where required.
-          </p>
-        </div>
+<div class="section"><h2>4. Webinar Registration</h2><p>Registration is confirmed only after successful payment. Participants must provide accurate registration details.</p></div>
 
-        <div class="section">
-          <h3>4. Webinar Registration</h3>
-          <p>
-            Registration for paid webinars or workshops is confirmed only after successful payment through the approved payment
-            gateway. Participants must provide accurate details such as name, email address, and phone number to receive
-            confirmation and access-related communication.
-          </p>
-        </div>
+<div class="section"><h2>5. Webinar Access</h2><p>Joining links are intended only for registered participants and should not be publicly shared or forwarded.</p></div>
 
-        <div class="section">
-          <h3>5. Webinar Access</h3>
-          <p>
-            Webinar joining details may be shared through email, WhatsApp, SMS, or another communication channel.
-            The joining link is intended only for confirmed participants and should not be shared publicly or forwarded to
-            unregistered users.
-          </p>
-        </div>
+<div class="section"><h2>6. Payments</h2><p>Payments are processed through approved payment gateway providers and are subject to successful transaction verification.</p></div>
 
-        <div class="section">
-          <h3>6. Payments</h3>
-          <p>
-            Payments for paid webinars, workshops, or educational sessions are collected through approved payment gateway partners.
-            The payable amount will be displayed before registration. Payment confirmation is subject to successful transaction
-            verification.
-          </p>
-        </div>
+<div class="section"><h2>7. Refunds & Cancellations</h2><p>Refunds, cancellations, duplicate payments and no-show situations are governed by the Refund Policy available on this website.</p></div>
 
-        <div class="section">
-          <h3>7. Refunds and Cancellations</h3>
-          <p>
-            Refunds, cancellations, duplicate payments, no-show cases, and technical disruptions are governed by the Refund &
-            Cancellation Policy available on this website.
-          </p>
-        </div>
+<div class="section"><h2>8. Changes to Schedule</h2><p>Sessions may be postponed, modified or cancelled due to technical, operational or unavoidable circumstances.</p></div>
 
-        <div class="section">
-          <h3>8. Changes to Schedule</h3>
-          <p>
-            A webinar or workshop may be rescheduled, postponed, modified, or cancelled due to technical, operational, speaker,
-            or unavoidable circumstances. In such cases, participants may be informed using the contact details provided during
-            registration.
-          </p>
-        </div>
+<div class="section"><h2>9. Intellectual Property</h2><p>Webinar materials, presentations and educational resources may not be copied, distributed, sold or reproduced without permission.</p></div>
 
-        <div class="section">
-          <h3>9. Intellectual Property</h3>
-          <p>
-            Webinar materials, presentations, documents, recordings, templates, text, graphics, and other educational content
-            are the property of their respective creators or organisers. They must not be copied, recorded, distributed,
-            uploaded, sold, or reproduced without permission.
-          </p>
-        </div>
+<div class="section"><h2>10. Communication Consent</h2><p>Users may receive registration confirmations, reminders, joining links and educational updates through email, WhatsApp, phone or SMS.</p></div>
 
-        <div class="section">
-          <h3>10. Communication Consent</h3>
-          <p>
-            By submitting details or registering for a webinar, users may receive communication related to registration,
-            payment confirmation, reminders, joining links, support, and relevant educational updates through email, phone,
-            WhatsApp, SMS, or similar channels.
-          </p>
-        </div>
+<div class="section"><h2>11. Limitation of Liability</h2><p>The organisers shall not be responsible for any financial loss or decision made based on general educational information shared during sessions.</p></div>
 
-        <div class="section">
-          <h3>11. Limitation of Liability</h3>
-          <p>
-            The website, webinar organisers, speakers, and support team shall not be responsible for any financial loss,
-            investment loss, tax consequence, or decision made by participants based on general educational information shared
-            through the website or sessions.
-          </p>
-        </div>
+<div class="section"><h2>12. Accuracy of Information</h2><p>Reasonable care is taken to provide accurate information, but users should independently verify important details before acting on them.</p></div>
 
-        <div class="section">
-          <h3>12. Accuracy of Information</h3>
-          <p>
-            While reasonable care is taken to present useful and relevant information, errors or omissions may occur.
-            Information may also change over time. Users should independently verify important details before acting on them.
-          </p>
-        </div>
+<div class="section"><h2>13. Policy Updates</h2><p>These Terms & Conditions may be updated periodically. Continued use indicates acceptance of revised terms.</p></div>
 
-        <div class="section">
-          <h3>13. Policy Updates</h3>
-          <p>
-            These Terms & Conditions may be updated from time to time. Continued use of the website or participation in sessions
-            after updates means the user accepts the revised terms.
-          </p>
+<div class="notice">
+<strong>Important Disclaimer:</strong> All webinars are intended for educational purposes only. Nothing shared during the webinar should be considered personalized investment, legal, tax or financial advice.
+</div>
 
-          <div class="highlight-box">
-            <strong>Important Disclaimer:</strong> All webinars and workshops are for financial education and awareness only.
-            They do not provide personalized investment advice, tax advice, legal advice, or any guarantee of returns.
-            No investment decision should be taken only on the basis of a general educational session.
-          </div>
-        </div>
+<div class="support">
+<h2>Need Help?</h2>
+<p>For registration, payment or webinar-related support, contact us.</p>
+<div class="btns">
+<a class="btn primary" href="https://wa.me/919311595912?text=Hi%2C%20I%20need%20help%20with%20webinar%20registration.">WhatsApp Support</a>
+<a class="btn secondary" href="mailto:wecare@moneysutraa.com">Email Support</a>
+</div>
+</div>
 
-        <div class="support-box">
-          <div>
-            <h3>Need help with registration?</h3>
-            <p>
-              For payment, access, or webinar-related support, contact the support team using WhatsApp or email.
-            </p>
-          </div>
+<div class="footer-links">
+<a href="/terms/">Terms & Conditions</a>
+<a href="/refund-policy/">Refund Policy</a>
+<a href="/privacy-policy/">Privacy Policy</a>
+</div>
 
-          <div class="support-actions">
-            <a
-              class="btn btn-primary"
-              href="https://wa.me/919311595912?text=Hi%2C%20I%20need%20help%20with%20webinar%20registration."
-              target="_blank"
-              rel="noopener"
-            >
-              WhatsApp Support
-            </a>
-
-            <a class="btn btn-secondary" href="mailto:wecare@moneysutraa.com">
-              Email Support
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <div>© MoneySutraa. Financial education and awareness.</div>
-      <div>
-        <a href="/webinar/">Webinar</a>
-        <a href="/refund-policy/">Refund Policy</a>
-        <a href="/privacy-policy/">Privacy Policy</a>
-      </div>
-    </div>
-  </footer>
+</div>
+</div>
+</div>
 </body>
 </html>
