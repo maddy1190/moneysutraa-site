@@ -75,7 +75,68 @@ h1{
   margin-top:10px;
 }
 
-/* ================= SPEAKER (PRO UPGRADE) ================= */
+/* ================= IS THIS FOR YOU ================= */
+.grid{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:16px 20px;
+  margin-top:18px;
+}
+
+.left{
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+  color:#E07B39;
+}
+
+.right{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.pill{
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:12.5px;
+  color:#fff;
+  background:linear-gradient(135deg,#102a43,#0b1f33);
+}
+
+/* ================= WHY THIS MATTERS ================= */
+.subtext{
+  font-size:14.5px;
+  color:#475569;
+  margin-bottom:18px;
+  line-height:1.6;
+}
+
+.grid3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.card-dark{
+  background:#0f2236;
+  border-radius:14px;
+  padding:16px;
+}
+
+.card-dark h3{
+  color:#fff;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.card-dark p{
+  color:rgba(255,255,255,0.75);
+  font-size:13px;
+}
+
+/* ================= SPEAKER (UPGRADED PRO VERSION) ================= */
 
 .speaker-wrap{
   display:grid;
@@ -84,23 +145,21 @@ h1{
   align-items:center;
 }
 
-/* IMAGE CARD WITH GRADIENT FRAME */
+/* IMAGE FRAME */
 .speaker-img{
   position:relative;
-  border-radius:18px;
   padding:6px;
+  border-radius:18px;
   background:linear-gradient(135deg,#E07B39,#0f2236);
   box-shadow:0 18px 40px rgba(0,0,0,0.18);
 }
 
-/* inner dark layer */
 .speaker-img::before{
   content:"";
   position:absolute;
   inset:6px;
   border-radius:14px;
   background:#0f2236;
-  z-index:0;
 }
 
 .speaker-img img{
@@ -109,53 +168,42 @@ h1{
   object-fit:cover;
   border-radius:14px;
   position:relative;
-  z-index:1;
 }
 
-/* CONTENT */
+/* TEXT */
 .speaker-content h2{
   font-size:26px;
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 
 .name{
   font-size:22px;
   font-weight:700;
-  margin-bottom:4px;
 }
 
 .role{
   font-size:13px;
   color:#E07B39;
-  font-weight:600;
   margin-bottom:10px;
 }
 
-/* description */
 .desc{
   font-size:14px;
   color:#475569;
-  line-height:1.6;
   margin-bottom:14px;
-}
-
-/* bullets */
-.points{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
+  line-height:1.6;
 }
 
 .points div{
   font-size:13px;
   color:#334155;
+  margin-bottom:6px;
 }
 
-/* credential strip (NEW PRO FEATURE) */
 .badge-strip{
   display:flex;
-  gap:8px;
   flex-wrap:wrap;
+  gap:8px;
   margin-top:14px;
 }
 
@@ -165,29 +213,20 @@ h1{
   border-radius:999px;
   background:#0f2236;
   color:#fff;
-  border:1px solid rgba(255,255,255,0.08);
-}
-
-/* hover effect */
-.speaker-img:hover{
-  transform:translateY(-2px);
-  transition:0.3s ease;
 }
 
 /* ================= MOBILE ================= */
 @media(max-width:768px){
 
-  h1{
-    font-size:28px;
-  }
+  h1{font-size:28px;}
 
-  .speaker-wrap{
-    grid-template-columns:1fr;
-  }
+  .grid{grid-template-columns:1fr;}
 
-  .speaker-img img{
-    height:320px;
-  }
+  .grid3{grid-template-columns:1fr;}
+
+  .speaker-wrap{grid-template-columns:1fr;}
+
+  .speaker-img img{height:320px;}
 }
 
 </style>
@@ -203,34 +242,73 @@ h1{
 
 <h1>You earn well. But your money isn't working as hard as you are.</h1>
 
-<p>
-A practical, no-jargon webinar for professionals who want clarity in investing.
-</p>
+<p>A practical, no-jargon webinar for professionals.</p>
 
 <a class="cta-btn">Reserve My Spot ₹99</a>
 
 </div>
 </section>
 
-<!-- SPEAKER -->
+<!-- IS THIS FOR YOU -->
 <section>
 <div class="container">
 
-<div class="speaker-wrap">
+<h2>Is this for you?</h2>
 
-  <!-- IMAGE -->
-  <div class="speaker-img">
-    <img 
-      src="PASTE_IMAGE_URL_HERE"
-      alt="Aditya Lunawat"
-      onerror="this.style.display='none'"
-    />
+<div class="grid">
+  <div class="left">You feel stuck</div>
+  <div class="right">
+    <span class="pill">You invest without a system</span>
+    <span class="pill">You’ve made mistakes</span>
+  </div>
+</div>
+
+</div>
+</section>
+
+<!-- WHY THIS MATTERS -->
+<section>
+<div class="container">
+
+<h2>Why this webinar matters</h2>
+
+<p class="subtext">Most professionals lack structure.</p>
+
+<div class="grid3">
+
+  <div class="card-dark">
+    <h3>Money clarity</h3>
+    <p>Understand where money goes.</p>
   </div>
 
-  <!-- CONTENT -->
-  <div class="speaker-content">
+  <div class="card-dark">
+    <h3>Investing logic</h3>
+    <p>Learn structured investing.</p>
+  </div>
 
-    <h2>Speaker</h2>
+  <div class="card-dark">
+    <h3>Avoid mistakes</h3>
+    <p>Prevent long-term errors.</p>
+  </div>
+
+</div>
+
+</div>
+</section>
+
+<!-- SPEAKER (UPGRADED, RESTORED) -->
+<section>
+<div class="container">
+
+<h2>Speaker</h2>
+
+<div class="speaker-wrap">
+
+  <div class="speaker-img">
+    <img src="PASTE_IMAGE_URL_HERE" alt="Aditya Lunawat">
+  </div>
+
+  <div class="speaker-content">
 
     <div class="name">Aditya Lunawat</div>
 
@@ -239,22 +317,19 @@ A practical, no-jargon webinar for professionals who want clarity in investing.
     </div>
 
     <div class="desc">
-      Finance professional with deep experience in equity research, portfolio structuring,
-      and institutional investment frameworks. Focused on practical investing education.
+      Finance professional with experience in equity research and portfolio structuring.
     </div>
 
     <div class="points">
-      <div>• Built institutional equity research frameworks</div>
-      <div>• Portfolio strategy across market cycles</div>
-      <div>• Strong focus on real-world investing clarity</div>
+      <div>• Institutional equity research</div>
+      <div>• Portfolio structuring</div>
+      <div>• Practical investing frameworks</div>
     </div>
 
-    <!-- PRO CREDIBILITY STRIP -->
     <div class="badge-strip">
       <span>Equity Research</span>
       <span>Portfolio Strategy</span>
       <span>Institutional Finance</span>
-      <span>Risk Frameworks</span>
     </div>
 
   </div>
