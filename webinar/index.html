@@ -27,7 +27,7 @@ body{
   padding:0 20px;
 }
 
-/* ================= GLOBAL SPACING ================= */
+/* ================= GLOBAL ================= */
 section{
   padding:40px 0;
 }
@@ -54,21 +54,13 @@ h1{
   font-size:38px;
   line-height:1.08;
   margin-bottom:8px;
-  letter-spacing:-0.2px;
 }
 
 .hero p{
   font-size:14.5px;
   line-height:1.55;
   color:rgba(255,255,255,0.85);
-  margin-bottom:6px;
   max-width:600px;
-}
-
-.hero p strong{
-  display:block;
-  margin-top:6px;
-  color:#fff;
 }
 
 .cta-btn{
@@ -83,110 +75,53 @@ h1{
   margin-top:10px;
 }
 
-/* ================= HEADINGS ================= */
-h2{
-  font-size:28px;
-  margin-bottom:16px;
-}
+/* ================= SPEAKER (PRO UPGRADE) ================= */
 
-/* ================= IS THIS FOR YOU ================= */
-.grid{
+.speaker-wrap{
   display:grid;
-  grid-template-columns:220px 1fr;
-  gap:16px 20px;
-  margin-top:18px;
-}
-
-.left{
-  font-size:11px;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:0.6px;
-  color:#E07B39;
-  display:flex;
+  grid-template-columns:300px 1fr;
+  gap:30px;
   align-items:center;
 }
 
-.right{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.pill{
-  display:inline-block;
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:12.5px;
-  font-weight:500;
-  color:#fff;
-  background:linear-gradient(135deg,#102a43,#0b1f33);
-  box-shadow:0 4px 10px rgba(0,0,0,0.12);
-  white-space:nowrap;
-}
-
-/* ================= WHY THIS MATTERS ================= */
-.subtext{
-  font-size:14.5px;
-  color:#475569;
-  margin-bottom:18px;
-  line-height:1.6;
-  max-width:700px;
-}
-
-.grid3{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-
-.card-dark{
-  background:#0f2236;
-  border:1px solid rgba(255,255,255,0.08);
-  padding:16px 14px;
-  border-radius:14px;
-  box-shadow:0 6px 16px rgba(0,0,0,0.10);
-}
-
-.card-dark h3{
-  font-size:14px;
-  margin-bottom:6px;
-  color:#ffffff;
-}
-
-.card-dark p{
-  font-size:13px;
-  line-height:1.5;
-  color:rgba(255,255,255,0.75);
-}
-
-/* ================= SPEAKER SECTION (NEW PREMIUM VERSION) ================= */
-
-.speaker{
-  display:grid;
-  grid-template-columns:280px 1fr;
-  gap:28px;
-  align-items:center;
-}
-
+/* IMAGE CARD WITH GRADIENT FRAME */
 .speaker-img{
+  position:relative;
+  border-radius:18px;
+  padding:6px;
+  background:linear-gradient(135deg,#E07B39,#0f2236);
+  box-shadow:0 18px 40px rgba(0,0,0,0.18);
+}
+
+/* inner dark layer */
+.speaker-img::before{
+  content:"";
+  position:absolute;
+  inset:6px;
+  border-radius:14px;
   background:#0f2236;
-  padding:10px;
-  border-radius:16px;
-  box-shadow:0 12px 30px rgba(0,0,0,0.15);
+  z-index:0;
 }
 
 .speaker-img img{
   width:100%;
-  height:340px;
+  height:360px;
   object-fit:cover;
-  border-radius:12px;
+  border-radius:14px;
+  position:relative;
+  z-index:1;
 }
 
-.speaker-content h3{
-  font-size:24px;
-  margin-bottom:6px;
-  letter-spacing:-0.3px;
+/* CONTENT */
+.speaker-content h2{
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.name{
+  font-size:22px;
+  font-weight:700;
+  margin-bottom:4px;
 }
 
 .role{
@@ -196,6 +131,7 @@ h2{
   margin-bottom:10px;
 }
 
+/* description */
 .desc{
   font-size:14px;
   color:#475569;
@@ -203,10 +139,39 @@ h2{
   margin-bottom:14px;
 }
 
+/* bullets */
+.points{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
 .points div{
   font-size:13px;
   color:#334155;
-  margin-bottom:6px;
+}
+
+/* credential strip (NEW PRO FEATURE) */
+.badge-strip{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.badge-strip span{
+  font-size:11px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#0f2236;
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+/* hover effect */
+.speaker-img:hover{
+  transform:translateY(-2px);
+  transition:0.3s ease;
 }
 
 /* ================= MOBILE ================= */
@@ -216,28 +181,12 @@ h2{
     font-size:28px;
   }
 
-  h2{
-    font-size:24px;
-  }
-
-  section{
-    padding:32px 0;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .grid3{
-    grid-template-columns:1fr;
-  }
-
-  .speaker{
+  .speaker-wrap{
     grid-template-columns:1fr;
   }
 
   .speaker-img img{
-    height:300px;
+    height:320px;
   }
 }
 
@@ -246,7 +195,7 @@ h2{
 
 <body>
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 <section class="hero">
 <div class="container">
 
@@ -255,111 +204,57 @@ h2{
 <h1>You earn well. But your money isn't working as hard as you are.</h1>
 
 <p>
-A practical, no-jargon webinar for professionals who want clarity in investing,
-better financial decisions, and long-term wealth structure.
+A practical, no-jargon webinar for professionals who want clarity in investing.
 </p>
 
-<p><strong>This is not motivation. This is financial clarity.</strong></p>
-
-<a class="cta-btn" href="#">
-Reserve My Spot ₹99
-</a>
+<a class="cta-btn">Reserve My Spot ₹99</a>
 
 </div>
 </section>
 
-<!-- ================= IS THIS FOR YOU ================= -->
+<!-- SPEAKER -->
 <section>
 <div class="container">
 
-<h2>Is this for you?</h2>
+<div class="speaker-wrap">
 
-<div class="grid">
-
-  <div class="left">You feel stuck or confused</div>
-  <div class="right">
-    <span class="pill">You invest without a clear system</span>
-    <span class="pill">You’ve made financial mistakes before</span>
-  </div>
-
-  <div class="left">You want clarity</div>
-  <div class="right">
-    <span class="pill">You feel unsure about long-term planning</span>
-    <span class="pill">You want clarity, not random tips</span>
-  </div>
-
-  <div class="left">You want structure</div>
-  <div class="right">
-    <span class="pill">You earn well but feel financially stuck</span>
-    <span class="pill">You want structured investing knowledge</span>
-  </div>
-
-</div>
-
-</div>
-</section>
-
-<!-- ================= WHY THIS MATTERS ================= -->
-<section>
-<div class="container">
-
-<h2>Why this webinar matters</h2>
-
-<p class="subtext">
-Most professionals don’t lack income — they lack structure. This session builds that structure.
-</p>
-
-<div class="grid3">
-
-  <div class="card-dark">
-    <h3>Know where your money actually goes</h3>
-    <p>Most financial leakage happens silently through untracked decisions.</p>
-  </div>
-
-  <div class="card-dark">
-    <h3>Understand investing logic clearly</h3>
-    <p>Move beyond tips and learn how real investing decisions are structured.</p>
-  </div>
-
-  <div class="card-dark">
-    <h3>Avoid long-term financial mistakes</h3>
-    <p>Small errors today compound into major wealth gaps over time.</p>
-  </div>
-
-</div>
-
-</div>
-</section>
-
-<!-- ================= SPEAKER ================= -->
-<section>
-<div class="container">
-
-<h2>Speaker</h2>
-
-<div class="speaker">
-
+  <!-- IMAGE -->
   <div class="speaker-img">
-    <img src="/aditya.jpg" alt="Aditya Lunawat">
+    <img 
+      src="PASTE_IMAGE_URL_HERE"
+      alt="Aditya Lunawat"
+      onerror="this.style.display='none'"
+    />
   </div>
 
+  <!-- CONTENT -->
   <div class="speaker-content">
 
-    <h3>Aditya Lunawat</h3>
+    <h2>Speaker</h2>
 
-    <p class="role">
+    <div class="name">Aditya Lunawat</div>
+
+    <div class="role">
       CA | MBA Finance | Ex Morgan Stanley | Ex Credit Suisse
-    </p>
+    </div>
 
-    <p class="desc">
-      A finance professional with experience in equity research, portfolio structuring,
-      and institutional investment frameworks.
-    </p>
+    <div class="desc">
+      Finance professional with deep experience in equity research, portfolio structuring,
+      and institutional investment frameworks. Focused on practical investing education.
+    </div>
 
     <div class="points">
-      <div>• Institutional equity research experience</div>
-      <div>• Portfolio structuring across market cycles</div>
-      <div>• Focus on practical investing education</div>
+      <div>• Built institutional equity research frameworks</div>
+      <div>• Portfolio strategy across market cycles</div>
+      <div>• Strong focus on real-world investing clarity</div>
+    </div>
+
+    <!-- PRO CREDIBILITY STRIP -->
+    <div class="badge-strip">
+      <span>Equity Research</span>
+      <span>Portfolio Strategy</span>
+      <span>Institutional Finance</span>
+      <span>Risk Frameworks</span>
     </div>
 
   </div>
