@@ -186,7 +186,8 @@
     .social-grid{display:grid;gap:20px;grid-template-columns:1fr}
     @media(min-width:880px){.social-grid{grid-template-columns:1.4fr 1fr}}
     .platform-strip{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-    .platform-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-brd);font-size:13px;font-weight:600}
+    .platform-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-brd);font-size:13px;font-weight:600;transition:transform .15s ease, background .15s ease}
+    .platform-chip:hover{background:rgba(255,255,255,.09);transform:translateY(-1px)}
     .platform-chip .ic{width:8px;height:8px;border-radius:50%}
     .platform-chip .ic.yt{background:#FF3B3B}
     .platform-chip .ic.ig{background:linear-gradient(45deg,#FEDA75,#FA7E1E,#D62976,#962FBF,#4F5BD5)}
@@ -518,9 +519,9 @@
       <div class="eyebrow"><span class="dot"></span>SOCIAL</div>
       <h3 class="section-title" style="margin-bottom:16px">Social highlights</h3>
       <div class="platform-strip">
-        <span class="platform-chip"><span class="ic yt"></span>YouTube</span>
-        <span class="platform-chip"><span class="ic ig"></span>Instagram @moneysutraa</span>
-        <span class="platform-chip"><span class="ic li"></span>LinkedIn</span>
+        <a class="platform-chip" href="https://www.youtube.com/@money.sutraa" target="_blank" rel="noopener noreferrer"><span class="ic yt"></span>YouTube</a>
+        <a class="platform-chip" href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener noreferrer"><span class="ic ig"></span>Instagram @moneysutraa</a>
+        <a class="platform-chip" href="https://www.linkedin.com/company/moneysutraa/" target="_blank" rel="noopener noreferrer"><span class="ic li"></span>LinkedIn</a>
       </div>
       <div class="social-grid">
         <div class="glass-solid embed-card">
@@ -529,6 +530,10 @@
             <iframe src="https://www.youtube-nocookie.com/embed/ps-rYISv1as?start=108&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1" title="MoneySutraa YouTube sample"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="follow-row">
+            <span class="handle">@money.sutraa</span>
+            <a class="btn grad" style="padding:9px 16px;min-height:auto;font-size:13px" href="https://www.youtube.com/@money.sutraa?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Subscribe</a>
           </div>
         </div>
         <div class="glass-solid embed-card ig-card">
@@ -618,12 +623,12 @@
           </div>
         </div>
         <div class="founder-card">
-          <div class="founder-photo"><img src="./aditya-lunawat.jpg" alt="Adtya L., Co-Founder, MoneySutraa" loading="lazy" decoding="async"></div>
+          <div class="founder-photo"><img src="./aditya-lunawat.jpg" alt="Adtya L., Co-Founder, MoneySutraa" loading="lazy" decoding="async" style="object-position:center 8%"></div>
           <div class="founder-body">
             <div class="f-name">Adtya L.</div>
             <span class="f-role">Co-Founder</span>
             <span class="f-qual">CA, MBA</span>
-            <p class="f-focus">Focus: research &amp; compliance — the frameworks behind every recommendation.</p>
+            <p class="f-focus">15+ years' experience across Credit Suisse and Morgan Stanley. Focus: research &amp; compliance — the frameworks behind every recommendation.</p>
           </div>
         </div>
       </div>
