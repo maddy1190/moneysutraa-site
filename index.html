@@ -1,29 +1,24 @@
 <!doctype html>
 <html lang="en">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#FAF9F6">
-
 <head>
   <meta charset="utf-8" />
   <meta name="facebook-domain-verification" content="95el1om48nmxrxdt60r461wlji4v4s" />
   <title>Moneysutraa — Personalised, Compliance-First Investing (ARN-336976)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="description" content="Simple, personalised investment guidance aligned to your goals, risk profile, and time horizon. ARN-336976." />
-  <meta name="theme-color" content="#FAF9F6">
+  <meta name="theme-color" content="#0A0E1A">
   <link rel="canonical" href="https://moneysutraa.com/">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <!-- Fonts -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="MoneySutraa — Personalised, Compliance-First Investing (ARN-336976)">
   <meta property="og:description" content="Simple, personalised investment guidance aligned to your goals, risk profile, and time horizon.">
   <meta property="og:image" content="https://moneysutraa.com/og-cover.jpg">
@@ -31,217 +26,285 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Hero image: AVIF first, WebP fallback -->
-  <style>
-    .hero{ background-image:url('./hero.avif'); }
-    @supports not (background-image: url("x.avif")) {
-      .hero{ background-image:url('./hero.webp'); }
-    }
-  </style>
-
   <style>
     :root{
-      --bg:#FAF9F6; --ink:#141414; --muted:#5a5a5a; --line:#E8E2D8;
-      --gold:#C7A052; --gold-2:#E5D4A2; --red:#9A1F1F; --green:#1A7F37;
-      --ytred:#FF0000; --shadow:0 14px 40px rgba(0,0,0,.08)
+      --bg:#0A0E1A;
+      --bg-soft:#0E1424;
+      --panel:#141B2E;
+      --glass:rgba(255,255,255,.045);
+      --glass-brd:rgba(255,255,255,.09);
+      --line:rgba(255,255,255,.08);
+      --violet:#7B61FF;
+      --coral:#FF6B4A;
+      --gold:#F5C24D;
+      --grad: linear-gradient(120deg, var(--violet) 0%, var(--coral) 100%);
+      --grad-soft: linear-gradient(120deg, rgba(123,97,255,.18) 0%, rgba(255,107,74,.18) 100%);
+      --text:#F5F6FA;
+      --muted:#95A0B8;
+      --muted-2:#6D7690;
+      --radius:22px;
+      --radius-sm:14px;
+      --font-display:'Space Grotesk', system-ui, sans-serif;
+      --font-body:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      --font-mono:'IBM Plex Mono', ui-monospace, Menlo, monospace;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    html{scroll-behavior:smooth}
+    @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation-duration:.001ms !important; transition-duration:.001ms !important} }
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.65;-webkit-font-smoothing:antialiased}
     a{text-decoration:none;color:inherit}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    img{max-width:100%;display:block}
+    .container{max-width:1160px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+    @media(max-width:640px){.container{padding:0 16px}}
 
-    /* Brand inline color lock */
-    .brand-inline{white-space:nowrap;font-weight:700}
+    /* gradient mesh blobs, ambient bg */
+    .mesh{position:absolute;border-radius:50%;filter:blur(90px);opacity:.35;pointer-events:none;z-index:0}
+    .mesh.m1{width:520px;height:520px;background:var(--violet);top:-180px;right:-120px}
+    .mesh.m2{width:420px;height:420px;background:var(--coral);top:280px;left:-160px;opacity:.22}
+    .mesh.m3{width:380px;height:380px;background:var(--gold);bottom:-140px;right:10%;opacity:.14}
+    section{position:relative;overflow:hidden}
+
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 16px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+    .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--grad)}
+    .section-head{margin-bottom:32px}
+    .section-title{font-family:var(--font-display);font-weight:600;font-size:clamp(24px,3.2vw,36px);margin:0;letter-spacing:-.01em;color:var(--text)}
+    .section-sub{margin:12px 0 0;color:var(--muted);max-width:600px;font-size:15.5px}
+
+    .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .brand-inline{white-space:nowrap;font-weight:700;font-family:var(--font-display)}
     .brand-inline .money{color:var(--gold)}
-    .brand-inline .sutraa{color:var(--red)}
+    .brand-inline .sutraa{color:var(--coral)}
 
-    /* HEADER */
-    .header{position:sticky; top:0; z-index:80; backdrop-filter:blur(6px); background:rgba(250,249,246,.92); border-bottom:1px solid var(--line)}
-    .nav{display:grid; grid-template-columns:auto minmax(260px,1fr) auto auto; align-items:center; column-gap:18px; height:86px}
-    .logo{height:100%; max-height:86px; width:auto; display:block; object-fit:contain}
+    /* Header */
+    .header{position:sticky;top:0;z-index:80;background:rgba(10,14,26,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;column-gap:18px;height:84px;max-width:1160px;margin:0 auto;padding:0 24px}
+    .logo{height:40px;width:auto;object-fit:contain}
+    .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px}
+    .brand-lockup .logo{height:34px}
+    .brand-lockup .main-tagline{font-family:var(--font-body);font-size:11.5px;font-weight:600;letter-spacing:0;color:#D7DAE6;white-space:nowrap}
 
-    .brand-title{display:flex; flex-direction:column; align-items:center; justify-self:center; line-height:1.05; text-align:center}
-    .brand-title h1{margin:0; font-size:20px; font-weight:700; letter-spacing:.2px}
-    .brand-title .money{color:var(--gold)} .brand-title .sutraa{color:var(--red)}
-    .tagline{margin-top:2px; font-size:12px; color:#141414}
+    .links{display:flex;gap:28px;justify-self:center;font-size:14px;color:#D7DAE6}
+    .links a{position:relative;padding:6px 0}
+    .links a:hover{color:#fff}
 
-    /* desktop nav stays visible */
-    .links{display:flex; gap:18px}
-    .links a{white-space:nowrap; display:inline-block; transition:transform .14s ease}
-    .links a:hover,.links a:focus-visible{transform:scale(1.12)}
+    .actions{display:flex;gap:10px;justify-self:end}
+    .btn{padding:11px 20px;border-radius:999px;border:1px solid var(--glass-brd);background:var(--glass);color:#fff;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;min-height:42px;font-size:14px;font-weight:600;transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;cursor:pointer}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.grad{background:var(--grad);border:0;color:#0A0E1A;box-shadow:0 10px 30px rgba(123,97,255,.35)}
+    .btn.grad:hover{filter:brightness(1.08)}
+    .btn.outline{background:transparent}
 
-    .actions{display:flex; gap:10px; justify-self:end}
-    .btn{padding:12px 14px; border-radius:12px; border:1px solid var(--line); background:#fff; transition:filter .15s ease, box-shadow .15s ease; display:inline-flex; align-items:center; justify-content:center; white-space:nowrap; min-height:44px}
-    .btn.green{background:var(--green); color:#fff; border:0}
-    .btn.gold{background:var(--gold); color:#fff; border:0; box-shadow:0 6px 18px rgba(199,160,82,.22)}
+    .hamburger{display:none}
+    .hamburger button{border:1px solid var(--glass-brd);background:var(--glass);border-radius:10px;padding:9px 11px;min-height:40px}
+    .hamburger .bar{display:block;width:19px;height:1.5px;background:#fff;margin:4px 0}
+    @media(max-width:880px){ .links{display:none} .actions{display:none} .hamburger{display:block;justify-self:end} }
+    @media(max-width:640px){ .nav{height:66px} .brand-lockup .logo{height:26px} .brand-lockup .main-tagline{font-size:9.5px} }
 
-    /* MOBILE HEADER */
-    .hamburger{display:none; -webkit-tap-highlight-color:transparent}
-    .hamburger button{
-      border:1px solid var(--line); background:#fff; border-radius:10px; padding:10px 12px; min-height:40px;
-    }
-    .hamburger .bar{display:block; width:20px; height:2px; background:#222; margin:3px 0}
+    .mobile-menu{position:fixed;top:66px;left:0;right:0;z-index:79;background:var(--bg-soft);border-bottom:1px solid var(--line);
+      transform-origin:top;transform:scaleY(0);opacity:0;pointer-events:none;transition:transform .18s ease, opacity .18s ease}
+    .mobile-menu.open{transform:scaleY(1);opacity:1;pointer-events:auto}
+    .mobile-menu .wrap{padding:8px 16px 18px}
+    .mobile-menu a{display:block;padding:12px 6px;border-bottom:1px solid var(--line);color:#D7DAE6;font-size:15px}
+    .mobile-menu a:last-child{border-bottom:0}
+    @media(min-width:881px){.mobile-menu{display:none}}
 
-    @media(max-width:640px){
-      .container{padding:0 12px}
-      .nav{grid-template-columns:auto 1fr auto; height:64px; column-gap:8px}
-      .logo{max-height:44px}
-      .brand-title h1{font-size:18px}
-      .tagline{display:block; font-size:11px; margin-top:0}
-      .links{display:none}
-      .hamburger{display:block; justify-self:end}
-      .actions{display:none}  /* hidden on phones (sticky CTA exists) */
-    }
+    /* Hero */
+    .hero{padding:72px 0 60px}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+    @media(max-width:900px){ .hero-grid{grid-template-columns:1fr} }
+    .hero h2{font-family:var(--font-display);font-weight:600;font-size:clamp(32px,5vw,54px);line-height:1.08;margin:0 0 20px;letter-spacing:-.02em}
+    .hero p.lede{font-size:17px;color:var(--muted);max-width:520px;margin:0 0 26px}
+    .badges{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 30px}
+    .pill{font-family:var(--font-mono);font-size:11px;letter-spacing:.03em;padding:8px 13px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-brd);color:#C9CEDC}
+    .cta{display:flex;flex-wrap:wrap;gap:12px}
+    @media(max-width:640px){ .hero{padding:44px 0 40px} .cta .btn{flex:1 1 auto} }
 
-    /* MOBILE MENU PANEL */
-    .mobile-menu{
-      position:fixed; top:64px; left:0; right:0; z-index:79;
-      background:#fff; border-bottom:1px solid var(--line); box-shadow:0 10px 24px rgba(0,0,0,.06);
-      transform-origin:top; transform:scaleY(0); opacity:0; pointer-events:none;
-      transition:transform .18s ease, opacity .18s ease;
-    }
-    .mobile-menu.open{ transform:scaleY(1); opacity:1; pointer-events:auto; }
-    .mobile-menu .wrap{ padding:10px 14px 14px }
-    .mobile-menu a{ display:block; padding:10px 6px; border-radius:10px }
-    .mobile-menu a:hover{ background:#FAF6E6 }
-    @media(min-width:641px){ .mobile-menu{ display:none } }
+    /* Floating app-card mockup */
+    .app-card{background:var(--panel);border:1px solid var(--glass-brd);border-radius:26px;padding:26px;box-shadow:0 40px 90px rgba(0,0,0,.45);position:relative}
+    .app-card::before{content:"";position:absolute;inset:0;border-radius:26px;padding:1px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.5;pointer-events:none}
+    .app-card .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .app-card .row .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--muted-2);text-transform:uppercase}
+    .app-card .row .chip{font-family:var(--font-mono);font-size:10.5px;padding:4px 9px;border-radius:999px;background:rgba(255,107,74,.14);color:var(--coral)}
+    .app-card .big-num{font-family:var(--font-display);font-size:38px;font-weight:600;margin:0 0 4px}
+    .app-card .sub-num{font-family:var(--font-mono);font-size:12.5px;color:#6BE38A;margin-bottom:18px}
+    .app-card svg{width:100%;height:auto;display:block}
+    .app-card .stat-row{display:flex;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+    .app-card .stat{text-align:left}
+    .app-card .stat .k{font-family:var(--font-mono);font-size:10px;color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em}
+    .app-card .stat .v{font-family:var(--font-display);font-size:15px;margin-top:3px;color:#fff}
 
-    /* HERO (bg from AVIF/WebP above) */
-    .hero{
-      position:relative;
-      background-position:center 30%; background-size:cover; background-repeat:no-repeat;
-      padding:40px 0 44px; border-bottom:1px solid var(--line); min-height:420px;
-    }
-    .hero::before{
-      content:""; position:absolute; inset:0;
-      background:linear-gradient(90deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.52) 34%, rgba(0,0,0,.30) 60%, rgba(0,0,0,.14) 80%, rgba(0,0,0,.06) 100%);
-    }
-    .hero::after{
-      content:""; position:absolute; inset:0;
-      background: radial-gradient(1100px 520px at 68% -12%, rgba(0,0,0,.14) 0%, rgba(0,0,0,0) 60%),
-                  linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.78) 100%);
-      pointer-events:none;
-    }
-    .hero>.container{position:relative; z-index:1}
-    /* ↓ Reduced headline size ↓ */
-    .hero h2{font-size:36px; line-height:1.18; margin:0 0 12px; color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.35)}
-    .hero p{font-size:16px; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.35); max-width:780px; font-weight:500}
-    .badges{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0}
-    .pill{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.92); border:1px solid #e9e9e9; color:#444}
-    .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
-    @media(max-width:720px){
-      .hero{padding:28px 0 32px; min-height:360px; background-position:center 24%;}
-      .hero::after{ background:
-        radial-gradient(1100px 520px at 68% -12%, rgba(0,0,0,.18) 0%, rgba(0,0,0,0) 60%),
-        linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.90) 100%); }
-      .hero h2{font-size:26px; line-height:1.2}
-      .hero p{font-size:15px}
-      .cta .btn{flex:1 1 100%}
-    }
+    /* Bento grid utility */
+    .bento{display:grid;gap:18px}
+    .bento.cols-3{grid-template-columns:repeat(3,1fr)}
+    .bento.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media(max-width:880px){ .bento.cols-3{grid-template-columns:1fr} .bento.cols-2{grid-template-columns:1fr} }
 
-    /* Sections & Cards */
-    section{padding:40px 0; scroll-margin-top:90px}
-    .section-title{font-size:24px; margin:0 0 16px}
-    @media(max-width:720px){ section{padding:28px 0} .section-title{font-size:20px; margin-bottom:12px} }
+    .glass{background:var(--glass);border:1px solid var(--glass-brd);border-radius:var(--radius);backdrop-filter:blur(16px)}
+    .glass-solid{background:var(--panel);border:1px solid var(--glass-brd);border-radius:var(--radius)}
 
-    .cards{display:grid; gap:16px; grid-template-columns:1fr}
-    @media(min-width:880px){.cards{grid-template-columns:repeat(3,1fr)}}
-    .card{background:#FFF6D6; border:1px solid var(--gold-2); border-radius:18px; box-shadow:var(--shadow); padding:18px}
-    .card h4{margin:0 0 8px; font-size:18px}
-    .card p{margin:6px 0 0; color:#6a5a2a}
+    /* Tools / Calculator feature */
+    .tool-feature{display:grid;grid-template-columns:1.1fr .9fr;gap:0;overflow:hidden;padding:0}
+    .tool-copy{padding:44px 40px}
+    .tool-copy h3{font-family:var(--font-display);font-weight:600;font-size:clamp(22px,2.6vw,30px);margin:0 0 14px}
+    .tool-copy p{color:var(--muted);margin:0 0 22px;max-width:460px;font-size:15px}
+    .tool-chip-list{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+    .tool-visual{position:relative;padding:40px 32px;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg, rgba(123,97,255,.12), rgba(255,107,74,.08))}
+    .tool-visual .orb{width:180px;height:180px;border-radius:50%;background:var(--grad);opacity:.9;filter:blur(2px);position:relative;display:flex;align-items:center;justify-content:center}
+    .tool-visual .orb-inner{width:150px;height:150px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center}
+    .tool-visual .orb-inner .big{font-family:var(--font-display);font-size:22px;font-weight:600}
+    .tool-visual .orb-inner .small{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;color:var(--muted-2);margin-top:4px}
+    @media(max-width:820px){ .tool-feature{grid-template-columns:1fr} }
 
-    /* SOCIAL (laptop: 2 columns; mobile: full-width, larger embeds) */
-    .social-grid{ display:grid; gap:16px; grid-template-columns:1fr }
-    @media(min-width:880px){ .social-grid{ grid-template-columns:1fr 1fr } }
-    .embed-card{ background:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); padding:16px; }
-    .embed-card h4{ margin:0 0 10px; font-size:18px }
-    .embed-wrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; background:#f4f1ea }
-    .embed-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
-    .embed-wrap img.embed-fit{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 20%; display:block; }
-    @media(max-width:720px){
-      .embed-card{ padding:12px; border-radius:16px }
-      .embed-card h4{ font-size:16px; margin-bottom:8px }
-      .social-grid{ gap:14px }
-    }
+    /* Webinar card */
+    .webinar-card{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:32px}
+    .webinar-card h3{font-family:var(--font-display);font-weight:600;font-size:22px;margin:0 0 10px}
+    .webinar-points{margin:0 0 16px;padding-left:20px;color:var(--muted)}
+    .webinar-points li{margin:6px 0}
+    .webinar-meta{display:flex;flex-wrap:wrap;gap:8px}
+    @media(max-width:780px){ .webinar-card{grid-template-columns:1fr} .webinar-card .btn{width:100%} }
 
-    /* Team */
-    .team-hero{ position:relative; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:16px; border:1px solid var(--line); background:#fff; }
-    .team-hero img{ width:100%; height:420px; object-fit:cover; object-position:center 22%; display:block; }
-    @media(max-width:700px){ .team-hero img{ height:320px; object-position:center 25%; } }
-    .team-overlay{ position:absolute; inset:0; color:#fff; pointer-events:none; background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.78) 100%); }
-    .team-overlay .title{position:absolute; left:12px; top:10px; font-weight:700; font-size:15px; text-shadow:0 2px 6px rgba(0,0,0,.5)}
-    .team-overlay .member{position:absolute; bottom:14px; max-width:54%; text-shadow:0 2px 8px rgba(0,0,0,.55)}
-    .team-overlay .member strong{ display:block; font-weight:800; }
-    .team-overlay .member .role{ display:block; opacity:.98; font-weight:700; }
-    .team-overlay .member .qual{ display:block; opacity:.95; font-size:13px; }
-    .team-overlay .member.ravi{ left:12px; text-align:left; }
-    .team-overlay .member.aditya{ right:12px; text-align:right; }
-    @media(max-width:700px){
-      .team-overlay .member{ line-height:1.25; }
-      .team-overlay .member strong{ font-size:15px }
-      .team-overlay .member .role{ font-size:13px }
-      .team-overlay .member .qual{ font-size:12.5px }
-    }
+    /* Sutra bento cards — asymmetric, editorial */
+    .sutra-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media(max-width:880px){ .sutra-grid{grid-template-columns:1fr} }
+    .sutra-card{padding:26px;position:relative}
+    .sutra-card .num{font-family:var(--font-display);font-size:32px;font-weight:700;-webkit-text-stroke:1px rgba(255,255,255,.25);color:transparent;margin-bottom:14px;display:block;line-height:1}
+    .sutra-card p{margin:0;font-size:14.5px;color:#D7DAE6}
+    .sutra-card p strong{color:#fff}
+    .sutra-card.feature{grid-column:span 2;background:var(--grad);border:0;display:flex;flex-direction:column;justify-content:center}
+    .sutra-card.feature .num{font-size:44px;-webkit-text-stroke:0;color:rgba(10,14,26,.35)}
+    .sutra-card.feature p{color:#0A0E1A;font-size:17px;line-height:1.5}
+    .sutra-card.feature p strong{color:#0A0E1A}
+    @media(max-width:880px){ .sutra-card.feature{grid-column:span 1} }
+
+    /* Embed cards */
+    .embed-card{padding:22px}
+    .embed-card h4{font-family:var(--font-display);font-weight:600;font-size:18px;margin:0 0 14px}
+    .embed-wrap{position:relative;width:100%;padding-top:56.25%;border-radius:14px;overflow:hidden;background:var(--bg-soft)}
+    .embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .embed-wrap img.embed-fit{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+    .social-grid{display:grid;gap:20px;grid-template-columns:1fr}
+    @media(min-width:880px){.social-grid{grid-template-columns:1.4fr 1fr}}
+    .platform-strip{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+    .platform-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-brd);font-size:13px;font-weight:600}
+    .platform-chip .ic{width:8px;height:8px;border-radius:50%}
+    .platform-chip .ic.yt{background:#FF3B3B}
+    .platform-chip .ic.ig{background:linear-gradient(45deg,#FEDA75,#FA7E1E,#D62976,#962FBF,#4F5BD5)}
+    .platform-chip .ic.li{background:#4A90D9}
+    .ig-card{position:relative}
+    .ig-card .ig-badge{position:absolute;top:16px;right:16px;z-index:2;padding:6px 12px;border-radius:999px;background:rgba(10,14,26,.65);backdrop-filter:blur(8px);font-size:11px;font-family:var(--font-mono);color:#fff}
+    .ig-card .embed-wrap{padding-top:100%}
+    .follow-row{display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:12px}
+    .follow-row .handle{font-family:var(--font-mono);font-size:13px;color:var(--muted)}
+
+    /* Generic bento card (Services, Transparency) */
+    .card{padding:24px}
+    .card .num{font-family:var(--font-mono);font-size:11px;color:var(--coral);letter-spacing:.1em;margin-bottom:10px;display:block}
+    .card h4{margin:0 0 8px;font-family:var(--font-display);font-weight:600;font-size:17px}
+    .card p{margin:0;color:var(--muted);font-size:14.5px}
+
+    /* Research process strip */
+    .process-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
+    @media(max-width:880px){ .process-strip{grid-template-columns:1fr} }
+    .process-step{padding:26px 22px;position:relative}
+    .process-step .step-num{width:42px;height:42px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:16px;color:#0A0E1A;margin-bottom:16px}
+    .process-step h4{margin:0 0 8px;font-family:var(--font-display);font-weight:600;font-size:17px}
+    .process-step p{margin:0;color:var(--muted);font-size:14.5px}
+    .process-step:not(:last-child)::after{content:"";position:absolute;top:47px;right:-9px;width:18px;height:1px;background:var(--glass-brd);z-index:2}
+    @media(max-width:880px){ .process-step:not(:last-child)::after{display:none} }
+
+    /* Insight article cards */
+    .insight-list{display:grid;gap:2px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--glass-brd)}
+    .insight-item{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;background:var(--panel);transition:background .15s ease}
+    .insight-item:hover{background:var(--glass)}
+    .insight-item .ii-left{display:flex;align-items:center;gap:16px}
+    .insight-item .ii-num{font-family:var(--font-mono);font-size:12px;color:var(--muted-2)}
+    .insight-item .ii-title{font-family:var(--font-display);font-size:15.5px;font-weight:600;color:#fff}
+    .insight-item .ii-arrow{font-family:var(--font-mono);color:var(--coral);font-size:18px}
+
+    /* Vision block */
+    .vision-block{padding:0;margin-bottom:32px}
+    .vision-block p.lead{font-family:var(--font-display);font-size:clamp(19px,2.2vw,25px);font-weight:500;line-height:1.5;color:#fff;margin:0 0 18px;max-width:820px}
+    .vision-block p.lead .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .vision-block p.support{color:var(--muted);font-size:15.5px;max-width:720px;margin:0}
+
+    /* Personas v2 */
+    .persona-card{padding:24px;position:relative;border-top:2px solid transparent;border-image:var(--grad) 1}
+    .persona-card .p-tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;display:block}
+    .persona-card h4{margin:0 0 8px;font-family:var(--font-display);font-weight:600;font-size:17px}
+    .persona-card p{margin:0;color:var(--muted);font-size:14.5px}
+
+    /* Founders */
+    .founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:28px 0}
+    @media(max-width:700px){ .founders-grid{grid-template-columns:1fr} }
+    .founder-card{border-radius:var(--radius);overflow:hidden;border:1px solid var(--glass-brd);background:var(--panel)}
+    .founder-photo{position:relative;height:280px;overflow:hidden}
+    .founder-photo img{width:100%;height:100%;object-fit:cover}
+    .founder-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,14,26,0) 60%, rgba(10,14,26,.9) 100%)}
+    .founder-body{padding:20px 22px 24px}
+    .founder-body .f-name{font-family:var(--font-display);font-size:19px;font-weight:600;margin:0 0 4px}
+    .founder-body .f-role{font-size:13px;font-weight:600;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;margin-bottom:2px}
+    .founder-body .f-qual{font-size:13px;color:var(--muted);display:block;margin-bottom:12px}
+    .founder-body .f-focus{font-size:14px;color:#D7DAE6}
+
+    /* Careers */
+    .career-grid{display:grid;gap:20px;grid-template-columns:1fr 1fr}
+    @media(max-width:820px){.career-grid{grid-template-columns:1fr}}
+    .career-card{padding:32px;position:relative}
+    .career-card .role-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-bottom:16px;padding:5px 12px;border-radius:999px;background:var(--grad-soft);border:1px solid var(--glass-brd);color:#fff}
+    .career-card h3{font-family:var(--font-display);font-weight:600;font-size:22px;margin:0 0 12px}
+    .career-card p{color:var(--muted);font-size:15px;margin:0 0 18px}
+    .career-list{margin:0 0 26px;padding-left:0;list-style:none}
+    .career-list li{position:relative;padding-left:24px;margin:10px 0;color:#D7DAE6;font-size:14.5px}
+    .career-list li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--grad)}
+    .career-intro{max-width:640px;color:var(--muted);font-size:15.5px;margin:0 0 36px}
 
     /* Contact */
-    .contact-grid{display:grid; gap:16px; grid-template-columns:1fr; max-width:760px; margin:0 auto}
-    .form-card{background:#FFF6D6;border:1px solid var(--gold-2);border-radius:18px;box-shadow:var(--shadow);padding:16px}
-    .form-row{display:grid;gap:10px;grid-template-columns:1fr}
+    .contact-grid{display:grid;gap:20px;grid-template-columns:1.15fr .85fr;max-width:1000px;margin:0 auto}
+    @media(max-width:820px){.contact-grid{grid-template-columns:1fr}}
+    .form-card{padding:28px}
+    .form-row{display:grid;gap:14px;grid-template-columns:1fr}
     .form-row.two{grid-template-columns:1fr}
-    label{font-size:14px;color:#5d5d5d;display:block;margin:6px 0 4px}
-    input,select,textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff;color:#141414}
+    @media(min-width:520px){ .form-row.two{grid-template-columns:1fr 1fr} }
+    label{font-size:12.5px;color:var(--muted);display:block;margin:0 0 6px;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+    input,select,textarea{width:100%;border:1px solid var(--glass-brd);border-radius:12px;padding:13px 14px;background:rgba(255,255,255,.03);color:var(--text);font-family:var(--font-body);font-size:15px}
+    input::placeholder,textarea::placeholder{color:var(--muted-2)}
     textarea{min-height:120px;resize:vertical}
-    .consent{display:grid;grid-template-columns:auto 1fr;align-items:start;gap:10px;margin-top:8px;font-size:13px;color:#6d6d6d}
-    .consent input{margin:3px 0 0 0}
-    .consent label{margin:0}
-    @media(max-width:720px){ input,select,textarea{font-size:16px} .form-card{padding:14px} }
+    .consent{display:grid;grid-template-columns:auto 1fr;align-items:start;gap:10px;margin-top:16px;font-size:12.5px;color:var(--muted)}
+    .consent input{margin-top:3px;width:auto}
+    .reach-card{padding:28px}
+    .reach-card h4{font-family:var(--font-display);font-weight:600;font-size:18px;margin:0 0 14px}
+    .reach-card p{margin:0 0 10px;color:var(--muted);font-size:14.5px}
+    .reach-card a{color:var(--coral)}
+    .compliance-note{margin-top:18px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--glass-brd);font-size:13px;color:var(--muted)}
 
-    footer{border-top:1px solid var(--line); margin-top:40px}
-    .foot{padding:20px 0; color:#6d6d6d; font-size:13px}
+    /* FAQ */
+    details{background:var(--glass);border:1px solid var(--glass-brd);border-radius:14px;padding:16px 20px;margin-bottom:12px;backdrop-filter:blur(10px)}
+    details summary{cursor:pointer;font-weight:700;font-size:15.5px;list-style:none;color:#fff}
+    details summary::-webkit-details-marker{display:none}
+    details summary::after{content:"+";float:right;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+    details[open] summary::after{content:"–"}
+    details p{margin:12px 0 0;color:var(--muted);font-size:14.5px}
 
-    /* Sticky mobile CTA */
-    .sticky-cta{ position:fixed; left:0; right:0; bottom:0; z-index:60;
-      background:#ffffffcc; backdrop-filter:blur(8px); border-top:1px solid var(--line);
-      padding:10px 14px calc(10px + env(safe-area-inset-bottom)); display:none;
-    }
-    .sticky-cta .wrap{ max-width:1100px; margin:0 auto; padding:0 12px; display:flex; gap:10px }
-    .sticky-cta .btn{ flex:1 1 50% }
-    @media(max-width:720px){ .sticky-cta{ display:block } body{ padding-bottom:78px } }
+    /* Privacy */
+    .legal{padding:32px}
+    .legal h4{font-family:var(--font-display);font-weight:600;font-size:16.5px;margin:26px 0 10px;color:#fff}
+    .legal h4:first-child{margin-top:0}
+    .legal p,.legal li{color:var(--muted);font-size:14.5px}
+    .legal ul{padding-left:20px}
 
-    /* Tick list for Intro problems */
-    .tick{list-style:none; padding:0; margin:10px 0 0}
-    .tick li{margin:8px 0; padding-left:26px; position:relative; color:#444}
-    .tick li::before{content:"✓"; position:absolute; left:0; top:0; font-weight:900; color:var(--green)}
-/* ===== Workshops band (scoped) ===== */
-.workshop-band{
-  background:#fff;
-  border-bottom:1px solid var(--line);
-  padding:22px 0; /* slightly tighter than other sections */
-}
-.workshop-wrap{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:16px;
-  align-items:center;
-  background:#FFF6D6;
-  border:1px solid var(--gold-2);
-  border-radius:18px;
-  box-shadow:var(--shadow);
-  padding:16px;
-}
-.workshop-tagline{ margin:0 0 8px; color:#6a5a2a; font-weight:600 }
-.workshop-points{ margin:8px 0 10px; padding-left:18px; color:#6a5a2a }
-.workshop-points li{ margin:4px 0 }
-.workshop-meta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px }
-.workshop-cta .btn{ min-width:180px }
-@media(max-width:880px){
-  .workshop-wrap{ grid-template-columns:1fr; align-items:start }
-  .workshop-cta .btn{ width:100% }
-}
+    footer{border-top:1px solid var(--line)}
+    .foot{padding:32px 0;color:var(--muted-2);font-size:13px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+    .foot-links{display:flex;gap:18px;flex-wrap:wrap}
+    .foot-links a{color:var(--muted-2)}
+    .foot-links a:hover{color:#fff}
 
+    .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(10,14,26,.9);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:none}
+    .sticky-cta .wrap{max-width:1160px;margin:0 auto;padding:0 8px;display:flex;gap:10px}
+    .sticky-cta .btn{flex:1 1 50%}
+    @media(max-width:820px){ .sticky-cta{display:block} body{padding-bottom:80px} }
   </style>
 
-  <!-- FAQ Schema (JSON-LD) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -257,156 +320,228 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header class="header">
-    <div class="container nav">
-      <img src="logo.png" alt="Moneysutraa logo" class="logo" loading="eager" decoding="async" width="320" height="86">
-
-      <div class="brand-title">
-        <h1><span class="money">Money</span><span class="sutraa">Sutraa</span></h1>
-        <div class="tagline">"Your Guide to Simplified Finance"</div>
+    <div class="nav">
+      <div class="brand-lockup">
+        <img src="logo.png" alt="Moneysutraa logo" class="logo" loading="eager" decoding="async" width="160" height="40">
+        <h1 class="sr-only">MoneySutraa</h1>
+        <div class="main-tagline">Wealth Partners for Life 🤝</div>
       </div>
-
       <nav class="links" aria-label="Primary">
         <a href="#services">Services</a>
+        <a href="#tools">Calculator</a>
         <a href="#research">Research</a>
-        <a href="#about">About&nbsp;Us</a>
-        <a href="#contact">Contact&nbsp;Us</a>
-        <a href="#privacy">Privacy</a>
+        <a href="#about">About</a>
+        <a href="#careers">Careers</a>
+        <a href="#contact">Contact</a>
       </nav>
-
       <div class="actions">
-        <a class="btn gold" href="mailto:wecare@moneysutraa.com" rel="noopener">Email</a>
-        <a class="btn green" href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a class="btn outline" href="mailto:wecare@moneysutraa.com" rel="noopener">Email</a>
+        <a class="btn grad" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       </div>
-
       <div class="hamburger">
         <button id="menuBtn" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu">
           <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </button>
       </div>
     </div>
-
     <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile menu">
       <div class="wrap">
         <a href="#services" onclick="closeMenu()">Services</a>
+        <a href="#tools" onclick="closeMenu()">Calculator</a>
         <a href="#research" onclick="closeMenu()">Research</a>
-        <a href="#about" onclick="closeMenu()">About Us</a>
-        <a href="#contact" onclick="closeMenu()">Contact Us</a>
-        <a href="#privacy" onclick="closeMenu()">Privacy</a>
+        <a href="#about" onclick="closeMenu()">About</a>
+        <a href="#careers" onclick="closeMenu()">Careers</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
       </div>
     </nav>
   </header>
 
   <!-- Hero -->
   <section class="hero" aria-label="Intro">
-    <div class="container">
-      <h2>Personalised, <span style="white-space:nowrap">Compliance-first</span> guidance to help you <span style="color:var(--ytred)">Invest in Mutual Funds with Confidence</span></h2>
-      <p><strong>Simple frameworks. Transparent process. A 360-degree research-driven approach to evaluate individual Mutual funds and match them to your goals and risk profile.</strong></p>
+    <div class="mesh m1"></div><div class="mesh m2"></div>
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>INVESTOR-FIRST · COMPLIANCE-FIRST</div>
+        <h2>Invest with a plan, <span class="grad-text">not a guess.</span></h2>
+        <p class="lede">Simple frameworks. Transparent process. A 360° research-driven approach to evaluate mutual funds and match them to your goals and risk profile.</p>
+        <div class="badges" role="list">
+          <span class="pill" role="listitem">SEBI/AMFI aligned</span>
+          <span class="pill" role="listitem">Transparent documentation</span>
+          <span class="pill" role="listitem">English / Hinglish / Hindi</span>
+        </div>
+        <div class="cta">
+          <a class="btn grad" href="/calculator/">Try the free calculator</a>
+          <a class="btn outline" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Hero%20section&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+        </div>
+      </div>
 
-      <div class="badges" role="list">
-        <span class="pill" role="listitem">SEBI/AMFI aligned</span>
-        <span class="pill" role="listitem">Transparent documentation</span>
-        <span class="pill" role="listitem">English/Hinglish/Hindi support</span>
+      <div class="app-card">
+        <div class="row"><span class="label">SIP Projection</span><span class="chip">15Y · 12% p.a.</span></div>
+        <div class="big-num">₹1.02 Cr</div>
+        <div class="sub-num">↑ from ₹15,000/mo</div>
+        <svg viewBox="0 0 300 90" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="sparkGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#7B61FF"/>
+              <stop offset="100%" stop-color="#FF6B4A"/>
+            </linearGradient>
+            <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7B61FF" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#7B61FF" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,80 C30,78 40,60 60,58 C90,55 100,40 130,36 C160,32 175,45 200,35 C225,25 240,10 300,5 L300,90 L0,90 Z" fill="url(#fillGrad)"/>
+          <path d="M0,80 C30,78 40,60 60,58 C90,55 100,40 130,36 C160,32 175,45 200,35 C225,25 240,10 300,5" fill="none" stroke="url(#sparkGrad)" stroke-width="2.5"/>
+        </svg>
+        <div class="stat-row">
+          <div class="stat"><div class="k">Invested</div><div class="v">₹27L</div></div>
+          <div class="stat"><div class="k">Gains</div><div class="v">₹75L</div></div>
+          <div class="stat"><div class="k">Goal</div><div class="v">On track</div></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- MoneySutraa Live Workshops -->
-<section id="workshops" class="workshop-band" aria-label="MoneySutraa Live Webinar">
-  <div class="container">
-    <div class="workshop-wrap">
-      <div class="workshop-copy">
-        <h3 class="section-title" style="margin:0 0 8px">MoneySutraa Live Webinar</h3>
-        <p class="workshop-tagline">
-          Turn scattered SIPs into a simple, institutional-style plan, in just 90 minutes.
-        </p>
+  <!-- Services -->
+  <section id="services" aria-label="Services">
+    <div class="container">
+      <div class="eyebrow"><span class="dot"></span>WHAT WE DO</div>
+      <div class="section-head">
+        <h3 class="section-title">Services, built to grow with you</h3>
+        <p class="section-sub">We start with mutual fund distribution — done properly. Here's what's live today, and what we're building toward as MoneySutraa grows into full wealth management.</p>
+      </div>
 
-        <ul class="workshop-points">
-          <li>Audit if your portfolio is too risky or too conservative</li>
-          <li>Link goals to amounts & timelines; use SIPs + lumpsums smarter</li>
-          <li>Interactive, in <strong>Hinglish (Hindi + English)</strong></li>
-        </ul>
-
-        <div class="workshop-meta">
-          <span class="pill">Fri, Feb 27 · 8:00–9:30 PM</span>
-          <span class="pill">Live on Zoho</span>
-          <span class="pill">Limited seats</span>
-           <span class="pill">Complimentary Webinar</span>
-          <span class="pill">Registration required</span>
+      <div class="bento cols-3">
+        <div class="glass card">
+          <span class="num">LIVE</span>
+          <h4>Goal-Based SIP Planning</h4>
+          <p>Starter and ongoing SIP plans mapped to specific goals — retirement, a child's education, a house — not generic fund picks.</p>
+        </div>
+        <div class="glass card">
+          <span class="num">LIVE</span>
+          <h4>Portfolio Health Check</h4>
+          <p>A hygiene review of your existing investments — overlap, cost, drift and benchmark fit — with a clean roadmap to fix it.</p>
+        </div>
+        <div class="glass card">
+          <span class="num">LIVE</span>
+          <h4>Lumpsum &amp; SWP Structuring</h4>
+          <p>For one-time investments and drawdown planning — structured around when you'll actually need the money.</p>
+        </div>
+        <div class="glass card">
+          <span class="num">LIVE</span>
+          <h4>Tax Consultation on Investments</h4>
+          <p>Guidance on LTCG and STCG on your mutual fund investments — so tax timing is part of the plan, not an afterthought.</p>
+        </div>
+        <div class="glass card" style="opacity:.72">
+          <span class="num">COMING SOON</span>
+          <h4>Retirement &amp; Estate Planning</h4>
+          <p>Longer-horizon planning that goes beyond mutual funds — retirement corpus modelling and succession basics.</p>
+        </div>
+        <div class="glass card" style="opacity:.72">
+          <span class="num">COMING SOON</span>
+          <h4>RIA-Led Advisory</h4>
+          <p>As we transition to SEBI Registered Investment Adviser status, fee-based, conflict-free advisory alongside distribution.</p>
+        </div>
+        <div class="glass card" style="opacity:.72">
+          <span class="num">COMING SOON</span>
+          <h4>Direct Equity Products</h4>
+          <p>Curated equity options for investors ready to grow beyond a core mutual fund portfolio, once that foundation is solid.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="workshop-cta">
-        <a class="btn gold" href="https://forms.gle/eRutANtRQcMEpGLr5" target="_blank" rel="noopener noreferrer">
-          Reserve My Seat
-        </a>
+  <!-- Tools / Calculator -->
+  <section id="tools" aria-label="Investment calculator">
+    <div class="container">
+      <div class="eyebrow"><span class="dot"></span>FREE TOOL</div>
+      <div class="glass-solid tool-feature">
+        <div class="tool-copy">
+          <h3>Run your own numbers before you talk to us.</h3>
+          <p>SIP, SIP+Lumpsum, Lumpsum, SWP and Goal Planning — with step-up options, visual charts, CSV export and shareable links. Free, no sign-up.</p>
+          <div class="tool-chip-list">
+            <span class="pill">SIP &amp; Step-up</span>
+            <span class="pill">SWP</span>
+            <span class="pill">Goal Planner</span>
+            <span class="pill">CSV export</span>
+          </div>
+          <div class="cta">
+            <a class="btn grad" href="/calculator/">Open the calculator →</a>
+          </div>
+        </div>
+        <div class="tool-visual" aria-hidden="true">
+          <div class="orb"><div class="orb-inner"><span class="big">SIP</span><span class="small">SWP · GOAL · LUMPSUM</span></div></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-  <!-- Introduction (updated with problems list) -->
+  <!-- Introduction + Sutra bento -->
   <section id="intro" aria-label="Introductory video">
     <div class="container">
-      <div class="embed-card" style="margin-bottom:12px;">
-        <h4 style="margin:0 0 10px;">Our Introduction in 90 Sec</h4>
+      <div class="glass-solid embed-card" style="margin-bottom:24px;">
+        <h4>Our Introduction in 90 Sec</h4>
         <div class="embed-wrap">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/xtioRV60nMU?rel=0"
-            title="MoneySutraa Introduction"
+          <iframe src="https://www.youtube-nocookie.com/embed/xtioRV60nMU?rel=0" title="MoneySutraa Introduction"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
 
-      <div class="embed-card" style="margin-bottom:10px;">
-        <p style="margin:0 6px 8px 0; color:#444;">
-          Most people either haven’t started, or they’re investing on guesswork. We fix that with a clear,
-          rules-based plan you can actually follow: clean categories, the right benchmarks, and calm,
-          periodic reviews that keep you on track.
-        </p>
-
-        <h4 style="margin:8px 0 6px;">Problems investors face today</h4>
-        <ul class="tick">
-          <li><strong>Not realising they can start small—and early</strong>. Small, steady steps compound into big outcomes.</li>
-          <li><strong>Thinking investing is only for “big” investors</strong>. It’s for everyone and necessary to beat inflation.</li>
-          <li><strong>“Which mutual funds should I invest in?”</strong> Too many choices, not enough clarity.</li>
-          <li><strong>“What parameters should I use to decide?”</strong> Risk profile, time horizon, costs, and category/benchmark fit.</li>
-          <li><strong>Believing past returns guarantee future performance</strong>—a common trap that leads to chasing winners.</li>
-          <li><strong>Relying on guesswork</strong>. Even a 1–2% gap each year compounds into a large difference over time.</li>
-        </ul>
+      <div class="section-head">
+        <div class="eyebrow"><span class="dot"></span>SIX SUTRAS</div>
+        <h3 class="section-title">Problems investors face today</h3>
+        <p class="section-sub">Most people either haven't started, or they're investing on guesswork. We fix that with a clear, rules-based plan you can actually follow.</p>
       </div>
 
-      <div class="cta">
-        <a class="btn green" href="https://wa.me/917400153953?text=Hi%20MoneySutraa%2C%20I%20came%20via%20Intro%20section&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-        <a class="btn gold" href="mailto:wecare@moneysutraa.com" rel="noopener">Book a 45-min discussion</a>
+      <div class="sutra-grid">
+        <div class="glass sutra-card feature"><span class="num">01</span><p><strong>Not realising they can start small—and early.</strong> Small, steady steps compound into big outcomes.</p></div>
+        <div class="glass sutra-card"><span class="num">02</span><p><strong>Thinking investing is only for "big" investors.</strong> It's for everyone and necessary to beat inflation.</p></div>
+        <div class="glass sutra-card"><span class="num">03</span><p><strong>"Which mutual funds should I invest in?"</strong> Too many choices, not enough clarity.</p></div>
+        <div class="glass sutra-card"><span class="num">04</span><p><strong>"What parameters should I use to decide?"</strong> Risk profile, time horizon, costs, and benchmark fit.</p></div>
+        <div class="glass sutra-card feature"><span class="num">05</span><p><strong>Believing past returns guarantee future performance</strong> — a trap that leads to chasing winners instead of building a plan.</p></div>
+        <div class="glass sutra-card"><span class="num">06</span><p><strong>Relying on guesswork.</strong> Even a 1–2% gap each year compounds into a large difference over time.</p></div>
+      </div>
+
+      <div class="cta" style="margin-top:28px">
+        <a class="btn outline" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Intro%20section&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a class="btn grad" href="mailto:wecare@moneysutraa.com" rel="noopener">Book a 45-min discussion</a>
       </div>
     </div>
   </section>
 
   <!-- Social -->
   <section id="social">
+    <div class="mesh m3"></div>
     <div class="container">
-      <h3 class="section-title">Social Highlights</h3>
+      <div class="eyebrow"><span class="dot"></span>SOCIAL</div>
+      <h3 class="section-title" style="margin-bottom:16px">Social highlights</h3>
+      <div class="platform-strip">
+        <span class="platform-chip"><span class="ic yt"></span>YouTube</span>
+        <span class="platform-chip"><span class="ic ig"></span>Instagram @moneysutraa</span>
+        <span class="platform-chip"><span class="ic li"></span>LinkedIn</span>
+      </div>
       <div class="social-grid">
-        <div class="embed-card">
+        <div class="glass-solid embed-card">
           <h4>Watch on YouTube</h4>
           <div class="embed-wrap">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/ps-rYISv1as?start=108&rel=0"
-              title="MoneySutraa YouTube sample"
+            <iframe src="https://www.youtube-nocookie.com/embed/ps-rYISv1as?start=108&rel=0" title="MoneySutraa YouTube sample"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
         </div>
-        <div class="embed-card">
+        <div class="glass-solid embed-card ig-card">
           <h4>On Instagram</h4>
           <div class="embed-wrap">
+            <span class="ig-badge">@moneysutraa</span>
             <a href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener noreferrer" aria-label="Visit @moneysutraa on Instagram">
               <img class="embed-fit" src="./ig-preview.jpg?v=3" alt="Follow @moneysutraa on Instagram" loading="lazy" decoding="async" />
             </a>
+          </div>
+          <div class="follow-row">
+            <span class="handle">@moneysutraa</span>
+            <a class="btn grad" style="padding:9px 16px;min-height:auto;font-size:13px" href="https://www.instagram.com/moneysutraa/" target="_blank" rel="noopener noreferrer">Follow</a>
           </div>
         </div>
       </div>
@@ -416,76 +551,152 @@
   <!-- Research -->
   <section id="research">
     <div class="container">
-      <h3 class="section-title">Research</h3>
+      <div class="eyebrow"><span class="dot"></span>RESEARCH</div>
+      <h3 class="section-title" style="margin-bottom:24px">How we evaluate funds</h3>
 
-      <div class="cards" style="margin-bottom:16px;">
-        <article class="card"><h4>Category & Benchmark Hygiene</h4><p>Clean categories, correct benchmarks, apples-to-apples comparisons. We avoid mixed styles and hidden overlaps before any conclusion.</p></article>
-        <article class="card"><h4>Regime-Aware Analysis</h4><p>Markets change. We look at pre-/post-2021 behavior, drawdowns, and forward windows so takeaways don’t rely on any single cycle.</p></article>
-        <article class="card"><h4>Rules, Not Gut Calls</h4><p>Clear, testable rules for entries, rebalancing and de-risking. Results are framed as actions a real investor can follow.</p></article>
+      <div class="glass-solid process-strip" style="margin-bottom:24px;">
+        <div class="process-step"><span class="step-num">01</span><h4>Category &amp; Benchmark Hygiene</h4><p>Clean categories, correct benchmarks, apples-to-apples comparisons. We avoid mixed styles and hidden overlaps.</p></div>
+        <div class="process-step"><span class="step-num">02</span><h4>Regime-Aware Analysis</h4><p>Markets change. We look at pre-/post-2021 behavior, drawdowns, and forward windows across cycles.</p></div>
+        <div class="process-step"><span class="step-num">03</span><h4>Rules, Not Gut Calls</h4><p>Clear, testable rules for entries, rebalancing and de-risking that a real investor can follow.</p></div>
       </div>
 
-      <article class="embed-card" style="margin-bottom:12px;">
-        <h4 style="margin:0 0 6px;">Featured Insight — <span style="color:var(--gold)">Gold vs Nifty</span></h4>
-        <p style="margin:0 0 10px; color:var(--muted)">A concise, 3-part series comparing gold and Indian equities across regimes, drawdowns, and practical allocation rules.</p>
-        <div class="cta">
-          <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-1-i-introduction-activity-7295416645135560704-1Zew" target="_blank" rel="noopener noreferrer">Part 1</a>
-          <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-2-solution-conclusion-activity-7295417501599883264-3rU1" target="_blank" rel="noopener noreferrer">Part 2</a>
-          <a class="btn gold" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-3-what-about-gold-activity-7295417628745981952-JBYX" target="_blank" rel="noopener noreferrer">Part 3</a>
-        </div>
-      </article>
+      <h4 style="font-family:var(--font-display); font-weight:600; font-size:16px; margin:0 0 14px; color:var(--muted)">Featured Insight — <span class="grad-text">Gold vs Nifty</span></h4>
+      <div class="insight-list" style="margin-bottom:16px;">
+        <a class="insight-item" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-1-i-introduction-activity-7295416645135560704-1Zew" target="_blank" rel="noopener noreferrer">
+          <span class="ii-left"><span class="ii-num">Part 1</span><span class="ii-title">Introduction — framing gold vs equities</span></span>
+          <span class="ii-arrow">→</span>
+        </a>
+        <a class="insight-item" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-2-solution-conclusion-activity-7295417501599883264-3rU1" target="_blank" rel="noopener noreferrer">
+          <span class="ii-left"><span class="ii-num">Part 2</span><span class="ii-title">Solution &amp; conclusion</span></span>
+          <span class="ii-arrow">→</span>
+        </a>
+        <a class="insight-item" href="https://www.linkedin.com/posts/adtya-l-a8aa6411_gold-vs-nifty-part-3-what-about-gold-activity-7295417628745981952-JBYX" target="_blank" rel="noopener noreferrer">
+          <span class="ii-left"><span class="ii-num">Part 3</span><span class="ii-title">What about gold, really?</span></span>
+          <span class="ii-arrow">→</span>
+        </a>
+      </div>
 
-      <!-- NEW: Link to all research on LinkedIn -->
-      <div class="cta" style="margin-top:6px">
-        <a class="btn gold" href="https://www.linkedin.com/company/moneysutraa/" target="_blank" rel="noopener noreferrer">Explore more research on LinkedIn →</a>
+      <div class="cta">
+        <a class="btn grad" href="https://www.linkedin.com/company/moneysutraa/" target="_blank" rel="noopener noreferrer">Explore more research on LinkedIn →</a>
       </div>
     </div>
   </section>
 
-  <!-- About Us -->
+  <!-- About -->
   <section id="about">
     <div class="container">
-      <h3 class="section-title">About Us</h3>
+      <div class="eyebrow"><span class="dot"></span>ABOUT US</div>
+      <h3 class="section-title" style="margin-bottom:24px">Who we are</h3>
 
-      <article class="embed-card" style="margin-bottom:16px;">
-        <h4 style="margin:0 0 8px;">Who we are</h4>
-        <p style="margin:0 0 10px; color:#muted">
-          <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> is a compliance-first, research-driven investment advisory. We combine clear frameworks with practical execution—so you always know what to buy, how much, and when to de-risk.
-        </p>
-        <div class="badges" style="margin-top:10px;">
+      <div class="vision-block">
+        <p class="lead">MoneySutraa exists to reach as many people as possible and help them get their personal finance right — <span class="hl">whether or not they ever invest through us.</span></p>
+        <p class="support">We take an investor-first approach: anyone who reaches out gets a goal-planning session, no strings attached. If you want continuous, ongoing support — regular reviews, rebalancing, course-correction as life changes — we become your investment partner, because that kind of support only works if we can actually track your portfolio over time. Our approach is sequence-first: get the essentials in place — health insurance, term insurance, and disciplined SIPs — before anything else. Once you have a solid core mutual fund portfolio, we help you graduate to equity for higher, long-term growth. Build the foundation first, then chase the upside.</p>
+        <div class="badges" style="margin-top:20px;">
           <span class="pill">ARN-336976</span>
           <span class="pill">SEBI/AMFI aligned</span>
           <span class="pill">English / Hinglish / Hindi</span>
           <span class="pill">Privacy-first documentation</span>
         </div>
-      </article>
-
-      <h4 style="margin:10px 0;">Who we help</h4>
-      <div class="cards" style="margin-bottom:16px;">
-        <article class="card"><h4>First-time Investors</h4><p>Start simple and strong. We set up a clear starter plan with a few good funds, the right targets, and SIPs/lumpsums you can stick to—so getting started feels easy, and staying invested feels natural.</p></article>
-        <article class="card"><h4>Busy Professionals</h4><p>We fit a disciplined money routine into your calendar—quick reviews, rules-based rebalancing, and clear action notes you can act on in minutes.</p></article>
-        <article class="card"><h4>DIY + Second Opinion</h4><p>Already investing? We run a hygiene check for overlap, drift, and costs—then hand you a clean, benchmark-aligned roadmap you can follow with confidence.</p></article>
       </div>
 
-      <div class="team-hero">
-        <img src="./team.jpg?v=2" alt="MoneySutraa Co-Founders — Ravi Mandi and Adtya L." loading="lazy" decoding="async" width="1100" height="420">
-        <div class="team-overlay" aria-hidden="true">
-          <div class="title">The team</div>
-          <div class="member ravi">
-            <strong>Ravi Mandi</strong>
-            <span class="role">Co-Founder</span>
-            <span class="qual">B.Tech, NIT, Jamshedpur</span>
+      <h4 style="font-family:var(--font-display); font-weight:600; font-size:18px; margin:0 0 16px;">Who we help</h4>
+      <div class="bento cols-3" style="margin-bottom:8px;">
+        <div class="glass persona-card"><span class="p-tag">Getting Started</span><h4>First-time Investors</h4><p>Start simple and strong. We set up a clear starter plan with a few good funds, the right targets, and SIPs/lumpsums you can stick to.</p></div>
+        <div class="glass persona-card"><span class="p-tag">On Autopilot</span><h4>Busy Professionals</h4><p>We fit a disciplined money routine into your calendar—quick reviews, rules-based rebalancing, and clear action notes.</p></div>
+        <div class="glass persona-card"><span class="p-tag">Second Opinion</span><h4>DIY Investors</h4><p>Already investing? We run a hygiene check for overlap, drift, and costs—then hand you a clean, benchmark-aligned roadmap.</p></div>
+      </div>
+
+      <h4 style="font-family:var(--font-display); font-weight:600; font-size:18px; margin:32px 0 4px;">The Founders</h4>
+      <div class="founders-grid">
+        <div class="founder-card">
+          <div class="founder-photo"><img src="./team.jpg?v=2" alt="Ravi Mandi, Co-Founder, MoneySutraa" loading="lazy" decoding="async" style="object-position:left center"></div>
+          <div class="founder-body">
+            <div class="f-name">Ravi Mandi</div>
+            <span class="f-role">Co-Founder</span>
+            <span class="f-qual">B.Tech, NIT Jamshedpur</span>
+            <p class="f-focus">Focus: technology &amp; product — the tools and systems behind the plans.</p>
           </div>
-          <div class="member aditya">
-            <strong>Adtya L.</strong>
-            <span class="role">Co-Founder</span>
-            <span class="qual">CA, MBA</span>
+        </div>
+        <div class="founder-card">
+          <div class="founder-photo"><img src="./aditya-lunawat.jpg" alt="Adtya L., Co-Founder, MoneySutraa" loading="lazy" decoding="async"></div>
+          <div class="founder-body">
+            <div class="f-name">Adtya L.</div>
+            <span class="f-role">Co-Founder</span>
+            <span class="f-qual">CA, MBA</span>
+            <p class="f-focus">Focus: research &amp; compliance — the frameworks behind every recommendation.</p>
           </div>
         </div>
       </div>
 
       <div class="cta">
-        <a class="btn green" href="https://wa.me/917400153953?text=Hi%20MoneySutraa%2C%20I%20came%20via%20About%20section&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-        <a class="btn" href="#services">See our services</a>
+        <a class="btn outline" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20About%20section&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+        <a class="btn grad" href="#tools">Try the calculator</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Careers -->
+  <section id="careers" aria-label="Careers with MoneySutraa">
+    <div class="mesh m1" style="top:auto;bottom:-200px;right:-100px"></div>
+    <div class="container">
+      <div class="eyebrow"><span class="dot"></span>GROW WITH US</div>
+      <h3 class="section-title" style="margin-bottom:16px">Build a career around helping people build wealth</h3>
+      <p class="career-intro">Start part-time, alongside your current job. No finance degree required — just genuine interest in personal finance, a willingness to learn, and a comfort talking to people. Grow it into a full-time career at your own pace.</p>
+
+      <div class="career-grid">
+        <article class="glass-solid career-card">
+          <span class="role-tag">Distributor</span>
+          <h3>Become a Distributor</h3>
+          <p>Help people plan and invest, backed by MoneySutraa's research, tools and compliance framework under ARN-336976.</p>
+          <ul class="career-list">
+            <li>For anyone who enjoys personal finance and likes helping people</li>
+            <li>Start part-time alongside your current job — no prior degree needed</li>
+            <li>Pick up AMFI/NISM certification as you grow, at your pace</li>
+            <li>Research, tools, training and documentation support provided</li>
+          </ul>
+          <a class="btn grad" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20interested%20in%20becoming%20a%20Distributor&utm_source=website&utm_medium=cta&utm_campaign=careers-distributor" target="_blank" rel="noopener noreferrer">Chat about becoming a Distributor</a>
+        </article>
+
+        <article class="glass-solid career-card">
+          <span class="role-tag">Recruiter</span>
+          <h3>Become a Distributor Recruiter</h3>
+          <p>Bring in and support new distributors — build and mentor a team while earning on their growth.</p>
+          <ul class="career-list">
+            <li>For people who enjoy networking and spotting the right people</li>
+            <li>Recruit, onboard and mentor new distributors</li>
+            <li>Override income as your team grows</li>
+            <li>Full onboarding and recruiter support from MoneySutraa</li>
+          </ul>
+          <a class="btn grad" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20interested%20in%20becoming%20a%20Recruiter&utm_source=website&utm_medium=cta&utm_campaign=careers-recruiter" target="_blank" rel="noopener noreferrer">Chat about becoming a Recruiter</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transparency -->
+  <section id="transparency" aria-label="Transparency and compliance">
+    <div class="container">
+      <div class="eyebrow"><span class="dot"></span>TRANSPARENCY</div>
+      <div class="section-head">
+        <h3 class="section-title">How we're compensated, and how you're protected</h3>
+      </div>
+      <div class="bento cols-3">
+        <div class="glass card">
+          <h4>How we earn</h4>
+          <p>We earn distributor commission (trail) from AMCs on the funds you invest in through us — not fees charged to you. Ours is an investor-first approach: we don't recommend a fund because it pays more; our process is documentation-led, not commission-led.</p>
+        </div>
+        <div class="glass card">
+          <h4>Stay alert to fraud</h4>
+          <p>We will never ask you to pay, transfer, or hand over cash/cheques in an individual's name. All transactions happen through official AMC/RTA platforms. Report anything unusual to us immediately.</p>
+        </div>
+        <div class="glass card">
+          <h4>Your protection</h4>
+          <p>We operate under ARN-336976 and follow AMFI's Code of Conduct for Distributors. You can escalate any unresolved grievance to SEBI via SCORES.</p>
+        </div>
+      </div>
+      <div class="cta" style="margin-top:24px">
+        <a class="btn outline" href="https://www.amfiindia.com/distributor" target="_blank" rel="noopener noreferrer">AMFI Distributor Guidelines ↗</a>
+        <a class="btn outline" href="https://scores.sebi.gov.in/" target="_blank" rel="noopener noreferrer">File a grievance on SEBI SCORES ↗</a>
       </div>
     </div>
   </section>
@@ -493,41 +704,41 @@
   <!-- Contact -->
   <section id="contact">
     <div class="container">
-      <h3 class="section-title">Contact Us</h3>
+      <div class="eyebrow"><span class="dot"></span>CONTACT US</div>
+      <h3 class="section-title" style="margin-bottom:24px">Let's talk about your goals</h3>
+
       <div class="contact-grid">
-        <form class="form-card" name="moneysutraa-contact" method="POST" data-netlify="true" netlify-honeypot="_gotcha">
+        <form class="glass-solid form-card" name="moneysutraa-contact" method="POST" data-netlify="true" netlify-honeypot="_gotcha">
           <input type="hidden" name="form-name" value="moneysutraa-contact">
           <div class="form-row two">
             <div><label for="name">Full name *</label><input id="name" name="name" required autocomplete="name" placeholder="Your name" /></div>
             <div><label for="email">Email *</label><input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" /></div>
           </div>
-          <div class="form-row two">
+          <div class="form-row two" style="margin-top:14px">
             <div><label for="phone">Phone *</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+91" required /></div>
             <div><label for="lang">Preferred language</label>
               <select id="lang" name="language"><option>English</option><option>Hinglish</option><option>Hindi</option></select>
             </div>
           </div>
-          <div class="form-row"><div><label for="subject">Subject</label><input id="subject" name="subject" placeholder="e.g., Goal planning / Portfolio review" /></div></div>
-          <div class="form-row"><div><label for="message">Your message *</label><textarea id="message" name="message" required placeholder="tell us about your goals"></textarea></div></div>
-          <p style="display:none"><label>Don’t fill this out if you’re human: <input name="_gotcha" /></label></p>
+          <div class="form-row" style="margin-top:14px"><div><label for="subject">Subject</label><input id="subject" name="subject" placeholder="e.g., Goal planning / Portfolio review" /></div></div>
+          <div class="form-row" style="margin-top:14px"><div><label for="message">Your message *</label><textarea id="message" name="message" required placeholder="Tell us about your goals"></textarea></div></div>
+          <p style="display:none"><label>Don't fill this out if you're human: <input name="_gotcha" /></label></p>
           <div class="consent">
-            <input id="consent" name="consent" type="checkbox" required style="margin-top:3px" />
+            <input id="consent" name="consent" type="checkbox" required />
             <label for="consent">I consent to <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> contacting me about my enquiry. We do not share your details with third parties.</label>
           </div>
-          <div class="cta" style="margin-top:12px">
-            <button class="btn green" type="submit">Send message</button>
+          <div class="cta" style="margin-top:18px">
+            <button class="btn grad" type="submit">Send message</button>
           </div>
         </form>
 
-        <div class="form-card" aria-label="Reach us">
-          <h4 style="margin:0 0 10px">Reach us</h4>
-          <p style="margin:0 0 10px; color:#6d6d6d"><span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> Fin Services LLP</p>
-          <p style="margin:0 0 8px"><strong>Email:</strong> <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a></p>
-          <p style="margin:0 0 8px"><strong>WhatsApp:</strong> <a href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">+91 74001 53953</a></p>
-          <p style="margin:0 0 12px; color:#6d6d6d">We reply within one business day.</p>
-          <div class="ribbon" style="border-radius:12px">
-            <b>Compliance note:</b> Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing.
-          </div>
+        <div class="glass-solid reach-card" aria-label="Reach us">
+          <h4>Reach us</h4>
+          <p><span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> Fin Services LLP</p>
+          <p><strong style="color:#fff">Email:</strong> <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a></p>
+          <p><strong style="color:#fff">WhatsApp:</strong> <a href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website" target="_blank" rel="noopener noreferrer">+91 93115 95912</a></p>
+          <p>We reply within one business day.</p>
+          <div class="compliance-note"><strong style="color:var(--gold)">Compliance note:</strong> Mutual fund investments are subject to market risks. Please read all scheme-related documents carefully before investing.</div>
         </div>
       </div>
     </div>
@@ -536,7 +747,8 @@
   <!-- FAQ -->
   <section id="faq">
     <div class="container">
-      <h3 class="section-title">FAQs</h3>
+      <div class="eyebrow"><span class="dot"></span>FAQS</div>
+      <h3 class="section-title" style="margin-bottom:24px">Common questions</h3>
       <details><summary>Are you SEBI/AMFI compliant?</summary><p>We operate under ARN-336976 and follow SEBI/AMFI guidelines. We do not give generic advice; recommendations are personalised after profiling.</p></details>
       <details><summary>How do sessions work?</summary><p>45-min call to map goals, risk and time horizons, followed by a written summary and action checklist.</p></details>
       <details><summary>How do you charge?</summary><p>Transparent, scope-based pricing. No revenue from pushing specific funds.</p></details>
@@ -547,194 +759,88 @@
   <!-- Privacy Policy -->
   <section id="privacy">
     <div class="container">
-      <h3 class="section-title">Privacy Policy</h3>
-      <article class="embed-card">
+      <div class="eyebrow"><span class="dot"></span>PRIVACY</div>
+      <h3 class="section-title" style="margin-bottom:24px">Privacy Policy</h3>
+      <article class="glass-solid legal">
         <p><strong>Last updated:</strong> 15 December 2025</p>
-        <p>
-          MoneySutraa Fin Services LLP (“MoneySutraa”, “we”, “our”, “us”) is committed to protecting your privacy.
-          This Privacy Policy explains how we collect, use, store and protect your personal information when you
-          interact with us through our website, WhatsApp, email, social platforms, webinars and forms.
-        </p>
-        <p>
-          By using our website or sharing your details with us, you agree to the practices described in this policy.
-          We operate as a Mutual Fund Distributor under <strong>ARN-336976</strong> and follow applicable SEBI/AMFI guidelines.
-          We do <strong>not</strong> sell your data.
-        </p>
+        <p>MoneySutraa Fin Services LLP ("MoneySutraa", "we", "our", "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store and protect your personal information when you interact with us through our website, WhatsApp, email, social platforms, webinars and forms.</p>
+        <p>By using our website or sharing your details with us, you agree to the practices described in this policy. We operate as a Mutual Fund Distributor under <strong>ARN-336976</strong> and follow applicable SEBI/AMFI guidelines. We do <strong>not</strong> sell your data.</p>
 
         <h4>1. What information we collect</h4>
-        <p>We may collect the following types of information:</p>
         <p><strong>1.1 Information you provide directly</strong></p>
         <ul>
-          <li>Name</li>
-          <li>Email address</li>
-          <li>Phone number / WhatsApp number</li>
-          <li>Preferred language</li>
-          <li>City / location (when shared by you)</li>
+          <li>Name, email address, phone number / WhatsApp number, preferred language, city / location (when shared by you)</li>
           <li>Details you share about your financial goals, current investments, risk profile and time horizon</li>
-          <li>
-            Responses submitted via website contact forms, webinar / workshop registration forms,
-            Google Forms, Zoho Forms or similar tools, and email / WhatsApp conversations
-          </li>
+          <li>Responses submitted via website contact forms, webinar / workshop registration forms, Google Forms, Zoho Forms or similar tools, and email / WhatsApp conversations</li>
         </ul>
         <p><strong>1.2 Technical &amp; usage information</strong></p>
-        <p>When you visit our website, some information may be collected automatically, such as:</p>
         <ul>
-          <li>IP address and approximate location</li>
-          <li>Device type, browser type and version</li>
-          <li>Pages visited and time spent</li>
-          <li>Referral source (for example: social media, ad campaign, search engine)</li>
+          <li>IP address and approximate location, device/browser type, pages visited and time spent, referral source</li>
         </ul>
-        <p>
-          This may be collected via analytics and advertising tools (for example, Google Analytics, Meta Pixel or similar).
-        </p>
+        <p>This may be collected via analytics and advertising tools (for example, Google Analytics, Meta Pixel or similar).</p>
 
         <h4>2. How we use your information</h4>
-        <p>We use your information to:</p>
         <ul>
           <li>Respond to your enquiries and contact requests</li>
           <li>Schedule calls, meetings, webinars or workshops you have shown interest in</li>
-          <li>
-            Understand your goals, risk profile and time horizon so that we can offer
-            <strong>personalised mutual fund guidance</strong>
-          </li>
+          <li>Understand your goals, risk profile and time horizon so that we can offer <strong>personalised mutual fund guidance</strong></li>
           <li>Share requested resources, notes, checklists or follow-up information</li>
           <li>Send important updates related to your bookings, services or regulatory changes</li>
           <li>Improve our content, research, services and website experience</li>
-          <li>
-            Run limited, consent-based communication campaigns (for example: webinar reminders,
-            post-session follow-ups and check-ins on your plan)
-          </li>
+          <li>Run limited, consent-based communication campaigns</li>
         </ul>
-        <p>
-          We do not use your information to push specific products purely for commission.
-          Our approach is <strong>process-first and documentation-led</strong>.
-        </p>
+        <p>We do not use your information to push specific products purely for commission. Our approach is <strong>process-first and documentation-led</strong>.</p>
 
         <h4>3. Legal basis &amp; consent</h4>
-        <p>We process your information based on:</p>
         <ul>
           <li><strong>Your consent</strong> – when you fill a form, contact us or opt in to communication</li>
-          <li>
-            <strong>Legitimate interests</strong> – to respond to your queries, maintain records,
-            improve our services and comply with applicable regulations
-          </li>
-          <li>
-            <strong>Legal and regulatory obligations</strong> – where SEBI/AMFI or other authorities require us
-            to maintain certain records
-          </li>
+          <li><strong>Legitimate interests</strong> – to respond to your queries, maintain records, improve our services</li>
+          <li><strong>Legal and regulatory obligations</strong> – where SEBI/AMFI or other authorities require record-keeping</li>
         </ul>
-        <p>
-          You can withdraw your consent for non-essential communications at any time by emailing
-          <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a> or replying “STOP” on WhatsApp (where applicable).
-        </p>
+        <p>You can withdraw your consent for non-essential communications at any time by emailing <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a> or replying "STOP" on WhatsApp (where applicable).</p>
 
         <h4>4. How we share your information</h4>
-        <p>We do <strong>not</strong> sell or rent your personal data.</p>
-        <p>We may share your information only with:</p>
-        <ul>
-          <li>
-            <strong>Service providers</strong> who help us operate (for example: website hosting, email services,
-            webinar platforms, form tools, CRM / data storage tools), under confidentiality or data protection commitments.
-          </li>
-          <li>
-            <strong>Regulators or legal authorities</strong> where required by law, regulation or valid legal process.
-          </li>
-          <li>
-            <strong>Mutual fund platforms / intermediaries</strong> only where you explicitly authorise us
-            to assist with execution or onboarding.
-          </li>
-        </ul>
+        <p>We do <strong>not</strong> sell or rent your personal data. We may share it only with service providers who help us operate (hosting, email, webinar, form, CRM tools), regulators/legal authorities where required, and mutual fund platforms only where you explicitly authorise assistance with execution or onboarding.</p>
 
         <h4>5. Data storage, security &amp; retention</h4>
-        <ul>
-          <li>
-            Your data may be stored in secure third-party tools (for example: Google Workspace, form tools,
-            CRM, or hosting providers) with standard industry security measures.
-          </li>
-          <li>We take reasonable precautions to protect your information from unauthorised access, misuse or loss.</li>
-          <li>
-            We retain your information as long as required:
-            <ul>
-              <li>To serve you and manage our relationship; and</li>
-              <li>To comply with applicable laws, SEBI/AMFI record-keeping norms and audit requirements.</li>
-            </ul>
-          </li>
-        </ul>
-        <p>Where data is no longer required, we will delete or anonymise it within a reasonable timeframe, subject to regulatory requirements.</p>
+        <p>Data may be stored in secure third-party tools with standard industry security measures. We retain information as long as required to serve you and to comply with SEBI/AMFI record-keeping norms. Where no longer required, we delete or anonymise it within a reasonable timeframe.</p>
 
         <h4>6. Your rights &amp; choices</h4>
-        <p>Subject to applicable law, you may have the right to:</p>
-        <ul>
-          <li>Access the personal information we hold about you</li>
-          <li>Request correction or update of inaccurate or incomplete information</li>
-          <li>Withdraw consent for certain uses (for example, marketing messages)</li>
-          <li>Request deletion of your information, where legally permissible</li>
-        </ul>
-        <p>
-          You can exercise these rights by emailing us at
-          <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a>
-          with the subject line: <em>“Privacy request – [Your Name]”</em>.
-          We may need to verify your identity before acting on certain requests.
-        </p>
+        <p>Subject to applicable law, you may access, correct, request deletion of, or withdraw consent for use of your information by emailing <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a> with subject line "Privacy request – [Your Name]". We may need to verify your identity before acting on certain requests.</p>
 
         <h4>7. WhatsApp, email &amp; third-party links</h4>
-        <ul>
-          <li>
-            When you contact us via WhatsApp, your messages are also subject to WhatsApp’s own privacy policy.
-          </li>
-          <li>
-            When you contact us via email, your information is processed by the respective email providers
-            (for example: Gmail or our hosting provider).
-          </li>
-          <li>
-            Our website and content may contain links to third-party websites, tools, event platforms or mutual fund platforms.
-            We are not responsible for their privacy practices and encourage you to review their policies separately.
-          </li>
-        </ul>
+        <p>WhatsApp and email communications are subject to those providers' own privacy policies. Our website may link to third-party sites we are not responsible for.</p>
 
-        <h4>8. Children’s privacy</h4>
-        <p>
-          Our services, content and workshops are primarily designed for adults (18+).
-          We do not knowingly collect personal information from children without appropriate parental or guardian consent.
-          If you believe a minor has shared their details with us without consent, please email
-          <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a> and we will take appropriate steps.
-        </p>
+        <h4>8. Children's privacy</h4>
+        <p>Our services are primarily designed for adults (18+). We do not knowingly collect information from children without parental/guardian consent.</p>
 
         <h4>9. Updates to this Privacy Policy</h4>
-        <p>
-          We may update this Privacy Policy from time to time to reflect changes in regulations,
-          our services and processes, or the tools and platforms we use.
-        </p>
-        <p>
-          When we update the policy, we will revise the “Last updated” date at the top.
-          Significant changes may also be communicated through our website or email.
-        </p>
+        <p>We may update this policy periodically; the "Last updated" date above will reflect the latest revision.</p>
 
         <h4>10. How to contact us</h4>
-        <p>
-          For any questions, concerns or requests about this Privacy Policy or how we handle your data, you can reach us at:
-        </p>
-        <p><strong>MoneySutraa Fin Services LLP</strong><br>
-          Email: <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a><br>
-          WhatsApp: <a href="https://wa.me/917400153953" target="_blank" rel="noopener noreferrer">+91 74001 53953</a>
-        </p>
+        <p><strong>MoneySutraa Fin Services LLP</strong><br>Email: <a href="mailto:wecare@moneysutraa.com">wecare@moneysutraa.com</a><br>WhatsApp: <a href="https://wa.me/919311595912" target="_blank" rel="noopener noreferrer">+91 93115 95912</a></p>
       </article>
     </div>
   </section>
 
   <footer>
-    <div class="container foot">© 2025 <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> Fin Services LLP • ARN-336976</div>
+    <div class="container foot">
+      <div>© 2026 <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> Fin Services LLP • Wealth Partners for Life 🤝 • AMFI-registered Mutual Fund Distributor • ARN-336976</div>
+      <div class="foot-links">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/refund-policy/">Refund Policy</a>
+        <a href="/terms/">Terms</a>
+      </div>
+    </div>
   </footer>
 
-  <!-- Sticky mobile CTA -->
   <div class="sticky-cta" aria-hidden="false">
     <div class="wrap">
-      <a class="btn green" href="https://wa.me/917400153953?text=Hi%20MoneySutraa%2C%20I%20came%20via%20Sticky%20CTA&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      <a class="btn gold" href="mailto:wecare@moneysutraa.com" rel="noopener">Email</a>
+      <a class="btn grad" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Sticky%20CTA&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="btn outline" href="mailto:wecare@moneysutraa.com" rel="noopener">Email</a>
     </div>
   </div>
 
-  <!-- tiny JS for mobile menu -->
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
