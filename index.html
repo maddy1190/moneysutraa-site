@@ -78,11 +78,11 @@
 
     /* Header */
     .header{position:sticky;top:0;z-index:80;background:rgba(10,14,26,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-    .nav{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;column-gap:18px;height:92px;max-width:1160px;margin:0 auto;padding:0 24px}
+    .nav{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;column-gap:18px;height:82px;max-width:1160px;margin:0 auto;padding:0 24px}
     .logo{height:40px;width:auto;object-fit:contain}
-    .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;width:max-content}
-    .brand-lockup .logo{width:100%;height:auto;object-fit:contain}
-    .brand-lockup .main-tagline{font-family:var(--font-body);font-size:14px;font-weight:600;letter-spacing:0;color:#D7DAE6;white-space:nowrap}
+    .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px}
+    .brand-lockup .logo{height:44px;width:auto;max-width:220px;object-fit:contain}
+    .brand-lockup .main-tagline{font-family:var(--font-body);font-size:12.5px;font-weight:600;letter-spacing:0;color:#D7DAE6;white-space:nowrap}
 
     .links{display:flex;gap:28px;justify-self:center;font-size:14px;color:#D7DAE6}
     .links a{position:relative;padding:6px 0}
@@ -99,7 +99,7 @@
     .hamburger button{border:1px solid var(--glass-brd);background:var(--glass);border-radius:10px;padding:9px 11px;min-height:40px}
     .hamburger .bar{display:block;width:19px;height:1.5px;background:#fff;margin:4px 0}
     @media(max-width:880px){ .links{display:none} .actions{display:none} .hamburger{display:block;justify-self:end} }
-    @media(max-width:640px){ .nav{height:70px} .brand-lockup .main-tagline{font-size:11px} }
+    @media(max-width:640px){ .nav{height:70px} .brand-lockup .logo{height:34px} .brand-lockup .main-tagline{font-size:10.5px} }
 
     .mobile-menu{position:fixed;top:66px;left:0;right:0;z-index:79;background:var(--bg-soft);border-bottom:1px solid var(--line);
       transform-origin:top;transform:scaleY(0);opacity:0;pointer-events:none;transition:transform .18s ease, opacity .18s ease}
