@@ -78,10 +78,10 @@
 
     /* Header */
     .header{position:sticky;top:0;z-index:80;background:rgba(10,14,26,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-    .nav{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;column-gap:18px;height:84px;max-width:1160px;margin:0 auto;padding:0 24px}
+    .nav{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;column-gap:18px;height:92px;max-width:1160px;margin:0 auto;padding:0 24px}
     .logo{height:40px;width:auto;object-fit:contain}
     .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px}
-    .brand-lockup .logo{height:34px}
+    .brand-lockup .logo{height:46px;width:auto;max-width:220px;object-fit:contain}
     .brand-lockup .main-tagline{font-family:var(--font-body);font-size:11.5px;font-weight:600;letter-spacing:0;color:#D7DAE6;white-space:nowrap}
 
     .links{display:flex;gap:28px;justify-self:center;font-size:14px;color:#D7DAE6}
@@ -99,7 +99,7 @@
     .hamburger button{border:1px solid var(--glass-brd);background:var(--glass);border-radius:10px;padding:9px 11px;min-height:40px}
     .hamburger .bar{display:block;width:19px;height:1.5px;background:#fff;margin:4px 0}
     @media(max-width:880px){ .links{display:none} .actions{display:none} .hamburger{display:block;justify-self:end} }
-    @media(max-width:640px){ .nav{height:66px} .brand-lockup .logo{height:26px} .brand-lockup .main-tagline{font-size:9.5px} }
+    @media(max-width:640px){ .nav{height:70px} .brand-lockup .logo{height:36px} .brand-lockup .main-tagline{font-size:9.5px} }
 
     .mobile-menu{position:fixed;top:66px;left:0;right:0;z-index:79;background:var(--bg-soft);border-bottom:1px solid var(--line);
       transform-origin:top;transform:scaleY(0);opacity:0;pointer-events:none;transition:transform .18s ease, opacity .18s ease}
@@ -180,8 +180,8 @@
     /* Embed cards */
     .embed-card{padding:22px}
     .embed-card h4{font-family:var(--font-display);font-weight:600;font-size:18px;margin:0 0 14px}
-    .embed-wrap{position:relative;width:100%;padding-top:56.25%;border-radius:14px;overflow:hidden;background:var(--bg-soft)}
-    .embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .embed-wrap{position:relative;width:100%;padding-top:56.25%;border-radius:14px;overflow:hidden;background:var(--bg-soft);isolation:isolate;transform:translateZ(0)}
+    .embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
     .embed-wrap img.embed-fit{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
     .social-grid{display:grid;gap:20px;grid-template-columns:1fr}
     @media(min-width:880px){.social-grid{grid-template-columns:1.4fr 1fr}}
@@ -323,7 +323,7 @@
   <header class="header">
     <div class="nav">
       <div class="brand-lockup">
-        <img src="logo.png" alt="Moneysutraa logo" class="logo" loading="eager" decoding="async" width="160" height="40">
+        <img src="logo.png" alt="Moneysutraa logo" class="logo" loading="eager" decoding="async">
         <h1 class="sr-only">MoneySutraa</h1>
         <div class="main-tagline">Wealth Partners for Life 🤝</div>
       </div>
@@ -363,7 +363,7 @@
     <div class="container hero-grid">
       <div>
         <div class="eyebrow"><span class="dot"></span>INVESTOR-FIRST · COMPLIANCE-FIRST</div>
-        <h2>Invest with a plan, <span class="grad-text">not a guess.</span></h2>
+        <h2>Invest with a plan, <span class="grad-text">not a Guess</span></h2>
         <p class="lede">Simple frameworks. Transparent process. A 360° research-driven approach to evaluate mutual funds and match them to your goals and risk profile.</p>
         <div class="badges" role="list">
           <span class="pill" role="listitem">SEBI/AMFI aligned</span>
@@ -483,7 +483,7 @@
       <div class="glass-solid embed-card" style="margin-bottom:24px;">
         <h4>Our Introduction in 90 Sec</h4>
         <div class="embed-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/xtioRV60nMU?rel=0" title="MoneySutraa Introduction"
+          <iframe src="https://www.youtube-nocookie.com/embed/xtioRV60nMU?rel=0&modestbranding=1&iv_load_policy=3&playsinline=1" title="MoneySutraa Introduction"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
@@ -506,7 +506,7 @@
 
       <div class="cta" style="margin-top:28px">
         <a class="btn outline" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Intro%20section&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-        <a class="btn grad" href="mailto:wecare@moneysutraa.com" rel="noopener">Book a 45-min discussion</a>
+        <a class="btn grad" href="https://docs.google.com/forms/d/e/1FAIpQLSemYu3I7aPnzujMXnT8N4UWqFsDJZlcb95IUMP9PiwrsHvN6g/viewform" target="_blank" rel="noopener noreferrer">Book a 45-min discussion</a>
       </div>
     </div>
   </section>
@@ -526,7 +526,7 @@
         <div class="glass-solid embed-card">
           <h4>Watch on YouTube</h4>
           <div class="embed-wrap">
-            <iframe src="https://www.youtube-nocookie.com/embed/ps-rYISv1as?start=108&rel=0" title="MoneySutraa YouTube sample"
+            <iframe src="https://www.youtube-nocookie.com/embed/ps-rYISv1as?start=108&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1" title="MoneySutraa YouTube sample"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
@@ -708,29 +708,16 @@
       <h3 class="section-title" style="margin-bottom:24px">Let's talk about your goals</h3>
 
       <div class="contact-grid">
-        <form class="glass-solid form-card" name="moneysutraa-contact" method="POST" data-netlify="true" netlify-honeypot="_gotcha">
-          <input type="hidden" name="form-name" value="moneysutraa-contact">
-          <div class="form-row two">
-            <div><label for="name">Full name *</label><input id="name" name="name" required autocomplete="name" placeholder="Your name" /></div>
-            <div><label for="email">Email *</label><input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" /></div>
+        <div class="glass-solid form-card" style="padding:0;overflow:hidden">
+          <div style="padding:22px 22px 0">
+            <h4 style="font-family:var(--font-display);font-weight:600;font-size:17px;margin:0 0 4px">Send us a message</h4>
+            <p style="margin:0 0 16px;color:var(--muted);font-size:14px">Fill this in and we'll get back within one business day.</p>
           </div>
-          <div class="form-row two" style="margin-top:14px">
-            <div><label for="phone">Phone *</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+91" required /></div>
-            <div><label for="lang">Preferred language</label>
-              <select id="lang" name="language"><option>English</option><option>Hinglish</option><option>Hindi</option></select>
-            </div>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSemYu3I7aPnzujMXnT8N4UWqFsDJZlcb95IUMP9PiwrsHvN6g/viewform?embedded=true" width="100%" height="760" style="border:0;display:block" loading="lazy" title="MoneySutraa contact form">Loading form…</iframe>
+          <div style="padding:14px 22px;text-align:center">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSemYu3I7aPnzujMXnT8N4UWqFsDJZlcb95IUMP9PiwrsHvN6g/viewform" target="_blank" rel="noopener noreferrer" style="font-size:12.5px;color:var(--muted)">Form not loading? Open it in a new tab →</a>
           </div>
-          <div class="form-row" style="margin-top:14px"><div><label for="subject">Subject</label><input id="subject" name="subject" placeholder="e.g., Goal planning / Portfolio review" /></div></div>
-          <div class="form-row" style="margin-top:14px"><div><label for="message">Your message *</label><textarea id="message" name="message" required placeholder="Tell us about your goals"></textarea></div></div>
-          <p style="display:none"><label>Don't fill this out if you're human: <input name="_gotcha" /></label></p>
-          <div class="consent">
-            <input id="consent" name="consent" type="checkbox" required />
-            <label for="consent">I consent to <span class="brand-inline"><span class="money">Money</span><span class="sutraa">Sutraa</span></span> contacting me about my enquiry. We do not share your details with third parties.</label>
-          </div>
-          <div class="cta" style="margin-top:18px">
-            <button class="btn grad" type="submit">Send message</button>
-          </div>
-        </form>
+        </div>
 
         <div class="glass-solid reach-card" aria-label="Reach us">
           <h4>Reach us</h4>
