@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Is Your Family Protected? Free Life & Health Insurance Calculator | MoneySutraa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Get an illustrative estimate of your life and health insurance cover gap in a few minutes. Free, no sign-up. Educational planning tool from MoneySutraa.">
+<meta name="theme-color" content="#FAF6EE">
+<link rel="canonical" href="https://moneysutraa.com/insurance/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta property="og:title" content="Free Life & Health Insurance Calculator | MoneySutraa">
+<meta property="og:description" content="An illustrative estimate of your protection gap in a few minutes — no sign-up needed.">
+<meta property="og:image" content="https://moneysutraa.com/og-cover.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#FAF6EE; --bg-soft:#F2ECDD; --panel:#FFFFFF;
+    --glass:rgba(11,37,69,.03); --glass-brd:rgba(11,37,69,.12); --line:#E8DFC8;
+    --gold:#C99A3D; --gold-bright:#E3B85C; --gold-deep:#9C7A2E;
+    --green:#2F8F5B; --green-deep:#236B44; --rose:#B5484B;
+    --ink:#0B2545; --ink-soft:#12305C;
+    --text:#1B2338; --muted:#5C6785; --muted-2:#8A93A6;
+    --radius:20px; --radius-sm:14px;
+    --font-display:'Fraunces',Georgia,serif;
+    --font-body:'Inter',system-ui,-apple-system,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  .container{max-width:900px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+  @media(max-width:640px){.container{padding:0 14px}}
+  section{position:relative;overflow:hidden}
+
+  .mesh{display:none}
+
+  .top{position:sticky;top:0;z-index:50;background:rgba(250,246,238,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .top-inner{max-width:900px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  @media(max-width:360px){
+    .top-inner{padding:10px 12px}
+    .top-brand img{height:22px}
+    .top-brand span{font-size:9px}
+    .top .btn{padding:7px 12px;font-size:12px}
+  }
+  .top-brand{display:flex;flex-direction:column;align-items:flex-start;gap:3px}
+  .top-brand img{height:26px;width:auto}
+  .top-brand span{font-family:var(--font-body);font-size:10.5px;font-weight:600;color:var(--muted)}
+  .top .btn{padding:8px 16px;font-size:13px;min-height:auto}
+
+  .btn{border-radius:999px;border:1px solid var(--glass-brd);background:var(--glass);color:var(--text);display:inline-flex;align-items:center;justify-content:center;font-weight:600;cursor:pointer;transition:transform .15s ease,filter .15s ease,background .15s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .btn.grad{background:linear-gradient(165deg, var(--green) 0%, var(--green-deep) 100%);border:0;color:#fff;letter-spacing:.015em;box-shadow:0 10px 26px rgba(35,107,68,.32), inset 0 1px 0 rgba(255,255,255,.12)}
+  .btn.grad:hover{filter:brightness(1.06)}
+  .btn.outline{background:transparent;border:1px solid var(--line)}
+  .btn.block{width:100%;padding:14px;font-size:15px}
+  .btn.ghost-sm{background:transparent;border:1px solid var(--line);color:var(--muted);font-size:12.5px;padding:8px 14px;font-weight:600}
+
+  .hero{padding:56px 0 32px;text-align:center}
+  .hero::before{content:"";position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:640px;height:420px;background:radial-gradient(ellipse at center, rgba(201,154,61,.14) 0%, rgba(201,154,61,0) 70%);pointer-events:none;z-index:0}
+  .ledger-rule{width:72px;height:5px;margin:0 auto 20px;position:relative}
+  .ledger-rule::before,.ledger-rule::after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--gold-deep);opacity:.55}
+  .ledger-rule::before{top:0}
+  .ledger-rule::after{top:4px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+  .hero h1{font-family:var(--font-display);font-weight:600;font-size:clamp(28px,6vw,46px);line-height:1.14;margin:0 0 18px;letter-spacing:-.015em;color:var(--text);position:relative;z-index:1}
+  .hero h1 .hl{color:var(--gold-deep);font-style:italic;font-weight:600}
+  .hero p{font-size:16px;color:var(--muted);max-width:560px;margin:0 auto 16px}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:12px}
+  .pill{font-family:var(--font-mono);font-weight:600;font-size:10px;letter-spacing:.04em;padding:8px 14px;border-radius:999px;background:linear-gradient(165deg, #F3D77E, #ECC658);border:1px solid rgba(154,31,31,.25);color:#8C1A1A;box-shadow:0 6px 16px rgba(154,31,31,.12), inset 0 1px 0 rgba(255,255,255,.4)}
+  .scope-note{font-size:11.5px;color:var(--muted-2);max-width:560px;margin:14px auto 0;line-height:1.5}
+
+  .tabrow{display:flex;gap:10px;justify-content:center;margin:0 0 24px;flex-wrap:wrap}
+  .tabbtn{font-family:var(--font-display);font-weight:600;font-size:14.5px;padding:12px 26px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--muted);cursor:pointer;transition:all .15s ease;box-shadow:0 4px 12px rgba(27,35,56,.04)}
+  .tabbtn.active{background:linear-gradient(165deg, var(--green) 0%, var(--green-deep) 100%);color:#fff;border-color:transparent;box-shadow:0 8px 20px rgba(35,107,68,.28)}
+
+  .calc-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px 28px;margin-bottom:18px;box-shadow:0 18px 48px rgba(27,35,56,.08);position:relative}
+  .calc-card::before{content:"";position:absolute;top:0;left:24px;right:24px;height:1px;background:var(--gold-deep);opacity:.5}
+  .calc-card::after{content:"";position:absolute;top:4px;left:24px;right:24px;height:1px;background:var(--gold-deep);opacity:.25}
+  @media(max-width:640px){.calc-card{padding:24px 20px 20px} .calc-card::before,.calc-card::after{left:18px;right:18px}}
+  .calc-title{font-family:var(--font-display);font-weight:700;font-size:24px;margin:0 0 6px;text-align:center;color:var(--text)}
+  .calc-desc{font-size:13.5px;color:var(--muted);margin:0 0 22px;text-align:center}
+  @media(max-width:480px){.calc-title{font-size:21px}}
+  .sub-block{border-top:1px dashed var(--line);margin-top:22px;padding-top:20px}
+  .sub-block-title{font-family:var(--font-display);font-weight:600;font-size:14.5px;margin:0 0 4px;color:var(--text)}
+  .sub-block-desc{font-size:12.5px;color:var(--muted);margin:0 0 16px}
+
+  .field{margin-bottom:20px}
+  .field label{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+  .field .help{font-size:11.5px;color:var(--muted-2);margin:0 0 8px;line-height:1.4}
+  .field input[type=range]{width:100%;height:4px;-webkit-appearance:none;background:var(--line);border-radius:4px;outline:none}
+  .field input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);border:3px solid var(--panel);box-shadow:0 0 0 1px var(--gold);cursor:pointer;margin-top:-1px}
+  @media(max-width:640px){
+    .field input[type=range]{height:6px}
+    .field input[type=range]::-webkit-slider-thumb{width:24px;height:24px;border-width:4px}
+  }
+  .amount-box{display:flex;align-items:center;margin-top:9px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .amount-box .affix{padding:10px;font-family:var(--font-mono);font-size:12.5px;color:var(--muted-2);background:var(--bg-soft);flex:0 0 auto}
+  .amount-box input[type=number]{width:100%;padding:10px 12px;border:none;outline:none;background:transparent;color:var(--text);font-family:var(--font-mono);font-weight:600;font-size:14px}
+  .amount-box input::-webkit-outer-spin-button,.amount-box input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:520px){.field-row{grid-template-columns:1fr}}
+  select{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--text);font-family:var(--font-body);font-size:14px}
+
+  .advanced-toggle-row{margin:4px 0 4px}
+  .advanced-toggle-row .btn{width:100%;justify-content:space-between;padding:13px 16px;font-size:13.5px}
+  .advanced-box{display:none;margin-top:16px;padding-top:4px}
+  .advanced-box.show{display:block}
+
+  .toggle-row{display:flex;align-items:center;gap:10px;margin:0 0 16px;padding:12px 14px;border-radius:10px;background:var(--bg-soft);border:1px solid var(--line)}
+  .toggle-row input{width:16px;height:16px;accent-color:var(--green)}
+  .toggle-row label{font-size:13px;font-weight:600;color:var(--text);margin:0;cursor:pointer}
+
+  .result-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px;margin-bottom:14px;position:relative;box-shadow:0 18px 48px rgba(27,35,56,.09)}
+  .result-card::before{content:"";position:absolute;top:0;left:24px;right:24px;height:1px;background:var(--gold-deep);opacity:.5}
+  .result-card::after{content:"";position:absolute;top:4px;left:24px;right:24px;height:1px;background:var(--gold-deep);opacity:.25}
+  @media(max-width:640px){.result-card{padding:18px} .result-card::before,.result-card::after{left:18px;right:18px}}
+  .result-label{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-deep);margin-bottom:12px}
+  .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px}
+  @media(max-width:380px){
+    .row{font-size:12.5px}
+    .row .label{flex:1 1 auto;min-width:0}
+    .row .amt{flex:0 0 auto;white-space:nowrap}
+    .row.total .amt{font-size:20px}
+  }
+  .row:last-of-type{border-bottom:none}
+  .row .label{color:var(--muted)}
+  .row .amt{font-family:var(--font-mono);font-weight:600;color:var(--text)}
+  .row.total{padding-top:16px;margin-top:6px;border-top:1px solid var(--line);border-bottom:none}
+  .row.total .label{font-family:var(--font-display);font-size:15px;color:var(--text)}
+  .row.total .amt{font-size:24px;color:var(--green-deep);font-weight:700}
+  .interp{font-size:13.5px;color:var(--muted);margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+
+  .method-toggle{margin-top:14px}
+  .method-box{display:none;margin-top:12px;padding:14px 16px;border-radius:12px;background:var(--bg-soft);border:1px solid var(--line);font-size:12px;color:var(--muted);line-height:1.7}
+  .method-box.show{display:block}
+  .method-box ul{margin:6px 0 0;padding-left:18px}
+  .method-box li{margin:4px 0}
+
+  .lead-card{background:linear-gradient(160deg, rgba(201,154,61,.12), rgba(47,143,91,.07));border:1px solid var(--line);border-radius:var(--radius);padding:26px;margin-bottom:18px}
+  .lead-card h3{font-family:var(--font-display);font-weight:600;font-size:18px;margin:0 0 6px;color:var(--text)}
+  .lead-card p{font-size:13.5px;color:var(--muted);margin:0 0 18px}
+  .lead-field{margin-bottom:12px}
+  .lead-field input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--text);font-family:var(--font-body);font-size:14px}
+  .consent{display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:start;font-size:12px;color:var(--muted);margin:14px 0 16px}
+  .consent input{margin-top:2px;accent-color:var(--green)}
+  .lead-note{font-size:11px;color:var(--muted-2);margin-top:10px;line-height:1.5}
+
+  .disclaimer-box{font-size:11.5px;color:var(--muted-2);line-height:1.6;padding:16px;border-radius:12px;background:var(--bg-soft);border:1px solid var(--line);margin-bottom:12px}
+  .scope-box{font-size:11.5px;color:var(--muted-2);line-height:1.6;padding:16px;border-radius:12px;background:rgba(201,154,61,.08);border:1px solid rgba(201,154,61,.3);margin-bottom:20px}
+  .scope-box b{color:var(--gold-deep)}
+
+  footer{border-top:1px solid var(--line);padding:24px 0;text-align:center}
+  footer .foot-line{font-size:12px;color:var(--muted-2)}
+  footer a{color:var(--muted-2)}
+
+  @media(max-width:640px){
+    .amount-box input[type=number], .lead-field input, select{font-size:16px}
+  }
+
+  .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(250,246,238,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:none}
+  .sticky-cta .wrap{max-width:900px;margin:0 auto}
+  @media(max-width:640px){.sticky-cta{display:block} body{padding-bottom:72px}}
+</style>
+</head>
+<body>
+
+  <div class="top">
+    <div class="top-inner">
+      <a class="top-brand" href="https://www.moneysutraa.com" style="text-decoration:none">
+        <img src="/logo.png" alt="Moneysutraa">
+        <span>Your Wealth Partners for Life</span>
+      </a>
+      <a class="btn grad" href="https://wa.me/919311595912?text=Hi%2C%20I%20came%20from%20the%20insurance%20calculator%20page" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="mesh m1"></div><div class="mesh m2"></div>
+    <div class="container">
+      <div class="ledger-rule"></div>
+      <h1>Is your family protected if <span class="hl">something happens to you?</span></h1>
+      <p>Most people guess their life and health cover, or copy a number a friend used. Answer a few questions and get an illustrative estimate of your protection gap — instantly, before you talk to anyone.</p>
+      <div class="badges">
+        <span class="pill">AMFI-registered MFD · ARN-336976</span>
+        <span class="pill">Educational tool, not insurance advice</span>
+        <span class="pill">No spam, no obligation</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="calc">
+    <div class="container">
+      <div class="tabrow">
+        <button class="tabbtn active" data-tab="life">🛡️ Life Insurance</button>
+        <button class="tabbtn" data-tab="health">🏥 Health Insurance</button>
+      </div>
+
+      <!-- LIFE INSURANCE -->
+      <div class="calc-card" id="panel-life">
+        <h2 class="calc-title">Life Insurance Calculator</h2>
+        <p class="calc-desc">An illustrative, needs-based estimate of the cover your family may need to maintain their lifestyle and meet obligations if you're no longer there to earn. Not a policy quote.</p>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Your current age</label>
+            <input type="range" min="18" max="65" step="1" value="32" id="life-age">
+            <div class="amount-box"><input type="number" id="life-age-n" value="32"><span class="affix">yrs</span></div>
+          </div>
+          <div class="field">
+            <label>Years of income support needed</label>
+            <input type="range" min="5" max="35" step="1" value="20" id="life-years">
+            <div class="amount-box"><input type="number" id="life-years-n" value="20"><span class="affix">yrs</span></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Monthly household expenses your family depends on</label>
+          <input type="range" min="10000" max="500000" step="1000" value="60000" id="life-expenses">
+          <div class="amount-box"><span class="affix">₹</span><input type="number" id="life-expenses-n" value="60000"></div>
+        </div>
+
+        <div class="field">
+          <label>Existing life cover (all policies)</label>
+          <input type="range" min="0" max="20000000" step="10000" value="1000000" id="life-cover">
+          <div class="amount-box"><span class="affix">₹</span><input type="number" id="life-cover-n" value="1000000"></div>
+        </div>
+
+        <div class="advanced-toggle-row">
+          <button type="button" class="btn ghost-sm" onclick="document.getElementById('life-advanced').classList.toggle('show')">+ Add more detail for a sharper estimate ▾</button>
+        </div>
+        <div class="advanced-box" id="life-advanced">
+          <div class="field">
+            <label>Other dependable monthly income (if any)</label>
+            <div class="help">Spouse salary, rental income, etc. — reduces what the cover needs to replace.</div>
+            <input type="range" min="0" max="300000" step="1000" value="0" id="life-otherincome">
+            <div class="amount-box"><span class="affix">₹</span><input type="number" id="life-otherincome-n" value="0"></div>
+          </div>
+
+          <div class="toggle-row">
+            <input type="checkbox" id="life-infl-toggle">
+            <label for="life-infl-toggle">Adjust for inflation over the support period (recommended)</label>
+          </div>
+          <div class="field" id="life-infl-field" style="display:none">
+            <label>Expected annual inflation</label>
+            <input type="range" min="2" max="10" step="0.5" value="6" id="life-infl">
+            <div class="amount-box"><input type="number" id="life-infl-n" value="6"><span class="affix">%</span></div>
+          </div>
+
+          <div class="field">
+            <label>Outstanding liabilities (home loan, other debt)</label>
+            <input type="range" min="0" max="20000000" step="10000" value="2000000" id="life-liab">
+            <div class="amount-box"><span class="affix">₹</span><input type="number" id="life-liab-n" value="2000000"></div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label>Future goal 1 — amount (e.g. education)</label>
+              <input type="range" min="0" max="20000000" step="10000" value="1500000" id="life-goal1">
+              <div class="amount-box"><span class="affix">₹</span><input type="number" id="life-goal1-n" value="1500000"></div>
+            </div>
+            <div class="field">
+              <label>Years until goal 1 is needed</label>
+              <input type="range" min="0" max="30" step="1" value="10" id="life-goal1-years">
+              <div class="amount-box"><input type="number" id="life-goal1-years-n" value="10"><span class="affix">yrs</span></div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label>Future goal 2 — amount (e.g. marriage)</label>
+              <input type="range" min="0" max="20000000" step="10000" value="0" id="life-goal2">
+              <div class="amount-box"><span class="affix">₹</span><input type="number" id="life-goal2-n" value="0"></div>
+            </div>
+            <div class="field">
+              <label>Years until goal 2 is needed</label>
+              <input type="range" min="0" max="30" step="1" value="15" id="life-goal2-years">
+              <div class="amount-box"><input type="number" id="life-goal2-years-n" value="15"><span class="affix">yrs</span></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Eligible assets available to your family</label>
+            <div class="help">Only include assets your family can realistically access for this purpose — not your emergency fund, and not assets already earmarked for another goal above.</div>
+            <input type="range" min="0" max="20000000" step="10000" value="500000" id="life-assets">
+            <div class="amount-box"><span class="affix">₹</span><input type="number" id="life-assets-n" value="500000"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HEALTH INSURANCE -->
+      <div class="calc-card" id="panel-health" style="display:none">
+        <h2 class="calc-title">Health Insurance Coverage Estimate</h2>
+        <p class="calc-desc">An illustrative estimate of family floater cover based on city and household — not a medical underwriting assessment. It does not account for medical history, exclusions, co-payments or room-rent limits.</p>
+
+        <div class="field-row">
+          <div class="field">
+            <label>City type</label>
+            <div class="help">Base figures are higher for metros to reflect generally higher hospital costs there.</div>
+            <select id="health-city">
+              <option value="metro">Metro (Mumbai, Delhi, Bengaluru...)</option>
+              <option value="tier2">Tier 2 city</option>
+              <option value="tier3">Tier 3 / town</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Age of oldest member (excluding parents)</label>
+            <input type="range" min="1" max="59" step="1" value="35" id="health-age">
+            <div class="amount-box"><input type="number" id="health-age-n" value="35"><span class="affix">yrs</span></div>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Family members to cover (self + spouse + kids)</label>
+            <input type="range" min="1" max="8" step="1" value="3" id="health-members">
+            <div class="amount-box"><input type="number" id="health-members-n" value="3"><span class="affix">people</span></div>
+          </div>
+          <div class="field">
+            <label>Existing health cover amount</label>
+            <input type="range" min="0" max="5000000" step="50000" value="500000" id="health-cover">
+            <div class="amount-box"><span class="affix">₹</span><input type="number" id="health-cover-n" value="500000"></div>
+          </div>
+        </div>
+
+        <div class="advanced-toggle-row">
+          <button type="button" class="btn ghost-sm" onclick="document.getElementById('health-advanced').classList.toggle('show')">+ Add more detail for a sharper estimate ▾</button>
+        </div>
+        <div class="advanced-box" id="health-advanced">
+          <div class="field">
+            <label>Existing cover type</label>
+            <select id="health-covertype">
+              <option value="floater">Family floater (shared sum insured)</option>
+              <option value="individual">Individual policies (not shared)</option>
+              <option value="none">No existing cover</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="sub-block">
+          <div class="toggle-row">
+            <input type="checkbox" id="health-parents-toggle">
+            <label for="health-parents-toggle">Also plan for parents' health cover</label>
+          </div>
+          <div id="health-parents-fields" style="display:none">
+            <div class="sub-block-desc">Parents are priced and planned as a separate policy from your family floater — their premiums and risk profile work very differently.</div>
+            <div class="field-row">
+              <div class="field">
+                <label>Number of parents to cover</label>
+                <select id="health-parents-count">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Age of oldest parent</label>
+                <input type="range" min="50" max="90" step="1" value="62" id="health-parents-age">
+                <div class="amount-box"><input type="number" id="health-parents-age-n" value="62"><span class="affix">yrs</span></div>
+              </div>
+            </div>
+            <div class="field">
+              <label>Existing cover for parents (if any)</label>
+              <input type="range" min="0" max="3000000" step="50000" value="0" id="health-parents-cover">
+              <div class="amount-box"><span class="affix">₹</span><input type="number" id="health-parents-cover-n" value="0"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div id="results-wrap"></div>
+
+      <!-- LEAD CAPTURE -->
+      <div class="lead-card">
+        <h3>Want a second opinion on this number?</h3>
+        <p>Share your name and number. We'll prepare a WhatsApp message with your estimate for you to review and send yourself — nothing goes to us until you do.</p>
+        <div class="lead-field"><input type="text" id="lead-name" placeholder="Your name"></div>
+        <div class="lead-field"><input type="tel" id="lead-phone" placeholder="WhatsApp number (e.g. 98765 43210)"></div>
+        <div class="consent">
+          <input type="checkbox" id="lead-consent">
+          <label for="lead-consent">I understand that clicking below will open WhatsApp with a pre-filled message to MoneySutraa, and that I am choosing to send it myself. MoneySutraa won't receive anything unless I press send.</label>
+        </div>
+        <button class="btn grad block" id="lead-submit">Prepare my WhatsApp message</button>
+        <div class="lead-note">We don't share your details with third parties. See our <a href="/privacy-policy/" style="color:var(--muted)">Privacy Policy</a>.</div>
+      </div>
+
+      <div class="disclaimer-box">
+        These calculators are for educational and illustrative purposes only. Results are estimates based on the information and assumptions entered by the user and are not guaranteed. Actual investment returns, inflation, expenses, insurance availability and financial needs may differ. The calculations do not constitute investment, insurance, tax or legal advice, or a recommendation to buy, sell or hold any financial product. Please consider your individual circumstances and consult an appropriately qualified professional before making financial decisions.
+      </div>
+      <div class="scope-box">
+        <b>On insurance specifically:</b> MoneySutraa is an AMFI-registered Mutual Fund Distributor (ARN-336976). This page does not represent us as a licensed insurance agent, broker or distributor, and nothing here is a solicitation to buy a specific insurance product. The health insurance estimate does not assess medical history, underwriting, exclusions, co-payments, room-rent limits or specific policy wording — please review actual policy documents and consult a qualified insurer or advisor before purchasing cover.
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="foot-line">© 2026 MoneySutraa Fin Services LLP · AMFI-registered Mutual Fund Distributor · ARN-336976</div>
+      <div class="foot-line" style="margin-top:6px"><a href="/privacy-policy/">Privacy Policy</a> · <a href="/">moneysutraa.com</a></div>
+    </div>
+  </footer>
+
+  <div class="sticky-cta">
+    <div class="wrap"><button class="btn grad block" onclick="document.getElementById('lead-submit').scrollIntoView({behavior:'smooth',block:'center'})">Get My Protection Gap →</button></div>
+  </div>
+
+<script>
+function fmtINR(n){
+  n = Math.round(Math.max(0,n));
+  return '₹' + n.toLocaleString('en-IN');
+}
+function humanize(n){
+  if(n>=1e7) return '≈ ' + (n/1e7).toFixed(2) + ' Cr';
+  if(n>=1e5) return '≈ ' + (n/1e5).toFixed(2) + ' L';
+  return '';
+}
+function syncPair(rangeId, numId, cb){
+  const r=document.getElementById(rangeId), n=document.getElementById(numId);
+  if(!r||!n) return;
+  r.addEventListener('input', ()=>{ n.value=r.value; cb(); });
+  n.addEventListener('input', ()=>{ let v=parseFloat(n.value); if(isNaN(v))return; v=Math.min(r.max, Math.max(r.min, v)); r.value=v; cb(); });
+}
+function methodToggleHTML(id, items){
+  return `
+    <div class="method-toggle">
+      <button class="btn ghost-sm" onclick="document.getElementById('${id}').classList.toggle('show')">How this was calculated ▾</button>
+      <div class="method-box" id="${id}">
+        <strong>Method &amp; assumptions</strong>
+        <ul>${items.map(i=>'<li>'+i+'</li>').join('')}</ul>
+      </div>
+    </div>`;
+}
+
+let currentTab = 'life';
+
+function computeLife(){
+  const years = +document.getElementById('life-years').value;
+  const expenses = +document.getElementById('life-expenses').value;
+  const otherIncome = +document.getElementById('life-otherincome').value;
+  const inflOn = document.getElementById('life-infl-toggle').checked;
+  const infl = inflOn ? (+document.getElementById('life-infl').value)/100 : 0;
+  const liab = +document.getElementById('life-liab').value;
+  const g1 = +document.getElementById('life-goal1').value, g1y = +document.getElementById('life-goal1-years').value;
+  const g2 = +document.getElementById('life-goal2').value, g2y = +document.getElementById('life-goal2-years').value;
+  const cover = +document.getElementById('life-cover').value;
+  const assets = +document.getElementById('life-assets').value;
+
+  const netMonthlyNeed = Math.max(0, expenses - otherIncome);
+  let incomeNeed;
+  if(infl > 0){
+    incomeNeed = netMonthlyNeed * 12 * (((Math.pow(1+infl, years) - 1) / infl));
+  } else {
+    incomeNeed = netMonthlyNeed * 12 * years;
+  }
+  const goal1FV = g1 * Math.pow(1+infl, g1y);
+  const goal2FV = g2 * Math.pow(1+infl, g2y);
+  const goalsTotal = goal1FV + goal2FV;
+
+  const totalNeed = incomeNeed + liab + goalsTotal;
+  const available = cover + assets;
+  const gap = Math.max(0, totalNeed - available);
+
+  const el = document.getElementById('results-wrap');
+  el.innerHTML = `
+    <div class="result-card">
+      <div class="result-label">Illustrative estimate — Life Insurance</div>
+      <div class="row"><span class="label">Income support needed (${years} yrs${inflOn?', inflation-adjusted':''})</span><span class="amt">${fmtINR(incomeNeed)}</span></div>
+      <div class="row"><span class="label">+ Outstanding liabilities</span><span class="amt">${fmtINR(liab)}</span></div>
+      <div class="row"><span class="label">+ Future goals (inflation-adjusted)</span><span class="amt">${fmtINR(goalsTotal)}</span></div>
+      <div class="row"><span class="label">− Existing cover & eligible assets</span><span class="amt">${fmtINR(available)}</span></div>
+      <div class="row total"><span class="label">Estimated additional cover needed</span><span class="amt">${fmtINR(gap)}</span></div>
+      <div class="interp">${humanize(gap)}${gap>0 ? ' — based on what you entered, your family may be underinsured by roughly this amount.' : ' — based on what you entered, your existing cover and assets may already meet this need. Worth a second look at the assumptions though.'}</div>
+      ${methodToggleHTML('life-method', [
+        'Income support = net monthly need (expenses minus other dependable income) × 12, '+(inflOn? 'grown at your selected inflation rate across the support period.' : 'held flat across the support period (no inflation applied — toggle inflation on for a more realistic estimate).'),
+        'Each future goal is inflated from today\'s value to its expected year of need, then added as a lump sum.',
+        'Existing cover and eligible assets are subtracted in full — make sure the assets you entered are genuinely available to your family and not already committed elsewhere.',
+        'This is a simplified, undiscounted method consistent with a first-release educational estimate — it does not model taxes, sequence-of-returns risk, or partial asset liquidity.'
+      ])}
+    </div>
+  `;
+  return {type:'Life Insurance', gap, totalNeed};
+}
+
+function computeHealth(){
+  const city = document.getElementById('health-city').value;
+  const age = +document.getElementById('health-age').value;
+  const members = +document.getElementById('health-members').value;
+  const covertype = document.getElementById('health-covertype').value;
+  const cover = +document.getElementById('health-cover').value;
+  const parentsOn = document.getElementById('health-parents-toggle').checked;
+
+  const baseByCity = {metro:1000000, tier2:700000, tier3:500000};
+  let base = baseByCity[city];
+  if(age>45) base *= 1.3;
+  const perExtraMember = Math.max(0, members-2) * 150000;
+  const familyRecommended = base + perExtraMember;
+  const familyGap = Math.max(0, familyRecommended - cover);
+
+  let parentsBlock = '';
+  let parentsResult = null;
+  if(parentsOn){
+    const pCount = +document.getElementById('health-parents-count').value;
+    const pAge = +document.getElementById('health-parents-age').value;
+    const pCover = +document.getElementById('health-parents-cover').value;
+    let parentsBase = pAge >= 70 ? 2000000 : (pAge >= 60 ? 1500000 : 1000000);
+    if(pCount === 1) parentsBase = Math.round(parentsBase * 0.65);
+    const parentsGap = Math.max(0, parentsBase - pCover);
+    parentsResult = {recommended: parentsBase, gap: parentsGap};
+    parentsBlock = `
+      <div class="result-card">
+        <div class="result-label">Illustrative estimate — Parents' Health Cover (separate policy)</div>
+        <div class="row"><span class="label">Suggested cover for ${pCount} parent${pCount>1?'s':''} (age ${pAge}+)</span><span class="amt">${fmtINR(parentsBase)}</span></div>
+        <div class="row"><span class="label">− Existing parents' cover</span><span class="amt">${fmtINR(pCover)}</span></div>
+        <div class="row total"><span class="label">Estimated additional cover suggested</span><span class="amt">${fmtINR(parentsGap)}</span></div>
+        <div class="interp">Parents are planned separately here because senior-citizen health cover is priced and underwritten very differently from a younger family floater — pre-existing conditions are common and premiums rise sharply with age.</div>
+      </div>`;
+  }
+
+  const covertypeNote = covertype==='individual'
+    ? 'Your existing cover is individual policies, not a shared floater — each member\'s own sum insured may need to meet a share of this estimate on its own, rather than being pooled together.'
+    : covertype==='none' ? 'You indicated no existing cover, so the full recommended amount is shown as the gap.' : '';
+
+  const el = document.getElementById('results-wrap');
+  el.innerHTML = `
+    <div class="result-card">
+      <div class="result-label">Illustrative health insurance coverage estimate — Family Floater</div>
+      <div class="row"><span class="label">Suggested base cover (city & age)</span><span class="amt">${fmtINR(base)}</span></div>
+      <div class="row"><span class="label">+ Additional family members</span><span class="amt">${fmtINR(perExtraMember)}</span></div>
+      <div class="row"><span class="label">− Existing cover</span><span class="amt">${fmtINR(cover)}</span></div>
+      <div class="row total"><span class="label">Estimated additional cover suggested</span><span class="amt">${fmtINR(familyGap)}</span></div>
+      <div class="interp">${humanize(familyRecommended)} total suggested family floater. ${covertypeNote} This is a rule-of-thumb estimate, not a medical underwriting assessment — it does not account for pre-existing conditions, specific hospitals, co-payments, room-rent limits or sum-insured resets.</div>
+      ${methodToggleHTML('health-method', [
+        'Base cover depends on city tier: Metro ₹10L, Tier 2 ₹7L, Tier 3 ₹5L — reflecting generally higher treatment costs in larger cities.',
+        'A +30% age loading applies if the oldest family member (excluding parents) is over 45.',
+        '₹1.5L is added per family member beyond the first two, to account for a larger floater pool.',
+        'Parents are deliberately excluded from this family figure and estimated separately below, since their cover is priced very differently.',
+        'This is an illustrative planning heuristic, not an insurer\'s underwriting calculation — your actual recommended cover may differ.'
+      ])}
+    </div>
+    ${parentsBlock}
+  `;
+
+  const totalGap = familyGap + (parentsResult ? parentsResult.gap : 0);
+  const totalNeed = familyRecommended + (parentsResult ? parentsResult.recommended : 0);
+  return {type:'Health Insurance', gap: totalGap, totalNeed};
+}
+
+let lastResult = null;
+
+function recompute(){
+  lastResult = currentTab==='life' ? computeLife() : computeHealth();
+}
+
+['life-age','life-years','life-expenses','life-otherincome','life-infl','life-liab',
+ 'life-goal1','life-goal1-years','life-goal2','life-goal2-years','life-cover','life-assets'].forEach(id=>{
+  syncPair(id, id+'-n', recompute);
+});
+['health-age','health-members','health-cover','health-parents-age','health-parents-cover'].forEach(id=>{
+  syncPair(id, id+'-n', recompute);
+});
+
+document.getElementById('life-infl-toggle').addEventListener('change', (e)=>{
+  document.getElementById('life-infl-field').style.display = e.target.checked ? '' : 'none';
+  recompute();
+});
+document.getElementById('health-parents-toggle').addEventListener('change', (e)=>{
+  document.getElementById('health-parents-fields').style.display = e.target.checked ? '' : 'none';
+  recompute();
+});
+document.getElementById('health-city').addEventListener('change', recompute);
+document.getElementById('health-covertype').addEventListener('change', recompute);
+document.getElementById('health-parents-count').addEventListener('change', recompute);
+
+document.querySelectorAll('.tabbtn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tabbtn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentTab = btn.dataset.tab;
+    document.getElementById('panel-life').style.display = currentTab==='life' ? '' : 'none';
+    document.getElementById('panel-health').style.display = currentTab==='health' ? '' : 'none';
+    recompute();
+  });
+});
+
+document.getElementById('lead-submit').addEventListener('click', ()=>{
+  const name = document.getElementById('lead-name').value.trim();
+  const phone = document.getElementById('lead-phone').value.trim();
+  const consent = document.getElementById('lead-consent').checked;
+  if(!name || !phone){ alert('Please add your name and WhatsApp number.'); return; }
+  if(!consent){ alert('Please check the box confirming you understand how this works.'); return; }
+  const r = lastResult;
+  const msg = `Hi, this is ${name} (${phone}) from the MoneySutraa insurance calculator. My ${r.type} estimate shows a gap of ${fmtINR(r.gap)} (total need ≈ ${fmtINR(r.totalNeed)}). I'd like a second opinion.`;
+  window.open('https://wa.me/919311595912?text=' + encodeURIComponent(msg), '_blank');
+});
+
+recompute();
+</script>
+</body>
+</html>
