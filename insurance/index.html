@@ -2,3 +2,783 @@
 <html lang="en-IN">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Life Insurance Cover Calculator | MoneySutraa</title>
+<meta name="description" content="Find out how much life cover your family really needs, and your gap if your employer's cover ends. Free, and it takes a minute. An educational tool from MoneySutraa.">
+<meta name="theme-color" content="#FAF6EE">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://moneysutraa.com/insurance/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta property="og:title" content="How much life cover does your family really need? | MoneySutraa">
+<meta property="og:description" content="A free life insurance cover calculator. See your gap, including if your employer's cover ends.">
+<meta property="og:image" content="https://moneysutraa.com/og-cover.jpg">
+<meta property="og:url" content="https://moneysutraa.com/insurance/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#FAF6EE; --ink:#1B2338; --slate:#5C6785;
+    --gold:#9C7A2E; --gold-text:#7F6119; --gold-tint:#F4EAD0; --rule:#E6DDCB; --white:#FFFFFF;
+    --wa:#1E7A4F; --wa-dark:#16603D;
+    --red:#8C1A1A; --yellow-1:#F3D77E; --yellow-2:#ECC658;
+    --serif:"Fraunces", Georgia, "Times New Roman", serif;
+    --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --shadow:0 1px 2px rgba(27,35,56,.04), 0 14px 36px rgba(27,35,56,.07);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{overflow-x:clip;margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  a,button,summary,label{-webkit-tap-highlight-color:transparent}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-right)) 0 max(20px,env(safe-area-inset-left))}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+  /* Header */
+  .site-head{border-bottom:1px solid var(--rule)}
+  .site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px}
+  .brand{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none}
+  .brand img{height:58px;width:auto;max-width:230px;object-fit:contain}
+  .brand-tag{font-size:11.5px;font-weight:600;color:var(--slate);line-height:1.2}
+  @media (max-width:360px){
+    .brand img{height:42px}
+    .brand-tag{font-size:11px}
+    .site-head .wa-btn{padding:9px 14px;font-size:14px}
+  }
+
+  /* WhatsApp button */
+  .wa-btn{max-width:100%;text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--wa);color:#fff;text-decoration:none;border-radius:999px;padding:11px 18px;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:15px;box-shadow:0 8px 20px rgba(30,122,79,.22);transition:background .15s ease,transform .15s ease}
+  @media (hover:hover){.wa-btn:hover{background:var(--wa-dark);transform:translateY(-1px)}}
+  .wa-btn svg{width:18px;height:18px;flex:none}
+  .wa-btn.big{font-size:17px;padding:16px 26px}
+  .wa-btn.block{width:100%}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;text-align:center;padding:26px max(20px,env(safe-area-inset-right)) 24px max(20px,env(safe-area-inset-left))}
+  @media (min-width:720px){.hero{padding-top:40px;padding-bottom:28px}}
+  .hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:min(640px,100%);height:380px;background:radial-gradient(ellipse at center, rgba(201,154,61,.14), rgba(201,154,61,0) 70%);pointer-events:none}
+  .hero > *{position:relative}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.4vw,46px);line-height:1.14;letter-spacing:-.015em;margin:0 auto 14px;max-width:18ch}
+  .hero p{color:var(--slate);max-width:58ch;margin:0 auto 20px}
+  .trust{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;list-style:none;padding:0;margin:0}
+  .trust li{background:linear-gradient(165deg,var(--yellow-1),var(--yellow-2));border:1px solid rgba(140,26,26,.25);color:var(--red);border-radius:999px;padding:6px 13px;font-size:12px;font-weight:700;letter-spacing:.01em;box-shadow:0 6px 14px rgba(140,26,26,.10), inset 0 1px 0 rgba(255,255,255,.4)}
+
+  /* Calculator */
+  .calc{display:grid;grid-template-columns:1fr;gap:20px;padding-bottom:28px}
+  @media (min-width:900px){.calc{grid-template-columns:5fr 6fr;align-items:start;gap:24px}}
+  .panel{background:var(--white);border:1px solid var(--rule);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+  @media (max-width:480px){.panel{padding:20px 16px}}
+  .panel h2{font-family:var(--serif);font-weight:600;font-size:23px;line-height:1.2;margin:0 0 4px}
+  .panel .sub{color:var(--slate);font-size:14px;margin:0 0 14px}
+  .tip{background:#E3F1E8;border-left:4px solid var(--wa);border-radius:8px;padding:10px 12px;font-size:14px;font-weight:600;color:#1B5E3B;margin:0 0 10px}
+  .sample{background:var(--gold-tint);border-radius:8px;padding:9px 12px;font-size:13px;margin:0 0 18px;color:#5A4712}
+
+  .group + .group{border-top:1px solid var(--rule);padding-top:16px;margin-top:6px}
+  .group h3{font-size:15px;margin:0 0 14px}
+  .group h3 + .group-desc{margin-top:-8px}
+  .group-desc{font-size:13px;color:var(--slate);margin:0 0 14px}
+  .opt{display:inline-block;margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5A4712;background:var(--gold-tint);border-radius:999px;padding:2px 9px;vertical-align:2px}
+  .field{margin-bottom:18px}
+  .field > label{display:block;font-weight:600;margin-bottom:6px;font-size:15px}
+  .hint{font-size:13px;color:var(--slate);margin:6px 0 0}
+  .money{display:flex;align-items:center;border:1px solid var(--rule);border-radius:10px;background:var(--paper);overflow:hidden;min-height:48px}
+  .money span{padding:0 4px 0 14px;color:var(--slate)}
+  .money input{flex:1;border:0;background:transparent;padding:12px 14px 12px 6px;font:inherit;font-variant-numeric:tabular-nums;min-width:0;color:var(--ink)}
+  .money input:focus{outline:none}
+  .money:focus-within{outline:3px solid var(--gold);outline-offset:2px;background:#fff}
+  input[type=number]{-moz-appearance:textfield;appearance:textfield}
+  input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .readout{font-size:13px;color:var(--gold-text);font-weight:600;margin-top:4px;min-height:1.2em}
+  .netline{background:var(--gold-tint);border-radius:10px;padding:11px 14px;font-size:14px;margin:-4px 0 4px}
+  .netline strong{font-variant-numeric:tabular-nums}
+
+  details.assume{border-top:1px solid var(--rule);padding-top:14px;margin-top:6px}
+  details.assume summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--slate);padding:10px 0}
+  .assume-row{display:flex;align-items:center;gap:12px;margin-top:12px}
+  .assume-row label{font-size:14px;font-weight:600}
+  .num{width:84px;min-height:44px;padding:9px 10px;border:1px solid var(--rule);border-radius:10px;font:inherit;text-align:right;background:var(--paper);color:var(--ink)}
+
+  /* Result */
+  .result{scroll-margin-top:12px}
+  @media (min-width:900px) and (min-height:720px){.result{position:sticky;top:16px}}
+  .gaps{list-style:none;margin:0 0 6px;padding:0}
+  .gaps li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0}
+  .gaps .what{font-weight:600}
+  .gaps .why{display:block;font-size:13px;color:var(--slate);font-weight:400}
+  .gaps .amt{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .gaps .amt.ok{color:var(--wa);font-size:20px}
+  .gaps li.key{background:var(--gold-tint);margin:0 -12px;padding:14px 12px;border-radius:12px}
+  .gaps li.key .amt{font-size:32px}
+  .gaps li.key .amt.ok{font-size:22px}
+
+  .mini{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);margin:16px 0 4px}
+  .ledger{margin:0 0 18px;padding:0;list-style:none;border-bottom:2px solid var(--ink)}
+  .ledger li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--rule);font-size:15px}
+  .ledger li span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .ledger li.total{font-weight:600;font-size:16px}
+
+  .bars{margin:0 0 4px}
+  .bar-label{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--slate);margin:4px 0 6px}
+  .track{height:18px;background:var(--paper);border:1px solid var(--rule);border-radius:4px;position:relative;overflow:hidden}
+  .fill{position:absolute;top:0;bottom:0;left:0;background:#D9CFBC}
+  .seg-own{position:absolute;top:0;bottom:0;left:0;background:var(--ink)}
+  .seg-emp{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(45deg,var(--gold) 0 6px,#C8A85E 6px 12px)}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--slate);margin-top:8px}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:5px;vertical-align:-2px}
+
+  .result-cta{margin-top:20px;text-align:center}
+  .result-cta small{display:block;margin-top:10px;font-size:12.5px;color:var(--slate)}
+
+  /* What this means */
+  .next{padding-bottom:40px}
+  .next .panel{padding:28px}
+  @media (max-width:480px){.next .panel{padding:20px 16px}}
+  .next-grid{display:grid;grid-template-columns:1fr;gap:22px}
+  @media (min-width:900px){.next-grid{grid-template-columns:1fr 1fr;gap:40px}}
+  .next h3{font-family:var(--serif);font-weight:600;font-size:18px;margin:0 0 10px}
+  .means{border-left:3px solid var(--gold);padding:4px 0 4px 14px;margin:0 0 12px;font-size:15px}
+  .means strong{font-variant-numeric:tabular-nums}
+  .job-note{background:var(--gold-tint);border-radius:10px;padding:10px 14px;font-size:14px;margin:0}
+  .job-note:empty{display:none}
+  .next ul{margin:0;padding-left:18px;font-size:15px}
+  .next li{margin-bottom:8px}
+  details.how{border-top:1px solid var(--rule);margin-top:22px;padding-top:14px}
+  details.how summary{cursor:pointer;font-weight:600;font-size:15px;padding:10px 0}
+  details.how .how-body{font-size:14px;color:var(--slate);margin-top:10px;max-width:82ch}
+  details.how .how-body p{margin:0 0 8px}
+  details.how code{font-family:inherit;color:var(--ink);font-weight:600}
+
+  /* Checklist */
+  .checklist{padding:24px 0 40px}
+  .checklist h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.4vw,32px);line-height:1.2;margin:0 0 6px}
+  .checklist .wrap > p{color:var(--slate);margin:0 0 20px;max-width:65ch}
+  .table-wrap{background:var(--white);border:1px solid var(--rule);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  table.points{width:100%;border-collapse:collapse}
+  .points th,.points td{text-align:left;vertical-align:top;padding:14px 16px;border-top:1px solid var(--rule);font-size:15px}
+  .points thead th{background:var(--ink);color:#fff;border-top:0;font-weight:600;font-size:14px}
+  .points td:first-child{font-weight:600;width:22%}
+  .points td:last-child{width:32%}
+  .points tr.ratio td{background:var(--gold-tint)}
+  @media (max-width:680px){
+    .points thead{position:absolute;left:-9999px}
+    .points,.points tbody,.points tr,.points td{display:block;width:100% !important}
+    .points tr{border-top:1px solid var(--rule);padding:12px 14px}
+    .points tr:first-child{border-top:0}
+    .points td{border:0;padding:3px 0}
+    .points td:not(:first-child)::before{content:attr(data-label);display:block;font-size:12px;color:var(--slate);font-weight:600}
+  }
+
+  /* Questions */
+  .faq{padding:8px 0 40px}
+  .faq h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.4vw,32px);line-height:1.2;margin:0 0 6px}
+  .faq .wrap > p{color:var(--slate);margin:0 0 20px;max-width:65ch}
+  .faq-list{max-width:820px}
+  .faq details{background:var(--white);border:1px solid var(--rule);border-radius:14px;margin-bottom:10px;box-shadow:var(--shadow)}
+  .faq details[open]{border-color:#D9C58F}
+  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 18px;min-height:56px;font-weight:600;font-size:16px;line-height:1.35}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;background:var(--gold-tint);color:var(--gold-text);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:500;line-height:1}
+  .faq details[open] summary::after{content:"\2013"}
+  .faq .ans{padding:0 18px 18px;color:var(--slate);font-size:15px;max-width:70ch}
+  @media (max-width:480px){.faq summary{padding:12px 16px}.faq .ans{padding:0 16px 16px}}
+
+  /* Contact */
+  .contact{background:var(--ink);color:#fff;padding:56px 0}
+  .contact-inner{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+  @media (min-width:900px){.contact-inner{grid-template-columns:7fr 5fr}}
+  .contact h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4vw,38px);line-height:1.2;margin:0 0 10px}
+  .contact .lead{color:#D7DCEA;margin:0 0 22px;font-size:17px}
+  .reasons{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr;gap:12px}
+  @media (min-width:600px){.reasons{grid-template-columns:1fr 1fr}}
+  .reasons li{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:12px 14px;font-size:15px}
+  .reasons svg{flex:none;width:20px;height:20px;margin-top:2px}
+  .contact-cta{text-align:center;background:var(--gold-tint);color:var(--ink);border-radius:16px;padding:28px 22px}
+  .contact-cta p{margin:0 0 16px;font-weight:600}
+  .contact-cta .wa-btn{width:100%}
+  .contact-cta small{display:block;margin-top:12px;color:var(--slate);font-size:13px}
+
+  /* Footer */
+  .review-note{background:var(--white);border:1px solid var(--rule);border-left:4px solid var(--gold);border-radius:10px;padding:14px 18px;margin:32px 0 20px;font-size:15px;font-weight:500}
+  .foot{padding:0 0 40px;font-size:12.5px;color:var(--slate)}
+  .foot p{margin:0 0 10px;max-width:90ch}
+
+  /* Mobile live-number bar */
+  .jump{display:none}
+  @media (max-width:899px){
+    .jump{display:flex;align-items:center;justify-content:space-between;gap:12px;position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(250,246,238,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--rule);padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(110%);visibility:hidden;transition:transform .2s ease,visibility .2s}
+    .jump.show{transform:none;visibility:visible}
+  }
+  .jump-lbl{display:block;font-size:12px;color:var(--slate);line-height:1.25}
+  .jump strong{font-family:var(--serif);font-size:22px;line-height:1.1;font-variant-numeric:tabular-nums}
+  .jump > div{min-width:0}
+  .jump-btn{flex:none;display:inline-flex;align-items:center;min-height:44px;background:var(--wa);color:#fff;text-decoration:none;font-weight:600;font-size:14px;border-radius:999px;padding:0 16px}
+  @media (max-width:360px){
+    .gaps .amt{font-size:22px}
+    .gaps li.key .amt{font-size:26px}
+    .wa-btn.big{font-size:15px;padding:14px 18px}
+    .jump{padding-left:12px;padding-right:12px}
+    .jump-btn{padding:0 12px;font-size:13px}
+    .jump strong{font-size:20px}
+  }
+
+  @media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much term cover should I buy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many people use a rough rule of 10 to 15 times their annual income. A better way is to start from what your family would actually need: their monthly expenses, your loans and goals like education, minus the savings and cover you already have. The calculator above does this in a minute. Review the number when your income, loans or family situation changes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Until what age should my term plan run?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Long enough to cover the years your family depends on your income, which means until your loans are repaid and your children are independent. For most people that is around age 60 to 65, or until retirement. Many plans let you choose a longer term, but a longer term usually costs more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do I get back if I outlive the policy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With a pure term plan, nothing. The premium is the price of the protection. Return-of-premium plans give back what you paid, but the premium is noticeably higher for the same cover, so many people choose a pure term plan and invest the difference separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the payout taxable, and can I claim a tax deduction on the premium?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In most cases the death benefit your family receives is tax-free. The premium can qualify for a deduction within the overall ₹1.5 lakh limit, but only if you choose the old tax regime. It is not available under the default new regime. Tax rules change, so confirm with a tax professional."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a medical test, and can I buy a term plan with a health condition like diabetes or BP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Whether you need medical tests depends on your age, the cover amount and your answers on the proposal form. Many people with conditions such as diabetes or high BP can still get a policy, but the insurer may charge a higher premium, add conditions or, in some cases, decline. Always disclose your condition. Hiding it can put your family's claim at risk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the insurer reject my family's claim?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, it can. Claims are most often disputed over wrong or hidden information in the proposal form, such as health, smoking, alcohol or income. In the first three years the insurer can question these details. After three years, the Insurance Act generally limits its right to question the policy, but the three years start again if you revive a lapsed policy. Answer every question honestly, keep your nominee updated and tell your family where the papers are."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does a term plan not cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exclusions vary by plan, so read the policy document before you buy. The main one is suicide within the first year, when the payout is limited. A term plan pays on death from most causes, including illness and accidents. Extra benefits, such as an additional payout on accidental death or cover for critical illness, usually come through paid add-ons called riders."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I choose an insurer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Look at the claim settlement ratio over several years, both by number of claims and by amount paid. A high first number with a low second can mean big claims get trimmed or rejected. Also compare what the plan covers, which riders are offered and how easy the claim process is. Choosing on the lowest premium alone can cost your family later."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will my premium change, and is it cheaper to buy early?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In most term plans the premium stays the same for the whole term, and it is set by your age and health when you buy. So buying earlier locks in a lower premium, and waiting usually costs more. Smokers pay noticeably more than non-smokers, so answer that question truthfully."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I miss a premium?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You get a grace period, usually 30 days for yearly, half-yearly and quarterly payments and 15 days for monthly payments. If you don't pay by then, the policy lapses and your family has no cover. A lapsed term plan can usually be revived within five years by paying the dues, but after the grace period the insurer may ask for a health declaration or medical tests. Setting up auto-pay avoids the problem."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.1Z"/></symbol>
+  <symbol id="tick" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#9C7A2E"/><path d="M5.5 10.2l3 3 6-6.4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="https://www.moneysutraa.com" aria-label="MoneySutraa home">
+      <img src="/logo.png" alt="MoneySutraa">
+      <span class="brand-tag">Your Wealth Partners for Life</span>
+    </a>
+    <a class="wa-btn js-wa" href="https://wa.me/919311595912" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#wa"/></svg>WhatsApp us</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <h1>How much life cover does your family really need?</h1>
+    <p>Enter your family's monthly needs, loans and goals. See the cover they'd need if you weren't there, and your gap if your employer's cover ends.</p>
+    <ul class="trust">
+      <li>AMFI-registered MFD, ARN-336976</li>
+      <li>Certified Insurance POSP</li>
+      <li>Educational tool, not insurance advice</li>
+      <li>No spam, no obligation</li>
+    </ul>
+  </section>
+
+  <section class="wrap calc" aria-label="Life insurance calculator">
+    <!-- Inputs -->
+    <form class="panel" id="inputs" onsubmit="return false" novalidate>
+      <h2>Your family</h2>
+      <p class="tip">Use today's numbers. Leave a field at 0 if it doesn't apply.</p>
+      <p class="sample">Sample numbers are filled in so you can see how it works. Replace them with yours.</p>
+
+      <div class="group">
+        <h3>Monthly needs</h3>
+        <div class="field">
+          <label for="exp">Monthly household expenses your family depends on</label>
+          <div class="money"><span>₹</span><input type="number" id="exp" min="0" step="5000" value="75000" inputmode="numeric" autocomplete="off"></div>
+        </div>
+        <div class="field">
+          <label for="oth">Other dependable monthly income</label>
+          <div class="money"><span>₹</span><input type="number" id="oth" min="0" step="5000" value="25000" inputmode="numeric" autocomplete="off"></div>
+          <p class="hint">Spouse's salary, rent or pension that would continue. You only need to replace the rest.</p>
+        </div>
+        <div class="netline">Your cover needs to replace <strong id="netM"></strong> a month</div>
+      </div>
+
+      <div class="group">
+        <h3>Loans and goals to cover <span class="opt">Optional</span></h3>
+        <p class="group-desc">Add any loans you still owe and what your family will need for goals. Leave at 0 if none.</p>
+        <div class="field">
+          <label for="loan">Outstanding loans</label>
+          <div class="money"><span>₹</span><input type="number" id="loan" min="0" step="100000" value="0" inputmode="numeric" autocomplete="off"></div>
+          <div class="readout" id="loanR"></div>
+          <p class="hint">Home loan, car loan, personal loan.</p>
+        </div>
+        <div class="field">
+          <label for="goals">Future goals, at today's cost</label>
+          <div class="money"><span>₹</span><input type="number" id="goals" min="0" step="100000" value="0" inputmode="numeric" autocomplete="off"></div>
+          <div class="readout" id="goalsR"></div>
+          <p class="hint">Add them together. For example, your child's higher education and wedding.</p>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>What's already in place <span class="opt">Optional</span></h3>
+        <p class="group-desc">Add the savings and life cover you already have. The more you add, the more accurate your gap.</p>
+        <div class="field">
+          <label for="ast">Savings and investments your family can use</label>
+          <div class="money"><span>₹</span><input type="number" id="ast" min="0" step="100000" value="0" inputmode="numeric" autocomplete="off"></div>
+          <div class="readout" id="astR"></div>
+          <p class="hint">FDs, mutual funds, PF, shares. Leave out the house you live in.</p>
+        </div>
+        <div class="field">
+          <label for="own">Life cover you already own (all policies)</label>
+          <div class="money"><span>₹</span><input type="number" id="own" min="0" step="500000" value="0" inputmode="numeric" autocomplete="off"></div>
+          <div class="readout" id="ownR"></div>
+          <p class="hint">Total sum assured of your term, endowment, money-back and ULIP policies.</p>
+        </div>
+        <div class="field">
+          <label for="emp">Life cover from your employer</label>
+          <div class="money"><span>₹</span><input type="number" id="emp" min="0" step="500000" value="0" inputmode="numeric" autocomplete="off"></div>
+          <div class="readout" id="empR"></div>
+          <p class="hint">This ends if you change jobs, are laid off, or retire.</p>
+        </div>
+      </div>
+
+      <details class="assume">
+        <summary>Assumption you can change (optional)</summary>
+        <div class="assume-row">
+          <label for="mult">Years of expenses to cover</label>
+          <input class="num" type="number" id="mult" min="5" max="30" step="1" value="14" inputmode="numeric">
+        </div>
+        <p class="hint">14 is our standard. The payout, invested at about 10% with 7% withdrawn each year, gives the family roughly one year's expenses every year (1 ÷ 7% ≈ 14). A young family with many years ahead may want a higher number. If your children are independent and retirement is near, a lower number can be reasonable. Allowed range: 5 to 30.</p>
+      </details>
+    </form>
+
+    <!-- Result -->
+    <aside class="panel result" id="result" aria-label="Your estimate">
+      <h2>Your estimate</h2>
+      <p class="sub">Illustrative, not a policy quote. All figures are cover amounts (sum assured), not premium.</p>
+
+      <ul class="gaps">
+        <li><span class="what">Gap today<span class="why">Counting all your cover</span></span><span class="amt" id="gToday"></span></li>
+        <li class="key"><span class="what">Gap if employer cover ends<span class="why">Counting only your own policies</span></span><span class="amt" id="gJob"></span></li>
+      </ul>
+
+      <p class="mini">How the cover needed is built</p>
+      <ul class="ledger">
+        <li><span id="lIncLbl">Income replacement</span><span id="lInc"></span></li>
+        <li><span>+ Outstanding loans</span><span id="lLoan"></span></li>
+        <li><span>+ Future goals</span><span id="lGoal"></span></li>
+        <li><span>− Savings your family can use</span><span id="lAst"></span></li>
+        <li class="total"><span>Cover needed today</span><span id="lNeed"></span></li>
+      </ul>
+
+      <div class="bars" aria-hidden="true">
+        <div class="bar-label"><span>Your cover vs need</span><span id="bV"></span></div>
+        <div class="track">
+          <div class="fill" id="bNeed"></div>
+          <div class="seg-own" id="bOwn"></div>
+          <div class="seg-emp" id="bEmp"></div>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--ink)"></i>Your own policies</span>
+          <span><i style="background:repeating-linear-gradient(45deg,#9C7A2E 0 3px,#C8A85E 3px 6px)"></i>Employer cover (ends with job)</span>
+          <span><i style="background:#D9CFBC"></i>Cover needed</span>
+        </div>
+      </div>
+
+      <div class="result-cta">
+        <a class="wa-btn big block js-wa" href="https://wa.me/919311595912" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#wa"/></svg>Talk it through on WhatsApp</a>
+        <small>Opens WhatsApp with your numbers pre-filled. Nothing is sent until you press send.</small>
+      </div>
+    </aside>
+  </section>
+
+  <!-- What this means -->
+  <section class="wrap next" aria-label="What this means">
+    <div class="panel">
+      <div class="next-grid">
+        <div>
+          <h3>What this means</h3>
+          <p class="means" id="means"></p>
+          <p class="job-note" id="jobNote"></p>
+        </div>
+        <div>
+          <h3>Ways to close the gap</h3>
+          <ul id="closeList"></ul>
+        </div>
+      </div>
+      <details class="how">
+        <summary>How this was calculated</summary>
+        <div class="how-body" id="howBody"></div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Points to check -->
+  <section class="checklist">
+    <div class="wrap">
+      <h2>Other points to check before taking a policy</h2>
+      <p>The right amount is only half the job. These decide whether your family actually receives it, and how well it serves them.</p>
+      <div class="table-wrap">
+        <table class="points">
+          <caption class="sr-only">Points to check before taking a life insurance policy</caption>
+          <thead><tr><th scope="col">Point</th><th scope="col">What it means</th><th scope="col">What to look for</th></tr></thead>
+          <tbody>
+            <tr><td>Term vs bundled plans</td><td data-label="What it means">A term plan pays only on death but gives the most cover per rupee. Endowment, money-back and ULIP plans mix insurance with investment and give far less cover for the same premium.</td><td data-label="What to look for">Pure term plan for protection; invest separately</td></tr>
+            <tr><td>Policy term</td><td data-label="What it means">How many years the cover lasts.</td><td data-label="What to look for">Until your loans are repaid and children are independent, usually till 60–65</td></tr>
+            <tr><td>Honest disclosure</td><td data-label="What it means">Claims can be rejected if health, smoking, alcohol or income details were hidden in the proposal form.</td><td data-label="What to look for">Disclose everything; keep a copy of the filled form</td></tr>
+            <tr><td>MWPA option</td><td data-label="What it means">A policy taken under the Married Women's Property Act goes only to your spouse and children. Lenders and creditors cannot claim it.</td><td data-label="What to look for">Choose MWPA if you have loans or run a business</td></tr>
+            <tr><td>Riders</td><td data-label="What it means">Add-ons such as accidental death, critical illness and waiver of premium.</td><td data-label="What to look for">Waiver of premium on disability or critical illness</td></tr>
+            <tr><td>Life-stage increase</td><td data-label="What it means">Some plans let you raise cover at marriage, childbirth or a new home loan.</td><td data-label="What to look for">Option to increase cover later</td></tr>
+            <tr><td>Payout option</td><td data-label="What it means">The family can receive a lump sum, a monthly income, or a mix.</td><td data-label="What to look for">A mix: lump sum for loans and goals, monthly income for expenses</td></tr>
+            <tr><td>Nominee</td><td data-label="What it means">Who receives the money, and whether they know the policy exists.</td><td data-label="What to look for">Updated nominee; family told where the policy papers are</td></tr>
+            <tr class="ratio"><td>Claim settlement ratios</td><td data-label="What it means">Check two numbers: claims settled out of claims received, and amount paid out of amount claimed.</td><td data-label="What to look for">High on both, over several years. A high first number with a low second means big claims get rejected or trimmed.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Questions -->
+  <section class="faq" aria-labelledby="faqH">
+    <div class="wrap">
+      <h2 id="faqH">Questions people ask before buying a term plan</h2>
+      <p>Plain answers to what most buyers want to know. This is general information, so always read the policy document before you buy.</p>
+      <div class="faq-list">
+        <details>
+          <summary>How much term cover should I buy?</summary>
+          <div class="ans">Many people use a rough rule of 10 to 15 times their annual income. A better way is to start from what your family would actually need: their monthly expenses, your loans and goals like education, minus the savings and cover you already have. The calculator above does this in a minute. Review the number when your income, loans or family situation changes.</div>
+        </details>
+        <details>
+          <summary>Until what age should my term plan run?</summary>
+          <div class="ans">Long enough to cover the years your family depends on your income, which means until your loans are repaid and your children are independent. For most people that is around age 60 to 65, or until retirement. Many plans let you choose a longer term, but a longer term usually costs more.</div>
+        </details>
+        <details>
+          <summary>What do I get back if I outlive the policy?</summary>
+          <div class="ans">With a pure term plan, nothing. The premium is the price of the protection. Return-of-premium plans give back what you paid, but the premium is noticeably higher for the same cover, so many people choose a pure term plan and invest the difference separately.</div>
+        </details>
+        <details>
+          <summary>Is the payout taxable, and can I claim a tax deduction on the premium?</summary>
+          <div class="ans">In most cases the death benefit your family receives is tax-free. The premium can qualify for a deduction within the overall ₹1.5 lakh limit, but only if you choose the old tax regime. It is not available under the default new regime. Tax rules change, so confirm with a tax professional.</div>
+        </details>
+        <details>
+          <summary>Do I need a medical test, and can I buy a term plan with a health condition like diabetes or BP?</summary>
+          <div class="ans">Whether you need medical tests depends on your age, the cover amount and your answers on the proposal form. Many people with conditions such as diabetes or high BP can still get a policy, but the insurer may charge a higher premium, add conditions or, in some cases, decline. Always disclose your condition. Hiding it can put your family's claim at risk.</div>
+        </details>
+        <details>
+          <summary>Can the insurer reject my family's claim?</summary>
+          <div class="ans">Yes, it can. Claims are most often disputed over wrong or hidden information in the proposal form, such as health, smoking, alcohol or income. In the first three years the insurer can question these details. After three years, the Insurance Act generally limits its right to question the policy, but the three years start again if you revive a lapsed policy. Answer every question honestly, keep your nominee updated and tell your family where the papers are.</div>
+        </details>
+        <details>
+          <summary>What does a term plan not cover?</summary>
+          <div class="ans">Exclusions vary by plan, so read the policy document before you buy. The main one is suicide within the first year, when the payout is limited. A term plan pays on death from most causes, including illness and accidents. Extra benefits, such as an additional payout on accidental death or cover for critical illness, usually come through paid add-ons called riders.</div>
+        </details>
+        <details>
+          <summary>How do I choose an insurer?</summary>
+          <div class="ans">Look at the claim settlement ratio over several years, both by number of claims and by amount paid. A high first number with a low second can mean big claims get trimmed or rejected. Also compare what the plan covers, which riders are offered and how easy the claim process is. Choosing on the lowest premium alone can cost your family later.</div>
+        </details>
+        <details>
+          <summary>Will my premium change, and is it cheaper to buy early?</summary>
+          <div class="ans">In most term plans the premium stays the same for the whole term, and it is set by your age and health when you buy. So buying earlier locks in a lower premium, and waiting usually costs more. Smokers pay noticeably more than non-smokers, so answer that question truthfully.</div>
+        </details>
+        <details>
+          <summary>What happens if I miss a premium?</summary>
+          <div class="ans">You get a grace period, usually 30 days for yearly, half-yearly and quarterly payments and 15 days for monthly payments. If you don't pay by then, the policy lapses and your family has no cover. A lapsed term plan can usually be revived within five years by paying the dues, but after the grace period the insurer may ask for a health declaration or medical tests. Setting up auto-pay avoids the problem.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-inner">
+      <div>
+        <h2>Not sure your current policies are enough?</h2>
+        <p class="lead">Send us your numbers or policy details on WhatsApp and we'll talk you through them using this checklist.</p>
+        <ul class="reasons">
+          <li><svg aria-hidden="true"><use href="#tick"/></svg>A plain-language walk-through of your existing policies: what type they are and how much cover they really give</li>
+          <li><svg aria-hidden="true"><use href="#tick"/></svg>How much cover could close your gap, and for how many years</li>
+          <li><svg aria-hidden="true"><use href="#tick"/></svg>How the MWPA option can protect the payout from loans and creditors</li>
+          <li><svg aria-hidden="true"><use href="#tick"/></svg>Choosing a payout mix: lump sum plus monthly income</li>
+        </ul>
+      </div>
+      <div class="contact-cta">
+        <p>Talk to us before you buy or renew</p>
+        <a class="wa-btn big js-wa" href="https://wa.me/919311595912" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#wa"/></svg>Chat with us on WhatsApp</a>
+        <small>No spam, no obligation. Opens WhatsApp with your numbers pre-filled; nothing is sent until you press send.</small>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <p class="review-note">All insurance values are calculated on today's income, expenses and liabilities. They will change if any of these change, so review your cover whenever they do.</p>
+</div>
+<footer class="foot wrap">
+  <p>This calculator is for educational and illustrative purposes only. Results are estimates based on what you enter and the assumptions shown, and are not guaranteed. Actual returns, inflation, expenses and insurance availability may differ. This is not insurance, investment, tax or legal advice.</p>
+  <p>MoneySutraa is an AMFI-registered Mutual Fund Distributor (ARN-336976). Insurance is offered through a certified Point of Sales Person (POSP) under IRDAI guidelines. Insurance is the subject matter of solicitation.</p>
+  <!-- TO ADD: POSP name, POS code and the appointing insurer / intermediary, as required by that principal -->
+  <p>Assumptions last updated: 5 Oct 2026. The 14× rule (10% return, 7% withdrawal) is MoneySutraa's rule of thumb, not an actuarial figure. A 6% inflation rate is used only to show how the monthly income loses purchasing power over time.</p>
+  <p>© 2026 MoneySutraa Fin Services LLP · <a href="/privacy-policy/">Privacy Policy</a> · <a href="https://www.moneysutraa.com">moneysutraa.com</a></p>
+</footer>
+
+<!-- Mobile: keeps the key number in view while the form is being filled -->
+<div class="jump" id="jump" role="region" aria-label="Live estimate">
+  <div><span class="jump-lbl">Gap if employer cover ends</span><strong id="jV">—</strong></div>
+  <a class="jump-btn" href="#result">See my estimate ↓</a>
+</div>
+
+<p class="sr-only" id="srLive" aria-live="polite"></p>
+<noscript><p class="wrap">Please turn on JavaScript to use the calculator.</p></noscript>
+
+<script>
+(function(){
+  // ---- Assumptions (dated 5 Oct 2026) ----
+  var RETURN = 0.10;      // assumed return on the invested payout
+  var WITHDRAW = 0.07;    // assumed yearly withdrawal from the payout
+  var INFL = 0.06;        // used only to illustrate loss of purchasing power
+  var WA_NUMBER = '919311595912';
+
+  var $ = function(id){ return document.getElementById(id); };
+  function inr(x){ return '₹' + Math.round(x).toLocaleString('en-IN'); }
+  function trim(n, d){ return n.toFixed(d).replace(/\.?0+$/, ''); }
+  function short(x){
+    x = Math.round(x);
+    if (x >= 9995000) return '₹' + trim(x/1e7, 2) + ' Cr';
+    if (x >= 100000)  return '₹' + trim(x/1e5, 1) + ' L';
+    return inr(x);
+  }
+  function v(id){ var n = parseFloat($(id).value); if (isNaN(n) || n < 0) n = 0; return Math.min(n, 1e11); }
+  function round100(x){ return Math.round(x/100)*100; }
+
+  // Privacy-safe event hook: sends event names only, never any amounts. Does nothing until a Meta Pixel is added.
+  function track(name){ try{ if (typeof window.fbq === 'function') window.fbq('trackCustom', name); }catch(e){} }
+
+  var srTimer;
+
+  function calc(){
+    var exp = v('exp'), oth = v('oth');
+    var loan = v('loan'), goals = v('goals');
+    var ast = v('ast'), own = v('own'), emp = v('emp');
+    var mult = Math.min(30, Math.max(5, v('mult') || 14));
+
+    // Step 1: monthly amount the insured person supports
+    var netM = Math.max(0, exp - oth);
+    var netY = netM * 12;
+    // Step 2: income replacement = multiplier x annual net expenses
+    var inc = netY * mult;
+    // Step 3: add loans and goals, subtract usable savings
+    var need = Math.max(0, inc + loan + goals - ast);
+    // Step 4: gaps
+    var gapToday = Math.max(0, need - (own + emp));
+    var gapJob = Math.max(0, need - own);
+
+    $('netM').textContent = inr(netM);
+    $('lIncLbl').textContent = 'Income replacement (' + mult + ' × ' + short(netY) + ' a year)';
+    $('lInc').textContent = inr(inc);
+    $('lLoan').textContent = inr(loan);
+    $('lGoal').textContent = inr(goals);
+    $('lAst').textContent = inr(ast);
+    $('lNeed').textContent = inr(need);
+
+    $('gToday').textContent = gapToday > 0 ? short(gapToday) : 'Covered';
+    $('gToday').className = 'amt' + (gapToday > 0 ? '' : ' ok');
+    $('gJob').textContent = gapJob > 0 ? short(gapJob) : 'Covered';
+    $('gJob').className = 'amt' + (gapJob > 0 ? '' : ' ok');
+    $('jV').textContent = gapJob > 0 ? short(gapJob) : 'Covered';
+
+    // Bar, scaled to the larger of need and total cover
+    var maxV = Math.max(need, own + emp) || 1;
+    var pc = function(x){ return (Math.min(x, maxV) / maxV * 100) + '%'; };
+    $('bNeed').style.width = pc(need);
+    $('bOwn').style.width = pc(own);
+    $('bEmp').style.left = pc(own); $('bEmp').style.width = pc(emp);
+    $('bV').textContent = short(own + emp) + ' of ' + short(need);
+
+    // What the income-replacement part gives the family
+    var means = $('means');
+    if (exp === 0 && oth === 0) {
+      means.textContent = 'Enter your monthly expenses to see what this means for your family.';
+    } else if (netM > 0) {
+      var monthly = round100(inc * WITHDRAW / 12);
+      var ratio = monthly / netM;
+      var rel = ratio >= 0.9 ? 'close to' : 'about ' + Math.round(ratio * 100) + '% of';
+      var real10 = round100(monthly / Math.pow(1 + INFL, 10));
+      means.innerHTML = 'Invested at about ' + Math.round(RETURN * 100) + '% with ' + Math.round(WITHDRAW * 100) + '% withdrawn each year, the income-replacement part gives your family about <strong>' + inr(monthly) + ' a month</strong>, ' + rel + ' the ' + inr(netM) + ' they need. That amount stays fixed in rupees. After 10 years at ' + Math.round(INFL * 100) + '% inflation it would buy only what about <strong>' + inr(real10) + '</strong> buys today, so review your cover as life changes.';
+    } else {
+      means.textContent = 'Other income covers your household expenses, so no income replacement is needed. Cover is only for loans and goals.';
+    }
+
+    // The employer-cover insight
+    var jobNote = $('jobNote');
+    if (gapToday <= 0 && gapJob > 0) {
+      jobNote.textContent = 'On paper your family is covered today, but only because of employer cover that ends if you change jobs, are laid off or retire.';
+    } else if (gapJob <= 0 && need > 0) {
+      jobNote.textContent = 'Your own policies cover this estimate even without employer cover.';
+    } else {
+      jobNote.textContent = '';
+    }
+
+    // Ways to close the gap
+    var list = $('closeList'); list.innerHTML = '';
+    function add(t){ var li = document.createElement('li'); li.textContent = t; list.appendChild(li); }
+    if (gapJob <= 0) {
+      add('Your own policies already cover this estimate. Check their terms against the list below.');
+    } else {
+      add('A gap like this is usually closed with extra individual term cover. Because it is yours, it stays in place if you change jobs.');
+      add('A pure term plan is usually the lowest-cost way to buy this cover. Individual life insurance premiums have carried no GST since 22 September 2025.');
+      add('Term premiums are fixed at the age you buy, so buying earlier locks in a lower premium.');
+    }
+
+    // How this was calculated (live numbers)
+    $('howBody').innerHTML =
+      '<p>1. Monthly amount to replace = expenses − other income = ' + inr(exp) + ' − ' + inr(oth) + ' = <code>' + inr(netM) + '</code></p>' +
+      '<p>2. Yearly = ' + inr(netM) + ' × 12 = <code>' + inr(netY) + '</code></p>' +
+      '<p>3. Income replacement = ' + mult + ' × ' + inr(netY) + ' = <code>' + inr(inc) + '</code></p>' +
+      '<p>4. Cover needed = ' + inr(inc) + ' + loans ' + inr(loan) + ' + goals ' + inr(goals) + ' − savings ' + inr(ast) + ' = <code>' + inr(need) + '</code></p>' +
+      '<p>5. Gap today = ' + inr(need) + ' − (own ' + inr(own) + ' + employer ' + inr(emp) + ') = <code>' + inr(gapToday) + '</code></p>' +
+      '<p>6. Gap if employer cover ends = ' + inr(need) + ' − own ' + inr(own) + ' = <code>' + inr(gapJob) + '</code></p>' +
+      (mult !== 14 ? '<p>You have set the multiple to ' + mult + '. Our standard is 14.</p>' : '') +
+      '<p>Why 14×: the payout is received tax-free. Invested at about 10% with 7% withdrawn each year, 14 years of expenses gives roughly one year of expenses every year (14 × 7% = 98%). The 3% left in the corpus helps it grow, but slower than prices usually rise, so review the cover over time. Returns on the invested payout are taxable.</p>' +
+      '<p>Goals are taken at today\'s cost. Loans are taken at the amount outstanding today.</p>';
+
+    // Lakh / crore readouts
+    [['loan','loanR'],['goals','goalsR'],['ast','astR'],['own','ownR'],['emp','empR']].forEach(function(p){
+      var n = v(p[0]);
+      $(p[1]).textContent = n > 0 ? '= ' + short(n) : '';
+    });
+
+    // WhatsApp buttons carry the current numbers; the visitor reviews and sends the message themselves
+    var msg = 'Hi, this is from the MoneySutraa website (Life Insurance calculator).\n' +
+      'Cover needed: ' + short(need) + '\n' +
+      'Gap today: ' + (gapToday > 0 ? short(gapToday) : 'covered') + '\n' +
+      'Gap if employer cover ends: ' + (gapJob > 0 ? short(gapJob) : 'covered') + '\n' +
+      'I\'d like to talk it through.';
+    var href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
+    document.querySelectorAll('.js-wa').forEach(function(a){ a.setAttribute('href', href); });
+
+    // Quiet summary for screen readers (debounced so it does not chatter while typing)
+    clearTimeout(srTimer);
+    srTimer = setTimeout(function(){
+      $('srLive').textContent = 'Gap if employer cover ends: ' + (gapJob > 0 ? short(gapJob) : 'covered') + '. Gap today: ' + (gapToday > 0 ? short(gapToday) : 'covered') + '.';
+    }, 700);
+  }
+
+  var started = false;
+  var seen = {inputs:false, result:false, contact:false};
+  var jump = $('jump');
+  var typing = false;
+  function updateJump(){ jump.classList.toggle('show', started && !typing && seen.inputs && !seen.result && !seen.contact); }
+  document.addEventListener('focusin', function(e){ if (e.target && e.target.tagName === 'INPUT') { typing = true; updateJump(); } });
+  document.addEventListener('focusout', function(){ typing = false; setTimeout(updateJump, 200); });
+  ['exp','oth','loan','goals','ast','own','emp','mult'].forEach(function(id){
+    var el = $(id);
+    el.addEventListener('input', function(){
+      if (!started) { started = true; track('CalculatorStart'); }
+      calc();
+      updateJump();
+    });
+    // Select the sample value on focus so typing replaces it
+    el.addEventListener('focus', function(){
+      var e = this;
+      setTimeout(function(){ try{ e.select(); }catch(err){} }, 0);
+    });
+  });
+  $('mult').addEventListener('change', function(){
+    this.value = Math.min(30, Math.max(5, parseFloat(this.value) || 14));
+    calc();
+  });
+
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('.js-wa') : null;
+    if (a) track('WhatsAppClick');
+  });
+
+  // Show the live-number bar on mobile while the form is in view, hide it once the result or contact block is
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ seen[en.target.id] = en.isIntersecting; });
+      updateJump();
+    }, {rootMargin: '-30% 0px -30% 0px', threshold: 0});
+    ['inputs','result','contact'].forEach(function(id){ io.observe($(id)); });
+
+    var viewed = false;
+    var io2 = new IntersectionObserver(function(entries){
+      if (!viewed && entries.some(function(en){ return en.isIntersecting; })) {
+        viewed = true; track('ResultView'); io2.disconnect();
+      }
+    }, {threshold: 0.4});
+    io2.observe($('result'));
+  }
+
+  calc();
+})();
+</script>
+</body>
+</html>
