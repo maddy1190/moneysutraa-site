@@ -68,8 +68,20 @@
   .hero > *{position:relative}
   .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.4vw,46px);line-height:1.14;letter-spacing:-.015em;margin:0 auto 14px;max-width:18ch}
   .hero p{color:var(--slate);max-width:58ch;margin:0 auto 20px}
-  .trust{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;list-style:none;padding:0;margin:0}
-  .trust li{background:linear-gradient(165deg,var(--yellow-1),var(--yellow-2));border:1px solid rgba(140,26,26,.25);color:var(--red);border-radius:999px;padding:6px 13px;font-size:12px;font-weight:700;letter-spacing:.01em;box-shadow:0 6px 14px rgba(140,26,26,.10), inset 0 1px 0 rgba(255,255,255,.4)}
+  /* Trust strip: swipeable on phones, 3 x 2 grid on larger screens */
+  .trust-strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 20px 16px;margin:0 -20px}
+  .trust-strip::-webkit-scrollbar{display:none}
+  .tcard{flex:0 0 236px;scroll-snap-align:start;display:flex;align-items:center;gap:12px;text-align:left;background:var(--white);border:1px solid var(--rule);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+  .tcard.primary{border-color:#D9C58F;background:linear-gradient(180deg,#FFFDF6,#FBF3DC)}
+  .ticon{flex:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(165deg,var(--yellow-1),var(--yellow-2));color:var(--red);box-shadow:inset 0 1px 0 rgba(255,255,255,.5), 0 4px 10px rgba(140,26,26,.14)}
+  .ticon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .tcard strong{display:block;font-size:14.5px;line-height:1.25;font-weight:700;color:var(--ink)}
+  .tcard small{display:block;font-size:12.5px;line-height:1.35;color:var(--slate);margin-top:2px}
+  @media (min-width:720px){
+    .trust-strip{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;scroll-snap-type:none;padding:6px 0 10px;margin:0}
+    .tcard{flex:none}
+  }
+  .hero .trust-note{font-size:12px;color:var(--slate);margin:0 auto;max-width:none}
 
   /* Calculator */
   .calc-title{grid-column:1/-1;text-align:center;font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.2vw,36px);line-height:1.15;letter-spacing:-.01em;margin:6px 0 0;padding-top:26px;border-top:1px solid var(--rule)}
@@ -104,7 +116,7 @@
   details.assume{border-top:1px solid var(--rule);padding-top:14px;margin-top:6px}
   details.assume summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--slate);padding:10px 0}
   .assume-row{display:flex;align-items:center;gap:12px;margin-top:12px}
-  .assume-row label{font-size:14px;font-weight:600}
+  .assume-row label{font-size:14px;font-weight:600;flex:1;min-width:0}
   .num{width:84px;min-height:44px;padding:9px 10px;border:1px solid var(--rule);border-radius:10px;font:inherit;text-align:right;background:var(--paper);color:var(--ink)}
 
   /* Result */
@@ -116,21 +128,17 @@
   .empty-note p{margin:0}
   @media (max-width:899px){.result[data-state="empty"]{display:none}}
   @media (min-width:900px) and (min-height:720px){.result{position:sticky;top:16px}}
-  .gaps{list-style:none;margin:0 0 6px;padding:0}
-  .gaps li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0}
-  .gaps .what{font-weight:600}
-  .gaps .why{display:block;font-size:13px;color:var(--slate);font-weight:400}
-  .gaps .amt{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
-  .gaps .amt.ok{color:var(--wa);font-size:20px}
-  .gaps li.key{background:var(--gold-tint);margin:0 -12px;padding:14px 12px;border-radius:12px}
-  .gaps li.key .amt{font-size:32px}
-  .gaps li.key .amt.ok{font-size:22px}
-
-  .mini{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);margin:16px 0 4px}
   .ledger{margin:0 0 18px;padding:0;list-style:none;border-bottom:2px solid var(--ink)}
-  .ledger li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--rule);font-size:15px}
+  .ledger li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:8px 0;border-top:1px solid var(--rule);font-size:15px}
   .ledger li span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
-  .ledger li.total{font-weight:600;font-size:16px}
+  .ledger li.note{display:block;border-top:0;padding:0 0 8px;font-size:13px;color:var(--slate)}
+  .ledger li.note span{white-space:normal}
+  .ledger li.total{font-weight:700;font-size:16px}
+  .ledger li.key{background:var(--gold-tint);margin:6px -12px;padding:12px;border-radius:12px;border-top:0;font-weight:700;font-size:16px;align-items:center}
+  .ledger li.key + li{border-top:0}
+  .ledger .amt{font-family:var(--serif)}
+  .ledger li.key .amt{font-size:24px}
+  .ledger .amt.ok{color:var(--wa)}
 
   .bars{margin:0 0 4px}
   .bar-label{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--slate);margin:4px 0 6px}
@@ -152,11 +160,22 @@
   @media (min-width:900px){.next-grid{grid-template-columns:1fr 1fr;gap:40px}}
   .next h3{font-family:var(--serif);font-weight:600;font-size:18px;margin:0 0 10px}
   .means{border-left:3px solid var(--gold);padding:4px 0 4px 14px;margin:0 0 12px;font-size:15px}
-  .means strong{font-variant-numeric:tabular-nums}
-  .job-note{background:var(--gold-tint);border-radius:10px;padding:10px 14px;font-size:14px;margin:0}
+  .job-note{background:var(--gold-tint);border-radius:10px;padding:10px 14px;font-size:14px;margin:0 0 12px}
   .job-note:empty{display:none}
   .next ul{margin:0;padding-left:18px;font-size:15px}
   .next li{margin-bottom:8px}
+  table.yrs{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;margin:4px 0 10px}
+  .yrs th,.yrs td{padding:8px 4px;border-top:1px solid var(--rule);text-align:right}
+  .yrs thead th{border-top:0;font-size:12px;color:var(--slate);font-weight:600}
+  .yrs tbody th,.yrs td:first-child{text-align:left;font-weight:500;color:var(--slate)}
+  .yrs tr.cov th,.yrs tr.cov td{font-weight:700;color:var(--ink);background:var(--gold-tint)}
+  .status{font-size:14px;font-weight:600;margin:0 0 6px}
+  .status.warn{color:var(--red)}
+  .fixed{font-size:14px;color:var(--slate);margin:0 0 8px}
+  .fixed b{color:var(--red)}
+  .fine{font-size:12px;color:var(--slate);margin:0}
+  .tbl-scroll{overflow-x:auto}
+  @media (max-width:360px){table.yrs{font-size:13px}.yrs th,.yrs td{padding:7px 3px}}
   details.how{border-top:1px solid var(--rule);margin-top:22px;padding-top:14px}
   details.how summary{cursor:pointer;font-weight:600;font-size:15px;padding:10px 0}
   details.how .how-body{font-size:14px;color:var(--slate);margin-top:10px;max-width:82ch}
@@ -234,8 +253,7 @@
   }
   .jump .calc-btn{margin-top:0;min-height:50px}
   @media (max-width:360px){
-    .gaps .amt{font-size:22px}
-    .gaps li.key .amt{font-size:26px}
+    .ledger li.key .amt{font-size:20px}
     .wa-btn.big{font-size:15px;padding:14px 18px}
     .jump{padding-left:12px;padding-right:12px}
   }
@@ -352,12 +370,33 @@
   <section class="hero wrap">
     <h1>How much life cover does your family really need?</h1>
     <p>Enter your family's monthly needs, loans and goals. See the cover they'd need if you weren't there, and your gap if your employer's cover ends.</p>
-    <ul class="trust">
-      <li>AMFI-registered MFD, ARN-336976</li>
-      <li>Certified Insurance POSP</li>
-      <li>Educational tool, not insurance advice</li>
-      <li>No spam, no obligation</li>
-    </ul>
+    <div class="trust-strip" role="list" aria-label="Why families trust MoneySutraa" tabindex="0">
+      <div class="tcard primary" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <div><strong>Certified Insurance POSP</strong><small>Point of Sales Person</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+        <div><strong>Needs-first guidance</strong><small>Starts with your numbers, not a product</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span>
+        <div><strong>Research for your fit</strong><small>Plans checked against your needs</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <div><strong>Real people, not call centres</strong><small>Led by a CA, MBA</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+        <div><strong>100+ families guided</strong><small>And counting</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span>
+        <div><strong>No pressure to buy</strong><small>No upselling. No spam.</small></div>
+      </div>
+    </div>
+    <p class="trust-note">Educational tool. Not insurance advice.</p>
   </section>
 
   <section class="wrap calc" aria-labelledby="calcH">
@@ -422,11 +461,22 @@
       <details class="assume">
         <summary>Advanced (optional)</summary>
         <div class="assume-row">
-          <label for="mult">Years of expenses to cover</label>
-          <input class="num" type="number" id="mult" min="5" max="30" step="1" value="14" inputmode="numeric">
+          <label for="mult">Cover multiple (× yearly expenses)</label>
+          <input class="num" type="number" id="mult" min="10" max="20" step="1" value="14" inputmode="numeric">
         </div>
         <div class="readout" id="multR"></div>
-        <p class="hint">Standard is 14. Go higher for a young family, lower near retirement. Range 5 to 30.</p>
+        <p class="hint">We use 14. At 14×, the payout invested at about 10% with 7% withdrawn each year gives your family roughly what they spend today. Allowed range: 10 to 20.</p>
+        <div class="assume-row">
+          <label for="ret">Expected return (% a year)</label>
+          <input class="num" type="number" id="ret" min="4" max="15" step="0.5" value="10.5" inputmode="decimal">
+        </div>
+        <div class="readout" id="retR"></div>
+        <div class="assume-row">
+          <label for="inf">Expected inflation (% a year)</label>
+          <input class="num" type="number" id="inf" min="0" max="12" step="0.5" value="3.5" inputmode="decimal">
+        </div>
+        <div class="readout" id="infR"></div>
+        <p class="hint">These two only change the price-rise table.</p>
       </details>
 
       <button type="button" class="calc-btn" id="calcBtn">Calculate my cover</button>
@@ -442,18 +492,17 @@
         <h2>Your estimate</h2>
         <p class="sub">Cover amounts, not premium. Illustrative only.</p>
 
-        <ul class="gaps">
-          <li><span class="what">Gap today<span class="why">All cover counted</span></span><span class="amt" id="gToday"></span></li>
-          <li class="key"><span class="what">Gap if employer cover ends<span class="why">Own policies only</span></span><span class="amt" id="gJob"></span></li>
-        </ul>
-
-        <p class="mini">How it adds up</p>
         <ul class="ledger">
           <li><span id="lIncLbl">Income replacement</span><span id="lInc"></span></li>
+          <li class="note"><span id="lNet"></span></li>
           <li><span>+ Outstanding loans</span><span id="lLoan"></span></li>
           <li><span>+ Future goals</span><span id="lGoal"></span></li>
-          <li><span>− Savings your family can use</span><span id="lAst"></span></li>
-          <li class="total"><span>Cover needed today</span><span id="lNeed"></span></li>
+          <li><span>− Savings and assets</span><span id="lAst"></span></li>
+          <li class="total"><span>= Total insurance needed</span><span id="lNeed"></span></li>
+          <li><span>− Your own policies</span><span id="lOwn"></span></li>
+          <li class="key"><span>= Gap if employer cover ends</span><span class="amt" id="gJob"></span></li>
+          <li><span>− Employer cover</span><span id="lEmp"></span></li>
+          <li class="total"><span>= Gap today</span><span class="amt" id="gToday"></span></li>
         </ul>
 
         <div class="bars" aria-hidden="true">
@@ -483,12 +532,26 @@
     <div class="panel">
       <div class="next-grid">
         <div>
-          <h3>What this means</h3>
+          <h3>Will this keep up with rising prices?</h3>
           <p class="means" id="means"></p>
-          <p class="job-note" id="jobNote"></p>
+          <div id="yrsWrap">
+            <table class="yrs">
+              <caption class="sr-only">Monthly withdrawal compared with expenses over time</caption>
+              <thead><tr><th scope="col"><span class="sr-only">Measure</span></th><th scope="col">Year 1</th><th scope="col">After 10 yrs</th><th scope="col">After 20 yrs</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Withdraw a month</th><td id="w0"></td><td id="w10"></td><td id="w20"></td></tr>
+                <tr><th scope="row">Expenses a month</th><td id="e0"></td><td id="e10"></td><td id="e20"></td></tr>
+                <tr class="cov"><th scope="row">Covers</th><td id="p0"></td><td id="p10"></td><td id="p20"></td></tr>
+              </tbody>
+            </table>
+            <p class="status" id="status"></p>
+            <p class="fixed" id="fixed"></p>
+            <p class="fine">Illustrative, before tax. Real returns vary, so the withdrawal would too.</p>
+          </div>
         </div>
         <div>
           <h3>Ways to close the gap</h3>
+          <p class="job-note" id="jobNote"></p>
           <ul id="closeList"></ul>
         </div>
       </div>
@@ -603,7 +666,7 @@
   <p>This calculator is for educational and illustrative purposes only. Results are estimates based on what you enter and the assumptions shown, and are not guaranteed. Actual returns, inflation, expenses and insurance availability may differ. This is not insurance, investment, tax or legal advice.</p>
   <p>MoneySutraa is an AMFI-registered Mutual Fund Distributor (ARN-336976). Insurance is offered through a certified Point of Sales Person (POSP) under IRDAI guidelines. Insurance is the subject matter of solicitation.</p>
   <!-- TO ADD: POSP name, POS code and the appointing insurer / intermediary, as required by that principal -->
-  <p>Assumptions last updated: 5 Oct 2026. The 14× rule (10% return, 7% withdrawal) is MoneySutraa's rule of thumb, not an actuarial figure. A 6% inflation rate is used only to show how the monthly income loses purchasing power over time.</p>
+  <p>Assumptions last updated: 6 Oct 2026. The 14× rule is MoneySutraa's rule of thumb, not an actuarial figure. The price-rise table assumes a 10.5% return, 7% yearly withdrawal and 3.5% inflation, steady every year. Real returns and inflation vary.</p>
   <p>© 2026 MoneySutraa Fin Services LLP · <a href="/privacy-policy/">Privacy Policy</a> · <a href="https://www.moneysutraa.com">moneysutraa.com</a></p>
 </footer>
 
@@ -620,10 +683,10 @@
 
 <script>
 (function(){
-  // ---- Assumptions (dated 5 Oct 2026) ----
-  var RETURN = 0.10;      // assumed return on the invested payout
-  var WITHDRAW = 0.07;    // assumed yearly withdrawal from the payout
-  var INFL = 0.06;        // used only to illustrate loss of purchasing power
+  // ---- Assumptions (dated 6 Oct 2026) ----
+  var RETURN = 0.105;     // assumed return on the invested payout (editable in Advanced)
+  var WITHDRAW = 0.07;    // assumed yearly withdrawal from the money
+  var INFL = 0.035;       // assumed inflation (editable in Advanced)
   var WA_NUMBER = '919311595912';
   var BASE_MSG = 'Hi, this is from the MoneySutraa website (Life Insurance calculator).';
 
@@ -638,6 +701,8 @@
   }
   function v(id){ var n = parseFloat($(id).value); if (isNaN(n) || n < 0) n = 0; return Math.min(n, 1e11); }
   function round100(x){ return Math.round(x/100)*100; }
+  // percent field -> fraction, clamped; falls back to the default when empty
+  function pctVal(id, lo, hi, defFrac){ var n = parseFloat($(id).value); if (isNaN(n)) return defFrac; return Math.min(hi, Math.max(lo, n)) / 100; }
 
   // Privacy-safe event hook: sends event names only, never any amounts. Does nothing until a Meta Pixel is added.
   function track(name){ try{ if (typeof window.fbq === 'function') window.fbq('trackCustom', name); }catch(e){} }
@@ -672,17 +737,26 @@
     return out.join(' ');
   }
   function rupeeWords(n){ n = Math.round(n); return n <= 0 ? '' : (n === 1 ? 'One Rupee' : words(n) + ' Rupees'); }
+  function pctWords(p){
+    if (isNaN(p) || p < 0) return '';
+    var parts = (Math.round(p * 10) / 10).toString().split('.');
+    var ip = parseInt(parts[0], 10), w = ip ? words(ip) : 'Zero';
+    if (parts[1]) w += ' Point ' + parts[1].split('').map(function(d){ return ONES[+d] || 'Zero'; }).join(' ');
+    return w + ' Percent';
+  }
   function updateReadouts(){
     ['exp','oth','loan','goals','ast','own','emp'].forEach(function(id){ $(id + 'R').textContent = rupeeWords(v(id)); });
     var m = Math.round(v('mult'));
-    $('multR').textContent = m > 0 ? words(m) + (m === 1 ? ' year' : ' years') : '';
+    $('multR').textContent = m > 0 ? words(m) + (m === 1 ? ' time' : ' times') : '';
+    $('retR').textContent = pctWords(parseFloat($('ret').value));
+    $('infR').textContent = pctWords(parseFloat($('inf').value));
   }
 
   function calc(){
     var exp = v('exp'), oth = v('oth');
     var loan = v('loan'), goals = v('goals');
     var ast = v('ast'), own = v('own'), emp = v('emp');
-    var mult = Math.min(30, Math.max(5, v('mult') || 14));
+    var mult = Math.min(20, Math.max(10, v('mult') || 14));
 
     // Step 1: monthly amount the insured person supports
     var netM = Math.max(0, exp - oth);
@@ -697,15 +771,17 @@
 
     $('lIncLbl').textContent = 'Income replacement (' + mult + ' × ' + short(netY) + ' a year)';
     $('lInc').textContent = inr(inc);
+    $('lNet').textContent = inr(exp) + ' expenses − ' + inr(oth) + ' other income = ' + inr(netM) + ' a month';
     $('lLoan').textContent = inr(loan);
     $('lGoal').textContent = inr(goals);
     $('lAst').textContent = inr(ast);
     $('lNeed').textContent = inr(need);
-
-    $('gToday').textContent = gapToday > 0 ? short(gapToday) : 'Covered';
-    $('gToday').className = 'amt' + (gapToday > 0 ? '' : ' ok');
-    $('gJob').textContent = gapJob > 0 ? short(gapJob) : 'Covered';
+    $('lOwn').textContent = inr(own);
+    $('lEmp').textContent = inr(emp);
+    $('gJob').textContent = gapJob > 0 ? inr(gapJob) : 'Covered';
     $('gJob').className = 'amt' + (gapJob > 0 ? '' : ' ok');
+    $('gToday').textContent = gapToday > 0 ? inr(gapToday) : 'Covered';
+    $('gToday').className = 'amt' + (gapToday > 0 ? '' : ' ok');
 
     // Bar, scaled to the larger of need and total cover
     var maxV = Math.max(need, own + emp) || 1;
@@ -715,16 +791,36 @@
     $('bEmp').style.left = pc(own); $('bEmp').style.width = pc(emp);
     $('bV').textContent = short(own + emp) + ' of ' + short(need);
 
-    // What the income-replacement part gives the family
-    var means = $('means');
+    // Will this keep up with rising prices? (family withdraws 7% of the remaining money each year)
+    var RET = pctVal('ret', 4, 15, RETURN), INF = pctVal('inf', 0, 12, INFL);
+    var grow = 1 + RET - WITHDRAW;
+    function at(n){ var c = inc * Math.pow(grow, n); return {c: c, w: c * WITHDRAW / 12, e: netM * Math.pow(1 + INF, n)}; }
+    function cell(x){ return short(Math.round(x / 100) * 100); }
+    function pc1(x){ return (x * 100).toFixed(1).replace(/\.0$/, ''); }
+    var means = $('means'), wrap = $('yrsWrap');
     if (netM > 0) {
-      var monthly = round100(inc * WITHDRAW / 12);
-      var ratio = monthly / netM;
-      var rel = ratio >= 0.9 ? 'close to' : 'about ' + Math.round(ratio * 100) + '% of';
-      var real10 = round100(monthly / Math.pow(1 + INFL, 10));
-      means.innerHTML = 'On our assumptions, your family could draw about <strong>' + inr(monthly) + ' a month</strong>, ' + rel + ' the ' + inr(netM) + ' they need. After 10 years of inflation, that buys only what about <strong>' + inr(real10) + '</strong> buys today.';
+      means.textContent = 'If your family withdraws 7% of the money (income replacement cover, ' + inr(inc) + ') each year, not a fixed amount, the withdrawal grows as the money grows.';
+      wrap.hidden = false;
+      var y = [at(0), at(10), at(20)];
+      ['0','10','20'].forEach(function(k, i){
+        $('w' + k).textContent = cell(y[i].w);
+        $('e' + k).textContent = cell(y[i].e);
+        $('p' + k).textContent = Math.round(y[i].w / y[i].e * 100) + '%';
+      });
+      var p0 = Math.round(y[0].w / y[0].e * 100), p20 = Math.round(y[2].w / y[2].e * 100), st = $('status');
+      st.classList.remove('warn');
+      if (Math.abs(p20 - p0) <= 1) {
+        st.textContent = 'The withdrawal rises in step with prices. It covers about ' + p20 + '% of expenses throughout.';
+      } else if (p20 > p0) {
+        st.textContent = 'The withdrawal rises faster than prices, from ' + p0 + '% to ' + p20 + '% of expenses after 20 years.';
+      } else {
+        st.classList.add('warn');
+        st.textContent = 'The withdrawal rises slower than prices, falling from ' + p0 + '% to ' + p20 + '% of expenses after 20 years.';
+      }
+      $('fixed').innerHTML = 'Taking a fixed ' + cell(y[0].w) + ' instead? After 10 years it buys only what <b>' + cell(y[0].w / Math.pow(1 + INF, 10)) + '</b> buys today.';
     } else {
       means.textContent = 'Other income covers your expenses, so cover is only needed for loans and goals.';
+      wrap.hidden = true;
     }
 
     // The employer-cover insight
@@ -749,6 +845,10 @@
     }
 
     // How this was calculated (live numbers)
+    var yrRows = netM > 0 ? [0,5,10,15,20].map(function(n){
+      var r = at(n);
+      return '<tr><th scope="row">' + (n === 0 ? 'Year 1' : n + ' yrs') + '</th><td>' + cell(r.c) + '</td><td>' + cell(r.w) + '</td><td>' + cell(r.e) + '</td></tr>';
+    }).join('') : '';
     $('howBody').innerHTML =
       '<p>1. Monthly amount to replace = expenses − other income = ' + inr(exp) + ' − ' + inr(oth) + ' = <code>' + inr(netM) + '</code></p>' +
       '<p>2. Yearly = ' + inr(netM) + ' × 12 = <code>' + inr(netY) + '</code></p>' +
@@ -757,7 +857,9 @@
       '<p>5. Gap today = ' + inr(need) + ' − (own ' + inr(own) + ' + employer ' + inr(emp) + ') = <code>' + inr(gapToday) + '</code></p>' +
       '<p>6. Gap if employer cover ends = ' + inr(need) + ' − own ' + inr(own) + ' = <code>' + inr(gapJob) + '</code></p>' +
       (mult !== 14 ? '<p>You have set the multiple to ' + mult + '. Our standard is 14.</p>' : '') +
-      '<p>Why 14×: the payout is received tax-free. Invested at about 10% with 7% withdrawn each year, 14 years of expenses gives roughly one year of expenses every year (14 × 7% = 98%). The 3% left in the corpus helps it grow, but slower than prices usually rise, so review the cover over time. Returns on the invested payout are taxable.</p>' +
+      '<p>Why 14×: the payout is received tax-free. At 7% withdrawn a year, 14 × yearly expenses gives your family roughly what they spend today (14 × 7% = 98%). Whatever the money earns above 7% stays invested, so the withdrawal can grow. Returns on the invested payout are taxable.</p>' +
+      (netM > 0 ? '<p>Price-rise table: the money earns ' + pc1(RET) + '% a year and the family withdraws 7% of it, so the money, and the next withdrawal, grow ' + pc1(RET - WITHDRAW) + '% a year. Expenses grow ' + pc1(INF) + '% a year. Returns are assumed steady; real returns vary.</p>' +
+        '<div class="tbl-scroll"><table class="yrs"><thead><tr><th scope="col"><span class="sr-only">Year</span></th><th scope="col">Money invested</th><th scope="col">Withdraw a month</th><th scope="col">Expenses a month</th></tr></thead><tbody>' + yrRows + '</tbody></table></div>' : '') +
       '<p>Goals are taken at today\'s cost. Loans are taken at the amount outstanding today.</p>';
 
     // WhatsApp buttons carry the current numbers; the visitor reviews and sends the message themselves
@@ -812,7 +914,7 @@
   document.addEventListener('focusin', function(e){ if (e.target && e.target.tagName === 'INPUT') { typing = true; updateJump(); } });
   document.addEventListener('focusout', function(){ typing = false; setTimeout(updateJump, 200); });
 
-  ['exp','oth','loan','goals','ast','own','emp','mult'].forEach(function(id){
+  ['exp','oth','loan','goals','ast','own','emp','mult','ret','inf'].forEach(function(id){
     var el = $(id);
     // Enter key in a field also calculates
     el.addEventListener('keydown', function(e){ if (e.key === 'Enter') { e.preventDefault(); runCalc(); } });
@@ -831,9 +933,19 @@
     });
   });
   $('mult').addEventListener('change', function(){
-    this.value = Math.min(30, Math.max(5, parseFloat(this.value) || 14));
+    this.value = Math.min(20, Math.max(10, parseFloat(this.value) || 14));
     updateReadouts();
     if (calculated && v('exp') > 0) calc();
+  });
+
+  ['ret','inf'].forEach(function(id){
+    var lo = id === 'ret' ? 4 : 0, hi = id === 'ret' ? 15 : 12, def = +((id === 'ret' ? RETURN : INFL) * 100).toFixed(1);
+    $(id).addEventListener('change', function(){
+      var n = parseFloat(this.value);
+      this.value = isNaN(n) ? def : Math.min(hi, Math.max(lo, n));
+      updateReadouts();
+      if (calculated && v('exp') > 0) calc();
+    });
   });
 
   document.addEventListener('click', function(e){
