@@ -188,8 +188,8 @@
   table.yrs{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;margin:4px 0 10px}
   .yrs th,.yrs td{padding:8px 4px;border-top:1px solid var(--rule);text-align:right}
   .yrs thead th{border-top:0;font-size:12px;color:var(--slate);font-weight:600}
+  .yrs thead th:first-child{text-align:left}
   .yrs tbody th,.yrs td:first-child{text-align:left;font-weight:500;color:var(--slate)}
-  .yrs tr.cov th,.yrs tr.cov td{font-weight:700;color:var(--ink);background:var(--gold-tint)}
   .status{font-size:14px;font-weight:600;margin:0 0 6px}
   .status.warn{color:var(--red)}
   .fixed{font-size:14px;color:var(--slate);margin:0 0 8px}
@@ -197,11 +197,6 @@
   .fine{font-size:12px;color:var(--slate);margin:0}
   .tbl-scroll{overflow-x:auto}
   @media (max-width:360px){table.yrs{font-size:13px}.yrs th,.yrs td{padding:7px 3px}}
-  details.how{border-top:1px solid var(--rule);margin-top:22px;padding-top:14px}
-  details.how summary{cursor:pointer;font-weight:600;font-size:15px;padding:10px 0}
-  details.how .how-body{font-size:14px;color:var(--slate);margin-top:10px;max-width:82ch}
-  details.how .how-body p{margin:0 0 8px}
-  details.how code{font-family:inherit;color:var(--ink);font-weight:600}
 
   /* Checklist */
   .checklist{padding:24px 0 40px}
@@ -557,15 +552,13 @@
           <h3>Will this keep up with rising prices?</h3>
           <p class="means" id="means"></p>
           <div id="yrsWrap">
-            <table class="yrs">
-              <caption class="sr-only">Monthly withdrawal compared with expenses over time</caption>
-              <thead><tr><th scope="col"><span class="sr-only">Measure</span></th><th scope="col">Year 1</th><th scope="col">After 10 yrs</th><th scope="col">After 20 yrs</th></tr></thead>
-              <tbody>
-                <tr><th scope="row">Withdraw a month</th><td id="w0"></td><td id="w10"></td><td id="w20"></td></tr>
-                <tr><th scope="row">Expenses a month</th><td id="e0"></td><td id="e10"></td><td id="e20"></td></tr>
-                <tr class="cov"><th scope="row">Covers</th><td id="p0"></td><td id="p10"></td><td id="p20"></td></tr>
-              </tbody>
-            </table>
+            <div class="tbl-scroll">
+              <table class="yrs">
+                <caption class="sr-only">Money invested, monthly withdrawal and monthly expenses over time</caption>
+                <thead><tr><th scope="col">Year</th><th scope="col">Money invested</th><th scope="col">Withdraw a month</th><th scope="col">Expenses a month</th></tr></thead>
+                <tbody id="yrBody"></tbody>
+              </table>
+            </div>
             <p class="status" id="status"></p>
             <p class="fixed" id="fixed"></p>
             <p class="fine">Illustrative, before tax. Real returns vary, so the withdrawal would too.</p>
@@ -577,10 +570,6 @@
           <ul id="closeList"></ul>
         </div>
       </div>
-      <details class="how">
-        <summary>How this was calculated</summary>
-        <div class="how-body" id="howBody"></div>
-      </details>
     </div>
   </section>
 
@@ -826,11 +815,10 @@
       means.innerHTML = '<strong class="m-head">Income replacement ' + inr(inc) + ' · invested at ' + pc1(RET) + '% · ' + Math.round(WITHDRAW * 100) + '% withdrawn each year</strong> ' + (RET - WITHDRAW > 0.0005 ? 'So the withdrawal grows as the money grows, unlike a fixed amount.' : (RET - WITHDRAW < -0.0005 ? 'So the money, and the withdrawal, shrink each year.' : 'So the money, and the withdrawal, stay level.'));
       wrap.hidden = false;
       var y = [at(0), at(10), at(20)];
-      ['0','10','20'].forEach(function(k, i){
-        $('w' + k).textContent = cell(y[i].w);
-        $('e' + k).textContent = cell(y[i].e);
-        $('p' + k).textContent = Math.round(y[i].w / y[i].e * 100) + '%';
-      });
+      $('yrBody').innerHTML = [0,5,10,15,20].map(function(n){
+        var r = at(n);
+        return '<tr><th scope="row">' + (n === 0 ? 'Year 1' : n + ' yrs') + '</th><td>' + cell(r.c) + '</td><td>' + cell(r.w) + '</td><td>' + cell(r.e) + '</td></tr>';
+      }).join('');
       var p0 = Math.round(y[0].w / y[0].e * 100), p20 = Math.round(y[2].w / y[2].e * 100), st = $('status');
       st.classList.remove('warn');
       if (Math.abs(p20 - p0) <= 1) {
@@ -867,24 +855,6 @@
       add('Pure term plans are usually the cheapest way to buy cover. Individual life insurance premiums have carried no GST since 22 September 2025.');
       add('Premiums are fixed at the age you buy, so earlier is cheaper.');
     }
-
-    // How this was calculated (live numbers)
-    var yrRows = netM > 0 ? [0,5,10,15,20].map(function(n){
-      var r = at(n);
-      return '<tr><th scope="row">' + (n === 0 ? 'Year 1' : n + ' yrs') + '</th><td>' + cell(r.c) + '</td><td>' + cell(r.w) + '</td><td>' + cell(r.e) + '</td></tr>';
-    }).join('') : '';
-    $('howBody').innerHTML =
-      '<p>1. Monthly amount to replace = expenses − other income = ' + inr(exp) + ' − ' + inr(oth) + ' = <code>' + inr(netM) + '</code></p>' +
-      '<p>2. Yearly = ' + inr(netM) + ' × 12 = <code>' + inr(netY) + '</code></p>' +
-      '<p>3. Income replacement = ' + mult + ' × ' + inr(netY) + ' = <code>' + inr(inc) + '</code></p>' +
-      '<p>4. Cover needed = ' + inr(inc) + ' + loans ' + inr(loan) + ' + goals ' + inr(goals) + ' − savings ' + inr(ast) + ' = <code>' + inr(need) + '</code></p>' +
-      '<p>5. Gap today = ' + inr(need) + ' − (own ' + inr(own) + ' + employer ' + inr(emp) + ') = <code>' + inr(gapToday) + '</code></p>' +
-      '<p>6. Gap if employer cover ends = ' + inr(need) + ' − own ' + inr(own) + ' = <code>' + inr(gapJob) + '</code></p>' +
-      (mult !== 14 ? '<p>You have set the multiple to ' + mult + '. Our standard is 14.</p>' : '') +
-      '<p>Why 14×: the payout is received tax-free. At 7% withdrawn a year, 14 × yearly expenses gives your family roughly what they spend today (14 × 7% = 98%). Whatever the money earns above 7% stays invested, so the withdrawal can grow. Returns on the invested payout are taxable.</p>' +
-      (netM > 0 ? '<p>Price-rise table: the money earns ' + pc1(RET) + '% a year and the family withdraws 7% of it, so the money, and the next withdrawal, grow ' + pc1(RET - WITHDRAW) + '% a year. Expenses grow ' + pc1(INF) + '% a year. Returns are assumed steady; real returns vary.</p>' +
-        '<div class="tbl-scroll"><table class="yrs"><thead><tr><th scope="col"><span class="sr-only">Year</span></th><th scope="col">Money invested</th><th scope="col">Withdraw a month</th><th scope="col">Expenses a month</th></tr></thead><tbody>' + yrRows + '</tbody></table></div>' : '') +
-      '<p>Goals are taken at today\'s cost. Loans are taken at the amount outstanding today.</p>';
 
     // WhatsApp buttons carry the current numbers; the visitor reviews and sends the message themselves
     setWa(BASE_MSG + '\n' +
