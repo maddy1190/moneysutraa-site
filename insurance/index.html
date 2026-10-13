@@ -57,6 +57,24 @@
     .book small{font-size:11px}
   }
 
+  /* Calculator navigation: Home + the three calculators. Own row on phones, centred between logo and button on desktop */
+  .site-head .wrap{flex-wrap:wrap;row-gap:8px}
+  .site-head .brand{order:1}
+  .site-head .wa-btn.book{order:2}
+  .calc-nav{order:3;flex:1 0 100%;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 0 4px}
+  .calc-nav::-webkit-scrollbar{display:none}
+  .calc-nav a{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border:1px solid var(--rule);border-radius:999px;background:var(--white);color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:600;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+  .calc-nav a svg{width:15px;height:15px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .calc-nav a[aria-current="page"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  @media (hover:hover){.calc-nav a:not([aria-current]):hover{background:var(--gold-tint);border-color:#D9C58F}}
+  .n-long{display:none}
+  @media (min-width:560px){.n-long{display:inline}.n-short{display:none}}
+  @media (max-width:360px){.calc-nav a{padding:0 11px;font-size:13px}}
+  @media (min-width:900px){
+    .calc-nav{order:2;flex:0 1 auto;overflow:visible;padding:0}
+    .site-head .wa-btn.book{order:3}
+  }
+
   /* WhatsApp button */
   .wa-btn{max-width:100%;text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--wa);color:#fff;text-decoration:none;border-radius:999px;padding:11px 18px;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:15px;box-shadow:0 8px 20px rgba(30,122,79,.22);transition:background .15s ease,transform .15s ease}
   @media (hover:hover){.wa-btn:hover{background:var(--wa-dark);transform:translateY(-1px)}}
@@ -380,6 +398,11 @@
       <svg aria-hidden="true"><use href="#wa"/></svg>
       <span class="book-txt"><strong>Book a consultation<span class="free-in"> – Free</span></strong><small><span class="free-sub">Free · </span><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="currentColor"/></svg>Limited slots</small></span>
     </a>
+    <nav class="calc-nav" aria-label="Calculators">
+      <a href="https://www.moneysutraa.com" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>Home</a>
+      <a href="https://moneysutraa.com/calculator/" aria-label="SIP calculator"><span class="n-long">SIP Calculator</span><span class="n-short">SIP</span></a>
+      <a href="https://moneysutraa.com/health/" aria-label="Health insurance calculator"><span class="n-long">Health Insurance</span><span class="n-short">Health</span></a>
+    </nav>
   </div>
 </header>
 
