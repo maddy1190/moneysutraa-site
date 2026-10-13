@@ -124,12 +124,19 @@
 
   /* ===== Investment calculators ===== */
   .app{padding-bottom:24px}
-  .tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;scroll-padding:0 20px;padding:4px 20px 14px;margin:0 -20px}
-  .tabs::-webkit-scrollbar{display:none}
-  .tab{flex:none;scroll-snap-align:start;min-height:44px;padding:0 18px;border:1px solid var(--rule);border-radius:999px;background:var(--white);color:var(--slate);font:600 14px/1 var(--sans);cursor:pointer;white-space:nowrap;box-shadow:0 4px 12px rgba(27,35,56,.04);-webkit-tap-highlight-color:transparent}
-  @media (hover:hover){.tab:not(.active):hover{background:var(--gold-tint);border-color:#D9C58F;color:var(--ink)}}
+  .calc-title{text-align:center;font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.2vw,36px);line-height:1.15;letter-spacing:-.01em;margin:6px 0 18px;padding-top:26px;border-top:1px solid var(--rule)}
+  .calc-title::after{content:"";display:block;width:56px;height:3px;border-radius:3px;background:var(--gold);margin:12px auto 0;opacity:.85}
+  .chooser-label{text-align:center;margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
+  .tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 0 18px}
+  .tab{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;min-height:68px;padding:12px 14px;border:1px solid var(--rule);border-radius:14px;background:var(--white);color:var(--ink);font-family:var(--sans);cursor:pointer;box-shadow:0 4px 12px rgba(27,35,56,.04);-webkit-tap-highlight-color:transparent}
+  .tab strong{font-size:15px;font-weight:700;line-height:1.25}
+  .tab small{font-size:12.5px;font-weight:500;color:var(--slate);line-height:1.3}
+  .tab:last-child{grid-column:1/-1}
+  @media (hover:hover){.tab:not(.active):hover{background:var(--gold-tint);border-color:#D9C58F}}
   .tab.active{background:var(--ink);border-color:var(--ink);color:#fff;box-shadow:0 8px 20px rgba(27,35,56,.22)}
-  @media (min-width:900px){.tabs{justify-content:center;overflow:visible;margin:0;padding:4px 0 14px}}
+  .tab.active small{color:#D7DCEA}
+  .tab.active::after{content:"\2713";position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:50%;background:var(--yellow-2);color:var(--ink);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+  @media (min-width:760px){.tabs{grid-template-columns:repeat(5,1fr)}.tab:last-child{grid-column:auto}}
 
   .layout{display:grid;grid-template-columns:1fr 1.15fr;background:var(--white);border:1px solid var(--rule);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
   @media (max-width:760px){.layout{grid-template-columns:1fr}}
@@ -162,6 +169,16 @@
   .toggle-field{margin:4px 0 18px;padding-bottom:16px;border-bottom:1px dashed var(--rule)}
   .dependent-field{background:var(--gold-tint);border-radius:12px;padding:14px 16px 2px;margin:-4px 0 20px}
 
+  .calc-btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:54px;margin-top:6px;padding:14px 22px;border:0;border-radius:999px;background:linear-gradient(165deg,#26314F,var(--ink));color:#fff;font:700 17px var(--sans);letter-spacing:.01em;cursor:pointer;box-shadow:0 10px 24px rgba(27,35,56,.28), inset 0 1px 0 rgba(255,255,255,.12);transition:transform .15s ease,filter .15s ease;-webkit-tap-highlight-color:transparent}
+  @media (hover:hover){.calc-btn:hover{filter:brightness(1.14);transform:translateY(-1px)}}
+  .calc-btn:active{transform:none}
+  .layout[data-state="empty"] .result-body{display:none}
+  .layout[data-state="ready"] .empty-note{display:none}
+  .empty-note{display:flex;flex-direction:column;justify-content:center;height:100%;min-height:260px;text-align:center;color:var(--slate);padding:44px 12px}
+  .empty-note h3{font-family:var(--serif);font-weight:600;font-size:22px;margin:0 0 8px;color:var(--ink)}
+  .empty-note p{margin:0}
+  @media (max-width:760px){.layout[data-state="empty"] .passbook-panel{display:none}}
+  #resultPanel{scroll-margin-top:12px}
   .passbook-panel{background:linear-gradient(180deg,#FFFDF8 0%,var(--paper) 100%);padding:26px 28px 22px;position:relative}
   .stamp{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
   .seal-wrap{display:flex;justify-content:flex-end;margin-top:-6px;margin-bottom:-34px;position:relative;z-index:1;pointer-events:none}
@@ -197,7 +214,8 @@
   .table-wrap th{background:var(--ink);color:#fff;font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;position:sticky;top:0}
   .table-wrap tbody tr:nth-child(even){background:var(--paper)}
 
-  .app-foot{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between}
+  .app-foot{margin-top:26px}
+  #afterCalc .actions{margin-top:18px}
   .actions{display:flex;gap:10px;flex-wrap:wrap}
   .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 22px;border:0;border-radius:999px;background:linear-gradient(165deg,#26314F,var(--ink));color:#fff;font:700 14.5px var(--sans);cursor:pointer;box-shadow:0 8px 20px rgba(27,35,56,.24);-webkit-tap-highlight-color:transparent}
   .btn.ghost{background:var(--white);color:var(--ink);border:1px solid var(--rule);box-shadow:none}
@@ -268,22 +286,33 @@
     <p class="trust-note">Illustrative projections. Not investment advice.</p>
   </section>
 
-  <section class="wrap app" aria-label="Investment calculators">
+  <section class="wrap app" aria-labelledby="calcH">
+    <h2 class="calc-title" id="calcH">Investment Calculators</h2>
+
+    <p class="chooser-label">Choose a calculator</p>
     <nav class="tabs" id="tabs" aria-label="Choose a calculator">
-      <button class="tab active" data-tab="sip">SIP</button>
-      <button class="tab" data-tab="combo">SIP + Lumpsum</button>
-      <button class="tab" data-tab="lumpsum">Lumpsum</button>
-      <button class="tab" data-tab="swp">SWP</button>
-      <button class="tab" data-tab="goal">Goal Planner</button>
+      <button class="tab active" data-tab="sip" aria-pressed="true"><strong>SIP</strong><small>Invest every month</small></button>
+      <button class="tab" data-tab="lumpsum" aria-pressed="false"><strong>Lumpsum</strong><small>Invest one amount</small></button>
+      <button class="tab" data-tab="combo" aria-pressed="false"><strong>SIP + Lumpsum</strong><small>Both together</small></button>
+      <button class="tab" data-tab="swp" aria-pressed="false"><strong>SWP</strong><small>Withdraw every month</small></button>
+      <button class="tab" data-tab="goal" aria-pressed="false"><strong>Goal Planner</strong><small>Find the SIP for a target</small></button>
     </nav>
 
-    <div class="layout">
-      <div class="inputs-panel" id="inputsPanel"></div>
+    <div class="layout" id="layout" data-state="empty">
+      <div class="inputs-panel">
+        <div id="inputsPanel"></div>
+        <button type="button" class="calc-btn" id="calcBtn">Calculate</button>
+      </div>
 
-      <div class="passbook-panel">
-        <div class="stamp" id="todayDate"></div>
-        <div class="seal-wrap">
-          <svg class="seal" viewBox="0 0 100 100">
+      <div class="passbook-panel" id="resultPanel">
+        <div class="empty-note">
+          <h3>Your result</h3>
+          <p>Enter your numbers on the left and tap <strong>Calculate</strong>.</p>
+        </div>
+        <div class="result-body">
+          <div class="stamp" id="todayDate"></div>
+          <div class="seal-wrap">
+            <svg class="seal" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="44" fill="none" stroke="#2F8F5B" stroke-width="2" stroke-dasharray="4 3"/>
           <circle cx="50" cy="50" r="36" fill="none" stroke="#C99A3D" stroke-width="1.2"/>
           <path id="sealText" fill="none" d="M 50,50 m -30,0 a 30,30 0 1,1 60,0"/>
@@ -293,36 +322,39 @@
           <polyline points="30,60 40,52 48,58 58,40 70,44" fill="none" stroke="#C99A3D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="70" cy="44" r="2.6" fill="#2F8F5B"/>
         </svg>
-        </div>
+          </div>
 
-        <div class="ledger-rows" id="ledgerRows"></div>
-        <div id="warnBox"></div>
+          <div class="ledger-rows" id="ledgerRows"></div>
+          <div id="warnBox"></div>
 
-        <div class="chart-wrap">
-          <canvas id="growthChart" height="220"></canvas>
-        </div>
-        <div class="legend">
-          <span><i style="background:#C99A3D"></i>Amount invested</span>
-          <span><i style="background:#2F8F5B"></i>Total value</span>
+          <div class="chart-wrap">
+            <canvas id="growthChart" height="220"></canvas>
+          </div>
+          <div class="legend">
+            <span><i style="background:#C99A3D"></i>Amount invested</span>
+            <span><i style="background:#2F8F5B"></i>Total value</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="breakdown">
-      <button class="toggle-btn" id="toggleTable">Show year-wise ledger ▾</button>
-      <div class="table-wrap" id="tableWrap">
+    <div id="afterCalc" hidden>
+      <div class="breakdown">
+        <button class="toggle-btn" id="toggleTable">Show year-wise ledger ▾</button>
+        <div class="table-wrap" id="tableWrap">
         <table>
           <thead><tr id="tableHead"></tr></thead>
           <tbody id="tableBody"></tbody>
         </table>
       </div>
-    </div>
-
-    <div class="app-foot">
+      </div>
       <div class="actions">
         <button class="btn" id="shareBtn">Copy shareable link</button>
         <button class="btn ghost" id="csvBtn">Download CSV</button>
       </div>
+    </div>
+
+    <div class="app-foot">
       <div class="disclaimer">Figures are illustrative projections based on the assumed rate of return and do not guarantee actual results. Mutual fund investments are subject to market risk.</div>
     </div>
   </section>
@@ -425,6 +457,7 @@ let state = {}; // per-tab field values
 let inflationOn = false;
 let inflationRate = 6;
 let chart;
+let calcDone = {}; // which calculators the visitor has already calculated (results stay live after that)
 
 /* init default state from field values + optional URL params */
 function initState(){
@@ -440,6 +473,8 @@ function initState(){
   });
   if(params.get('infl')==='1'){ inflationOn = true; }
   if(params.get('inflRate')) inflationRate = parseFloat(params.get('inflRate'));
+  // a shared link carries numbers, so it opens straight on its result
+  if([...params.keys()].some(k=>k!=='tab')) calcDone[currentTab] = true;
 }
 
 /* ---------- Render inputs ---------- */
@@ -635,6 +670,7 @@ function requiredSIPForGoal(goal, rateAnnual, years, stepUpPct=0){
 
 /* ---------- Compute & Render ---------- */
 function compute(){
+  if(!calcDone[currentTab]) return;   // nothing is shown until the visitor taps Calculate
   const s = state[currentTab];
   let result, rows = [], warn = '';
 
@@ -758,12 +794,34 @@ function renderTable(yearly, tab){
     </tr>`).join('');
 }
 
+/* ---------- Calculate button: results appear on the first tap, then stay live ---------- */
+function applyView(){
+  const done = !!calcDone[currentTab];
+  document.getElementById('layout').setAttribute('data-state', done ? 'ready' : 'empty');
+  document.getElementById('afterCalc').hidden = !done;
+}
+function runCalc(){
+  calcDone[currentTab] = true;
+  applyView();
+  compute();
+  if(window.matchMedia && window.matchMedia('(max-width: 760px)').matches){
+    setTimeout(function(){
+      document.getElementById('resultPanel').scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'});
+    }, 100);
+  }
+}
+document.getElementById('calcBtn').addEventListener('click', runCalc);
+document.getElementById('inputsPanel').addEventListener('keydown', (e)=>{
+  if(e.key==='Enter' && e.target && e.target.matches && e.target.matches('input[type=number]')){ e.preventDefault(); runCalc(); }
+});
+
 /* ---------- Tabs ---------- */
 document.getElementById('tabs').addEventListener('click', (e)=>{
   const btn = e.target.closest('.tab');
   if(!btn) return;
   currentTab = btn.dataset.tab;
-  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t===btn));
+  document.querySelectorAll('.tab').forEach(t=>{ const on = t===btn; t.classList.toggle('active', on); t.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+  applyView();
   renderInputs();
   compute();
 });
@@ -811,7 +869,8 @@ document.getElementById('todayDate').textContent = new Date().toLocaleDateString
 
 /* ---------- Init ---------- */
 initState();
-document.querySelectorAll('.tab').forEach(t=> t.classList.toggle('active', t.dataset.tab===currentTab));
+document.querySelectorAll('.tab').forEach(t=>{ const on = t.dataset.tab===currentTab; t.classList.toggle('active', on); t.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+applyView();
 renderInputs();
 compute();
 </script>
