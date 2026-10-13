@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Health Insurance Cover Calculator | MoneySutraa</title>
+<meta name="description" content="Find out how much health cover your family really needs, and your gap if your employer's cover ends. Free, and it takes a minute. An educational tool from MoneySutraa.">
+<meta name="theme-color" content="#FAF6EE">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://moneysutraa.com/health/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta property="og:title" content="How much health cover does your family really need? | MoneySutraa">
+<meta property="og:description" content="A free health insurance cover calculator. See your gap, including if your employer's cover ends.">
+<meta property="og:image" content="https://moneysutraa.com/og-cover.jpg">
+<meta property="og:url" content="https://moneysutraa.com/health/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#FAF6EE; --ink:#1B2338; --slate:#5C6785;
+    --gold:#9C7A2E; --gold-text:#7F6119; --gold-tint:#F4EAD0; --rule:#E6DDCB; --white:#FFFFFF;
+    --wa:#1E7A4F; --wa-dark:#16603D;
+    --red:#8C1A1A; --yellow-1:#F3D77E; --yellow-2:#ECC658;
+    --serif:"Fraunces", Georgia, "Times New Roman", serif;
+    --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --shadow:0 1px 2px rgba(27,35,56,.04), 0 14px 36px rgba(27,35,56,.07);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{overflow-x:clip;margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  a,button,summary,label{-webkit-tap-highlight-color:transparent}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-right)) 0 max(20px,env(safe-area-inset-left))}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+  /* Header */
+  .site-head{border-bottom:1px solid var(--rule)}
+  .site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px}
+  .brand{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none}
+  .brand img{height:74px;width:auto;max-width:260px;object-fit:contain}
+  /* width:0 + min-width:100% = the tagline takes the logo's width and wraps inside it; it can never make the block wider */
+  .brand-tag{width:0;min-width:100%;font-size:9px;font-weight:600;color:var(--slate);line-height:1.25;text-wrap:balance}
+  @media (max-width:360px){
+    .brand img{height:58px}
+    .brand-tag{font-size:8.5px}
+    .site-head .wa-btn{padding:9px 14px;font-size:14px}
+    .site-head .wa-btn.book{padding:7px 12px}
+    .book strong{font-size:13px}
+    .book small{font-size:11px}
+  }
+
+  /* Calculator navigation: Home + the three calculators. Own row on phones, centred between logo and button on desktop */
+  .site-head .wrap{flex-wrap:wrap;row-gap:8px}
+  .site-head .brand{order:1}
+  .site-head .wa-btn.book{order:2}
+  .calc-nav{order:3;flex:1 0 100%;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 0 4px}
+  .calc-nav::-webkit-scrollbar{display:none}
+  .calc-nav a{display:inline-flex;align-items:center;gap:6px;min-height:42px;padding:0 14px;border:1px solid var(--rule);border-radius:999px;background:var(--white);color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:600;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+  .calc-nav a svg{width:15px;height:15px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .calc-nav a[aria-current="page"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  @media (hover:hover){.calc-nav a:not([aria-current]):hover{background:var(--gold-tint);border-color:#D9C58F}}
+  .n-long{display:none}
+  @media (min-width:560px){.n-long{display:inline}.n-short{display:none}}
+  @media (max-width:360px){.calc-nav a{padding:0 11px;font-size:13px}}
+  @media (min-width:900px){
+    .calc-nav{order:2;flex:0 1 auto;overflow:visible;padding:0}
+    .site-head .wa-btn.book{order:3}
+  }
+
+  /* WhatsApp button */
+  .wa-btn{max-width:100%;text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--wa);color:#fff;text-decoration:none;border-radius:999px;padding:11px 18px;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:15px;box-shadow:0 8px 20px rgba(30,122,79,.22);transition:background .15s ease,transform .15s ease}
+  @media (hover:hover){.wa-btn:hover{background:var(--wa-dark);transform:translateY(-1px)}}
+  .wa-btn svg{width:18px;height:18px;flex:none}
+  .wa-btn.big{font-size:17px;padding:16px 26px}
+  /* Header "Book a consultation" button: two lines; "– Free" joins line 1 on wider screens, moves to line 2 on phones */
+  .wa-btn.book{padding:8px 14px;gap:10px;font-size:14px}
+  .wa-btn.book > svg{display:none}
+  .book-txt{display:block;text-align:left}
+  .book strong{display:block;font-size:14px;line-height:1.2;font-weight:700}
+  .book small{display:flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;line-height:1.2;margin-top:2px;opacity:.95}
+  .wa-btn.book small svg{width:11px;height:11px;flex:none}
+  .free-in{display:none}
+  @media (min-width:480px){
+    .wa-btn.book{padding:8px 18px}
+    .wa-btn.book > svg{display:block}
+    .free-in{display:inline}
+    .free-sub{display:none}
+  }
+  @media (max-width:420px){
+    .site-head .wrap{padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env(safe-area-inset-right))}
+  }
+  .wa-btn.block{width:100%}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;text-align:center;padding:26px max(20px,env(safe-area-inset-right)) 24px max(20px,env(safe-area-inset-left))}
+  @media (min-width:720px){.hero{padding-top:40px;padding-bottom:28px}}
+  .hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:min(640px,100%);height:380px;background:radial-gradient(ellipse at center, rgba(201,154,61,.14), rgba(201,154,61,0) 70%);pointer-events:none}
+  .hero > *{position:relative}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.4vw,46px);line-height:1.14;letter-spacing:-.015em;margin:0 auto 14px;max-width:18ch}
+  .hero p{color:var(--slate);max-width:58ch;margin:0 auto 20px}
+  /* Trust strip: swipeable on phones, 3 x 2 grid on larger screens */
+  .trust-strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 20px 16px;margin:0 -20px}
+  .trust-strip::-webkit-scrollbar{display:none}
+  .tcard{flex:0 0 236px;scroll-snap-align:start;display:flex;align-items:center;gap:12px;text-align:left;background:var(--white);border:1px solid var(--rule);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+  .tcard.primary{border-color:#D9C58F;background:linear-gradient(180deg,#FFFDF6,#FBF3DC)}
+  .ticon{flex:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(165deg,var(--yellow-1),var(--yellow-2));color:var(--red);box-shadow:inset 0 1px 0 rgba(255,255,255,.5), 0 4px 10px rgba(140,26,26,.14)}
+  .ticon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .tcard strong{display:block;font-size:14.5px;line-height:1.25;font-weight:700;color:var(--ink)}
+  .tcard small{display:block;font-size:12.5px;line-height:1.35;color:var(--slate);margin-top:2px}
+  @media (min-width:720px){
+    .trust-strip{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;scroll-snap-type:none;padding:6px 0 10px;margin:0}
+    .tcard{flex:none}
+  }
+  .hero .trust-note{font-size:12px;color:var(--slate);margin:0 auto;max-width:none}
+
+  /* Calculator */
+  .calc-title{grid-column:1/-1;text-align:center;font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.2vw,36px);line-height:1.15;letter-spacing:-.01em;margin:6px 0 0;padding-top:26px;border-top:1px solid var(--rule)}
+  .calc-title::after{content:"";display:block;width:56px;height:3px;border-radius:3px;background:var(--gold);margin:12px auto 0;opacity:.85}
+  .calc{display:grid;grid-template-columns:1fr;gap:20px;padding-bottom:28px}
+  @media (min-width:900px){.calc{grid-template-columns:5fr 6fr;align-items:start;gap:24px}}
+  .panel{background:var(--white);border:1px solid var(--rule);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+  @media (max-width:480px){.panel{padding:20px 16px}}
+  .panel h2{font-family:var(--serif);font-weight:600;font-size:23px;line-height:1.2;margin:0 0 4px}
+  .panel .sub{color:var(--slate);font-size:14px;margin:0 0 14px}
+  .tip{background:#E3F1E8;border-left:4px solid var(--wa);border-radius:8px;padding:10px 12px;font-size:14px;font-weight:600;color:#1B5E3B;margin:0 0 18px}
+
+  .group + .group{border-top:1px solid var(--rule);padding-top:16px;margin-top:6px}
+  .group h3{font-size:15px;margin:0 0 14px}
+  .opt{display:inline-block;margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5A4712;background:var(--gold-tint);border-radius:999px;padding:2px 9px;vertical-align:2px}
+  .field{margin-bottom:18px}
+  .field > label{display:block;font-weight:600;margin-bottom:6px;font-size:15px}
+  .hint{font-size:13px;color:var(--slate);margin:6px 0 0}
+  .money{display:flex;align-items:center;border:1px solid var(--rule);border-radius:10px;background:var(--paper);overflow:hidden;min-height:48px}
+  .money span{padding:0 4px 0 14px;color:var(--slate)}
+  .money input{flex:1;border:0;background:transparent;padding:12px 14px 12px 6px;font:inherit;font-variant-numeric:tabular-nums;min-width:0;color:var(--ink)}
+  .money input:focus{outline:none}
+  .money:focus-within{outline:3px solid var(--gold);outline-offset:2px;background:#fff}
+  input[type=number]{-moz-appearance:textfield;appearance:textfield}
+  input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .err{color:var(--red);font-size:13px;font-weight:600;margin:6px 0 0}
+  .calc-btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:54px;margin-top:10px;padding:14px 22px;border:0;border-radius:999px;background:linear-gradient(165deg,#26314F,var(--ink));color:#fff;font:inherit;font-weight:700;font-size:17px;letter-spacing:.01em;cursor:pointer;box-shadow:0 10px 24px rgba(27,35,56,.28), inset 0 1px 0 rgba(255,255,255,.12);transition:transform .15s ease,filter .15s ease}
+  @media (hover:hover){.calc-btn:hover{filter:brightness(1.14);transform:translateY(-1px)}}
+  .calc-btn:active{transform:none}
+  .readout{font-size:13px;color:var(--gold-text);font-weight:600;margin-top:4px;min-height:1.2em}
+
+  details.assume{border-top:1px solid var(--rule);padding-top:14px;margin-top:6px}
+  details.assume summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--slate);padding:10px 0}
+  .assume-row{display:flex;align-items:center;gap:12px;margin-top:12px}
+  .assume-row label{font-size:14px;font-weight:600;flex:1;min-width:0}
+  .num{width:84px;min-height:44px;padding:9px 10px;border:1px solid var(--rule);border-radius:10px;font:inherit;text-align:right;background:var(--paper);color:var(--ink)}
+
+  /* Result */
+  .result{scroll-margin-top:12px}
+  .result[data-state="empty"] .result-body{display:none}
+  .result[data-state="ready"] .empty-note{display:none}
+  .empty-note{text-align:center;color:var(--slate);padding:44px 12px}
+  .empty-note h2{margin-bottom:8px}
+  .empty-note p{margin:0}
+  @media (max-width:899px){.result[data-state="empty"]{display:none}}
+  @media (min-width:900px) and (min-height:720px){.result{position:sticky;top:16px}}
+  .ledger{margin:0 0 18px;padding:0;list-style:none;border-bottom:2px solid var(--ink)}
+  .ledger li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:8px 0;border-top:1px solid var(--rule);font-size:15px}
+  .ledger li span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .ledger li.note{display:block;border-top:0;padding:0 0 8px;font-size:13px;color:var(--slate)}
+  .ledger li.note span{white-space:normal}
+  .ledger li.total{font-weight:700;font-size:16px}
+  .ledger li.key{background:var(--gold-tint);margin:6px -12px;padding:12px;border-radius:12px;border-top:0;font-weight:700;font-size:16px;align-items:center}
+  .ledger li.key + li{border-top:0}
+  .ledger .amt{font-family:var(--serif)}
+  .ledger li.key .amt{font-size:24px}
+  .ledger .amt.ok{color:var(--wa)}
+
+  .bars{margin:0 0 4px}
+  .bar-label{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--slate);margin:4px 0 6px}
+  .track{height:18px;background:var(--paper);border:1px solid var(--rule);border-radius:4px;position:relative;overflow:hidden}
+  .fill{position:absolute;top:0;bottom:0;left:0;background:#D9CFBC}
+  .seg-own{position:absolute;top:0;bottom:0;left:0;background:var(--ink)}
+  .seg-emp{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(45deg,var(--gold) 0 6px,#C8A85E 6px 12px)}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--slate);margin-top:8px}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:5px;vertical-align:-2px}
+
+  .result-cta{margin-top:20px;text-align:center}
+  .result-cta small{display:block;margin-top:10px;font-size:12.5px;color:var(--slate)}
+
+  /* What this means */
+  .next{padding-bottom:40px}
+  .next .panel{padding:28px}
+  @media (max-width:480px){.next .panel{padding:20px 16px}}
+  .next-grid{display:grid;grid-template-columns:1fr;gap:22px}
+  @media (min-width:900px){.next-grid{grid-template-columns:1fr 1fr;gap:40px}}
+  .next h3{font-family:var(--serif);font-weight:600;font-size:18px;margin:0 0 10px}
+  .means{border-left:3px solid var(--gold);padding:4px 0 4px 14px;margin:0 0 12px;font-size:15px}
+  .means .m-head{display:block;font-weight:700;margin-bottom:2px;font-variant-numeric:tabular-nums}
+  .job-note{background:var(--gold-tint);border-radius:10px;padding:10px 14px;font-size:14px;margin:0 0 12px}
+  .job-note:empty{display:none}
+  .next ul{margin:0;padding-left:18px;font-size:15px}
+  .next li{margin-bottom:8px}
+  table.yrs{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;margin:4px 0 10px}
+  .yrs th,.yrs td{padding:8px 4px;border-top:1px solid var(--rule);text-align:right}
+  .yrs thead th{border-top:0;font-size:12px;color:var(--slate);font-weight:600}
+  .yrs thead th:first-child{text-align:left}
+  .yrs tbody th,.yrs td:first-child{text-align:left;font-weight:500;color:var(--slate)}
+  .status{font-size:14px;font-weight:600;margin:0 0 6px}
+  .status.warn{color:var(--red)}
+  .fixed{font-size:14px;color:var(--slate);margin:0 0 8px}
+  .fixed b{color:var(--red)}
+  .fine{font-size:12px;color:var(--slate);margin:0}
+  .tbl-scroll{overflow-x:auto}
+  @media (max-width:360px){table.yrs{font-size:13px}.yrs th,.yrs td{padding:7px 3px}}
+
+  /* Checklist */
+  .checklist{padding:24px 0 40px}
+  .checklist h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.4vw,32px);line-height:1.2;margin:0 0 6px}
+  .checklist .wrap > p{color:var(--slate);margin:0 0 20px;max-width:65ch}
+  .table-wrap{background:var(--white);border:1px solid var(--rule);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  table.points{width:100%;border-collapse:collapse}
+  .points th,.points td{text-align:left;vertical-align:top;padding:14px 16px;border-top:1px solid var(--rule);font-size:15px}
+  .points thead th{background:var(--ink);color:#fff;border-top:0;font-weight:600;font-size:14px}
+  .points td:first-child{font-weight:600;width:22%}
+  .points td:last-child{width:32%}
+  .points tr.ratio td{background:var(--gold-tint)}
+  @media (max-width:680px){
+    .points thead{position:absolute;left:-9999px}
+    .points,.points tbody,.points tr,.points td{display:block;width:100% !important}
+    .points tr{border-top:1px solid var(--rule);padding:12px 14px}
+    .points tr:first-child{border-top:0}
+    .points td{border:0;padding:3px 0}
+    .points td:not(:first-child)::before{content:attr(data-label);display:block;font-size:12px;color:var(--slate);font-weight:600}
+  }
+
+  /* Questions */
+  .faq{padding:8px 0 40px}
+  .faq h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.4vw,32px);line-height:1.2;margin:0 0 6px}
+  .faq .wrap > p{color:var(--slate);margin:0 0 20px;max-width:65ch}
+  .faq-list{max-width:820px}
+  .faq details{background:var(--white);border:1px solid var(--rule);border-radius:14px;margin-bottom:10px;box-shadow:var(--shadow)}
+  .faq details[open]{border-color:#D9C58F}
+  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 18px;min-height:56px;font-weight:600;font-size:16px;line-height:1.35}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;background:var(--gold-tint);color:var(--gold-text);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:500;line-height:1}
+  .faq details[open] summary::after{content:"\2013"}
+  .faq .ans{padding:0 18px 18px;color:var(--slate);font-size:15px;max-width:70ch}
+  @media (max-width:480px){.faq summary{padding:12px 16px}.faq .ans{padding:0 16px 16px}}
+
+  /* Contact */
+  .contact{background:var(--ink);color:#fff;padding:56px 0}
+  .contact-inner{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+  @media (min-width:900px){.contact-inner{grid-template-columns:7fr 5fr}}
+  .contact h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4vw,38px);line-height:1.2;margin:0 0 10px}
+  .contact .lead{color:#D7DCEA;margin:0 0 22px;font-size:17px}
+  .reasons{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr;gap:12px}
+  @media (min-width:600px){.reasons{grid-template-columns:1fr 1fr}}
+  .reasons li{display:flex;gap:10px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:12px 14px;font-size:15px}
+  .reasons svg{flex:none;width:20px;height:20px;margin-top:2px}
+  .contact-cta{text-align:center;background:var(--gold-tint);color:var(--ink);border-radius:16px;padding:28px 22px}
+  .contact-cta p{margin:0 0 16px;font-weight:600}
+  .contact-cta .wa-btn{width:100%}
+  .contact-cta small{display:block;margin-top:12px;color:var(--slate);font-size:13px}
+
+  /* Footer */
+  .review-note{background:var(--white);border:1px solid var(--rule);border-left:4px solid var(--gold);border-radius:10px;padding:14px 18px;margin:32px 0 20px;font-size:15px;font-weight:500}
+  .foot{padding:0 0 40px;font-size:12.5px;color:var(--slate)}
+  .foot p{margin:0 0 10px;max-width:90ch}
+
+  /* Floating WhatsApp button: always visible, on every screen size */
+  .fab{display:flex;align-items:center;justify-content:center;position:fixed;right:max(16px,env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;width:56px;height:56px;border-radius:50%;background:var(--wa);color:#fff;box-shadow:0 10px 24px rgba(22,96,61,.38), 0 2px 6px rgba(0,0,0,.18);transition:bottom .2s ease,background .15s ease}
+  .fab svg{width:30px;height:30px}
+  @media (hover:hover){.fab:hover{background:var(--wa-dark)}}
+  @media (min-width:900px){.fab{right:24px;bottom:24px}}
+  @media (max-width:899px){.fab.up{bottom:calc(86px + env(safe-area-inset-bottom))}}
+
+  /* Mobile live-number bar */
+  .jump{display:none}
+  @media (max-width:899px){
+    .jump{display:flex;align-items:center;justify-content:space-between;gap:12px;position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(250,246,238,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--rule);padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(110%);visibility:hidden;transition:transform .2s ease,visibility .2s}
+    .jump.show{transform:none;visibility:visible}
+  }
+  .jump .calc-btn{margin-top:0;min-height:50px}
+  @media (max-width:360px){
+    .ledger li.key .amt{font-size:20px}
+    .wa-btn.big{font-size:15px;padding:14px 18px}
+    .jump{padding-left:12px;padding-right:12px}
+  }
+
+  @media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
+  /* Health form controls */
+  fieldset{border:0;margin:0 0 18px;padding:0;min-width:0}
+  legend{display:block;font-weight:600;margin-bottom:8px;padding:0;font-size:15px}
+  .seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .seg input{position:absolute;top:0;left:0;opacity:0;pointer-events:none}
+  .seg label{display:flex;align-items:center;justify-content:center;text-align:center;min-height:48px;border:1px solid var(--rule);border-radius:10px;padding:8px 6px;font-size:14px;line-height:1.2;cursor:pointer;background:var(--paper)}
+  .seg input:checked + label{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:600}
+  .seg input:focus-visible + label{outline:3px solid var(--gold);outline-offset:2px}
+  .stepper{display:inline-flex;align-items:center;border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:var(--paper)}
+  .stepper button{width:52px;height:48px;border:0;background:transparent;font-size:22px;cursor:pointer;color:var(--ink)}
+  @media (hover:hover){.stepper button:hover{background:var(--gold-tint)}}
+  .stepper output{min-width:52px;text-align:center;font-weight:700;font-size:17px}
+  .money input:first-child{padding-left:14px}
+  .money span.sfx{padding:0 14px 0 4px}
+  .ledger li.key .amt.ok{font-size:19px}
+  #planNote{margin-top:8px}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much health cover should I buy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on where you would be treated, your family's size and ages, and what your employer already covers. The calculator above gives an estimate for your family. Medical costs keep rising, so review the number every few years and whenever your family changes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my employer's health cover enough?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually not on its own. It ends if you change jobs, are laid off or retire, and the sum insured is often shared across the family. Many people keep a personal policy as well, so cover stays with them whatever happens to the job."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a super top-up, and is it cheaper?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A super top-up gives extra cover that starts only after your bills in the year pass a deductible, usually the sum insured of your base policy. It generally costs less than raising the base cover by the same amount. A plain top-up applies its deductible to each claim, while a super top-up adds up all claims in the year."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a room-rent limit, and why does it matter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Some policies cap the daily room rent. If your room costs more, other charges such as doctor and nursing fees can be cut in the same proportion. A limit of ₹5,000 a day with a ₹10,000 room can mean those bills are paid at about half. Look for no room-rent limit, or a high one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long are waiting periods?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most policies have a short initial wait, often 30 days except for accidents, and longer waits for specific illnesses and for conditions you already have. IRDAI caps the wait for pre-existing conditions at 3 years, and the wait for specific illnesses at 3 years too. Shorter waits or waiver options are worth looking for."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the insurer reject my claim?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if the treatment is not covered or health details were hidden. After five years of continuous cover, called the moratorium period, an insurer generally cannot reject a claim for not disclosing a pre-existing condition, except in cases of fraud. Disclose your health history honestly and do not let the policy lapse."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I switch insurers without losing waiting-period credit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can port your policy to another insurer at renewal, and credit for waiting periods you have already served carries over, along with your moratorium count. Apply before the renewal date and compare the new policy's terms, not just the premium."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will my premium go up as I get older?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually yes. Premiums are generally set by age band and step up as you move into an older band, and they can rise as medical costs rise. Compare renewal premiums as well as the first-year premium before you choose."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a separate policy for my parents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Often it works better. Cover for parents is priced and underwritten differently from cover for a younger family, and adding them to a family policy can raise the premium sharply. Many families buy a separate policy for parents. This calculator is for you, your spouse and children, so talk to us if you would like to plan parents' cover."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I check besides the sum insured?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Look at room-rent limits, co-pay, sub-limits on specific treatments, consumables, restore benefits, network hospitals near you, waiting periods and the insurer's claim settlement record. The checklist above shows what each one means and what to look for."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.1Z"/></symbol>
+  <symbol id="tick" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#9C7A2E"/><path d="M5.5 10.2l3 3 6-6.4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="https://www.moneysutraa.com" aria-label="MoneySutraa home">
+      <img src="/logo.png" alt="MoneySutraa">
+      <span class="brand-tag">Your Wealth Partners for Life</span>
+    </a>
+    <a class="wa-btn book js-wa" data-ask="book a free consultation" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20(Health%20Insurance%20calculator).%0AI'd%20like%20to%20book%20a%20free%20consultation." target="_blank" rel="noopener noreferrer">
+      <svg aria-hidden="true"><use href="#wa"/></svg>
+      <span class="book-txt"><strong>Book a consultation<span class="free-in"> – Free</span></strong><small><span class="free-sub">Free · </span><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="currentColor"/></svg>Limited slots</small></span>
+    </a>
+    <nav class="calc-nav" aria-label="Calculators">
+      <a href="https://www.moneysutraa.com" aria-label="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>Home</a>
+      <a href="https://moneysutraa.com/calculator/" aria-label="SIP calculator"><span class="n-long">SIP Calculator</span><span class="n-short">SIP</span></a>
+      <a href="https://moneysutraa.com/insurance/" aria-label="Life insurance calculator"><span class="n-long">Life Insurance</span><span class="n-short">Life</span></a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <h1>How much health cover does your family really need?</h1>
+    <p>Five questions. See your gap today, if your employer's cover ends, and as medical costs rise.</p>
+    <div class="trust-strip" role="list" aria-label="Why families trust MoneySutraa" tabindex="0">
+      <div class="tcard primary" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <div><strong>Certified Insurance POSP</strong><small>Point of Sales Person</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+        <div><strong>Needs-first guidance</strong><small>Starts with your numbers, not a product</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span>
+        <div><strong>Research for your fit</strong><small>Plans checked against your needs</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <div><strong>Real people, not call centres</strong><small>Led by a CA, MBA</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+        <div><strong>100+ families guided</strong><small>And counting</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span>
+        <div><strong>No pressure to buy</strong><small>No upselling. No spam.</small></div>
+      </div>
+    </div>
+    <p class="trust-note">Educational tool. Not insurance advice.</p>
+    <p class="trust-note">Educational tool. Not insurance advice.</p>
+  </section>
+
+  <section class="wrap calc" aria-labelledby="calcH">
+    <h2 class="calc-title" id="calcH">Health Insurance Calculator</h2>
+    <!-- Inputs -->
+    <form class="panel" id="inputs" novalidate aria-label="Calculator inputs">
+      <p class="tip">Sample numbers are filled in. Replace them with yours.</p>
+
+      <div class="group">
+        <fieldset>
+          <legend>City where you'd get major treatment</legend>
+          <div class="seg">
+            <input type="radio" name="city" id="c-metro" value="metro" checked><label for="c-metro">Metro</label>
+            <input type="radio" name="city" id="c-t2" value="tier2"><label for="c-t2">Tier 2 city</label>
+            <input type="radio" name="city" id="c-t3" value="tier3"><label for="c-t3">Tier 3 / town</label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="age">Age of the oldest member</label>
+          <div class="money"><input type="number" id="age" min="18" max="75" value="38" inputmode="numeric" autocomplete="off" aria-describedby="ageR ageErr"><span class="sfx">yrs</span></div>
+          <div class="readout" id="ageR"></div>
+          <p class="err" id="ageErr" role="alert" hidden>Enter the oldest member's age.</p>
+        </div>
+        <div class="field">
+          <label id="memLbl">Family members to cover</label>
+          <div class="stepper" role="group" aria-labelledby="memLbl">
+            <button type="button" id="memMinus" aria-label="Remove a member">−</button>
+            <output id="members" aria-live="polite">4</output>
+            <button type="button" id="memPlus" aria-label="Add a member">+</button>
+          </div>
+          <div class="readout" id="memR"></div>
+          <p class="hint">Self, spouse, children. Not parents.</p>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>What's already in place <span class="opt">Optional</span></h3>
+        <div class="field">
+          <label for="own">Your own health policy (sum insured)</label>
+          <div class="money"><span>₹</span><input type="number" id="own" min="0" step="50000" value="0" inputmode="numeric" autocomplete="off"></div>
+          <div class="readout" id="ownR"></div>
+          <p class="hint">Sum insured for these family members, not the premium.</p>
+        </div>
+        <div class="field">
+          <label for="emp">Health cover from your employer</label>
+          <div class="money"><span>₹</span><input type="number" id="emp" min="0" step="50000" value="0" inputmode="numeric" autocomplete="off"></div>
+          <div class="readout" id="empR"></div>
+          <p class="hint">Ends if you change jobs.</p>
+        </div>
+      </div>
+
+      <details class="assume">
+        <summary>Advanced (optional)</summary>
+        <div class="assume-row">
+          <label for="inf">Medical inflation (% a year)</label>
+          <input class="num" type="number" id="inf" min="0" max="25" step="0.5" value="11.5" inputmode="decimal">
+        </div>
+        <div class="readout" id="infR"></div>
+        <p class="hint">We use 11.5%, Aon's 2026 projection for India. It only changes the rising-costs table. Allowed range: 0 to 25.</p>
+      </details>
+
+      <button type="button" class="calc-btn" id="calcBtn">Calculate my cover</button>
+    </form>
+
+    <!-- Result -->
+    <aside class="panel result" id="result" data-state="empty" tabindex="-1" aria-label="Your estimate">
+      <div class="empty-note">
+        <h2>Your estimate</h2>
+        <p>Fill in your details and tap <strong>Calculate</strong>.</p>
+      </div>
+      <div class="result-body">
+        <h2>Your estimate</h2>
+        <p class="sub">Rule-of-thumb estimate from city, age and family size. Doesn't assess policy terms. Sum insured, not premium.</p>
+
+        <ul class="ledger">
+          <li><span id="lBaseLbl">Base cover</span><span id="lBase"></span></li>
+          <li><span id="lAgeLbl">+ Age loading</span><span id="lAge"></span></li>
+          <li><span id="lMemLbl">+ Extra members</span><span id="lMem"></span></li>
+          <li class="total"><span>= Health cover needed today</span><span id="lNeed"></span></li>
+          <li><span>− Your own policy</span><span id="lOwn"></span></li>
+          <li class="key"><span>= Gap if employer cover ends</span><span class="amt" id="gJob"></span></li>
+          <li><span>− Employer cover</span><span id="lEmp"></span></li>
+          <li class="total"><span>= Gap today</span><span class="amt" id="gToday"></span></li>
+        </ul>
+
+        <div class="bars" aria-hidden="true">
+          <div class="bar-label"><span>Your cover vs need</span><span id="bV"></span></div>
+          <div class="track">
+            <div class="fill" id="bNeed"></div>
+            <div class="seg-own" id="bOwn"></div>
+            <div class="seg-emp" id="bEmp"></div>
+          </div>
+          <div class="legend">
+            <span><i style="background:var(--ink)"></i>Your own policy</span>
+            <span><i style="background:repeating-linear-gradient(45deg,#9C7A2E 0 3px,#C8A85E 3px 6px)"></i>Employer cover (ends with job)</span>
+            <span><i style="background:#D9CFBC"></i>Cover needed</span>
+          </div>
+        </div>
+
+        <div class="result-cta">
+          <a class="wa-btn big block js-wa" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20(Health%20Insurance%20calculator)." target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#wa"/></svg>Talk it through on WhatsApp</a>
+          <small>Your numbers are pre-filled. Nothing is sent until you press send.</small>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- What this means -->
+  <section class="wrap next" id="next" hidden aria-label="What this means">
+    <div class="panel">
+      <div class="next-grid">
+        <div>
+          <h3>Will this keep up with rising medical costs?</h3>
+          <p class="means" id="means"></p>
+          <div id="yrsWrap">
+            <div class="tbl-scroll">
+              <table class="yrs">
+                <caption class="sr-only">Cover needed, your own policy and the gap over time</caption>
+                <thead><tr><th scope="col">When</th><th scope="col">Cover needed</th><th scope="col">Your own policy</th><th scope="col">Gap if employer cover ends</th></tr></thead>
+                <tbody id="yrBody"></tbody>
+              </table>
+            </div>
+            <p class="status" id="status"></p>
+            <p class="fine">Illustrative, not a forecast. Assumes steady medical inflation, employer cover ended, and your own policy staying at today's amount.</p>
+          </div>
+        </div>
+        <div>
+          <h3>Ways to close the gap</h3>
+          <p class="job-note" id="jobNote"></p>
+          <ul id="closeList"></ul>
+          <p class="fine" id="planNote" hidden>Rounded planning figures, not a recommended policy amount.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Points to check -->
+  <section class="checklist">
+    <div class="wrap">
+      <h2>Other points to check before taking a policy</h2>
+      <p>The cover amount is only half the story. These terms decide how much of a hospital bill actually gets paid.</p>
+      <div class="table-wrap">
+        <table class="points">
+          <caption class="sr-only">Points to check before taking a health insurance policy</caption>
+          <thead><tr><th scope="col">Point</th><th scope="col">What it means</th><th scope="col">What to look for</th></tr></thead>
+          <tbody>
+            <tr><td>Room-rent limit</td><td data-label="What it means">Some policies cut doctor, nursing and OT charges in the same ratio if your room costs more than the limit. A ₹5,000/day limit with a ₹10,000 room can mean those bills are paid at about half.</td><td data-label="What to look for">No room-rent limit</td></tr>
+            <tr><td>Co-pay</td><td data-label="What it means">You pay a fixed share of every claim yourself.</td><td data-label="What to look for">0% co-pay. Watch for extra co-pay when treated in a costlier city than your policy zone.</td></tr>
+            <tr><td>Restore / recharge / refill</td><td data-label="What it means">Your cover is refilled after it is used up during the year.</td><td data-label="What to look for">Check when it kicks in, and whether it works for the same illness, for every member, and more than once a year</td></tr>
+            <tr><td>No-claim / super bonus</td><td data-label="What it means">Your cover grows for every claim-free year.</td><td data-label="What to look for">Check how the bonus builds up and whether a claim reduces it</td></tr>
+            <tr><td>Super top-up</td><td data-label="What it means">Extra cover that starts after a deductible. Usually cheaper than a bigger base policy.</td><td data-label="What to look for">Super top-up (deductible on the year's total bills), not a plain top-up (deductible per claim)</td></tr>
+            <tr><td>Waiting periods</td><td data-label="What it means">Time before some illnesses are covered. For existing illnesses, up to 3 years.</td><td data-label="What to look for">Shorter waits, or waiver options</td></tr>
+            <tr><td>Disease sub-limits</td><td data-label="What it means">Caps on specific treatments such as cataract or knee replacement.</td><td data-label="What to look for">No sub-limits</td></tr>
+            <tr><td>Consumables</td><td data-label="What it means">Gloves, PPE kits and similar items are not paid by default.</td><td data-label="What to look for">Consumables cover add-on</td></tr>
+            <tr><td>Network hospitals</td><td data-label="What it means">Cashless treatment works only at the insurer's tie-up hospitals.</td><td data-label="What to look for">Good hospitals near you and in your treatment city</td></tr>
+            <tr><td>Portability</td><td data-label="What it means">You can switch insurer at renewal.</td><td data-label="What to look for">Eligible credit for waiting periods already served carries over</td></tr>
+            <tr class="ratio"><td>Claim settlement ratios</td><td data-label="What it means">Check two numbers: claims settled out of claims received, and amount paid out of amount claimed.</td><td data-label="What to look for">High on both, alongside clear policy terms and good service. A high first number with a low second can mean big claims get trimmed.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Questions -->
+  <section class="faq" aria-labelledby="faqH">
+    <div class="wrap">
+      <h2 id="faqH">Questions people ask before buying health cover</h2>
+      <p>Plain answers to what most buyers want to know. This is general information, so always read the policy document before you buy.</p>
+      <div class="faq-list">
+        <details>
+          <summary>How much health cover should I buy?</summary>
+          <div class="ans">It depends on where you would be treated, your family's size and ages, and what your employer already covers. The calculator above gives an estimate for your family. Medical costs keep rising, so review the number every few years and whenever your family changes.</div>
+        </details>
+        <details>
+          <summary>Is my employer's health cover enough?</summary>
+          <div class="ans">Usually not on its own. It ends if you change jobs, are laid off or retire, and the sum insured is often shared across the family. Many people keep a personal policy as well, so cover stays with them whatever happens to the job.</div>
+        </details>
+        <details>
+          <summary>What is a super top-up, and is it cheaper?</summary>
+          <div class="ans">A super top-up gives extra cover that starts only after your bills in the year pass a deductible, usually the sum insured of your base policy. It generally costs less than raising the base cover by the same amount. A plain top-up applies its deductible to each claim, while a super top-up adds up all claims in the year.</div>
+        </details>
+        <details>
+          <summary>What is a room-rent limit, and why does it matter?</summary>
+          <div class="ans">Some policies cap the daily room rent. If your room costs more, other charges such as doctor and nursing fees can be cut in the same proportion. A limit of ₹5,000 a day with a ₹10,000 room can mean those bills are paid at about half. Look for no room-rent limit, or a high one.</div>
+        </details>
+        <details>
+          <summary>How long are waiting periods?</summary>
+          <div class="ans">Most policies have a short initial wait, often 30 days except for accidents, and longer waits for specific illnesses and for conditions you already have. IRDAI caps the wait for pre-existing conditions at 3 years, and the wait for specific illnesses at 3 years too. Shorter waits or waiver options are worth looking for.</div>
+        </details>
+        <details>
+          <summary>Can the insurer reject my claim?</summary>
+          <div class="ans">Yes, if the treatment is not covered or health details were hidden. After five years of continuous cover, called the moratorium period, an insurer generally cannot reject a claim for not disclosing a pre-existing condition, except in cases of fraud. Disclose your health history honestly and do not let the policy lapse.</div>
+        </details>
+        <details>
+          <summary>Can I switch insurers without losing waiting-period credit?</summary>
+          <div class="ans">Yes. You can port your policy to another insurer at renewal, and credit for waiting periods you have already served carries over, along with your moratorium count. Apply before the renewal date and compare the new policy's terms, not just the premium.</div>
+        </details>
+        <details>
+          <summary>Will my premium go up as I get older?</summary>
+          <div class="ans">Usually yes. Premiums are generally set by age band and step up as you move into an older band, and they can rise as medical costs rise. Compare renewal premiums as well as the first-year premium before you choose.</div>
+        </details>
+        <details>
+          <summary>Do I need a separate policy for my parents?</summary>
+          <div class="ans">Often it works better. Cover for parents is priced and underwritten differently from cover for a younger family, and adding them to a family policy can raise the premium sharply. Many families buy a separate policy for parents. This calculator is for you, your spouse and children, so talk to us if you would like to plan parents' cover.</div>
+        </details>
+        <details>
+          <summary>What should I check besides the sum insured?</summary>
+          <div class="ans">Look at room-rent limits, co-pay, sub-limits on specific treatments, consumables, restore benefits, network hospitals near you, waiting periods and the insurer's claim settlement record. The checklist above shows what each one means and what to look for.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-inner">
+      <div>
+        <h2>Not sure how your policy scores on these points?</h2>
+        <p class="lead">Send us your numbers or policy details on WhatsApp and we'll talk you through them using this checklist.</p>
+        <ul class="reasons">
+          <li><svg aria-hidden="true"><use href="#tick"/></svg>A plain-language check of your current policy against this list</li>
+          <li><svg aria-hidden="true"><use href="#tick"/></svg>Whether a base upgrade or a super top-up suits you</li>
+          <li><svg aria-hidden="true"><use href="#tick"/></svg>Planning separate cover for your parents</li>
+          <li><svg aria-hidden="true"><use href="#tick"/></svg>Switching at renewal without losing waiting-period credit</li>
+        </ul>
+      </div>
+      <div class="contact-cta">
+        <p>Talk to us before you renew or buy</p>
+        <a class="wa-btn big js-wa" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20(Health%20Insurance%20calculator)." target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#wa"/></svg>Chat with us on WhatsApp</a>
+        <small>No spam, no obligation.</small>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <p class="review-note">These figures use today's costs and your family's current details. They will change as your family and medical costs change, so review your cover regularly.</p>
+</div>
+<footer class="foot wrap">
+  <p>This calculator is for educational and illustrative purposes only. Results are estimates based on what you enter and the assumptions shown, and are not guaranteed. They do not assess medical history, underwriting, exclusions or specific policy wording, and are not insurance, investment, tax or legal advice.</p>
+  <p>MoneySutraa is an AMFI-registered Mutual Fund Distributor (ARN-336976). Insurance is offered through a certified Point of Sales Person (POSP) under IRDAI guidelines. Insurance is the subject matter of solicitation.</p>
+  <!-- TO ADD: POSP name, POS code and the appointing insurer / intermediary, as required by that principal -->
+  <p>Assumptions last updated: 5 Oct 2026. Base cover (Metro ₹10 L, Tier 2 ₹8 L, Tier 3 ₹7 L), age loadings and ₹1.5 L for each member beyond two are MoneySutraa's rule-of-thumb assumptions, not actuarial figures. The 11.5% yearly rise in medical costs is Aon's projection for employee medical plan costs in India in 2026 (report released 11 Dec 2025), used here as a steady yearly assumption. Actual costs vary.</p>
+  <p>© 2026 MoneySutraa Fin Services LLP · <a href="/privacy-policy/">Privacy Policy</a> · <a href="https://www.moneysutraa.com">moneysutraa.com</a></p>
+</footer>
+
+<!-- Mobile: floating WhatsApp button; its message is updated with the visitor's result -->
+<a class="fab js-wa" id="fab" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20(Health%20Insurance%20calculator)." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" title="Chat with us on WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
+
+<!-- Mobile: Calculate shortcut while the form is being filled -->
+<div class="jump" id="jump" role="region" aria-label="Calculate">
+  <button type="button" class="calc-btn" id="jumpBtn">Calculate my cover</button>
+</div>
+
+<p class="sr-only" id="srLive" aria-live="polite"></p>
+<noscript><p class="wrap">Please turn on JavaScript to use the calculator.</p></noscript>
+
+<script>
+(function(){
+  // ---- Assumptions (dated 5 Oct 2026) ----
+  var BASE = { metro:1000000, tier2:800000, tier3:700000 };   // base cover by city where major treatment would happen
+  var CITY = { metro:'a metro', tier2:'a Tier 2 city', tier3:'a Tier 3 city / town' };
+  var PER_EXTRA_MEMBER = 150000;   // added for each member beyond two
+  var INFL = 0.115;                // medical inflation a year (editable in Advanced)
+  var WA_NUMBER = '919311595912';
+  var BASE_MSG = 'Hi, this is from the MoneySutraa website (Health Insurance calculator).';
+
+  function ageBand(a){
+    if (a < 35) return { f:1.00, band:'under 35' };
+    if (a < 45) return { f:1.15, band:'35–44' };
+    if (a < 55) return { f:1.30, band:'45–54' };
+    return { f:1.50, band:'55+' };
+  }
+
+  var $ = function(id){ return document.getElementById(id); };
+  function inr(x){ return '₹' + Math.round(x).toLocaleString('en-IN'); }
+  function trim(n, d){ return n.toFixed(d).replace(/\.?0+$/, ''); }
+  function short(x){
+    x = Math.round(x);
+    if (x >= 9995000) return '₹' + trim(x/1e7, 2) + ' Cr';
+    if (x >= 100000)  return '₹' + trim(x/1e5, 1) + ' L';
+    return inr(x);
+  }
+  function v(id){ var n = parseFloat($(id).value); if (isNaN(n) || n < 0) n = 0; return Math.min(n, 1e11); }
+  function round100(x){ return Math.round(x/100)*100; }
+  function cell(x){ return short(round100(x)); }
+  function pc1(x){ return (x * 100).toFixed(1).replace(/\.0$/, ''); }
+  // percent field -> fraction, clamped; falls back to the default when empty
+  function pctVal(id, lo, hi, defFrac){ var n = parseFloat($(id).value); if (isNaN(n)) return defFrac; return Math.min(hi, Math.max(lo, n)) / 100; }
+
+  // Privacy-safe event hook: sends event names only, never any amounts. Does nothing until a Meta Pixel is added.
+  function track(name){ try{ if (typeof window.fbq === 'function') window.fbq('trackCustom', name); }catch(e){} }
+
+  var members = 4;
+  var calculated = false, started = false, typing = false, srTimer;
+  var seen = {inputs:false, result:false, contact:false, calcBtn:false};
+  var jump = $('jump'), resultEl = $('result'), fab = $('fab');
+
+  function stacked(){ return window.matchMedia ? window.matchMedia('(max-width: 899px)').matches : true; }
+  function calmMotion(){ return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); }
+  function cityVal(){ var r = document.querySelector('input[name=city]:checked'); return r ? r.value : 'metro'; }
+
+  function setWa(core){
+    document.querySelectorAll('.js-wa').forEach(function(a){
+      var ask = a.getAttribute('data-ask') || 'talk it through';
+      a.setAttribute('href', 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(core + '\nI\'d like to ' + ask + '.'));
+    });
+  }
+
+  // Amount in words (Indian system) under every box, updated as you type
+  var ONES = ['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+  var TENS = ['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+  function two(n){ return n < 20 ? ONES[n] : TENS[Math.floor(n/10)] + (n % 10 ? ' ' + ONES[n % 10] : ''); }
+  function three(n){ var h = Math.floor(n/100), r = n % 100; return (h ? ONES[h] + ' Hundred' + (r ? ' ' : '') : '') + (r ? two(r) : ''); }
+  function words(n){
+    n = Math.round(n);
+    if (n <= 0) return '';
+    var out = [], crore = Math.floor(n/1e7); n %= 1e7;
+    var lakh = Math.floor(n/1e5); n %= 1e5;
+    var thou = Math.floor(n/1e3); n %= 1e3;
+    if (crore) out.push(words(crore) + ' Crore');
+    if (lakh) out.push(two(lakh) + ' Lakh');
+    if (thou) out.push(two(thou) + ' Thousand');
+    if (n) out.push(three(n));
+    return out.join(' ');
+  }
+  function rupeeWords(n){ n = Math.round(n); return n <= 0 ? '' : (n === 1 ? 'One Rupee' : words(n) + ' Rupees'); }
+  function pctWords(p){
+    if (isNaN(p) || p < 0) return '';
+    var parts = (Math.round(p * 10) / 10).toString().split('.');
+    var ip = parseInt(parts[0], 10), w = ip ? words(ip) : 'Zero';
+    if (parts[1]) w += ' Point ' + parts[1].split('').map(function(d){ return ONES[+d] || 'Zero'; }).join(' ');
+    return w + ' Percent';
+  }
+  function updateReadouts(){
+    var a = Math.round(v('age'));
+    $('ageR').textContent = a > 0 ? words(a) + (a === 1 ? ' Year' : ' Years') : '';
+    $('memR').textContent = words(members) + (members === 1 ? ' Person' : ' People');
+    ['own','emp'].forEach(function(id){ $(id + 'R').textContent = rupeeWords(v(id)); });
+    $('infR').textContent = pctWords(parseFloat($('inf').value));
+  }
+
+  function calc(){
+    var city = cityVal();
+    var age = Math.min(75, Math.max(18, v('age')));
+    var own = v('own'), emp = v('emp');
+    var INF = pctVal('inf', 0, 25, INFL);
+
+    // Cover needed today: base for the city, loaded for age, plus extra members
+    var base = BASE[city];
+    var ab = ageBand(age);
+    var baseAdj = base * ab.f;
+    var ageLoad = baseAdj - base;
+    var extraN = Math.max(0, members - 2);
+    var extra = extraN * PER_EXTRA_MEMBER;
+    var need = baseAdj + extra;
+    // Gaps
+    var gapJob = Math.max(0, need - own);
+    var gapToday = Math.max(0, need - (own + emp));
+
+    $('lBaseLbl').textContent = 'Base cover for ' + CITY[city];
+    $('lBase').textContent = inr(base);
+    $('lAgeLbl').textContent = '+ Age loading (' + ab.band + ', ×' + ab.f.toFixed(2) + ')';
+    $('lAge').textContent = inr(ageLoad);
+    $('lMemLbl').textContent = '+ Extra members (' + extraN + ' × ₹1.5 L)';
+    $('lMem').textContent = inr(extra);
+    $('lNeed').textContent = inr(need);
+    $('lOwn').textContent = inr(own);
+    $('lEmp').textContent = inr(emp);
+    $('gJob').textContent = gapJob > 0 ? inr(gapJob) : 'No shortfall';
+    $('gJob').className = 'amt' + (gapJob > 0 ? '' : ' ok');
+    $('gToday').textContent = gapToday > 0 ? inr(gapToday) : 'No shortfall';
+    $('gToday').className = 'amt' + (gapToday > 0 ? '' : ' ok');
+
+    // Bar, scaled to the larger of need and total cover
+    var maxV = Math.max(need, own + emp) || 1;
+    var pc = function(x){ return (Math.min(x, maxV) / maxV * 100) + '%'; };
+    $('bNeed').style.width = pc(need);
+    $('bOwn').style.width = pc(own);
+    $('bEmp').style.left = pc(own); $('bEmp').style.width = pc(emp);
+    $('bV').textContent = short(own + emp) + ' of ' + short(need);
+
+    // Will this keep up with rising medical costs? (cover needed grows with medical inflation; your own policy stays put)
+    var f5 = Math.pow(1 + INF, 5), f10 = Math.pow(1 + INF, 10);
+    var need5 = need * f5;
+    var means = $('means');
+    if (INF > 0) {
+      means.innerHTML = '<strong class="m-head">Medical costs rising ' + pc1(INF) + '% a year</strong> So the cover you need grows about ' + trim(f5, 1) + '× in 5 years and ' + trim(f10, 1) + '× in 10 years.';
+    } else {
+      means.innerHTML = '<strong class="m-head">Medical costs staying flat</strong> So the cover you need stays the same.';
+    }
+    $('yrBody').innerHTML = [[0, 'Today'], [5, 'In 5 yrs'], [10, 'In 10 yrs']].map(function(p){
+      var n = need * Math.pow(1 + INF, p[0]), g = Math.max(0, n - own);
+      return '<tr><th scope="row">' + p[1] + '</th><td>' + cell(n) + '</td><td>' + cell(own) + '</td><td>' + (g > 0 ? cell(g) : 'No shortfall') + '</td></tr>';
+    }).join('');
+    var gap5 = Math.max(0, need5 - own), st = $('status');
+    st.classList.remove('warn');
+    if (gap5 <= 0) {
+      st.textContent = 'Your own policy meets the 5-year estimate.';
+    } else if (own <= 0) {
+      st.classList.add('warn');
+      st.textContent = 'Without your own policy, you would depend wholly on employer cover.';
+    } else {
+      st.classList.add('warn');
+      st.textContent = 'In 5 years your own policy would cover about ' + Math.round(own / need5 * 100) + '% of what you would need.';
+    }
+
+    // The employer-cover insight
+    var jobNote = $('jobNote');
+    if (gapToday <= 0 && gapJob > 0) {
+      jobNote.textContent = 'No shortfall today only because of employer cover, which ends if you leave the job.';
+    } else if (gapJob <= 0 && need > 0) {
+      jobNote.textContent = 'Your own policy meets this estimate, even without employer cover.';
+    } else {
+      jobNote.textContent = '';
+    }
+
+    // Ways to close the gap (sized to the 5-year estimate, rounded up to the next ₹5 L)
+    var target = Math.ceil(need5 / 500000) * 500000;
+    var list = $('closeList'); list.innerHTML = '';
+    function add(t){ var li = document.createElement('li'); li.textContent = t; list.appendChild(li); }
+    if (gap5 <= 0) {
+      add('Your own policy already meets the 5-year estimate. Check its terms against the list below.');
+      $('planNote').hidden = true;
+    } else {
+      $('planNote').hidden = false;
+      add('Upgrade your own policy to about ' + short(target) + '.');
+      if (own >= 300000) {
+        add('Or keep ' + short(own) + ' and add a super top-up of about ' + short(target - own) + ' (' + short(own) + ' deductible). Usually costs less.');
+      } else {
+        add('Or buy a ₹5 L base policy and add a super top-up of about ' + short(Math.max(0, target - 500000)) + ' (₹5 L deductible). Usually costs less.');
+      }
+      if (emp > 0) add('Buy your own policy while still employed, so waiting periods run out while employer cover protects you.');
+    }
+
+    // WhatsApp buttons carry the current numbers; the visitor reviews and sends the message themselves
+    setWa(BASE_MSG + '\n' +
+      'Cover needed: ' + short(need) + '\n' +
+      'Gap today: ' + (gapToday > 0 ? short(gapToday) : 'no shortfall') + '\n' +
+      'Gap if employer cover ends: ' + (gapJob > 0 ? short(gapJob) : 'no shortfall'));
+
+    // Quiet summary for screen readers (debounced so it does not chatter)
+    clearTimeout(srTimer);
+    srTimer = setTimeout(function(){
+      $('srLive').textContent = 'Gap if employer cover ends: ' + (gapJob > 0 ? short(gapJob) : 'no shortfall') + '. Gap today: ' + (gapToday > 0 ? short(gapToday) : 'no shortfall') + '.';
+    }, 700);
+  }
+
+  // Mobile Calculate shortcut: only while the form is in view, nothing is being typed, and the real button is off-screen
+  function updateJump(){
+    var showBar = started && !typing && seen.inputs && !seen.result && !seen.contact && !seen.calcBtn;
+    jump.classList.toggle('show', showBar);
+    fab.classList.toggle('up', showBar);   // on phones, sit above the Calculate bar when it is showing
+  }
+
+  function markStart(){ if (!started) { started = true; track('CalculatorStart'); } }
+  function refresh(){
+    updateReadouts();
+    if (calculated && v('age') > 0) calc();   // after the first Calculate, keep the numbers in step with edits
+    updateJump();
+  }
+
+  function runCalc(){
+    var err = $('ageErr');
+    if (v('age') === 0) { err.hidden = false; $('age').focus(); return; }
+    err.hidden = true;
+    calc();
+    if (!calculated) {
+      calculated = true;
+      resultEl.setAttribute('data-state', 'ready');
+      $('next').hidden = false;
+      $('jumpBtn').textContent = 'See my estimate ↓';
+      track('ResultView');
+    }
+    if (stacked()) {
+      setTimeout(function(){
+        resultEl.scrollIntoView({behavior: calmMotion() ? 'auto' : 'smooth', block: 'start'});
+      }, 100);
+    }
+    try { resultEl.focus({preventScroll: true}); } catch (e) {}
+    updateJump();
+  }
+
+  // Plain click handlers: they work even where the browser or a preview blocks form submission
+  $('calcBtn').addEventListener('click', runCalc);
+  $('jumpBtn').addEventListener('click', runCalc);
+  // Never let the browser submit (and reload) the form
+  $('inputs').addEventListener('submit', function(e){ e.preventDefault(); });
+
+  document.addEventListener('focusin', function(e){ if (e.target && e.target.tagName === 'INPUT') { typing = true; updateJump(); } });
+  document.addEventListener('focusout', function(){ typing = false; setTimeout(updateJump, 200); });
+
+  ['age','own','emp','inf'].forEach(function(id){
+    var el = $(id);
+    // Enter key in a field also calculates
+    el.addEventListener('keydown', function(e){ if (e.key === 'Enter') { e.preventDefault(); runCalc(); } });
+    el.addEventListener('input', function(){
+      markStart();
+      if (id === 'age') $('ageErr').hidden = true;
+      refresh();
+    });
+    // Select the sample value on focus so typing replaces it
+    el.addEventListener('focus', function(){
+      var e = this;
+      setTimeout(function(){ try{ e.select(); }catch(err){} }, 0);
+    });
+  });
+  $('age').addEventListener('change', function(){
+    var n = parseFloat(this.value);
+    if (!isNaN(n)) this.value = Math.min(75, Math.max(18, Math.round(n)));
+    refresh();
+  });
+  $('inf').addEventListener('change', function(){
+    var n = parseFloat(this.value);
+    this.value = isNaN(n) ? 11.5 : Math.min(25, Math.max(0, n));
+    refresh();
+  });
+
+  // Members stepper (1 to 8)
+  function setMembers(n){ members = Math.min(8, Math.max(1, n)); $('members').textContent = members; markStart(); refresh(); }
+  $('memMinus').addEventListener('click', function(){ setMembers(members - 1); });
+  $('memPlus').addEventListener('click', function(){ setMembers(members + 1); });
+
+  // City choice
+  document.querySelectorAll('input[name=city]').forEach(function(r){
+    r.addEventListener('change', function(){ markStart(); refresh(); });
+  });
+
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('.js-wa') : null;
+    if (a) track('WhatsAppClick');
+  });
+
+  if ('IntersectionObserver' in window) {
+    // Form / result / contact counted as "in view" when they cross the middle of the screen
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ seen[en.target.id] = en.isIntersecting; });
+      updateJump();
+    }, {rootMargin: '-30% 0px -30% 0px', threshold: 0});
+    ['inputs','result','contact'].forEach(function(id){ io.observe($(id)); });
+    // The real Calculate button counts as in view anywhere on screen
+    var ioBtn = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ seen.calcBtn = en.isIntersecting; });
+      updateJump();
+    }, {threshold: 0});
+    ioBtn.observe($('calcBtn'));
+  }
+
+  updateReadouts();
+  setWa(BASE_MSG);
+})();
+
+</script>
+<script>
+// Fit the tagline to the logo's width on one line. If that would need type smaller than 8.5px, it wraps to two lines instead.
+(function(){
+  var img = document.querySelector('.brand img'), tag = document.querySelector('.brand-tag');
+  if (!img || !tag) return;
+  function fit(){
+    var w = img.getBoundingClientRect().width;
+    if (!w) return;
+    tag.style.whiteSpace = 'nowrap';
+    tag.style.fontSize = '10px';
+    var f = 10 * w / (tag.scrollWidth || 1);
+    f = Math.min(12, f);
+    if (f < 8.5) { f = 8.5; tag.style.whiteSpace = 'normal'; }
+    tag.style.fontSize = f.toFixed(2) + 'px';
+  }
+  if (img.complete) fit(); else img.addEventListener('load', fit);
+  window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();
+</script>
+</body>
+</html>
