@@ -1022,5 +1022,14 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 })();
 </script>
+<!-- Meta Pixel: track WhatsApp clicks as Lead -->
+<script>
+document.addEventListener('click', function (e) {
+  var link = e.target.closest('a[href*="wa.me"]');
+  if (link && typeof fbq === 'function') {
+    fbq('track', 'Lead', { content_name: 'Life Insurance - WhatsApp Click' });
+  }
+});
+</script>
 </body>
 </html>
