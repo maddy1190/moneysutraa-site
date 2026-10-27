@@ -1028,6 +1028,7 @@ document.addEventListener('click', function (e) {
   var link = e.target.closest('a[href*="wa.me"]');
   if (link && typeof fbq === 'function') {
     fbq('track', 'Lead', { content_name: 'Life Insurance - WhatsApp Click' });
+    fbq('track', 'CompleteRegistration', { content_name: 'Life Insurance - WhatsApp Click' });
   }
 });
 </script>
