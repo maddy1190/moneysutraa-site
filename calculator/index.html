@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-IN">
 <head>
+<!-- Meta Pixel for the SIP page goes here, once it is created in AiSensy -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SIP, Lumpsum &amp; SWP Calculators | MoneySutraa</title>
@@ -57,7 +58,7 @@
     .book small{font-size:11px}
   }
 
-  /* Calculator navigation: Home + the three calculators. Own row on phones, centred between logo and button on desktop */
+  /* Calculator navigation: Home + the three calculators. Hidden on phones; centred between logo and button on desktop */
   .site-head .wrap{flex-wrap:wrap;row-gap:8px}
   .site-head .brand{order:1}
   .site-head .wa-btn.book{order:2}
@@ -99,14 +100,17 @@
   }
   .wa-btn.block{width:100%}
 
-  /* Hero */
-  .hero{position:relative;overflow:hidden;text-align:center;padding:26px max(20px,env(safe-area-inset-right)) 24px max(20px,env(safe-area-inset-left))}
-  @media (min-width:720px){.hero{padding-top:40px;padding-bottom:28px}}
+  /* Hero: short, so the calculator starts on the first screen */
+  .hero{position:relative;overflow:hidden;text-align:center;padding:26px max(20px,env(safe-area-inset-right)) 22px max(20px,env(safe-area-inset-left))}
+  @media (min-width:720px){.hero{padding-top:36px;padding-bottom:26px}}
   .hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:min(640px,100%);height:380px;background:radial-gradient(ellipse at center, rgba(201,154,61,.14), rgba(201,154,61,0) 70%);pointer-events:none}
   .hero > *{position:relative}
-  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.4vw,46px);line-height:1.14;letter-spacing:-.015em;margin:0 auto 14px;max-width:18ch}
-  .hero p{color:var(--slate);max-width:58ch;margin:0 auto 20px}
-  /* Trust strip: swipeable on phones, 3 x 2 grid on larger screens */
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,5.4vw,46px);line-height:1.14;letter-spacing:-.015em;margin:0 auto 10px;max-width:24ch}
+  .hero .sub{color:var(--slate);max-width:58ch;margin:0 auto 6px}
+  .hero .trust-line{font-size:12.5px;font-weight:600;color:var(--gold-text);max-width:58ch;margin:0 auto}
+
+  /* Trust cards: below the calculator. Swipeable on phones, 3 x 2 grid on larger screens */
+  .trust-sec{padding:8px 0 28px}
   .trust-strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 20px 16px;margin:0 -20px}
   .trust-strip::-webkit-scrollbar{display:none}
   .tcard{flex:0 0 236px;scroll-snap-align:start;display:flex;align-items:center;gap:12px;text-align:left;background:var(--white);border:1px solid var(--rule);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
@@ -119,13 +123,10 @@
     .trust-strip{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;scroll-snap-type:none;padding:6px 0 10px;margin:0}
     .tcard{flex:none}
   }
-  .hero .trust-note{font-size:12px;color:var(--slate);margin:0 auto;max-width:none}
 
 
   /* ===== Investment calculators ===== */
   .app{padding-bottom:24px}
-  .calc-title{text-align:center;font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.2vw,36px);line-height:1.15;letter-spacing:-.01em;margin:6px 0 18px;padding-top:26px;border-top:1px solid var(--rule)}
-  .calc-title::after{content:"";display:block;width:56px;height:3px;border-radius:3px;background:var(--gold);margin:12px auto 0;opacity:.85}
   .chooser-label{text-align:center;margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate)}
   .tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 0 18px}
   .tab{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;min-height:68px;padding:12px 14px;border:1px solid var(--rule);border-radius:14px;background:var(--white);color:var(--ink);font-family:var(--sans);cursor:pointer;box-shadow:0 4px 12px rgba(27,35,56,.04);-webkit-tap-highlight-color:transparent}
@@ -139,6 +140,7 @@
   @media (min-width:760px){.tabs{grid-template-columns:repeat(5,1fr)}.tab:last-child{grid-column:auto}}
 
   .layout{display:grid;grid-template-columns:1fr 1.15fr;background:var(--white);border:1px solid var(--rule);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+  .layout > *{min-width:0}
   @media (max-width:760px){.layout{grid-template-columns:1fr}}
 
   .inputs-panel{padding:28px 26px;border-right:1px dashed var(--rule)}
@@ -160,7 +162,7 @@
   .amount-box:focus-within{outline:3px solid var(--gold);outline-offset:2px;background:#fff}
   .ab-affix{padding:0 4px 0 14px;color:var(--slate);font-weight:500;white-space:nowrap}
   .amount-box .ab-affix:last-child{padding:0 14px 0 4px}
-  .amount-box input[type=number]{flex:1;min-width:0;border:0;outline:0;background:transparent;padding:12px 14px 12px 6px;font:inherit;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);-moz-appearance:textfield;appearance:textfield}
+  .amount-box input{flex:1;min-width:0;width:100%;border:0;outline:0;background:transparent;padding:12px 14px 12px 6px;font:inherit;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);-moz-appearance:textfield;appearance:textfield}
   .amount-box input[type=number]::-webkit-outer-spin-button,.amount-box input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
   .amount-box input[type=number]:first-child{padding-left:14px}
   .checkbox-row{display:flex;align-items:center;gap:10px;margin-top:6px}
@@ -169,9 +171,18 @@
   .toggle-field{margin:4px 0 18px;padding-bottom:16px;border-bottom:1px dashed var(--rule)}
   .dependent-field{background:var(--gold-tint);border-radius:12px;padding:14px 16px 2px;margin:-4px 0 20px}
 
+  /* Optional settings (step-up, inflation): folded away so the key inputs and the button fit the first screen */
+  details.more{border-top:1px solid var(--rule);margin:2px 0 4px}
+  details.more > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:46px;font-weight:600;font-size:14.5px;color:var(--gold-text)}
+  details.more > summary::-webkit-details-marker{display:none}
+  details.more > summary::before{content:"+";flex:none;width:24px;height:24px;border-radius:50%;background:var(--gold-tint);color:var(--gold-text);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;line-height:1}
+  details.more[open] > summary::before{content:"\2013"}
+  .more-body{padding:6px 0 12px}
+
   .calc-btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:54px;margin-top:6px;padding:14px 22px;border:0;border-radius:999px;background:linear-gradient(165deg,#26314F,var(--ink));color:#fff;font:700 17px var(--sans);letter-spacing:.01em;cursor:pointer;box-shadow:0 10px 24px rgba(27,35,56,.28), inset 0 1px 0 rgba(255,255,255,.12);transition:transform .15s ease,filter .15s ease;-webkit-tap-highlight-color:transparent}
   @media (hover:hover){.calc-btn:hover{filter:brightness(1.14);transform:translateY(-1px)}}
   .calc-btn:active{transform:none}
+  .form-note{font-size:12px;color:var(--slate);text-align:center;margin:10px 0 0}
   .layout[data-state="empty"] .result-body{display:none}
   .layout[data-state="ready"] .empty-note{display:none}
   .empty-note{display:flex;flex-direction:column;justify-content:center;height:100%;min-height:260px;text-align:center;color:var(--slate);padding:44px 12px}
@@ -203,6 +214,23 @@
   .warn{background:#FBECEB;border:1px solid #EECBC8;color:var(--red);font-size:13.5px;padding:10px 14px;border-radius:10px;margin-top:14px}
   @media (max-width:520px){.inputs-panel{padding:22px 16px}.passbook-panel{padding:22px 16px 18px}}
 
+  /* Result-first summary: one big answer, then the WhatsApp button */
+  .res-need{font-family:var(--serif);font-weight:600;font-size:clamp(22px,4.6vw,28px);line-height:1.25;margin:6px 0 0}
+  .res-need strong{white-space:nowrap}
+  .res-assume{font-size:12.5px;color:var(--slate);margin:4px 0 0}
+  .result-body .result-cta{margin-top:14px}
+  /* Second-best: leave a number */
+  .capture{margin:18px 0 22px;padding:16px;border:1px dashed #D9C58F;border-radius:12px;background:#FFFDF6}
+  .capture h3{font-size:15px;margin:0 0 4px}
+  .capture p{font-size:13.5px;color:var(--slate);margin:0 0 10px}
+  .cap-row{display:flex;gap:8px}
+  .cap-row .amount-box{flex:1;min-width:0;margin-top:0}
+  .cap-btn{flex:none;min-height:48px;padding:0 14px;border:1.5px solid var(--ink);border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+  .capture .cap-consent{font-size:11.5px;margin:8px 0 0}
+  .capture .cap-done{font-weight:600;color:#1B5E3B;font-size:14px;margin:0}
+  .capture .err{color:var(--red);font-size:13px;font-weight:600;margin:6px 0 0}
+  .how{font-size:13px;font-weight:700;color:var(--slate);margin:0}
+
   .breakdown{margin-top:22px}
   .toggle-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border:1px solid var(--rule);border-radius:999px;background:var(--white);color:var(--ink);font:600 14px var(--sans);cursor:pointer;-webkit-tap-highlight-color:transparent}
   @media (hover:hover){.toggle-btn:hover{background:var(--gold-tint);border-color:#D9C58F}}
@@ -232,6 +260,35 @@
   .fab svg{width:30px;height:30px}
   @media (hover:hover){.fab:hover{background:var(--wa-dark)}}
   @media (min-width:900px){.fab{right:24px;bottom:24px}}
+
+  /* Phones: compact header, hero and calculator chooser so the inputs and the Calculate button fit the first screen */
+  @media (max-width:899px){
+    .site-head .wrap{padding-top:8px;padding-bottom:8px;row-gap:6px}
+    .brand img{height:50px}
+    .calc-nav{display:none}
+    .hero{padding-top:12px;padding-bottom:10px}
+    .hero h1{margin-bottom:6px}
+    .hero .sub{display:none}
+    .hero .trust-line{font-size:12px}
+  }
+  @media (max-width:760px){
+    .chooser-label{display:none}
+    .tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -20px 12px;padding:2px 20px 4px}
+    .tabs::-webkit-scrollbar{display:none}
+    .tab{flex:none;min-height:42px;padding:0 16px;flex-direction:row;align-items:center;border-radius:999px;box-shadow:none}
+    .tab small{display:none}
+    .tab:last-child{grid-column:auto}
+    .tab.active::after{display:none}
+    .panel-title,.panel-desc{display:none}
+    .inputs-panel{padding:16px}
+    /* Each field on two rows: label and number box side by side, slider underneath */
+    .field{display:grid;grid-template-columns:1fr 136px;column-gap:10px;align-items:center;margin-bottom:14px}
+    .field > label{grid-column:1;grid-row:1;margin:0;font-size:14.5px;line-height:1.3}
+    .field > .amount-box{grid-column:2;grid-row:1;margin-top:0;min-height:44px}
+    .field > input[type=range]{grid-column:1 / -1;grid-row:2;margin-top:12px}
+    .amount-box input{padding-top:10px;padding-bottom:10px}
+  }
+  @media (max-width:360px){.brand img{height:44px}}
   @media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
 </style>
 </head>
@@ -248,7 +305,7 @@
       <img src="/logo.png" alt="MoneySutraa">
       <span class="brand-tag">Your Wealth Partners for Life</span>
     </a>
-    <a class="wa-btn book js-wa" data-ask="book a free consultation" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20(SIP%20calculator).%0AI'd%20like%20to%20book%20a%20free%20consultation." target="_blank" rel="noopener noreferrer">
+    <a class="wa-btn book js-wa" data-ask="book a free consultation" href="https://wa.me/919311595912" target="_blank" rel="noopener noreferrer">
       <svg aria-hidden="true"><use href="#wa"/></svg>
       <span class="book-txt"><strong>Book a consultation<span class="free-in"> – Free</span></strong><small><span class="free-sub">Free · </span><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="currentColor"/></svg>Limited slots</small></span>
     </a>
@@ -263,7 +320,106 @@
 <main>
   <section class="hero wrap">
     <h1>Plan your SIP, lumpsum and SWP</h1>
-    <p>Pick a calculator, change the numbers, and see an illustration of how your money could grow.</p>
+    <p class="sub">Pick a calculator, change the numbers, and see an illustration of how your money could grow.</p>
+    <p class="trust-line">AMFI-registered MFD (ARN-336976), led by a CA and MBA.</p>
+  </section>
+
+  <section class="wrap app" aria-labelledby="calcH">
+    <h2 class="sr-only" id="calcH">Investment Calculators</h2>
+
+    <p class="chooser-label">Choose a calculator</p>
+    <nav class="tabs" id="tabs" aria-label="Choose a calculator">
+      <button class="tab active" data-tab="sip" aria-pressed="true"><strong>SIP</strong><small>Invest every month</small></button>
+      <button class="tab" data-tab="lumpsum" aria-pressed="false"><strong>Lumpsum</strong><small>Invest one amount</small></button>
+      <button class="tab" data-tab="combo" aria-pressed="false"><strong>SIP + Lumpsum</strong><small>Both together</small></button>
+      <button class="tab" data-tab="swp" aria-pressed="false"><strong>SWP</strong><small>Withdraw every month</small></button>
+      <button class="tab" data-tab="goal" aria-pressed="false"><strong>Goal Planner</strong><small>Find the SIP for a target</small></button>
+    </nav>
+
+    <div class="layout" id="layout" data-state="empty">
+      <div class="inputs-panel">
+        <div id="inputsPanel"></div>
+        <button type="button" class="calc-btn" id="calcBtn">Calculate</button>
+        <p class="form-note">Illustrative projections. Not investment advice.</p>
+      </div>
+
+      <div class="passbook-panel" id="resultPanel">
+        <div class="empty-note">
+          <h3>Your result</h3>
+          <p>Enter your numbers on the left and tap <strong>Calculate</strong>.</p>
+        </div>
+        <div class="result-body">
+          <div class="stamp" id="todayDate"></div>
+          <p class="res-need" id="hRes"></p>
+          <p class="res-assume" id="hAssume"></p>
+
+          <div class="result-cta">
+            <a class="wa-btn big block js-wa" href="https://wa.me/919311595912" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#wa"/></svg>Get free guidance on WhatsApp</a>
+            <small>Free, no obligation. Nothing is sent until you press send. We reply on WhatsApp the same day.</small>
+          </div>
+
+          <form class="capture" id="capForm" novalidate>
+            <h3>Not ready to chat?</h3>
+            <p>Get this plan and 3 tips to make it work on WhatsApp.</p>
+            <div class="cap-row">
+              <div class="amount-box"><span class="ab-affix">+91</span><input type="tel" id="capPhone" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="10-digit mobile" aria-label="Your WhatsApp number"></div>
+              <button type="submit" class="cap-btn" id="capBtn">Send it to me</button>
+            </div>
+            <p class="err" id="capErr" role="alert" hidden>Enter a 10-digit mobile number.</p>
+            <p class="cap-consent">By submitting, you agree to receive WhatsApp messages from MoneySutraa about your investments. You can stop anytime. <a href="/privacy-policy/">Privacy Policy</a></p>
+          </form>
+
+          <p class="how">How we got this</p>
+          <div class="seal-wrap">
+            <svg class="seal" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="44" fill="none" stroke="#2F8F5B" stroke-width="2" stroke-dasharray="4 3"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#C99A3D" stroke-width="1.2"/>
+          <path id="sealText" fill="none" d="M 50,50 m -30,0 a 30,30 0 1,1 60,0"/>
+          <text font-size="8" fill="#2F8F5B" font-family="Inter" letter-spacing="1.5">
+            <textPath href="#sealText" startOffset="50%" text-anchor="middle">COMPOUNDING · GROWS QUIETLY</textPath>
+          </text>
+          <polyline points="30,60 40,52 48,58 58,40 70,44" fill="none" stroke="#C99A3D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="70" cy="44" r="2.6" fill="#2F8F5B"/>
+        </svg>
+          </div>
+
+          <div class="ledger-rows" id="ledgerRows"></div>
+          <div id="warnBox"></div>
+
+          <div class="chart-wrap">
+            <canvas id="growthChart" height="220"></canvas>
+          </div>
+          <div class="legend">
+            <span><i style="background:#C99A3D"></i>Amount invested</span>
+            <span><i style="background:#2F8F5B"></i>Total value</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="afterCalc" hidden>
+      <div class="breakdown">
+        <button class="toggle-btn" id="toggleTable">Show year-wise ledger ▾</button>
+        <div class="table-wrap" id="tableWrap">
+        <table>
+          <thead><tr id="tableHead"></tr></thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="shareBtn">Copy shareable link</button>
+        <button class="btn ghost" id="csvBtn">Download CSV</button>
+      </div>
+    </div>
+
+    <div class="app-foot">
+      <div class="disclaimer">Figures are illustrative projections based on the assumed rate of return and do not guarantee actual results. Mutual fund investments are subject to market risk.</div>
+    </div>
+  </section>
+
+  <!-- Why families trust us: moved below the calculator -->
+  <section class="wrap trust-sec" aria-label="Why families trust MoneySutraa">
     <div class="trust-strip" role="list" aria-label="Why families trust MoneySutraa" tabindex="0">
       <div class="tcard primary" role="listitem">
         <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
@@ -290,85 +446,6 @@
         <div><strong>No pressure to buy</strong><small>No upselling. No spam.</small></div>
       </div>
     </div>
-    <p class="trust-note">Illustrative projections. Not investment advice.</p>
-  </section>
-
-  <section class="wrap app" aria-labelledby="calcH">
-    <h2 class="calc-title" id="calcH">Investment Calculators</h2>
-
-    <p class="chooser-label">Choose a calculator</p>
-    <nav class="tabs" id="tabs" aria-label="Choose a calculator">
-      <button class="tab active" data-tab="sip" aria-pressed="true"><strong>SIP</strong><small>Invest every month</small></button>
-      <button class="tab" data-tab="lumpsum" aria-pressed="false"><strong>Lumpsum</strong><small>Invest one amount</small></button>
-      <button class="tab" data-tab="combo" aria-pressed="false"><strong>SIP + Lumpsum</strong><small>Both together</small></button>
-      <button class="tab" data-tab="swp" aria-pressed="false"><strong>SWP</strong><small>Withdraw every month</small></button>
-      <button class="tab" data-tab="goal" aria-pressed="false"><strong>Goal Planner</strong><small>Find the SIP for a target</small></button>
-    </nav>
-
-    <div class="layout" id="layout" data-state="empty">
-      <div class="inputs-panel">
-        <div id="inputsPanel"></div>
-        <button type="button" class="calc-btn" id="calcBtn">Calculate</button>
-      </div>
-
-      <div class="passbook-panel" id="resultPanel">
-        <div class="empty-note">
-          <h3>Your result</h3>
-          <p>Enter your numbers on the left and tap <strong>Calculate</strong>.</p>
-        </div>
-        <div class="result-body">
-          <div class="stamp" id="todayDate"></div>
-          <div class="seal-wrap">
-            <svg class="seal" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="44" fill="none" stroke="#2F8F5B" stroke-width="2" stroke-dasharray="4 3"/>
-          <circle cx="50" cy="50" r="36" fill="none" stroke="#C99A3D" stroke-width="1.2"/>
-          <path id="sealText" fill="none" d="M 50,50 m -30,0 a 30,30 0 1,1 60,0"/>
-          <text font-size="8" fill="#2F8F5B" font-family="Inter" letter-spacing="1.5">
-            <textPath href="#sealText" startOffset="50%" text-anchor="middle">COMPOUNDING · GROWS QUIETLY</textPath>
-          </text>
-          <polyline points="30,60 40,52 48,58 58,40 70,44" fill="none" stroke="#C99A3D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="70" cy="44" r="2.6" fill="#2F8F5B"/>
-        </svg>
-          </div>
-
-          <div class="ledger-rows" id="ledgerRows"></div>
-          <div id="warnBox"></div>
-
-          <div class="chart-wrap">
-            <canvas id="growthChart" height="220"></canvas>
-          </div>
-          <div class="legend">
-            <span><i style="background:#C99A3D"></i>Amount invested</span>
-            <span><i style="background:#2F8F5B"></i>Total value</span>
-          </div>
-
-          <div class="result-cta">
-            <a class="wa-btn big block js-wa" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20(SIP%20calculator).%0AI'd%20like%20to%20talk%20it%20through." target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#wa"/></svg>Talk it through on WhatsApp</a>
-            <small>Your numbers are pre-filled. Nothing is sent until you press send.</small>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="afterCalc" hidden>
-      <div class="breakdown">
-        <button class="toggle-btn" id="toggleTable">Show year-wise ledger ▾</button>
-        <div class="table-wrap" id="tableWrap">
-        <table>
-          <thead><tr id="tableHead"></tr></thead>
-          <tbody id="tableBody"></tbody>
-        </table>
-      </div>
-      </div>
-      <div class="actions">
-        <button class="btn" id="shareBtn">Copy shareable link</button>
-        <button class="btn ghost" id="csvBtn">Download CSV</button>
-      </div>
-    </div>
-
-    <div class="app-foot">
-      <div class="disclaimer">Figures are illustrative projections based on the assumed rate of return and do not guarantee actual results. Mutual fund investments are subject to market risk.</div>
-    </div>
   </section>
 </main>
 
@@ -378,11 +455,16 @@
 </footer>
 
 <!-- Floating WhatsApp button; its message is updated with the visitor's result -->
-<a class="fab js-wa" id="fab" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20(SIP%20calculator).%0AI'd%20like%20to%20talk%20it%20through." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" title="Chat with us on WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
+<a class="fab js-wa" id="fab" href="https://wa.me/919311595912" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" title="Chat with us on WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
 
 <div class="toast" id="toast"></div>
 
 <script>
+/* ---------- Tracking: sends event names only, never any amounts. Does nothing until a Meta Pixel is added. ---------- */
+function track(name){ try{ if (typeof window.fbq === 'function') window.fbq('trackCustom', name); }catch(e){} }
+let calcStarted = false, resultTracked = false;
+function markStart(){ if(!calcStarted){ calcStarted = true; track('CalculatorStart'); } }
+
 /* ---------- Utilities ---------- */
 function fmtINR(n, decimals=0){
   if(!isFinite(n)) n = 0;
@@ -395,17 +477,6 @@ function humanize(n){
   if(abs >= 1e7) return '≈ ' + (n/1e7).toFixed(2) + ' Cr';
   if(abs >= 1e5) return '≈ ' + (n/1e5).toFixed(2) + ' L';
   return '';
-}
-function animateValue(el, from, to, dur=500){
-  const start = performance.now();
-  function step(t){
-    const p = Math.min(1, (t-start)/dur);
-    const eased = 1 - Math.pow(1-p, 3);
-    const val = from + (to-from)*eased;
-    el.textContent = fmtINR(Math.round(val));
-    if(p<1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
 }
 
 /* ---------- Tab config ---------- */
@@ -462,7 +533,7 @@ const TABS = {
       {id:'goal', label:'Target amount', type:'range', min:100000, max:100000000, step:100, value:5000000, prefix:'₹'},
       {id:'rate', label:'Expected annual return', type:'range', min:1, max:30, step:0.5, value:12, suffix:'%'},
       {id:'years', label:'Time to goal', type:'range', min:1, max:40, step:1, value:15, suffix:' yrs'},
-      {id:'stepup', label:'Annual step-up (optional)', type:'range', min:0, max:30, step:1, value:0, suffix:'%'},
+      {id:'stepup', label:'Annual step-up (optional)', type:'range', min:0, max:30, step:1, value:0, suffix:'%', extra:true},
     ]
   }
 };
@@ -473,6 +544,7 @@ let inflationOn = false;
 let inflationRate = 6;
 let chart;
 let calcDone = {}; // which calculators the visitor has already calculated (results stay live after that)
+let moreOpen = false; // whether the optional settings are unfolded
 
 /* init default state from field values + optional URL params */
 function initState(){
@@ -493,36 +565,43 @@ function initState(){
 }
 
 /* ---------- Render inputs ---------- */
+function fieldHtml(f){
+  if(f.type==='toggle'){
+    const checked = !!state[currentTab][f.id];
+    return `
+      <div class="checkbox-row toggle-field">
+        <input type="checkbox" id="toggle-${f.id}" data-toggle="${f.id}" ${checked?'checked':''}>
+        <label for="toggle-${f.id}">${f.label}</label>
+      </div>`;
+  }
+  const val = state[currentTab][f.id];
+  const hidden = f.dependsOn && !state[currentTab][f.dependsOn];
+  const wrapClass = f.dependsOn ? 'field dependent-field' : 'field';
+  return `
+    <div class="${wrapClass}" data-fieldwrap="${f.id}" style="${hidden?'display:none;':''}">
+      <label>${f.label}</label>
+      <input type="range" min="${f.min}" max="${f.max}" step="${f.step}" value="${val}" data-field="${f.id}">
+      <div class="amount-box">
+        ${f.prefix ? `<span class="ab-affix">${f.prefix}</span>` : ''}
+        <input type="number" min="${f.min}" max="${f.max}" step="${f.step}" value="${val}" data-field-num="${f.id}">
+        ${f.suffix ? `<span class="ab-affix">${f.suffix.trim()}</span>` : ''}
+      </div>
+    </div>`;
+}
+
 function renderInputs(){
   const cfg = TABS[currentTab];
   const panel = document.getElementById('inputsPanel');
+  const isExtra = f => f.type==='toggle' || f.dependsOn || f.extra;
+  const mainF = cfg.fields.filter(f=>!isExtra(f));
+  const moreF = cfg.fields.filter(isExtra);
   let html = `<h2 class="panel-title">${cfg.title}</h2><p class="panel-desc">${cfg.desc}</p>`;
+  mainF.forEach(f=>{ html += fieldHtml(f); });
 
-  cfg.fields.forEach(f=>{
-    if(f.type==='toggle'){
-      const checked = !!state[currentTab][f.id];
-      html += `
-        <div class="checkbox-row toggle-field">
-          <input type="checkbox" id="toggle-${f.id}" data-toggle="${f.id}" ${checked?'checked':''}>
-          <label for="toggle-${f.id}">${f.label}</label>
-        </div>`;
-      return;
-    }
-    const val = state[currentTab][f.id];
-    const hidden = f.dependsOn && !state[currentTab][f.dependsOn];
-    const wrapClass = f.dependsOn ? 'field dependent-field' : 'field';
-    html += `
-      <div class="${wrapClass}" data-fieldwrap="${f.id}" style="${hidden?'display:none;':''}">
-        <label>${f.label}</label>
-        <input type="range" min="${f.min}" max="${f.max}" step="${f.step}" value="${val}" data-field="${f.id}">
-        <div class="amount-box">
-          ${f.prefix ? `<span class="ab-affix">${f.prefix}</span>` : ''}
-          <input type="number" min="${f.min}" max="${f.max}" step="${f.step}" value="${val}" data-field-num="${f.id}">
-          ${f.suffix ? `<span class="ab-affix">${f.suffix.trim()}</span>` : ''}
-        </div>
-      </div>`;
-  });
-
+  html += `<details class="more" id="moreOpts" ${moreOpen?'open':''}>
+    <summary>${moreF.length ? 'Step-up and inflation options' : 'Inflation option'}</summary>
+    <div class="more-body">`;
+  moreF.forEach(f=>{ html += fieldHtml(f); });
   html += `
     <div class="checkbox-row">
       <input type="checkbox" id="inflToggle" ${inflationOn?'checked':''}>
@@ -536,13 +615,21 @@ function renderInputs(){
         <span class="ab-affix">%</span>
       </div>
     </div>
-  `;
+    </div>
+  </details>`;
   panel.innerHTML = html;
+
+  document.getElementById('moreOpts').addEventListener('toggle', (e)=>{
+    const wasOpen = moreOpen;
+    moreOpen = e.target.open;
+    if(moreOpen && !wasOpen) track('MoreDetailsOpen');
+  });
 
   /* sliders */
   panel.querySelectorAll('[data-field]').forEach(input=>{
     const id = input.dataset.field;
     input.addEventListener('input', (e)=>{
+      markStart();
       const v = parseFloat(e.target.value);
       state[currentTab][id] = v;
       const numInput = panel.querySelector(`[data-field-num="${id}"]`);
@@ -556,6 +643,7 @@ function renderInputs(){
     const id = input.dataset.fieldNum;
     const cfgField = cfg.fields.find(f=>f.id===id);
     input.addEventListener('input', (e)=>{
+      markStart();
       let v = parseFloat(e.target.value);
       if(isNaN(v)) return;
       if(cfgField){ v = Math.min(cfgField.max, Math.max(cfgField.min, v)); }
@@ -569,6 +657,7 @@ function renderInputs(){
   /* per-tab toggles (step-up / top-up) */
   panel.querySelectorAll('[data-toggle]').forEach(cb=>{
     cb.addEventListener('change', (e)=>{
+      markStart();
       state[currentTab][cb.dataset.toggle] = e.target.checked;
       renderInputs();
       compute();
@@ -658,9 +747,6 @@ function calcSWP(corpus, withdrawal, rateAnnual, years){
     if(m%12===0 || m===months){
       yearly.push({year:Math.ceil(m/12), invested: totalWithdrawn, value: Math.max(balance,0)});
     }
-    if(depletedAt!==null) {
-      // fill remaining years with 0 balance for chart consistency
-    }
   }
   return {yearly, investedTotal: totalWithdrawn, valueTotal: Math.max(balance,0), depletedAt, corpus};
 }
@@ -746,7 +832,7 @@ function compute(){
     const realVal = (rows.find(r=>r.total)?.value || 0) / Math.pow(1+inflationRate/100, s.years||1);
     document.getElementById('inflNote').textContent = `In today's money: ${fmtINR(realVal)} (adjusted for ${inflationRate}% inflation)`;
   }
-  updateWhatsApp(s, rows, result);
+  updateResult(s, rows, result);
 }
 
 function renderLedger(rows){
@@ -775,6 +861,7 @@ function renderChart(yearly){
   const invested = yearly.map(y=>y.invested);
   const value = yearly.map(y=>y.value);
   if(chart) chart.destroy();
+  if(typeof Chart === 'undefined') return;
   chart = new Chart(ctx, {
     type:'line',
     data:{
@@ -815,10 +902,11 @@ function applyView(){
   const done = !!calcDone[currentTab];
   document.getElementById('layout').setAttribute('data-state', done ? 'ready' : 'empty');
   document.getElementById('afterCalc').hidden = !done;
-  if(!done) setWa(WA_BASE);
+  if(!done) setWa();
 }
 function runCalc(){
   calcDone[currentTab] = true;
+  if(!resultTracked){ resultTracked = true; track('ResultView'); }
   applyView();
   compute();
   if(window.matchMedia && window.matchMedia('(max-width: 760px)').matches){
@@ -832,9 +920,12 @@ document.getElementById('inputsPanel').addEventListener('keydown', (e)=>{
   if(e.key==='Enter' && e.target && e.target.matches && e.target.matches('input[type=number]')){ e.preventDefault(); runCalc(); }
 });
 
-/* ---------- WhatsApp: every button carries the visitor's numbers; they review and send the message themselves ---------- */
+/* ---------- Result headline + WhatsApp: a short, first-person request the visitor is comfortable sending ---------- */
 const WA_NUMBER = '919311595912';
-const WA_BASE = 'Hi, this is from the MoneySutraa website (SIP calculator).';
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxu6NPhztVw-id7uCWdf-c3MpmArifotRB1kxn18hXtHVfuJNvMi7lZigQdwwPTYT5x/exec';   // Google Sheet web-app link (MoneySutraa Insurance Leads)
+const WA_BASE = 'Hi MoneySutraa, I found you through your SIP calculator.';
+const CALC_NAME = {sip:'SIP calculator', lumpsum:'lumpsum calculator', combo:'SIP + lumpsum calculator', swp:'SWP calculator', goal:'goal planner'};
+let lastSummary = '';
 function shortINR(x){
   x = Math.round(x);
   const trim = (n,d)=> n.toFixed(d).replace(/\.?0+$/, '');
@@ -842,41 +933,66 @@ function shortINR(x){
   if(x >= 100000)  return '₹' + trim(x/1e5, 1) + ' L';
   return '₹' + x.toLocaleString('en-IN');
 }
-function setWa(core){
+function setWa(msg){
   document.querySelectorAll('.js-wa').forEach(a=>{
-    const ask = a.getAttribute('data-ask') || 'talk it through';
-    a.setAttribute('href', 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(core + '\nI\'d like to ' + ask + '.'));
+    const text = msg || (WA_BASE + '\n' + (a.getAttribute('data-ask') === 'book a free consultation' ? 'I\'d like to book a free consultation.' : 'I\'d like free help planning my investments.') + ' Chatting here on WhatsApp is fine.');
+    a.setAttribute('href', 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text));
   });
 }
-function updateWhatsApp(s, rows, result){
-  const L = [], yrs = s.years + ' yrs at ' + s.rate + '% a year';
-  const step = (on, pct)=> on ? ', step-up ' + pct + '% a year' : '';
+function updateResult(s, rows, result){
+  const yrs = s.years + (s.years === 1 ? ' year' : ' years');
+  const step = (on, pct)=> on ? ', stepping up ' + pct + '% a year' : '';
+  let head, plan, ask = 'Please help me get started.';
   if(currentTab==='sip'){
-    L.push('Calculator: SIP');
-    L.push('Monthly SIP: ' + shortINR(s.monthly) + ' for ' + yrs + step(s.stepupEnabled, s.stepup));
-    L.push('Total invested: ' + shortINR(result.investedTotal));
-    L.push('Maturity value: ' + shortINR(result.valueTotal));
+    head = 'Your SIP could grow to about <strong>' + shortINR(result.valueTotal) + '</strong>.';
+    plan = shortINR(s.monthly) + ' a month for ' + yrs + step(s.stepupEnabled, s.stepup) + ' could grow to about ' + shortINR(result.valueTotal);
   } else if(currentTab==='lumpsum'){
-    L.push('Calculator: Lumpsum');
-    L.push('Lumpsum: ' + shortINR(s.principal) + ' for ' + yrs + (s.topupEnabled ? ', plus a yearly top-up of ' + shortINR(s.topupAmount) + ' growing ' + s.topupStepup + '% a year' : ''));
-    L.push('Total invested: ' + shortINR(result.investedTotal));
-    L.push('Maturity value: ' + shortINR(result.valueTotal));
+    head = 'Your investment could grow to about <strong>' + shortINR(result.valueTotal) + '</strong>.';
+    plan = shortINR(s.principal) + ' invested for ' + yrs + (s.topupEnabled ? ', plus a yearly top-up of ' + shortINR(s.topupAmount) + ',' : '') + ' could grow to about ' + shortINR(result.valueTotal);
   } else if(currentTab==='combo'){
-    L.push('Calculator: SIP + Lumpsum');
-    L.push('SIP: ' + shortINR(s.monthly) + ' a month + lumpsum ' + shortINR(s.principal) + ' for ' + yrs + step(s.stepupEnabled, s.stepup));
-    L.push('Total invested: ' + shortINR(result.investedTotal));
-    L.push('Maturity value: ' + shortINR(result.valueTotal));
+    head = 'Your investments could grow to about <strong>' + shortINR(result.valueTotal) + '</strong>.';
+    plan = shortINR(s.monthly) + ' a month plus ' + shortINR(s.principal) + ' today, for ' + yrs + step(s.stepupEnabled, s.stepup) + ', could grow to about ' + shortINR(result.valueTotal);
   } else if(currentTab==='swp'){
-    L.push('Calculator: SWP');
-    L.push('Corpus ' + shortINR(s.corpus) + ', withdrawing ' + shortINR(s.withdrawal) + ' a month for ' + yrs);
-    L.push(result.depletedAt ? 'Result: the corpus runs out around year ' + Math.ceil(result.depletedAt/12) : 'Balance remaining: ' + shortINR(result.valueTotal));
+    if(result.depletedAt){
+      const y = Math.ceil(result.depletedAt/12);
+      head = 'Your money could run out around <strong>year ' + y + '</strong>.';
+      plan = 'withdrawing ' + shortINR(s.withdrawal) + ' a month from ' + shortINR(s.corpus) + ' could run out around year ' + y;
+      ask = 'Please help me plan withdrawals that last.';
+    } else {
+      head = 'About <strong>' + shortINR(result.valueTotal) + '</strong> could remain after ' + yrs + '.';
+      plan = 'withdrawing ' + shortINR(s.withdrawal) + ' a month from ' + shortINR(s.corpus) + ' for ' + yrs + ' could leave about ' + shortINR(result.valueTotal);
+      ask = 'Please help me set this up.';
+    }
   } else if(currentTab==='goal'){
-    L.push('Calculator: Goal Planner');
-    L.push('Goal: ' + shortINR(s.goal) + ' in ' + yrs + step(s.stepup>0, s.stepup));
-    L.push('Monthly SIP needed: ' + shortINR(rows[0].value));
+    head = 'You would need a SIP of about <strong>' + shortINR(rows[0].value) + ' a month</strong>.';
+    plan = 'to reach ' + shortINR(s.goal) + ' in ' + yrs + step(s.stepup > 0, s.stepup) + ', I would need a SIP of about ' + shortINR(rows[0].value) + ' a month';
   }
-  setWa(WA_BASE + '\n' + L.join('\n'));
+  document.getElementById('hRes').innerHTML = head;
+  document.getElementById('hAssume').textContent = 'Assuming ' + s.rate + '% a year. Illustrative, not guaranteed.';
+  lastSummary = plan + ' (assuming ' + s.rate + '% a year)';
+  setWa('Hi MoneySutraa, I used your ' + CALC_NAME[currentTab] + '.\nMy plan: ' + plan + ' (assuming ' + s.rate + '% a year).\n' + ask + ' Chatting here on WhatsApp is fine.');
 }
+
+/* ---------- Second-best result: the visitor leaves a WhatsApp number (with consent) for follow-up ---------- */
+document.getElementById('capForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const ph = document.getElementById('capPhone').value.replace(/\D/g, '').slice(-10), err = document.getElementById('capErr');
+  if(!/^[6-9]\d{9}$/.test(ph)){ err.hidden = false; document.getElementById('capPhone').focus(); return; }
+  err.hidden = true;
+  document.getElementById('capBtn').disabled = true;
+  const data = new URLSearchParams({phone: '91' + ph, page: 'SIP (' + CALC_NAME[currentTab] + ')', need: lastSummary, gap: '', consent: 'yes'});
+  if(SHEET_URL){ try{ fetch(SHEET_URL, {method:'POST', mode:'no-cors', body:data}); }catch(x){} }
+  try{ if(typeof window.fbq === 'function') window.fbq('track', 'Lead', {content_name: 'SIP - Number Submitted'}); }catch(x){}
+  track('NumberSubmitted');
+  this.innerHTML = '<p class="cap-done">Done. We\'ll send your plan and tips to +91 ' + ph + ' on WhatsApp the same day.</p>';
+});
+if(!SHEET_URL) document.getElementById('capForm').hidden = true;
+
+/* ---------- WhatsApp clicks ---------- */
+document.addEventListener('click', (e)=>{
+  const a = e.target.closest ? e.target.closest('.js-wa') : null;
+  if(a) track('WhatsAppClick');
+});
 
 /* ---------- Tabs ---------- */
 document.getElementById('tabs').addEventListener('click', (e)=>{
@@ -957,6 +1073,16 @@ compute();
   window.addEventListener('resize', fit);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 })();
+</script>
+<!-- Meta Pixel: track WhatsApp clicks as Lead (works once a pixel is added) -->
+<script>
+document.addEventListener('click', function (e) {
+  var link = e.target.closest('a[href*="wa.me"]');
+  if (link && typeof fbq === 'function') {
+    fbq('track', 'Lead', { content_name: 'SIP - WhatsApp Click' });
+    fbq('track', 'CompleteRegistration', { content_name: 'SIP - WhatsApp Click' });
+  }
+});
 </script>
 </body>
 </html>
