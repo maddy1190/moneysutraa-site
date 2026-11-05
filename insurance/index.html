@@ -113,14 +113,17 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
   }
   .wa-btn.block{width:100%}
 
-  /* Hero */
-  .hero{position:relative;overflow:hidden;text-align:center;padding:26px max(20px,env(safe-area-inset-right)) 24px max(20px,env(safe-area-inset-left))}
-  @media (min-width:720px){.hero{padding-top:40px;padding-bottom:28px}}
+  /* Hero: short, so the calculator starts on the first screen */
+  .hero{position:relative;overflow:hidden;text-align:center;padding:26px max(20px,env(safe-area-inset-right)) 22px max(20px,env(safe-area-inset-left))}
+  @media (min-width:720px){.hero{padding-top:36px;padding-bottom:26px}}
   .hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:min(640px,100%);height:380px;background:radial-gradient(ellipse at center, rgba(201,154,61,.14), rgba(201,154,61,0) 70%);pointer-events:none}
   .hero > *{position:relative}
-  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.4vw,46px);line-height:1.14;letter-spacing:-.015em;margin:0 auto 14px;max-width:18ch}
-  .hero p{color:var(--slate);max-width:58ch;margin:0 auto 20px}
-  /* Trust strip: swipeable on phones, 3 x 2 grid on larger screens */
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,5.4vw,46px);line-height:1.14;letter-spacing:-.015em;margin:0 auto 10px;max-width:24ch}
+  .hero .sub{color:var(--slate);max-width:58ch;margin:0 auto 6px}
+  .hero .trust-line{font-size:12.5px;font-weight:600;color:var(--gold-text);max-width:58ch;margin:0 auto}
+
+  /* Trust cards: below the calculator. Swipeable on phones, 3 x 2 grid on larger screens */
+  .trust-sec{padding:4px 0 32px}
   .trust-strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 20px 16px;margin:0 -20px}
   .trust-strip::-webkit-scrollbar{display:none}
   .tcard{flex:0 0 236px;scroll-snap-align:start;display:flex;align-items:center;gap:12px;text-align:left;background:var(--white);border:1px solid var(--rule);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
@@ -133,23 +136,20 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
     .trust-strip{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;scroll-snap-type:none;padding:6px 0 10px;margin:0}
     .tcard{flex:none}
   }
-  .hero .trust-note{font-size:12px;color:var(--slate);margin:0 auto;max-width:none}
 
   /* Calculator */
-  .calc-title{grid-column:1/-1;text-align:center;font-family:var(--serif);font-weight:700;font-size:clamp(26px,4.2vw,36px);line-height:1.15;letter-spacing:-.01em;margin:6px 0 0;padding-top:26px;border-top:1px solid var(--rule)}
-  .calc-title::after{content:"";display:block;width:56px;height:3px;border-radius:3px;background:var(--gold);margin:12px auto 0;opacity:.85}
   .calc{display:grid;grid-template-columns:1fr;gap:20px;padding-bottom:28px}
   @media (min-width:900px){.calc{grid-template-columns:5fr 6fr;align-items:start;gap:24px}}
   .panel{background:var(--white);border:1px solid var(--rule);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
-  @media (max-width:480px){.panel{padding:20px 16px}}
+  @media (max-width:480px){.panel{padding:18px 16px}}
   .panel h2{font-family:var(--serif);font-weight:600;font-size:23px;line-height:1.2;margin:0 0 4px}
   .panel .sub{color:var(--slate);font-size:14px;margin:0 0 14px}
-  .tip{background:#E3F1E8;border-left:4px solid var(--wa);border-radius:8px;padding:10px 12px;font-size:14px;font-weight:600;color:#1B5E3B;margin:0 0 18px}
+  .tip{background:#E3F1E8;border-left:4px solid var(--wa);border-radius:8px;padding:8px 12px;font-size:13.5px;font-weight:600;color:#1B5E3B;margin:0 0 16px}
 
   .group + .group{border-top:1px solid var(--rule);padding-top:16px;margin-top:6px}
   .group h3{font-size:15px;margin:0 0 14px}
   .opt{display:inline-block;margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5A4712;background:var(--gold-tint);border-radius:999px;padding:2px 9px;vertical-align:2px}
-  .field{margin-bottom:18px}
+  .field{margin-bottom:16px}
   .field > label{display:block;font-weight:600;margin-bottom:6px;font-size:15px}
   .hint{font-size:13px;color:var(--slate);margin:6px 0 0}
   .money{display:flex;align-items:center;border:1px solid var(--rule);border-radius:10px;background:var(--paper);overflow:hidden;min-height:48px}
@@ -164,6 +164,15 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
   @media (hover:hover){.calc-btn:hover{filter:brightness(1.14);transform:translateY(-1px)}}
   .calc-btn:active{transform:none}
   .readout{font-size:13px;color:var(--gold-text);font-weight:600;margin-top:4px;min-height:1.2em}
+  .form-note{font-size:12px;color:var(--slate);text-align:center;margin:10px 0 0}
+
+  /* Optional details: folded away so the first screen holds only the two key inputs and the button */
+  details.more{border-top:1px solid var(--rule);margin-top:2px}
+  details.more > summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:46px;font-weight:600;font-size:14.5px;color:var(--gold-text)}
+  details.more > summary::-webkit-details-marker{display:none}
+  details.more > summary::before{content:"+";flex:none;width:24px;height:24px;border-radius:50%;background:var(--gold-tint);color:var(--gold-text);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;line-height:1}
+  details.more[open] > summary::before{content:"\2013"}
+  details.more > .group{border-top:1px solid var(--rule);padding-top:16px;margin-top:6px}
 
   details.assume{border-top:1px solid var(--rule);padding-top:14px;margin-top:6px}
   details.assume summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--slate);padding:10px 0}
@@ -203,6 +212,26 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
 
   .result-cta{margin-top:20px;text-align:center}
   .result-cta small{display:block;margin-top:10px;font-size:12.5px;color:var(--slate)}
+
+  /* Result-first summary: one big answer, then the WhatsApp button */
+  .res-head{font-family:var(--sans) !important;font-size:14px !important;font-weight:600 !important;color:var(--slate);margin:0 0 4px !important}
+  .res-need{font-family:var(--serif);font-weight:600;font-size:clamp(22px,4.6vw,28px);line-height:1.25;margin:0 0 8px}
+  .res-need strong{white-space:nowrap}
+  .res-gap{display:inline-block;background:var(--gold-tint);color:var(--ink);font-weight:700;border-radius:999px;padding:6px 14px;font-size:15px;margin:0}
+  .res-gap.ok{background:#E3F1E8;color:#1B5E3B}
+  .result-body .result-cta{margin-top:16px}
+  /* Second-best: leave a number */
+  .capture{margin:18px 0 22px;padding:16px;border:1px dashed #D9C58F;border-radius:12px;background:#FFFDF6}
+  .capture h3{font-size:15px;margin:0 0 4px}
+  .capture p{font-size:13.5px;color:var(--slate);margin:0 0 10px}
+  .cap-row{display:flex;gap:8px}
+  .calc > *{min-width:0}
+  .cap-row .money{flex:1;min-width:0}
+  .cap-row input{width:100%}
+  .cap-btn{flex:none;min-height:48px;padding:0 14px;border:1.5px solid var(--ink);border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+  .capture .cap-consent{font-size:11.5px;margin:8px 0 0}
+  .capture .cap-done{font-weight:600;color:#1B5E3B;font-size:14px;margin:0}
+  .how{font-size:13px;font-weight:700;color:var(--slate);margin:0 0 2px}
 
   /* What this means */
   .next{padding-bottom:40px}
@@ -303,6 +332,21 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
     .wa-btn.big{font-size:15px;padding:14px 18px}
     .jump{padding-left:12px;padding-right:12px}
   }
+
+  /* Phones: compact header and hero so the inputs and the Calculate button fit on the first screen */
+  @media (max-width:899px){
+    .site-head .wrap{padding-top:8px;padding-bottom:8px;row-gap:6px}
+    .brand img{height:50px}
+    .calc-nav{display:none}
+    .hero{padding-top:12px;padding-bottom:10px}
+    .hero h1{margin-bottom:6px}
+    .hero .sub{display:none}
+    .hero .trust-line{font-size:12px}
+    .tip{font-size:13px;padding:7px 10px;margin-bottom:12px}
+    .field{margin-bottom:10px}
+    .field > label{margin-bottom:4px}
+  }
+  @media (max-width:360px){.brand img{height:44px}}
 
   @media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
 </style>
@@ -423,41 +467,15 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
 <main>
   <section class="hero wrap">
     <h1>How much life cover does your family really need?</h1>
-    <p>Enter your family's monthly needs, loans and goals. See the cover they'd need if you weren't there, and your gap if your employer's cover ends.</p>
-    <div class="trust-strip" role="list" aria-label="Why families trust MoneySutraa" tabindex="0">
-      <div class="tcard primary" role="listitem">
-        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
-        <div><strong>Certified Insurance POSP</strong><small>Point of Sales Person</small></div>
-      </div>
-      <div class="tcard" role="listitem">
-        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
-        <div><strong>Needs-first guidance</strong><small>Starts with your numbers, not a product</small></div>
-      </div>
-      <div class="tcard" role="listitem">
-        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span>
-        <div><strong>Research for your fit</strong><small>Plans checked against your needs</small></div>
-      </div>
-      <div class="tcard" role="listitem">
-        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-        <div><strong>Real people, not call centres</strong><small>Led by a CA, MBA</small></div>
-      </div>
-      <div class="tcard" role="listitem">
-        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
-        <div><strong>100+ families guided</strong><small>And counting</small></div>
-      </div>
-      <div class="tcard" role="listitem">
-        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span>
-        <div><strong>No pressure to buy</strong><small>No upselling. No spam.</small></div>
-      </div>
-    </div>
-    <p class="trust-note">Educational tool. Not insurance advice.</p>
+    <p class="sub">Enter two numbers and see the cover your family would need.</p>
+    <p class="trust-line">Certified POSP, led by a CA and MBA. 100+ families guided.</p>
   </section>
 
   <section class="wrap calc" aria-labelledby="calcH">
-    <h2 class="calc-title" id="calcH">Life Insurance Calculator</h2>
+    <h2 class="sr-only" id="calcH">Life Insurance Calculator</h2>
     <!-- Inputs -->
     <form class="panel" id="inputs" novalidate aria-label="Calculator inputs">
-      <p class="tip">Sample numbers are filled in. Replace them with yours.</p>
+      <p class="tip">Sample numbers filled in. Edit them or tap Calculate.</p>
 
       <div class="group">
         <div class="field">
@@ -474,66 +492,71 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
         </div>
       </div>
 
-      <div class="group">
-        <h3>Loans and goals to cover <span class="opt">Optional</span></h3>
-        <div class="field">
-          <label for="loan">Outstanding loans</label>
-          <div class="money"><span>₹</span><input type="number" id="loan" min="0" step="100000" value="0" inputmode="numeric" autocomplete="off"></div>
-          <div class="readout" id="loanR"></div>
-          <p class="hint">Home, car, personal.</p>
-        </div>
-        <div class="field">
-          <label for="goals">Future goals (today's cost)</label>
-          <div class="money"><span>₹</span><input type="number" id="goals" min="0" step="100000" value="0" inputmode="numeric" autocomplete="off"></div>
-          <div class="readout" id="goalsR"></div>
-          <p class="hint">Education, wedding, etc.</p>
-        </div>
-      </div>
+      <details class="more" id="more">
+        <summary>Add loans, savings &amp; cover (optional)</summary>
 
-      <div class="group">
-        <h3>What's already in place <span class="opt">Optional</span></h3>
-        <div class="field">
-          <label for="ast">Savings and investments</label>
-          <div class="money"><span>₹</span><input type="number" id="ast" min="0" step="100000" value="0" inputmode="numeric" autocomplete="off"></div>
-          <div class="readout" id="astR"></div>
-          <p class="hint">FDs, mutual funds, PF, shares. Not your home.</p>
+        <div class="group">
+          <h3>Loans and goals to cover <span class="opt">Optional</span></h3>
+          <div class="field">
+            <label for="loan">Outstanding loans</label>
+            <div class="money"><span>₹</span><input type="number" id="loan" min="0" step="100000" value="0" inputmode="numeric" autocomplete="off"></div>
+            <div class="readout" id="loanR"></div>
+            <p class="hint">Home, car, personal.</p>
+          </div>
+          <div class="field">
+            <label for="goals">Future goals (today's cost)</label>
+            <div class="money"><span>₹</span><input type="number" id="goals" min="0" step="100000" value="0" inputmode="numeric" autocomplete="off"></div>
+            <div class="readout" id="goalsR"></div>
+            <p class="hint">Education, wedding, etc.</p>
+          </div>
         </div>
-        <div class="field">
-          <label for="own">Life cover you already own (all policies)</label>
-          <div class="money"><span>₹</span><input type="number" id="own" min="0" step="500000" value="0" inputmode="numeric" autocomplete="off"></div>
-          <div class="readout" id="ownR"></div>
-          <p class="hint">Total sum assured.</p>
-        </div>
-        <div class="field">
-          <label for="emp">Life cover from your employer</label>
-          <div class="money"><span>₹</span><input type="number" id="emp" min="0" step="500000" value="0" inputmode="numeric" autocomplete="off"></div>
-          <div class="readout" id="empR"></div>
-          <p class="hint">Ends if you change jobs.</p>
-        </div>
-      </div>
 
-      <details class="assume">
-        <summary>Advanced (optional)</summary>
-        <div class="assume-row">
-          <label for="mult">Cover multiple (× yearly expenses)</label>
-          <input class="num" type="number" id="mult" min="10" max="20" step="1" value="14" inputmode="numeric">
+        <div class="group">
+          <h3>What's already in place <span class="opt">Optional</span></h3>
+          <div class="field">
+            <label for="ast">Savings and investments</label>
+            <div class="money"><span>₹</span><input type="number" id="ast" min="0" step="100000" value="0" inputmode="numeric" autocomplete="off"></div>
+            <div class="readout" id="astR"></div>
+            <p class="hint">FDs, mutual funds, PF, shares. Not your home.</p>
+          </div>
+          <div class="field">
+            <label for="own">Life cover you already own (all policies)</label>
+            <div class="money"><span>₹</span><input type="number" id="own" min="0" step="500000" value="0" inputmode="numeric" autocomplete="off"></div>
+            <div class="readout" id="ownR"></div>
+            <p class="hint">Total sum assured.</p>
+          </div>
+          <div class="field">
+            <label for="emp">Life cover from your employer</label>
+            <div class="money"><span>₹</span><input type="number" id="emp" min="0" step="500000" value="0" inputmode="numeric" autocomplete="off"></div>
+            <div class="readout" id="empR"></div>
+            <p class="hint">Ends if you change jobs.</p>
+          </div>
         </div>
-        <div class="readout" id="multR"></div>
-        <p class="hint">We use 14. At 14×, the payout invested at about 10% with 7% withdrawn each year gives your family roughly what they spend today. Allowed range: 10 to 20.</p>
-        <div class="assume-row">
-          <label for="ret">Expected return (% a year)</label>
-          <input class="num" type="number" id="ret" min="4" max="15" step="0.5" value="10.5" inputmode="decimal">
-        </div>
-        <div class="readout" id="retR"></div>
-        <div class="assume-row">
-          <label for="inf">Expected inflation (% a year)</label>
-          <input class="num" type="number" id="inf" min="0" max="12" step="0.5" value="3.5" inputmode="decimal">
-        </div>
-        <div class="readout" id="infR"></div>
-        <p class="hint">These two only change the price-rise table.</p>
+
+        <details class="assume">
+          <summary>Advanced (optional)</summary>
+          <div class="assume-row">
+            <label for="mult">Cover multiple (× yearly expenses)</label>
+            <input class="num" type="number" id="mult" min="10" max="20" step="1" value="14" inputmode="numeric">
+          </div>
+          <div class="readout" id="multR"></div>
+          <p class="hint">We use 14. At 14×, the payout invested at about 10% with 7% withdrawn each year gives your family roughly what they spend today. Allowed range: 10 to 20.</p>
+          <div class="assume-row">
+            <label for="ret">Expected return (% a year)</label>
+            <input class="num" type="number" id="ret" min="4" max="15" step="0.5" value="10.5" inputmode="decimal">
+          </div>
+          <div class="readout" id="retR"></div>
+          <div class="assume-row">
+            <label for="inf">Expected inflation (% a year)</label>
+            <input class="num" type="number" id="inf" min="0" max="12" step="0.5" value="3.5" inputmode="decimal">
+          </div>
+          <div class="readout" id="infR"></div>
+          <p class="hint">These two only change the price-rise table.</p>
+        </details>
       </details>
 
       <button type="button" class="calc-btn" id="calcBtn">Calculate my cover</button>
+      <p class="form-note">Educational tool. Not insurance advice.</p>
     </form>
 
     <!-- Result -->
@@ -543,7 +566,27 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
         <p>Fill in your details and tap <strong>Calculate</strong>.</p>
       </div>
       <div class="result-body">
-        <h2>Your estimate</h2>
+        <h2 class="res-head">Your estimate</h2>
+        <p class="res-need">Your family needs about <strong id="hNeed"></strong> of life cover.</p>
+        <p class="res-gap" id="hGap"></p>
+
+        <div class="result-cta">
+          <a class="wa-btn big block js-wa" href="https://wa.me/919311595912" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#wa"/></svg>Get my free plan on WhatsApp</a>
+          <small>100% free, no obligation. Nothing is sent until you press send. We reply on WhatsApp the same day.</small>
+        </div>
+
+        <form class="capture" id="capForm" novalidate>
+          <h3>Not ready to chat?</h3>
+          <p>Get your estimate and 3 tips to close the gap on WhatsApp.</p>
+          <div class="cap-row">
+            <div class="money"><span>+91</span><input type="tel" id="capPhone" inputmode="numeric" autocomplete="tel-national" maxlength="10" placeholder="10-digit mobile" aria-label="Your WhatsApp number"></div>
+            <button type="submit" class="cap-btn" id="capBtn">Send it to me</button>
+          </div>
+          <p class="err" id="capErr" role="alert" hidden>Enter a 10-digit mobile number.</p>
+          <p class="cap-consent">By submitting, you agree to receive WhatsApp messages from MoneySutraa about your cover. You can stop anytime. <a href="/privacy-policy/">Privacy Policy</a></p>
+        </form>
+
+        <p class="how">How we got this</p>
         <p class="sub">Cover amounts, not premium. Illustrative only.</p>
 
         <ul class="ledger">
@@ -573,10 +616,6 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
           </div>
         </div>
 
-        <div class="result-cta">
-          <a class="wa-btn big block js-wa" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20(Life%20Insurance%20calculator)." target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#wa"/></svg>Talk it through on WhatsApp</a>
-          <small>Your numbers are pre-filled. Nothing is sent until you press send.</small>
-        </div>
       </div>
     </aside>
   </section>
@@ -606,6 +645,36 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
           <p class="job-note" id="jobNote"></p>
           <ul id="closeList"></ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why families trust us: moved below the calculator -->
+  <section class="wrap trust-sec" aria-label="Why families trust MoneySutraa">
+    <div class="trust-strip" role="list" aria-label="Why families trust MoneySutraa" tabindex="0">
+      <div class="tcard primary" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <div><strong>Certified Insurance POSP</strong><small>Point of Sales Person</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+        <div><strong>Needs-first guidance</strong><small>Starts with your numbers, not a product</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span>
+        <div><strong>Research for your fit</strong><small>Plans checked against your needs</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <div><strong>Real people, not call centres</strong><small>Led by a CA, MBA</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+        <div><strong>100+ families guided</strong><small>And counting</small></div>
+      </div>
+      <div class="tcard" role="listitem">
+        <span class="ticon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></span>
+        <div><strong>No pressure to buy</strong><small>No upselling. No spam.</small></div>
       </div>
     </div>
   </section>
@@ -721,7 +790,7 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
 <!-- Mobile: floating WhatsApp button; its message is updated with the visitor's result -->
 <a class="fab js-wa" id="fab" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20(Life%20Insurance%20calculator)." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" title="Chat with us on WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
 
-<!-- Mobile: Calculate shortcut while the form is being filled -->
+<!-- Mobile: Calculate shortcut while the form is in view and the real button is off-screen -->
 <div class="jump" id="jump" role="region" aria-label="Calculate">
   <button type="button" class="calc-btn" id="jumpBtn">Calculate my cover</button>
 </div>
@@ -736,7 +805,8 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
   var WITHDRAW = 0.07;    // assumed yearly withdrawal from the money
   var INFL = 0.035;       // assumed inflation (editable in Advanced)
   var WA_NUMBER = '919311595912';
-  var BASE_MSG = 'Hi, this is from the MoneySutraa website (Life Insurance calculator).';
+  var BASE_MSG = 'Hi MoneySutraa, I found you through your life cover calculator.';
+  var SHEET_URL = '';   // Google Sheet web-app link, added during setup
 
   var $ = function(id){ return document.getElementById(id); };
   function inr(x){ return '₹' + Math.round(x).toLocaleString('en-IN'); }
@@ -756,16 +826,18 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
   function track(name){ try{ if (typeof window.fbq === 'function') window.fbq('trackCustom', name); }catch(e){} }
 
   var calculated = false, started = false, typing = false, srTimer;
+  var lastNeed = 0, lastGap = 0;
   var seen = {inputs:false, result:false, contact:false, calcBtn:false};
   var jump = $('jump'), resultEl = $('result'), fab = $('fab');
 
   function stacked(){ return window.matchMedia ? window.matchMedia('(max-width: 899px)').matches : true; }
   function calmMotion(){ return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); }
 
-  function setWa(core){
+  // Pre-filled WhatsApp message: a short, first-person request the visitor is comfortable sending
+  function setWa(msg){
     document.querySelectorAll('.js-wa').forEach(function(a){
-      var ask = a.getAttribute('data-ask') || 'talk it through';
-      a.setAttribute('href', 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(core + '\nI\'d like to ' + ask + '.'));
+      var text = msg || (BASE_MSG + '\n' + (a.getAttribute('data-ask') === 'book a free consultation' ? 'I\'d like to book a free consultation.' : 'I\'d like free help choosing the right cover.') + ' Chatting here on WhatsApp is fine.');
+      a.setAttribute('href', 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text));
     });
   }
 
@@ -893,11 +965,20 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
       add('Premiums are fixed at the age you buy, so earlier is cheaper.');
     }
 
-    // WhatsApp buttons carry the current numbers; the visitor reviews and sends the message themselves
-    setWa(BASE_MSG + '\n' +
-      'Cover needed: ' + short(need) + '\n' +
-      'Gap today: ' + (gapToday > 0 ? short(gapToday) : 'covered') + '\n' +
-      'Gap if employer cover ends: ' + (gapJob > 0 ? short(gapJob) : 'covered'));
+    // Result-first summary
+    lastNeed = need; lastGap = gapJob;
+    $('hNeed').textContent = short(need);
+    var hg = $('hGap');
+    hg.textContent = gapJob > 0 ? 'Your gap: ' + short(gapJob) + (emp > 0 && gapToday < gapJob ? ' if employer cover ends' : '') : 'You\'re covered';
+    hg.className = 'res-gap' + (gapJob > 0 ? '' : ' ok');
+
+    // WhatsApp buttons carry the estimate; the visitor reviews and sends the message themselves
+    var est = gapJob > 0
+      ? 'I need about ' + short(need) + ' cover, and my gap is ' + short(gapJob) + (emp > 0 ? ' if my employer cover ends.' : '.')
+      : 'it shows I\'m covered.';
+    setWa('Hi MoneySutraa, I used your life cover calculator.\nMy estimate: ' + est + '\n' +
+      (gapJob > 0 ? 'Please share a free plan to close this gap.' : 'Please check my existing policies for free.') +
+      ' Chatting here on WhatsApp is fine.');
 
     // Quiet summary for screen readers (debounced so it does not chatter)
     clearTimeout(srTimer);
@@ -906,9 +987,9 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
     }, 700);
   }
 
-  // Mobile Calculate shortcut: only while the form is in view, nothing is being typed, and the real button is off-screen
+  // Mobile Calculate shortcut: whenever the form is in view, nothing is being typed, and the real button is off-screen
   function updateJump(){
-    var showBar = started && !typing && seen.inputs && !seen.result && !seen.contact && !seen.calcBtn;
+    var showBar = !typing && seen.inputs && !seen.result && !seen.contact && !seen.calcBtn;
     jump.classList.toggle('show', showBar);
     fab.classList.toggle('up', showBar);   // on phones, sit above the Calculate bar when it is showing
   }
@@ -939,6 +1020,23 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
   $('jumpBtn').addEventListener('click', runCalc);
   // Never let the browser submit (and reload) the form
   $('inputs').addEventListener('submit', function(e){ e.preventDefault(); });
+
+  // Count how many visitors open the optional details
+  $('more').addEventListener('toggle', function(){ if (this.open) track('MoreDetailsOpen'); });
+
+  // Second-best result: the visitor leaves a WhatsApp number (with consent) for follow-up
+  $('capForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var ph = $('capPhone').value.replace(/\D/g, '').slice(-10), err = $('capErr');
+    if (!/^[6-9]\d{9}$/.test(ph)) { err.hidden = false; $('capPhone').focus(); return; }
+    err.hidden = true;
+    $('capBtn').disabled = true;
+    var data = new URLSearchParams({phone: '91' + ph, page: 'Life', need: short(lastNeed), gap: short(lastGap), consent: 'yes'});
+    if (SHEET_URL) { try { fetch(SHEET_URL, {method: 'POST', mode: 'no-cors', body: data}); } catch (x) {} }
+    try { if (typeof window.fbq === 'function') window.fbq('track', 'Lead', {content_name: 'Life Insurance - Number Submitted'}); } catch (x) {}
+    track('NumberSubmitted');
+    this.innerHTML = '<p class="cap-done">Done. We\'ll send your estimate and tips to +91 ' + ph + ' on WhatsApp the same day.</p>';
+  });
 
   document.addEventListener('focusin', function(e){ if (e.target && e.target.tagName === 'INPUT') { typing = true; updateJump(); } });
   document.addEventListener('focusout', function(){ typing = false; setTimeout(updateJump, 200); });
@@ -998,7 +1096,9 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
   }
 
   updateReadouts();
-  setWa(BASE_MSG);
+  setWa();
+  // The number box only shows once the Google Sheet link is set, so no number is ever lost
+  if (!SHEET_URL) $('capForm').hidden = true;
 })();
 </script>
 
