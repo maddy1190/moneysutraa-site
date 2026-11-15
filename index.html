@@ -224,6 +224,113 @@
     .card .card-links .btn{min-height:40px;padding:8px 16px;font-size:13px}
     .card .fine{display:block;margin-top:14px;font-size:12px;color:var(--muted-2);line-height:1.5}
 
+
+        /* Services — premium redesign (scoped, sv- prefix) */
+    #services{--live:#4ADE80;--body:#C9D0E3;--lav:#C9C2F5;--kick:#FFB38A}
+    #services .eyebrow{color:var(--gold)}
+    #services .section-title{font-weight:700;color:#fff}
+    #services .section-sub{color:var(--body)}
+    #services .section-sub b{color:#fff;font-weight:600}
+    #services .sv-mesh{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
+    #services .sv-m1{width:480px;height:480px;background:var(--violet);top:-160px;right:-120px;opacity:.3}
+    #services .sv-m2{width:380px;height:380px;background:var(--coral);bottom:-120px;left:-140px;opacity:.16}
+    /* ---- group headers ---- */
+    .sv-group{display:flex;align-items:center;gap:12px;margin:0 0 16px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
+    .sv-group::after{content:"";flex:1;height:1px;background:var(--line)}
+    .sv-group.sv-live{color:var(--live)}
+    .sv-group.sv-soon{color:var(--lav);margin-top:44px}
+    .sv-group .sv-count{color:#8F99B3}
+    .sv-pulse{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:sv-pulse 2s infinite}
+    @keyframes sv-pulse{70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+    .sv-pill{display:inline-flex;align-items:center;gap:7px;padding:4px 11px;border-radius:999px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+    .sv-pill.sv-live{color:var(--live);background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.28)}
+    .sv-pill.sv-soon{color:var(--lav);border:1px dashed rgba(201,194,245,.5)}
+
+    /* ---- LIVE: featured insurance ---- */
+    .sv-feature{position:relative;border-radius:var(--radius);padding:1px;background:linear-gradient(135deg,rgba(123,97,255,.9),rgba(255,107,74,.75) 60%,rgba(245,194,77,.5));margin-bottom:18px;box-shadow:0 24px 60px -24px rgba(123,97,255,.5)}
+    .sv-feature-in{border-radius:calc(var(--radius) - 1px);background:linear-gradient(160deg,#171F38 0%,#10172B 100%);padding:34px;display:grid;grid-template-columns:1.25fr 1fr;gap:34px;align-items:center}
+    .sv-feature h4{font-family:var(--font-display);font-weight:700;color:#fff;font-size:clamp(22px,2.4vw,28px);margin:14px 0 10px;letter-spacing:-.01em}
+    .sv-feature p{margin:0;color:var(--body);font-size:15px;max-width:480px}
+    .sv-feature .sv-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+    .sv-tag-new{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+    .sv-feature-side{display:flex;flex-direction:column;gap:12px}
+    .sv-calc-btn{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid var(--glass-brd);min-height:64px;transition:transform .2s,border-color .2s,background .2s}
+    .sv-calc-btn .sv-ci{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--grad);flex:none}
+    .sv-calc-btn .sv-ci svg{width:20px;height:20px;stroke:#0A0E1A;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .sv-calc-btn b{display:block;font-family:var(--font-display);font-size:15.5px;font-weight:700;line-height:1.25;color:#fff}
+    .sv-calc-btn span{display:block;font-size:12.5px;color:#B7C0D6;line-height:1.35}
+    .sv-calc-btn .sv-go{margin-left:auto;color:var(--coral);font-weight:700;transition:transform .2s,color .2s}
+    .sv-fine{display:block;margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;line-height:1.55;color:#AEB7CC;grid-column:1/-1}
+
+    /* ---- LIVE: cards ---- */
+    .sv-live-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}.sv-live-grid .sv-lcard{grid-column:span 2}.sv-live-grid .sv-lcard:nth-child(n+4){grid-column:span 3}
+    .sv-lcard{position:relative;display:flex;flex-direction:column;padding:24px;border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));border:1px solid var(--glass-brd);overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
+    .sv-lcard{box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}.sv-lcard::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(320px circle at var(--mx,50%) var(--my,0%),rgba(123,97,255,.22),transparent 60%)}.sv-lcard:hover::after{opacity:1}.sv-lcard>*{position:relative;z-index:1}.sv-lcard::before{z-index:2;content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--grad);opacity:.85}
+    .sv-lcard .sv-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px}
+    .sv-ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(123,97,255,.55),rgba(255,107,74,.42));border:1px solid rgba(255,255,255,.2);box-shadow:0 10px 26px -8px rgba(123,97,255,.75),inset 0 1px 0 rgba(255,255,255,.3)}
+    .sv-ico svg{width:23px;height:23px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .sv-lcard .sv-kick{display:block;margin:0 0 6px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--kick)}.sv-lcard h4{margin:0 0 8px;font-family:var(--font-display);font-weight:700;font-size:19px;line-height:1.25;color:#fff}
+    .sv-lcard p{margin:0 0 20px;color:var(--body);font-size:14.5px}
+    .sv-lcard .sv-more{margin-top:auto;display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:14px;font-weight:700;color:var(--gold)}
+    .sv-lcard .sv-more i{font-style:normal;transition:transform .2s}
+    @media(hover:hover){
+     .sv-lcard:hover{transform:translateY(-4px);border-color:rgba(123,97,255,.55);box-shadow:0 20px 44px -18px rgba(123,97,255,.55)}
+     .sv-lcard:hover .sv-more i{transform:translateX(4px)}
+     .sv-calc-btn:hover{transform:translateX(3px);border-color:rgba(255,107,74,.6);background:rgba(255,255,255,.08)}
+     .sv-calc-btn:hover .sv-go{transform:translateX(3px);color:#fff}
+    }
+
+    /* ---- ROADMAP (coming soon) ---- */
+    .sv-road-head{margin:72px 0 34px;text-align:center}
+    .sv-road-head .sv-rk{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--lav)}
+    .sv-road-head .sv-rk::before,.sv-road-head .sv-rk::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--lav))}
+    .sv-road-head .sv-rk::after{transform:scaleX(-1)}
+    .sv-road-head h4{margin:12px 0 8px;font-family:var(--font-display);font-weight:700;font-size:clamp(24px,3vw,34px);letter-spacing:-.01em;color:#fff}
+    .sv-road-head p{margin:0 auto;max-width:520px;color:var(--body);font-size:15px}
+    .sv-road{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .sv-rstop{position:relative;padding-top:38px}
+    .sv-rstop::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--lav);box-shadow:0 0 0 6px rgba(201,194,245,.12),0 0 22px rgba(123,97,255,.7);z-index:2}
+    .sv-rstop::after{content:"";position:absolute;top:7px;left:calc(50% + 14px);width:calc(100% + 18px - 28px);height:2px;background:repeating-linear-gradient(90deg,rgba(201,194,245,.55) 0 8px,transparent 8px 16px)}
+    .sv-rstop:last-child::after{display:none}
+    .sv-rstop:first-child::before{background:var(--grad);border-color:#fff}
+    .sv-rcard{position:relative;height:100%;display:flex;flex-direction:column;padding:28px 26px 24px;border-radius:26px;overflow:hidden;background:linear-gradient(165deg,rgba(123,97,255,.20) 0%,rgba(20,27,46,.55) 48%,rgba(255,107,74,.07) 100%);border:1px solid rgba(201,194,245,.26);box-shadow:0 30px 60px -34px rgba(123,97,255,.7),inset 0 1px 0 rgba(255,255,255,.1)}
+    .sv-rcard::before{content:"";position:absolute;width:220px;height:220px;right:-80px;top:-90px;border-radius:50%;background:radial-gradient(circle,rgba(123,97,255,.45),transparent 70%);pointer-events:none}
+    .sv-rnum{position:absolute;right:22px;top:14px;font-family:var(--font-display);font-weight:700;font-size:64px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(201,194,245,.4)}
+    .sv-rcard .sv-sico{width:50px;height:50px;border-radius:16px;margin-bottom:20px;display:grid;place-items:center;color:#fff;border:1px solid rgba(201,194,245,.4);background:rgba(201,194,245,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+    .sv-rcard .sv-sico svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    .sv-rcard .sv-pill.sv-soon{align-self:flex-start;margin-bottom:12px;color:#fff;border:1px solid rgba(201,194,245,.45);background:linear-gradient(100deg,rgba(201,194,245,.1) 30%,rgba(255,255,255,.32) 50%,rgba(201,194,245,.1) 70%) 0 0/250% 100%;animation:sv-sheen 3.2s linear infinite}
+    @keyframes sv-sheen{to{background-position:-150% 0}}
+    .sv-rcard h4{margin:0 0 8px;font-family:var(--font-display);font-weight:700;font-size:20px;line-height:1.25;color:#fff}
+    .sv-rcard p{margin:0 0 22px;color:var(--body);font-size:14.5px}
+    .sv-notify{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:999px;font-size:14px;font-weight:700;color:#fff;border:1px solid rgba(201,194,245,.5);background:rgba(201,194,245,.08);transition:background .2s,transform .2s,border-color .2s}
+    .sv-notify svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    @media(hover:hover){.sv-notify:hover{background:rgba(201,194,245,.2);border-color:#fff;transform:translateY(-1px)}}
+
+    /* ---- phones ---- */
+    @media(max-width:1040px){.sv-live-grid{grid-template-columns:repeat(2,1fr)}.sv-live-grid .sv-lcard,.sv-live-grid .sv-lcard:nth-child(n+4){grid-column:auto}.sv-live-grid .sv-lcard:last-child{grid-column:1/-1}}
+    @media(max-width:880px){
+     .sv-feature-in{grid-template-columns:1fr;gap:22px;padding:26px 22px}
+     .sv-road{grid-template-columns:1fr;gap:16px;padding-left:34px}
+     .sv-road::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:repeating-linear-gradient(180deg,rgba(201,194,245,.55) 0 8px,transparent 8px 16px)}
+     .sv-rstop{padding-top:0}
+     .sv-rstop::before{left:-34px;top:26px;transform:none}
+     .sv-rstop::after{display:none}
+     .sv-road{position:relative}
+    }
+    @media(max-width:640px){
+      .sv-live-grid{grid-template-columns:1fr;gap:12px}.sv-live-grid .sv-lcard:last-child{grid-column:auto}
+     .sv-lcard{padding:20px}
+     .sv-lcard .sv-row{margin-bottom:14px}
+     .sv-ico{width:46px;height:46px}
+     .sv-lcard p{margin-bottom:12px}
+     .sv-road-head{margin:52px 0 26px}
+     .sv-rcard{padding:22px 20px 20px}
+     .sv-rnum{font-size:52px}
+     .sv-notify{width:100%}
+    }
+    @media(prefers-reduced-motion:reduce){.sv-pulse,.sv-rcard .sv-pill.sv-soon{animation:none}.sv-lcard,.sv-calc-btn,.sv-more i{transition:none}}
+
+
     /* Research process strip */
     .process-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
     @media(max-width:880px){ .process-strip{grid-template-columns:1fr} }
@@ -433,60 +540,71 @@
 
   <!-- Services -->
   <section id="services" aria-label="Services">
+    <div class="sv-mesh sv-m1"></div><div class="sv-mesh sv-m2"></div>
     <div class="container">
       <div class="eyebrow"><span class="dot"></span>WHAT WE DO</div>
       <div class="section-head">
-        <h3 class="section-title">Services, built to grow with you</h3>
-        <p class="section-sub">We start with mutual fund distribution — done properly. Here's what's live today, and what we're building toward as MoneySutraa grows into full wealth management.</p>
+        <h3 class="section-title">Services, built to <span class="grad-text">grow with you</span></h3>
+        <p class="section-sub">We start with mutual fund distribution, done properly. Here's <b>what's live today</b>, and what we're building toward as MoneySutraa grows into full wealth management.</p>
       </div>
 
-      <div class="bento cols-3">
-        <div class="glass card">
-          <span class="num">LIVE</span>
-          <h4>Goal-Based SIP Planning</h4>
-          <p>Starter and ongoing SIP plans mapped to specific goals — retirement, a child's education, a house — not generic fund picks.</p>
-        </div>
-        <div class="glass card">
-          <span class="num">LIVE</span>
-          <h4>Portfolio Health Check</h4>
-          <p>A hygiene review of your existing investments — overlap, cost, drift and benchmark fit — with a clean roadmap to fix it.</p>
-        </div>
-        <div class="glass card">
-          <span class="num">LIVE</span>
-          <h4>Lumpsum &amp; SWP Structuring</h4>
-          <p>For one-time investments and drawdown planning — structured around when you'll actually need the money.</p>
-        </div>
-        <div class="glass card">
-          <span class="num">LIVE</span>
-          <h4>Tax Consultation on Investments</h4>
-          <p>Guidance on LTCG and STCG on your mutual fund investments — so tax timing is part of the plan, not an afterthought.</p>
-        </div>
-        <div class="glass card wide">
-          <span class="num">LIVE</span>
-          <h4>Insurance <span class="grad-text">· All Insurances</span></h4>
-          <p>One conversation for your family's protection: life, health and more. Check your cover gap with our free calculators first, then talk it through with us.</p>
-          <div class="card-links">
-            <a class="btn outline" href="/insurance/">Life cover calculator →</a>
-            <a class="btn outline" href="/health/">Health cover calculator →</a>
-          </div>
-          <span class="fine">Insurance is offered through a certified Point of Sales Person (POSP) under IRDAI guidelines. Insurance is the subject matter of solicitation.</span>
-        </div>
-        <div class="glass card" style="opacity:.72">
-          <span class="num">COMING SOON</span>
-          <h4>Retirement &amp; Estate Planning</h4>
-          <p>Longer-horizon planning that goes beyond mutual funds — retirement corpus modelling and succession basics.</p>
-        </div>
-        <div class="glass card" style="opacity:.72">
-          <span class="num">COMING SOON</span>
-          <h4>RIA-Led Advisory</h4>
-          <p>As we transition to SEBI Registered Investment Adviser status, fee-based, conflict-free advisory alongside distribution.</p>
-        </div>
-        <div class="glass card" style="opacity:.72">
-          <span class="num">COMING SOON</span>
-          <h4>Direct Equity Products</h4>
-          <p>Curated equity options for investors ready to grow beyond a core mutual fund portfolio, once that foundation is solid.</p>
-        </div>
-      </div>
+  <div class="sv-group sv-live"><span class="sv-pulse"></span>Live now <span class="sv-count">· 6 services</span></div>
+
+  <!-- Featured: Insurance -->
+  <div class="sv-feature"><div class="sv-feature-in">
+    <div>
+      <div class="sv-top"><span class="sv-pill sv-live"><span class="sv-pulse"></span>Live</span><span class="sv-tag-new">New</span></div>
+      <h4>Insurance <span class="grad-text">· Life, health &amp; more</span></h4>
+      <p>One conversation for your family's protection. Check your cover gap with our free calculators first, then talk it through with us.</p>
+    </div>
+    <div class="sv-feature-side">
+      <a class="sv-calc-btn" href="/insurance/"><span class="sv-ci"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/></svg></span><span><b>Life cover calculator</b><span>How much cover does your family need?</span></span><span class="sv-go">→</span></a>
+      <a class="sv-calc-btn" href="/health/"><span class="sv-ci"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg></span><span><b>Health cover calculator</b><span>Is your hospital cover enough?</span></span><span class="sv-go">→</span></a>
+    </div>
+    <span class="sv-fine">Insurance is offered through a certified Point of Sales Person (POSP) under IRDAI guidelines. Insurance is the subject matter of solicitation.</span>
+  </div></div>
+
+  <!-- Live cards -->
+  <div class="sv-live-grid">
+    <article class="sv-lcard">
+      <div class="sv-row"><span class="sv-ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><path d="M8 15l4-4 3 3 5-6"/></svg></span><span class="sv-pill sv-live"><span class="sv-pulse"></span>Live</span></div>
+      <span class="sv-kick">Investing</span><h4>Goal-Based SIP Planning</h4>
+      <p>SIPs mapped to specific goals, like retirement, a child's education or a house, not generic fund picks.</p>
+      <a class="sv-more" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Goal-Based%20SIP%20Planning&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Plan this with us <i>→</i></a>
+    </article>
+    <article class="sv-lcard">
+      <div class="sv-row"><span class="sv-ico"><svg viewBox="0 0 24 24"><path d="M3 20h18M5 20V10l7-6 7 6v10"/><path d="M10 20v-5h4v5"/></svg></span><span class="sv-pill sv-live"><span class="sv-pulse"></span>Live</span></div>
+      <span class="sv-kick">Retirement</span><h4>Retirement Planning</h4>
+      <p>Know how much you need to retire comfortably, and build a plan to get there, step by step.</p>
+      <a class="sv-more" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Retirement%20Planning&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Plan this with us <i>→</i></a>
+    </article>
+    <article class="sv-lcard">
+      <div class="sv-row"><span class="sv-ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><span class="sv-pill sv-live"><span class="sv-pulse"></span>Live</span></div>
+      <span class="sv-kick">Review</span><h4>Portfolio Health Check</h4>
+      <p>A review of overlap, cost, drift and benchmark fit in your investments, with a clear roadmap to fix it.</p>
+      <a class="sv-more" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Portfolio%20Health%20Check&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Plan this with us <i>→</i></a>
+    </article>
+    <article class="sv-lcard">
+      <div class="sv-row"><span class="sv-ico"><svg viewBox="0 0 24 24"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg></span><span class="sv-pill sv-live"><span class="sv-pulse"></span>Live</span></div>
+      <span class="sv-kick">Structuring</span><h4>Lumpsum &amp; SWP Structuring</h4>
+      <p>One-time investments and drawdown plans, structured around when you'll actually need the money.</p>
+      <a class="sv-more" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Lumpsum%20and%20SWP&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Plan this with us <i>→</i></a>
+    </article>
+    <article class="sv-lcard">
+      <div class="sv-row"><span class="sv-ico"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span><span class="sv-pill sv-live"><span class="sv-pulse"></span>Live</span></div>
+      <span class="sv-kick">Tax</span><h4>Tax Consultation on Investments</h4>
+      <p>Guidance on LTCG and STCG on your mutual funds, so tax timing is part of the plan.</p>
+      <a class="sv-more" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Tax%20Consultation&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Plan this with us <i>→</i></a>
+    </article>
+  </div>
+
+  <!-- Roadmap -->
+  <div class="sv-road-head"><span class="sv-rk">Roadmap</span><h4>The road ahead</h4><p>Where MoneySutraa is heading next. Tell us what you want first and we'll message you when it opens.</p></div>
+  <div class="sv-road">
+    <div class="sv-rstop"><article class="sv-rcard"><span class="sv-rnum" aria-hidden="true">01</span><span class="sv-sico"><svg viewBox="0 0 24 24"><path d="M12 3v17M7 20h10M5 8h14"/><path d="M5 8l-3 7a3 3 0 006 0zM19 8l-3 7a3 3 0 006 0z"/></svg></span><span class="sv-pill sv-soon">Coming soon</span><h4>RIA-Led Advisory</h4><p>Fee-based, conflict-free advisory alongside distribution, as we move to SEBI RIA status.</p><a class="sv-notify" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20please%20notify%20me%20when%20RIA-Led%20Advisory%20launches&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1112 20a8 8 0 01-3.8-1z"/></svg>Notify me</a></article></div>
+    <div class="sv-rstop"><article class="sv-rcard"><span class="sv-rnum" aria-hidden="true">02</span><span class="sv-sico"><svg viewBox="0 0 24 24"><path d="M4 18l5-6 4 3 7-9"/><path d="M15 6h5v5"/></svg></span><span class="sv-pill sv-soon">Coming soon</span><h4>Direct Equity Products</h4><p>Curated equity options for investors ready to grow beyond a core mutual fund portfolio.</p><a class="sv-notify" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20please%20notify%20me%20when%20Direct%20Equity%20Products%20launches&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1112 20a8 8 0 01-3.8-1z"/></svg>Notify me</a></article></div>
+    <div class="sv-rstop"><article class="sv-rcard"><span class="sv-rnum" aria-hidden="true">03</span><span class="sv-sico"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></span><span class="sv-pill sv-soon">Coming soon</span><h4>SIF · Specialized Investment Funds</h4><p>A newer SEBI-regulated category that sits between mutual funds and PMS, for investors with a larger investable surplus.</p><a class="sv-notify" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20please%20notify%20me%20when%20SIF%20launches&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1112 20a8 8 0 01-3.8-1z"/></svg>Notify me</a></article></div>
+  </div>
     </div>
   </section>
 
@@ -918,5 +1036,9 @@
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
     })();
   </script>
+<script>
+(function(){if(!matchMedia('(hover:hover)').matches)return;
+document.querySelectorAll('.sv-lcard').forEach(function(c){c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});});})();
+</script>
 </body>
 </html>
