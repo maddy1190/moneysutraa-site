@@ -331,6 +331,24 @@
     @media(prefers-reduced-motion:reduce){.sv-pulse,.sv-rcard .sv-pill.sv-soon{animation:none}.sv-lcard,.sv-calc-btn,.sv-more i{transition:none}}
 
 
+    /* Free 1:1 meeting placements (fm- prefix) */
+    .fm-free{display:inline-flex;align-items:center;margin-left:10px;padding:2px 8px;border-radius:999px;background:rgba(10,14,26,.18);font-family:var(--font-mono);font-weight:700;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
+    .hero .cta .btn.fm-big{min-height:54px;padding:0 26px;font-size:16px;font-weight:700}
+    .fm-note{flex-basis:100%;margin:2px 0 0;font-size:13.5px;color:#B7C0D6}
+    .fm-note a{color:var(--gold);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+    .fm-link{margin-top:auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;align-self:flex-start;font-size:14px;font-weight:700;color:#0A0E1A;background:var(--grad);transition:transform .2s,filter .2s}
+    .fm-link i{font-style:normal;transition:transform .2s}
+    .fm-link .fm-b{padding:2px 7px;border-radius:999px;background:rgba(10,14,26,.2);font-family:var(--font-mono);font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+    @media(hover:hover){ .fm-link:hover{filter:brightness(1.08);transform:translateY(-1px)} .fm-link:hover i{transform:translateX(4px)} }
+    .fm-band{position:relative;margin-top:26px;border-radius:26px;padding:1px;background:linear-gradient(120deg,var(--violet),var(--coral));box-shadow:0 26px 60px -30px rgba(255,107,74,.55)}
+    .fm-band-in{border-radius:25px;background:linear-gradient(120deg,#1A1740,#2A1730);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .fm-band h4{margin:0 0 6px;font-family:var(--font-display);font-size:clamp(20px,2.4vw,26px);font-weight:700;color:#fff}
+    .fm-band p{margin:0;color:#C9D0E3;font-size:15px;max-width:520px}
+    .fm-band .btn{min-height:54px;padding:0 26px;font-size:16px;font-weight:700}
+    @media(max-width:820px){ .hero .cta .btn.fm-big{width:100%} .fm-band-in{padding:24px 20px} .fm-band .btn{width:100%} }
+    @media(max-width:640px){ .fm-link{width:100%;justify-content:center} }
+    .sticky-cta .btn.fm-gold{border-color:var(--gold);color:var(--gold);font-weight:700}
+
     /* Research process strip */
     .process-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
     @media(max-width:880px){ .process-strip{grid-template-columns:1fr} }
@@ -506,8 +524,9 @@
           <span class="pill" role="listitem">English / Hinglish / Hindi</span>
         </div>
         <div class="cta">
-          <a class="btn grad" href="/calculator/">Try the free calculator</a>
-          <a class="btn outline" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Hero%20section&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+          <a class="btn grad fm-big" href="https://forms.gle/zD3fp8JiZG6sB2Cx5" target="_blank" rel="noopener noreferrer">Book your free 1:1 meeting<span class="fm-free">Free</span></a>
+          <a class="btn outline fm-big" href="/calculator/">Try the free calculator</a>
+          <p class="fm-note">A complimentary one-on-one with a MoneySutraa expert. Prefer to chat? <a href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Hero%20section&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Message us on WhatsApp</a></p>
         </div>
       </div>
 
@@ -570,19 +589,19 @@
       <div class="sv-row"><span class="sv-ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><path d="M8 15l4-4 3 3 5-6"/></svg></span><span class="sv-pill sv-live"><span class="sv-pulse"></span>Live</span></div>
       <span class="sv-kick">Investing</span><h4>Goal-Based SIP Planning</h4>
       <p>SIPs mapped to specific goals, like retirement, a child's education or a house, not generic fund picks.</p>
-      <a class="sv-more" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Goal-Based%20SIP%20Planning&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Plan this with us <i>→</i></a>
+      <a class="fm-link" href="https://forms.gle/zD3fp8JiZG6sB2Cx5" target="_blank" rel="noopener noreferrer"><span class="fm-b">Free</span>Book a 1:1 meeting <i>→</i></a>
     </article>
     <article class="sv-lcard">
       <div class="sv-row"><span class="sv-ico"><svg viewBox="0 0 24 24"><path d="M3 20h18M5 20V10l7-6 7 6v10"/><path d="M10 20v-5h4v5"/></svg></span><span class="sv-pill sv-live"><span class="sv-pulse"></span>Live</span></div>
       <span class="sv-kick">Retirement</span><h4>Retirement Planning</h4>
       <p>Know how much you need to retire comfortably, and build a plan to get there, step by step.</p>
-      <a class="sv-more" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Retirement%20Planning&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Plan this with us <i>→</i></a>
+      <a class="fm-link" href="https://forms.gle/zD3fp8JiZG6sB2Cx5" target="_blank" rel="noopener noreferrer"><span class="fm-b">Free</span>Book a 1:1 meeting <i>→</i></a>
     </article>
     <article class="sv-lcard">
       <div class="sv-row"><span class="sv-ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><span class="sv-pill sv-live"><span class="sv-pulse"></span>Live</span></div>
       <span class="sv-kick">Review</span><h4>Portfolio Health Check</h4>
       <p>A review of overlap, cost, drift and benchmark fit in your investments, with a clear roadmap to fix it.</p>
-      <a class="sv-more" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Portfolio%20Health%20Check&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">Plan this with us <i>→</i></a>
+      <a class="fm-link" href="https://forms.gle/zD3fp8JiZG6sB2Cx5" target="_blank" rel="noopener noreferrer"><span class="fm-b">Free</span>Book a 1:1 meeting <i>→</i></a>
     </article>
     <article class="sv-lcard">
       <div class="sv-row"><span class="sv-ico"><svg viewBox="0 0 24 24"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg></span><span class="sv-pill sv-live"><span class="sv-pulse"></span>Live</span></div>
@@ -599,6 +618,11 @@
   </div>
 
   <!-- Roadmap -->
+  <div class="fm-band"><div class="fm-band-in">
+    <div><h4>Not sure which service fits you?</h4><p>Book a complimentary one-on-one with a MoneySutraa expert. We'll look at your goals and tell you where to start.</p></div>
+    <a class="btn grad" href="https://forms.gle/zD3fp8JiZG6sB2Cx5" target="_blank" rel="noopener noreferrer">Book your free 1:1<span class="fm-free">Free</span></a>
+  </div></div>
+
   <div class="sv-road-head"><span class="sv-rk">Roadmap</span><h4>The road ahead</h4><p>Where MoneySutraa is heading next. Tell us what you want first and we'll message you when it opens.</p></div>
   <div class="sv-road">
     <div class="sv-rstop"><article class="sv-rcard"><span class="sv-rnum" aria-hidden="true">01</span><span class="sv-sico"><svg viewBox="0 0 24 24"><path d="M12 3v17M7 20h10M5 8h14"/><path d="M5 8l-3 7a3 3 0 006 0zM19 8l-3 7a3 3 0 006 0z"/></svg></span><span class="sv-pill sv-soon">Coming soon</span><h4>RIA-Led Advisory</h4><p>Fee-based, conflict-free advisory alongside distribution, as we move to SEBI RIA status.</p><a class="sv-notify" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20please%20notify%20me%20when%20RIA-Led%20Advisory%20launches&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4.2A8 8 0 1112 20a8 8 0 01-3.8-1z"/></svg>Notify me</a></article></div>
@@ -982,7 +1006,7 @@
   <div class="sticky-cta" aria-hidden="false">
     <div class="wrap">
       <a class="btn grad" href="https://wa.me/919311595912?text=Hi%2C%20this%20is%20from%20the%20MoneySutraa%20website%20-%20Sticky%20CTA&utm_source=website&utm_medium=cta&utm_campaign=whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      <a class="btn outline" href="mailto:wecare@moneysutraa.com" rel="noopener">Email</a>
+      <a class="btn outline fm-gold" href="https://forms.gle/zD3fp8JiZG6sB2Cx5" target="_blank" rel="noopener noreferrer">Free 1:1 meeting</a>
     </div>
   </div>
 
