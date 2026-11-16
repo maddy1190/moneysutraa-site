@@ -899,7 +899,7 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
   function pctVal(id, lo, hi, defFrac){ var n = parseFloat($(id).value); if (isNaN(n)) return defFrac; return Math.min(hi, Math.max(lo, n)) / 100; }
 
   // Privacy-safe event hook: sends event names only, never any amounts. Does nothing until a Meta Pixel is added.
-  function track(name){ try{ if (typeof window.fbq === 'function') window.fbq('trackCustom', name); }catch(e){} }
+  function track(name){ try{ if (typeof window.fbq === 'function') window.fbq('trackCustom', name); }catch(e){} try{ if (typeof window.clarity === 'function') window.clarity('event', name); }catch(e){} }
 
   var calculated = false, started = false, typing = false, srTimer;
   var lastNeed = 0, lastGap = 0, lastWaMsg = '';
@@ -914,6 +914,8 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
       else { try { var sv = sessionStorage.getItem('ms_' + k); if (sv) UTM[k] = sv; } catch (e) {} }
     });
   } catch (e) {}
+  // Tell Clarity which ad each visitor came from, so recordings can be filtered by campaign
+  try { if (typeof window.clarity === 'function') Object.keys(UTM).forEach(function(k){ window.clarity('set', k, UTM[k]); }); } catch (e) {}
   // Indian-style commas while typing, keeping the cursor in place
   function fmt(el){
     var pos = el.selectionStart, before = (el.value.slice(0, pos).match(/\d/g) || []).length;
@@ -1134,6 +1136,7 @@ src="https://www.facebook.com/tr?id=1677146590491359&ev=PageView&noscript=1"
       resultEl.setAttribute('data-state', 'ready');
       $('next').hidden = false;
       $('jumpBtn').textContent = 'See my estimate ↓';
+      try { if (typeof window.clarity === 'function') window.clarity('set', 'need_estimate', short(lastNeed)); } catch (e) {}
       track('ResultView');
     }
     if (stacked()) {
